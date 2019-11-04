@@ -1,0 +1,372 @@
+package com.example.yumi;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class Privateinformation2 extends AppCompatActivity {
+
+    EditText et_nickname, et_email;
+    RadioGroup et_schooltype; RadioButton rd;
+    String sId, sPw,sNick, sEmail, sSchool, sGrade;
+    String JsonResultString;
+    Privateinformation2.GetData task;
+    EditText et_nicknames;
+    Privateinformation2.GetData1 task1;
+    int flag = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTitle("회원정보 입력하기");
+        setContentView(R.layout.activity_privateinformation_student);
+
+        Button nickname_check = (Button) findViewById(R.id.id_check3);
+        nickname_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //닉네임 중복 체크
+                //0-> ok,1->not ok
+                et_nicknames = (EditText) findViewById(R.id.nick_text);
+                String nickname = et_nicknames.getText().toString();
+                task = new Privateinformation2.GetData();
+                task.execute("http://1.234.38.211/nickname_check.php?nickname=" + nickname, "");
+            }
+        });
+
+        //체크박스 학년 구분
+        final Spinner dropdown = (Spinner) findViewById(R.id.spinner2);
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id)
+            {
+                sGrade = (String) parent.getItemAtPosition(position).toString(); //String 입력받음.
+                Toast.makeText(getApplicationContext(), parent.getItemAtPosition(position).toString()+"을 선택하셨습니다", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0)
+            {
+
+            }
+        });
+
+
+
+        //이전 페이지에서 입력한 id,pw 데이터 받음.
+        Intent intent = getIntent(); /*데이터 수신*/
+        sId = intent.getExtras().getString("id");  /*String형*/
+        sPw = intent.getExtras().getString("pw");  /*String형*/
+
+    }
+
+    //회원가입이 완료되면 로그인 화면으로 넘어가기
+    public void complete(View view){
+
+        //텍스트 입력 창에 입력된 스트링 받아오기
+        et_nickname = (EditText) findViewById(R.id.nick_text);
+        et_schooltype = (RadioGroup) findViewById(R.id.radioGroup2);  //라디오그룹에서
+        rd = (RadioButton) findViewById(et_schooltype.getCheckedRadioButtonId()); //선택된 걸 받음.
+        et_email = (EditText) findViewById(R.id.email_text);
+
+        if(view.getId()==R.id.complete) {
+
+            sNick = et_nickname.getText().toString();  //닉네임 값 받음.
+            sSchool = rd.getText().toString();  //선택된 학교 값(스트링 : 고등학교 / 중학교)을 받음.
+            sEmail = et_email.getText().toString(); //이메일 주소 받음.
+
+            task1 = new Privateinformation2.GetData1();
+            task1.execute("http://1.234.38.211/student_signup.php?id=" + sId + "&nickname=" + sNick, "");
+            if(flag == 1){
+                Toast.makeText(Privateinformation2.this, "\n" +
+                        "아이디 중복 확인 해주세요.", Toast.LENGTH_SHORT).show();
+            }
+            else if(flag == 2){
+                Toast.makeText(Privateinformation2.this, "\n" +
+                        "닉네임 중복 확인 해주세요.", Toast.LENGTH_SHORT).show();
+            }
+            else if (flag == 0) {
+                //null값이 아니어야 함.
+                if (sNick.length() >= 1 && sEmail.length() >= 1) {
+                    //받은 정보를 DB에 넣음
+                    RegisterDB rdb = new RegisterDB();
+                    rdb.execute();
+
+                    //다음 액티비티로 넘어감.
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Privateinformation2.this, "\n" +
+                            "입력 정보를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    public void goBack2(View view){ //뒤로 가기
+        if(view.getId()==R.id.cancel){
+            Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
+            startActivity(intent);
+        }
+    }
+
+    public class RegisterDB extends AsyncTask<Void, Integer, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            progressDialog = ProgressDialog.show(Privateinformation2.this,
+                    "Please Wait", null, true, true);
+        }
+
+        @Override
+        protected String doInBackground(Void... unused) {
+
+            /* 인풋 파라메터값 생성 */
+            String param = "id=" + sId + "&pw=" + sPw +"&nickname=" + sNick+ "&email="+sEmail + "&school_type="+sSchool +"&grade="+sGrade+"";
+            try {
+                /* 서버연결 */
+                URL url = new URL("http://1.234.38.211/student_signup.php");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                //conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                conn.setReadTimeout(5000);
+                conn.setConnectTimeout(5000);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.connect();
+                System.out.println("!!!!!!!!!!!!!!!!");
+                //Looper.prepare();
+                //Toast.makeText(Privateinformation2.this, "\n" +
+                  //      "성공적으로 처리되었습니다1", Toast.LENGTH_SHORT).show();
+                //Looper.loop();
+
+                /* 안드로이드 -> 서버 파라메터값 전달 */
+                OutputStream outs = conn.getOutputStream();
+                outs.write(param.getBytes("UTF-8"));
+                outs.flush();
+                outs.close();
+                System.out.println("#################");
+
+                int responseStatusCode = conn.getResponseCode();
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream =conn.getInputStream();
+                }
+                else{
+                    inputStream = conn.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+                return sb.toString();
+            } catch (Exception e) {
+                return new String("Error: " + e.getMessage());
+            }
+        }
+
+    }
+    private class GetData extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            if (result != null) {
+                JsonResultString = result;
+                InitializeQuestionData();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+            String postParameters = params[1];
+
+            try {
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+
+                InputStream inputStream;
+                if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                } else {
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString().trim();
+
+            } catch (Exception e) {
+
+                return null;
+            }
+        }
+    }
+
+    public void InitializeQuestionData() {
+        String TAG_JSON = "webnautes";
+        String TAG_CHECK = "check";
+
+        try {
+            JSONObject jsonObject = new JSONObject(JsonResultString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            JSONObject item = jsonArray.getJSONObject(0);
+            String check = item.getString(TAG_CHECK);
+
+            if (check.equals("1")) {
+                Toast.makeText(getApplicationContext(),"이 닉네임는 안됩니다.", Toast.LENGTH_SHORT).show();
+            }
+            if (check.equals("0")) {
+                Toast.makeText(getApplicationContext(),"이 닉네임은 가능합니다.", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (JSONException e) {
+
+        }
+
+    }
+    private class GetData1 extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            if (result != null) {
+                JsonResultString = result;
+                InitializeQuestionData1();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+            String postParameters = params[1];
+
+            try {
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+
+                InputStream inputStream;
+                if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                } else {
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString().trim();
+
+            } catch (Exception e) {
+
+                return null;
+            }
+        }
+    }
+
+    public void InitializeQuestionData1() {
+        String TAG_JSON = "webnautes";
+        String TAG_CHECK = "check";
+
+        try {
+            JSONObject jsonObject = new JSONObject(JsonResultString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            JSONObject item = jsonArray.getJSONObject(0);
+            String check = item.getString(TAG_CHECK);
+
+            if (check.equals("1")) {
+                flag = 1;
+            }
+            if (check.equals("0")) {
+                flag = 2;
+            }
+
+        } catch (JSONException e) {
+        }
+    }
+}

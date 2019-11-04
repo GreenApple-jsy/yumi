@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teachersignup">
+
+
+    <Button
+        android:id="@+id/id_check3"
+        android:layout_width="100dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:background="@drawable/draw10"
+        android:text="중복확인"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toEndOf="@+id/nickname"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
+
+    <EditText
+        android:id="@+id/nick_text"
+        android:layout_width="179dp"
+        android:layout_height="38dp"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:ems="14"
+        android:hint="사용하고 싶은 닉네임을 적어주세요"
+        android:inputType="textPersonName"
+        android:textColorHint="#b4b4b4"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <Button
+        android:id="@+id/angry_btn10"
+
+        android:layout_width="154dp"
+        android:layout_height="44dp"
+
+
+        android:background="@drawable/draw10"
+        android:text="닉네임"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.148"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/complete"
+
+        android:layout_width="90dp"
+        android:layout_height="49dp"
+        android:background="@drawable/draw10"
+        android:onClick="complete"
+
+        android:text="완료"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.951"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/angry_btn16"
+
+        android:layout_width="150dp"
+        android:layout_height="53dp"
+
+
+        android:background="@drawable/draw10"
+        android:text="E-Mail"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/email_text"
+        android:layout_width="258dp"
+        android:layout_height="42dp"
+
+        android:layout_weight="1"
+        android:ems="14"
+        android:hint="abc@abc.com"
+        android:inputType="textPersonName"
+        android:textColorHint="#b4b4b4"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.706" />
+
+    <Button
+        android:id="@+id/angry_btn13"
+
+        android:layout_width="152dp"
+        android:layout_height="44dp"
+
+
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/draw10"
+        android:text="학년"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.374"
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="181dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/angry_btn9"
+        app:layout_constraintVertical_bias="0.053"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/school1"
+            android:layout_width="97dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="고등학교"
+            android:textAlignment="center"
+            android:textSize="17dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="323dp" />
+
+        <RadioButton
+            android:id="@+id/school2"
+            android:layout_width="86dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:text="중학교"
+            android:textAlignment="center"
+            android:textSize="17dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="323dp" />
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/angry_btn9"
+
+        android:layout_width="152dp"
+        android:layout_height="44dp"
+        android:background="@drawable/draw10"
+        android:text="학교"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/angry_btn13"
+        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.372"
+        tools:ignore="MissingConstraints" />
+
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="149dp"
+        android:layout_height="40dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+
+        android:entries="@array/grade"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/angry_btn13"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <Button
+        android:id="@+id/cancel"
+
+        android:layout_width="84dp"
+        android:layout_height="56dp"
+
+
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/draw10"
+        android:gravity="center"
+        android:onClick="goBack2"
+        android:text="←"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.958" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

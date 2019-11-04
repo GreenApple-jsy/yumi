@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="book">
+        <item >선택하세요</item>
+        <item >쎈</item>
+        <item >수학의 정석</item>
+        <item >수능특강</item>
+        <item >수능완성</item>
+    </string-array>
+
+    <string-array name="school_type">
+        <item >선택하세요</item>
+        <item >초등학생</item>
+        <item >중학생</item>
+        <item >고등학생</item>
+    </string-array>
+
+    <string-array name="age">
+        <item >선택하세요</item>
+        <item >1학년</item>
+        <item >2학년</item>
+        <item >3학년</item>
+    </string-array>
+
+    <string-array name="semester">
+        <item >선택하세요</item>
+        <item >1학기</item>
+        <item >2학기</item>
+    </string-array>
+
+</resources>

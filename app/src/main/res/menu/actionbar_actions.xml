@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item  android:checkable="true"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+    ... />
+
+    <item
+        android:id="@+id/menu1"
+        android:title="내 정보"
+        android:checkable="true"/>
+    <item
+        android:id="@+id/menu2"
+        android:title="매칭 코드 등록하기"
+        android:checkable="true"/>
+
+</menu>
