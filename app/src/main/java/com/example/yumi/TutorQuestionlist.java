@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +29,7 @@ public class TutorQuestionlist extends AppCompatActivity {
 
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
-    QuestionAdapter questionAdapter;
+    TutorQuestionAdapter questionAdapter;
     ListView listView;
 
     @Override
@@ -39,7 +38,7 @@ public class TutorQuestionlist extends AppCompatActivity {
         setContentView(R.layout.activity_questionlist_tutor);
         listView = findViewById(R.id.listView);
         GetData task = new GetData();
-        task.execute( "http://1.234.38.211/getqdata.php", "");
+        task.execute( "http://1.234.38.211/getNoReservationQdata.php", "");
 
         Button btn = findViewById(R.id.bt_tab3);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +52,9 @@ public class TutorQuestionlist extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                Intent intent = new Intent(getApplicationContext(),QuestionDetailActivity.class);
-                startActivityForResult(intent,position); //문제 상세 정보 띄어주기 액티비티
+                Intent intent = new Intent(getApplicationContext(), TutorQuestionDetailActivity.class);
+                intent.putExtra("question_id",QuestionDataList.get(position).getid());
+                startActivity(intent); //문제 상세 정보 띄어주기 액티비티
             }
         });
     }
@@ -157,7 +157,7 @@ public class TutorQuestionlist extends AppCompatActivity {
                         ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
                 ));
             }
-            questionAdapter = new QuestionAdapter(this,QuestionDataList);
+            questionAdapter = new TutorQuestionAdapter(this,QuestionDataList);
             listView.setAdapter(questionAdapter);
 
         } catch (JSONException e) {

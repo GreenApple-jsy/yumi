@@ -43,8 +43,7 @@
         <activity android:name=".Studentsignup" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".uploadq" />
-        <activity android:name=".QuestionListActivity" />
-        <activity android:name=".QuestionDetailActivity" />
+        <activity android:name=".TutorQuestionDetailActivity" />
         <activity android:name=".Cons" />
         <activity android:name=".boardTutor" />
         <activity android:name=".getTutorVideo" />

@@ -90,7 +90,6 @@ public class tutorMyPage extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
                         intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
-                        System.out.println(arr_sid[index_num]);
                         startActivity(intent);
                     }
                 })

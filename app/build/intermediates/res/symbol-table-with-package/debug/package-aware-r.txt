@@ -1415,7 +1415,6 @@ id univVRF
 id university
 id unlabeled
 id up
-id upload
 id useLogo
 id username
 id validBtn
@@ -1481,8 +1480,7 @@ layout activity_login
 layout activity_main
 layout activity_privateinformation_student
 layout activity_privateinformation_teacher
-layout activity_question_detail
-layout activity_question_list
+layout activity_question_detail_tutor
 layout activity_questionlist_tutor
 layout activity_register_db
 layout activity_studentsignup

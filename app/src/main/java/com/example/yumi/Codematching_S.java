@@ -16,7 +16,7 @@ public class Codematching_S extends AppCompatActivity {
     //X버튼 누르면 초기 게시판 화면으로 돌아감
     public void cancel(View view){
         if(view.getId()==R.id.logo){
-            Intent intent = new Intent(getApplicationContext(), QuestionListActivity.class);
+            Intent intent = new Intent(getApplicationContext(), TutorQuestionlist.class);
             startActivity(intent);
         }
 

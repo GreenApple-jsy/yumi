@@ -64,7 +64,7 @@
 31-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:32:22-76
 32
 33    <application
-33-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:18:5-67:19
+33-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:18:5-66:19
 34        android:allowBackup="true"
 34-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:19:9-35
 35        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -125,196 +125,193 @@
 59        <activity android:name="com.example.yumi.uploadq" />
 59-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:45:9-45
 59-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:45:19-42
-60        <activity android:name="com.example.yumi.QuestionListActivity" />
-60-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-58
-60-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:46:19-55
-61        <activity android:name="com.example.yumi.QuestionDetailActivity" />
-61-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-60
-61-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:19-57
-62        <activity android:name="com.example.yumi.Cons" />
-62-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-42
-62-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:19-39
-63        <activity android:name="com.example.yumi.boardTutor" />
-63-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-48
-63-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-45
-64        <activity android:name="com.example.yumi.getTutorVideo" />
-64-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-51
-64-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-48
-65        <activity android:name="com.example.yumi.tutorManageStudent" />
-65-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-56
-65-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-53
-66        <activity android:name="com.example.yumi.tutorMyPage" />
-66-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-49
-66-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-46
-67        <activity android:name="com.example.yumi.tutorPreferences" />
-67-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:9-54
-67-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:19-51
-68        <activity android:name="com.example.yumi.tutorMngBooking" />
-68-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:9-53
-68-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:19-50
-69        <activity android:name="com.example.yumi.studentcompelete_question" />
-69-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:9-63
-69-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:19-60
-70        <activity android:name="com.example.yumi.TutorQuestionlist" />
-70-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:56:9-55
-70-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:56:19-52
-71
-72        <provider
-72-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:58:9-66:20
-73            android:name="androidx.core.content.FileProvider"
-73-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:59:13-62
-74            android:authorities="com.example.yumi.fileprovider"
-74-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:60:13-64
-75            android:exported="false"
-75-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:61:13-37
-76            android:grantUriPermissions="true" >
-76-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:62:13-47
-77            <meta-data
-77-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:63:13-65:54
-78                android:name="android.support.FILE_PROVIDER_PATHS"
-78-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:64:17-67
-79                android:resource="@xml/file_paths" />
-79-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:65:17-51
-80        </provider>
-81
-82        <service android:name="com.google.firebase.components.ComponentDiscoveryService" >
-82-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:9-31:19
-82-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:18-89
-83            <meta-data
-83-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:28:13-30:85
-84                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-84-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:29:17-139
-85                android:value="com.google.firebase.components.ComponentRegistrar" />
-85-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:30:17-82
-86            <meta-data
-86-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:36:13-38:85
-87                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-87-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:37:17-96
-88                android:value="com.google.firebase.components.ComponentRegistrar" />
-88-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:38:17-82
-89        </service>
-90
-91        <receiver
-91-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:29:9-33:20
-92            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-92-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:30:13-85
-93            android:enabled="true"
-93-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:31:13-35
-94            android:exported="false" >
-94-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:32:13-37
-95        </receiver>
-96        <receiver
-96-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:34:9-42:20
-97            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-97-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:35:13-100
-98            android:enabled="true"
-98-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:36:13-35
-99            android:exported="true"
-99-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:37:13-36
-100            android:permission="android.permission.INSTALL_PACKAGES" >
-100-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:38:13-69
-101            <intent-filter>
-101-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:39:13-41:29
-102                <action android:name="com.android.vending.INSTALL_REFERRER" />
-102-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:17-79
-102-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:25-76
-103            </intent-filter>
-104        </receiver>
-105
-106        <service
-106-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:44:9-47:40
-107            android:name="com.google.android.gms.measurement.AppMeasurementService"
-107-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:45:13-84
-108            android:enabled="true"
-108-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:46:13-35
-109            android:exported="false" />
-109-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:47:13-37
-110        <service
-110-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:48:9-52:72
-111            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-111-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:49:13-87
-112            android:enabled="true"
-112-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:50:13-35
-113            android:exported="false"
-113-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:51:13-37
-114            android:permission="android.permission.BIND_JOB_SERVICE" />
-114-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:52:13-69
-115
-116        <receiver
-116-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:41:9-50:20
-117            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-117-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:42:13-78
-118            android:exported="true"
-118-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:43:13-36
-119            android:permission="com.google.android.c2dm.permission.SEND" >
-119-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:44:13-73
-120            <intent-filter>
-120-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:45:13-49:29
-121                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-121-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:17-81
-121-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:25-78
-122
-123                <category android:name="com.example.yumi" />
-123-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:17-61
-123-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:27-58
-124            </intent-filter>
-125        </receiver>
-126        <!--
-127             FirebaseInstanceIdService performs security checks at runtime,
-128             no need for explicit permissions despite exported="true"
-129        -->
-130        <service
-130-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:56:9-62:19
-131            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-131-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:57:13-77
-132            android:exported="true" >
-132-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:58:13-36
-133            <intent-filter android:priority="-500" >
-133-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:13-61:29
-133-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:28-51
-134                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-134-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:17-80
-134-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:25-77
-135            </intent-filter>
-136        </service>
-137
-138        <provider
-138-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:9:9-13:39
-139            android:name="com.google.firebase.provider.FirebaseInitProvider"
-139-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:10:13-77
-140            android:authorities="com.example.yumi.firebaseinitprovider"
-140-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:11:13-72
-141            android:exported="false"
-141-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:12:13-37
-142            android:initOrder="100" />
-142-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:13:13-36
-143
-144        <activity
-144-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:23:9-26:75
-145            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-145-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:24:13-79
-146            android:exported="false"
-146-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:25:13-37
-147            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-147-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:26:13-72
-148
-149        <meta-data
-149-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\4aa8fc9267a3bde5a8ed90801f711948\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
-150            android:name="com.google.android.gms.version"
-150-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\4aa8fc9267a3bde5a8ed90801f711948\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
-151            android:value="@integer/google_play_services_version" />
-151-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\4aa8fc9267a3bde5a8ed90801f711948\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
-152
-153        <provider
-153-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
-154            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-154-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
-155            android:authorities="com.example.yumi.lifecycle-process"
-155-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
-156            android:exported="false"
-156-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
-157            android:multiprocess="true" />
-157-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
-158    </application>
-159
-160</manifest>
+60        <activity android:name="com.example.yumi.TutorQuestionDetailActivity" />
+60-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-65
+60-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:46:19-62
+61        <activity android:name="com.example.yumi.Cons" />
+61-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-42
+61-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:19-39
+62        <activity android:name="com.example.yumi.boardTutor" />
+62-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-48
+62-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:19-45
+63        <activity android:name="com.example.yumi.getTutorVideo" />
+63-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-51
+63-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-48
+64        <activity android:name="com.example.yumi.tutorManageStudent" />
+64-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-56
+64-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-53
+65        <activity android:name="com.example.yumi.tutorMyPage" />
+65-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-49
+65-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-46
+66        <activity android:name="com.example.yumi.tutorPreferences" />
+66-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-54
+66-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-51
+67        <activity android:name="com.example.yumi.tutorMngBooking" />
+67-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:9-53
+67-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:19-50
+68        <activity android:name="com.example.yumi.studentcompelete_question" />
+68-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:9-63
+68-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:19-60
+69        <activity android:name="com.example.yumi.TutorQuestionlist" />
+69-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:9-55
+69-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:19-52
+70
+71        <provider
+71-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:57:9-65:20
+72            android:name="androidx.core.content.FileProvider"
+72-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:58:13-62
+73            android:authorities="com.example.yumi.fileprovider"
+73-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:59:13-64
+74            android:exported="false"
+74-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:60:13-37
+75            android:grantUriPermissions="true" >
+75-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:61:13-47
+76            <meta-data
+76-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:62:13-64:54
+77                android:name="android.support.FILE_PROVIDER_PATHS"
+77-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:63:17-67
+78                android:resource="@xml/file_paths" />
+78-->C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:64:17-51
+79        </provider>
+80
+81        <service android:name="com.google.firebase.components.ComponentDiscoveryService" >
+81-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:9-31:19
+81-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:18-89
+82            <meta-data
+82-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:28:13-30:85
+83                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+83-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:29:17-139
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\9616ae2ec6ba5dca97583d5bd694b342\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:30:17-82
+85            <meta-data
+85-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:36:13-38:85
+86                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+86-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:37:17-96
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:38:17-82
+88        </service>
+89
+90        <receiver
+90-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:29:9-33:20
+91            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+91-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:30:13-85
+92            android:enabled="true"
+92-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:31:13-35
+93            android:exported="false" >
+93-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:32:13-37
+94        </receiver>
+95        <receiver
+95-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:34:9-42:20
+96            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+96-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:35:13-100
+97            android:enabled="true"
+97-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:36:13-35
+98            android:exported="true"
+98-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:37:13-36
+99            android:permission="android.permission.INSTALL_PACKAGES" >
+99-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:38:13-69
+100            <intent-filter>
+100-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:39:13-41:29
+101                <action android:name="com.android.vending.INSTALL_REFERRER" />
+101-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:17-79
+101-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:25-76
+102            </intent-filter>
+103        </receiver>
+104
+105        <service
+105-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:44:9-47:40
+106            android:name="com.google.android.gms.measurement.AppMeasurementService"
+106-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:45:13-84
+107            android:enabled="true"
+107-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:46:13-35
+108            android:exported="false" />
+108-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:47:13-37
+109        <service
+109-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:48:9-52:72
+110            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+110-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:49:13-87
+111            android:enabled="true"
+111-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:50:13-35
+112            android:exported="false"
+112-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:51:13-37
+113            android:permission="android.permission.BIND_JOB_SERVICE" />
+113-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1f5ec704676fb8669e2e14c639fc3d98\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:52:13-69
+114
+115        <receiver
+115-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:41:9-50:20
+116            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+116-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:42:13-78
+117            android:exported="true"
+117-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:43:13-36
+118            android:permission="com.google.android.c2dm.permission.SEND" >
+118-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:44:13-73
+119            <intent-filter>
+119-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:45:13-49:29
+120                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+120-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:17-81
+120-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:25-78
+121
+122                <category android:name="com.example.yumi" />
+122-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:17-61
+122-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:27-58
+123            </intent-filter>
+124        </receiver>
+125        <!--
+126             FirebaseInstanceIdService performs security checks at runtime,
+127             no need for explicit permissions despite exported="true"
+128        -->
+129        <service
+129-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:56:9-62:19
+130            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+130-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:57:13-77
+131            android:exported="true" >
+131-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:58:13-36
+132            <intent-filter android:priority="-500" >
+132-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:13-61:29
+132-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:28-51
+133                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+133-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:17-80
+133-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3e7e90d01f57611c660ace197b2211fd\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:25-77
+134            </intent-filter>
+135        </service>
+136
+137        <provider
+137-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:9:9-13:39
+138            android:name="com.google.firebase.provider.FirebaseInitProvider"
+138-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:10:13-77
+139            android:authorities="com.example.yumi.firebaseinitprovider"
+139-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:11:13-72
+140            android:exported="false"
+140-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:12:13-37
+141            android:initOrder="100" />
+141-->[com.google.firebase:firebase-common:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\05f2ed9d3923ffa1bc8bff0f3309a6d9\jetified-firebase-common-16.0.0\AndroidManifest.xml:13:13-36
+142
+143        <activity
+143-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:23:9-26:75
+144            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+144-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:24:13-79
+145            android:exported="false"
+145-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:25:13-37
+146            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+146-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\279a67a647fd0320bca029bab2e72cb7\jetified-play-services-base-15.0.1\AndroidManifest.xml:26:13-72
+147
+148        <meta-data
+148-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\4aa8fc9267a3bde5a8ed90801f711948\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
+149            android:name="com.google.android.gms.version"
+149-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\4aa8fc9267a3bde5a8ed90801f711948\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
+150            android:value="@integer/google_play_services_version" />
+150-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\4aa8fc9267a3bde5a8ed90801f711948\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
+151
+152        <provider
+152-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+153            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+153-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+154            android:authorities="com.example.yumi.lifecycle-process"
+154-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+155            android:exported="false"
+155-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+156            android:multiprocess="true" />
+156-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+157    </application>
+158
+159</manifest>

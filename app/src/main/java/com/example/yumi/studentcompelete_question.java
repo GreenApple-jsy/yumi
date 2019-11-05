@@ -28,7 +28,7 @@ public class studentcompelete_question extends AppCompatActivity {
 
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
-    QuestionAdapter questionAdapter;
+    TutorQuestionAdapter questionAdapter;
     ListView listView;
 
     @Override
@@ -42,7 +42,7 @@ public class studentcompelete_question extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                Intent intent = new Intent(getApplicationContext(),QuestionDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TutorQuestionDetailActivity.class);
                 startActivityForResult(intent,position); //문제 상세 정보 띄어주기 액티비티
             }
         });
@@ -146,7 +146,7 @@ public class studentcompelete_question extends AppCompatActivity {
                         ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
                 ));
             }
-            questionAdapter = new QuestionAdapter(this,QuestionDataList);
+            questionAdapter = new TutorQuestionAdapter(this,QuestionDataList);
             listView.setAdapter(questionAdapter);
 
         } catch (JSONException e) {

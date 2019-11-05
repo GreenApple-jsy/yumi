@@ -57,8 +57,7 @@
         <activity android:name="com.example.yumi.Studentsignup" />
         <activity android:name="com.example.yumi.MenuActivity" />
         <activity android:name="com.example.yumi.uploadq" />
-        <activity android:name="com.example.yumi.QuestionListActivity" />
-        <activity android:name="com.example.yumi.QuestionDetailActivity" />
+        <activity android:name="com.example.yumi.TutorQuestionDetailActivity" />
         <activity android:name="com.example.yumi.Cons" />
         <activity android:name="com.example.yumi.boardTutor" />
         <activity android:name="com.example.yumi.getTutorVideo" />
