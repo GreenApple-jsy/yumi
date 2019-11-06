@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".tutorMyPage">
+    tools:context=".stdMyPage">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="158dp"
         android:layout_height="40dp"
-        android:text="선생님방"
+        android:text="학생방"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_width="165dp"
         android:layout_height="32dp"
         android:layout_marginEnd="56dp"
-        android:text="소속 : 숙명여자대학교 "
+        android:text="소속 : 서울영신고등학교 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -63,7 +63,7 @@
         android:id="@+id/textView7"
         android:layout_width="165dp"
         android:layout_height="32dp"
-        android:text="과목 : 수학"
+        android:text="학년 : 2학년"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.176"
@@ -72,12 +72,12 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <Button
-        android:id="@+id/myStudent"
+        android:id="@+id/myTutor"
         android:layout_width="102dp"
         android:layout_height="47dp"
         android:background="#FF8E99"
-        android:onClick="mngStudent"
-        android:text="학생 관리"
+        android:onClick="myTutor"
+        android:text="나의 선생님"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.877"
@@ -86,12 +86,12 @@
         app:layout_constraintVertical_bias="0.095" />
 
     <Button
-        android:id="@+id/rcdVideo"
+        android:id="@+id/rePlay"
         android:layout_width="103dp"
         android:layout_height="47dp"
         android:background="#FF8E99"
-        android:onClick="myRcdVideo"
-        android:text="풀이 영상"
+        android:onClick="ReplayVideo"
+        android:text="다시보기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,8 +103,8 @@
         android:layout_width="103dp"
         android:layout_height="47dp"
         android:background="#FF8E99"
-        android:onClick="mngTutorBooking"
-        android:text="예약 관리"
+        android:text="나의 예약"
+        android:onClick="StdMyBooking"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
@@ -112,23 +112,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="tutorPrf"
-        android:text="test_prf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
 
     <ListView
-        android:id="@+id/listView_today_list"
+        android:id="@+id/std_lecture_list"
         android:layout_width="331dp"
         android:layout_height="270dp"
         android:layout_margin="5dp"
@@ -149,7 +135,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오늘의 수업은..."
+        android:text="오늘 강의는...."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
