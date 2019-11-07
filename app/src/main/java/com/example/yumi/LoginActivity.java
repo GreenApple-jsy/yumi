@@ -150,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("id", sId);
                         editor.putString("usertype","student"); //유저타입(학생)으로 저장
                         editor.apply();
-                        Intent intent = new Intent(LoginActivity.this, uploadq.class);
+                        Intent intent = new Intent(LoginActivity.this, StudentQuestionlist.class);
                         startActivity(intent);
                     }
                     //선생님인 경우

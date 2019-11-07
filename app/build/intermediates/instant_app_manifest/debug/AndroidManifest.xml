@@ -42,6 +42,8 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.yumi.StudentQuestionDetailActivity" />
+        <activity android:name="com.example.yumi.StudentQuestionlist" />
         <activity android:name="com.example.yumi.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,6 +70,10 @@
         <activity android:name="com.example.yumi.tutorMngBooking" />
         <activity android:name="com.example.yumi.studentcompelete_question" />
         <activity android:name="com.example.yumi.TutorQuestionlist" />
+        <activity android:name="com.example.yumi.stdMyPage" />
+        <activity android:name="com.example.yumi.stdMngBooking" />
+        <activity android:name="com.example.yumi.stdManageTT" />
+        <activity android:name="com.example.yumi.ReplayVideo" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

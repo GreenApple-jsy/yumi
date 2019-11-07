@@ -1,0 +1,213 @@
+package com.example.yumi;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import static java.lang.Integer.parseInt;
+
+public class StudentQuestionDetailActivity extends AppCompatActivity {
+    GetImage task;
+    Bitmap img;
+    ImageView qimage;
+    LayoutInflater mLayoutInflater = null;
+    String JsonResultString;
+    QuestionData q;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_question_detail_tutor);
+
+        Intent intent = getIntent(); /*데이터 수신*/
+        int question_id = intent.getExtras().getInt("question_id"); //상세 정보를 볼 문제 번호 받아옴
+
+        GetData task = new GetData();
+        task.execute( "http://1.234.38.211/getOneQuestionDetail.php?id=" + Integer.toString(question_id), "");
+    }
+
+    private class GetData extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (result != null) {
+                JsonResultString = result;
+                InitializeQuestionData();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+            String postParameters = params[1];
+
+            try {
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString().trim();
+
+            } catch (Exception e) {
+
+                return null;
+            }
+        }
+    }
+
+    public void InitializeQuestionData()
+    {
+        String TAG_JSON="webnautes";
+        String TAG_ID = "id";
+        String TAG_BOOK = "book";
+        String TAG_PAGE ="page";
+        String TAG_QNUM ="q_number";
+        String TAG_STIME ="start_time";
+        String TAG_ETIME ="end_time";
+        String TAG_IMAGE ="q_image";
+        String TAG_TID ="t_id";
+        String TAG_SID ="s_id";
+        String TAG_COMPLETE ="complete";
+        String TAG_GOOD ="good";
+        String TAG_QLINK ="q_link";
+        String TAG_AGE ="age";
+        String TAG_SEMESTER ="semester";
+        String TAG_RESERV ="reservation";
+
+        try {
+            JSONObject jsonObject = new JSONObject(JsonResultString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            JSONObject item = jsonArray.getJSONObject(0);
+            q = new QuestionData(parseInt(item.getString(TAG_ID)),item.getString(TAG_BOOK),item.getString(TAG_PAGE),
+                    item.getString(TAG_QNUM),item.getString(TAG_STIME), item.getString(TAG_ETIME),
+                    item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
+                    ,parseInt(item.getString(TAG_COMPLETE)),parseInt(item.getString(TAG_GOOD)),item.getString(TAG_QLINK)
+                    ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
+            );
+            setQInfo();
+        } catch (JSONException e) {
+
+        }
+
+    }
+
+    public void setQInfo() {
+
+        qimage = findViewById(R.id.q_image);
+        task = new GetImage();
+        if(task != null){
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,q.getimage());
+        }
+        else{
+            task = new GetImage();
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,q.getimage());
+        }
+        TextView tv_age = findViewById(R.id.age);
+        TextView tv_semester = findViewById(R.id.semester);
+        TextView tv_book= findViewById(R.id.book);
+        TextView tv_page= findViewById(R.id.page);
+        TextView tv_qnum= findViewById(R.id.q_number);
+        TextView tv_stime= findViewById(R.id.start_time);
+        TextView tv_etime= findViewById(R.id.end_time);
+        TextView tv_reserv= findViewById(R.id.reservation);
+        TextView tv_complete= findViewById(R.id.complete);
+        TextView tv_good= findViewById(R.id.good);
+
+        tv_age.setText(q.getage());
+        tv_semester.setText(q.getsemester());
+        tv_book.setText("교재 : " + q.getbook());
+        tv_page.setText(q.getpage() + "pg");
+        tv_qnum.setText(q.getqnumber() + "번");
+        tv_stime.setText("풀이 가능 시간 : " +q.getstime());
+        tv_etime.setText(" ~ " + q.getetime());
+        if(q.getreservation() == 1)
+            tv_reserv.setText("풀이 예약 완료");
+        else
+            tv_reserv.setText("대기 중");
+
+        if(q.getcomplete() == 1)
+            tv_complete.setText("풀이 완료");
+        else
+            tv_complete.setText(" ");
+
+        tv_good.setText(q.getgood() + " 추천");
+    }
+
+
+    private class GetImage extends AsyncTask<String, Integer,Bitmap> {
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            try{
+                URL myFileUrl = new URL(urls[0]);
+                HttpURLConnection conn = (HttpURLConnection)myFileUrl.openConnection();
+                conn.setDoInput(true);
+                conn.connect();
+
+                InputStream is = conn.getInputStream();
+
+                img = BitmapFactory.decodeStream(is);
+
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+            return img;
+        }
+        protected void onPostExecute(Bitmap img){
+            qimage.setImageBitmap(img);
+        }
+    }
+}
