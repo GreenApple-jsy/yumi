@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".tutorMngBooking">
 
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="102dp"
+        android:layout_height="30dp"
+        android:text="예약관리"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049"
+        tools:ignore="MissingConstraints" />
+
+    <Switch
+        android:id="@+id/bookSwitch"
+        android:layout_width="56dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.748"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048"
+        tools:ignore="RtlCompat" />
+    <ListView
+        android:id="@+id/listView_booking_list"
+        android:layout_width="337dp"
+        android:layout_height="486dp"
+        android:layout_margin="5dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="120dp"
+        android:layout_weight="6"
+        android:background="#48733BA0"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.326"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="45dp"
+        android:layout_height="29dp"
+        android:text="미완료"
+        app:layout_constraintBottom_toTopOf="@+id/listView_booking_list"
+        app:layout_constraintEnd_toStartOf="@+id/bookSwitch"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="43dp"
+        android:layout_height="33dp"
+        android:text="완료"
+        app:layout_constraintBottom_toTopOf="@+id/listView_booking_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toEndOf="@+id/bookSwitch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.413" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
