@@ -3,6 +3,7 @@ package com.example.yumi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.collection.LLRBNode;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +32,7 @@ import static java.lang.Integer.parseInt;
 
 public class LoginActivity extends AppCompatActivity {
     EditText et_id, et_pw, et_pw_chk;
+    TextView message ;
     String sId, sPw;
     String JsonResultString;
     LoginActivity.GetData task;
@@ -42,14 +47,24 @@ public class LoginActivity extends AppCompatActivity {
         et_id = (EditText) findViewById(R.id.username);  //id
         et_pw = (EditText) findViewById(R.id.password);  //password
 
-        task = new LoginActivity.GetData();
+
     }
 
     public void login_btn(View view) {
         /* 버튼을 눌렀을 때 동작하는 소스 */
         sId = et_id.getText().toString();
         sPw = et_pw.getText().toString();   //id, password 텍스트 가져오기
-        task.execute("http://1.234.38.211/login.php?id=" + sId + "&pw=" + sPw, "");
+        task = new LoginActivity.GetData();
+
+        // 로그인 실패시 꺼지는 문제 해결 2019.11.07
+        if(sId.equals("") || sPw.equals("")){
+            message = (TextView)findViewById(R.id.ifFail);
+            message.setText("ID 혹은 Password가 입력되지 않았습니다.....");
+            message.setTextColor(Color.RED);
+        }
+        else {
+            task.execute("http://1.234.38.211/login_edit.php?id=" + sId + "&pw=" + sPw, "");
+        }
     }
 
     private class GetData extends AsyncTask<String, Void, String> {
@@ -126,29 +141,41 @@ public class LoginActivity extends AppCompatActivity {
                 JSONObject item = jsonArray.getJSONObject(0);
                 String type = item.getString(TAG_TYPE);
                 String correctness = item.getString(TAG_CORRECTNESS);
+                System.out.println("!!!!!!!!!!!!" + correctness);
+                if(correctness.equals("true")){
+                    //학생인 경우
+                    if (type.equals("student")) {
+                        SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
+                        SharedPreferences.Editor editor =  sf.edit();
+                        editor.putString("id", sId);
+                        editor.putString("usertype","student"); //유저타입(학생)으로 저장
+                        editor.apply();
+                        Intent intent = new Intent(LoginActivity.this, uploadq.class);
+                        startActivity(intent);
+                    }
+                    //선생님인 경우
+                    else if (type.equals("teacher")) {
+                        SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
+                        SharedPreferences.Editor editor =  sf.edit();
+                        editor.putString("id", sId);
+                        editor.putString("usertype","teacher"); //유저타입(선생)으로 저장
+                        editor.apply();
 
-                if (type.equals("student")) {
-                    SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
-                    SharedPreferences.Editor editor =  sf.edit();
-                    editor.putString("id", sId);
-                    editor.putString("usertype","student"); //유저타입(학생)으로 저장
-                    editor.apply();
-
-                    Intent intent = new Intent(LoginActivity.this, uploadq.class);
-                    startActivity(intent);
-                } else if (type.equals("teacher")) {
-                    SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
-                    SharedPreferences.Editor editor =  sf.edit();
-                    editor.putString("id", sId);
-                    editor.putString("usertype","teacher"); //유저타입(선생)으로 저장
-                    editor.apply();
-
-                    Intent intent = new Intent(LoginActivity.this, TutorQuestionlist.class);
-                    startActivity(intent);
-                } else if (correctness.equals("fail")) {
-                    System.out.print("실패");
+                        Intent intent = new Intent(LoginActivity.this, TutorQuestionlist.class);
+                        startActivity(intent);
+                    }
                 }
-
+                else if (correctness.equals("false")) {
+                    System.out.print("실패");
+                    message = (TextView)findViewById(R.id.ifFail);
+                    message.setText("ID 혹인 비밀번호를 확인해주세요...");
+                    message.setTextColor(Color.RED);
+                }
+                else if (correctness.equals("none")){
+                    message = (TextView)findViewById(R.id.ifFail);
+                    message.setText("가입된 정보가 없습니다....");
+                    message.setTextColor(Color.RED);
+                }
 
             } catch (JSONException e) {
 
