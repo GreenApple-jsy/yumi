@@ -3,6 +3,7 @@ package com.example.yumi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,8 @@ public class stdMyPage extends AppCompatActivity {
     ListView mlistView;
     String mJsonString;
     TextView mTextViewResult;
+    TextView nickText, schoolText, gradeText;
+
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String ID = "id";
     private static final String TAG_SID = "s_id";
@@ -62,6 +65,22 @@ public class stdMyPage extends AppCompatActivity {
         setContentView(R.layout.std_my_page);
 
         mlistView = (ListView)findViewById(R.id.std_lecture_list) ;
+
+
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        String nickName = pref.getString("nickName", "default");
+        String school = pref.getString("school", "default");
+        String grade = pref.getString("grade", "default");
+
+        nickText = (TextView)findViewById(R.id.stdNick);
+        nickText.setText(nickName);
+
+        schoolText = (TextView)findViewById(R.id.schoolName);
+        schoolText.setText(school);
+
+
+        gradeText = (TextView)findViewById(R.id.stdGrade);
+        gradeText.setText(grade);
 
         task = new stdMyPage.phpConnect();
         task.execute();
