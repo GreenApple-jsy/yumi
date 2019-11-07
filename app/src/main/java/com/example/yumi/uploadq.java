@@ -110,7 +110,8 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
         bt_tab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //학생용 마이페이지 엑티비티 추가해주세요!
+                Intent intent = new Intent(uploadq.this, stdMyPage.class);
+                startActivity(intent);
             }
         });
 
