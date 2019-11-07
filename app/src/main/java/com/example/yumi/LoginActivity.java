@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_id, et_pw, et_pw_chk;
     TextView message ;
     String sId, sPw;
+
     String JsonResultString;
     LoginActivity.GetData task;
     ArrayList<QuestionData> QuestionDataList;
@@ -130,56 +131,77 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-        public void InitializeQuestionData() {
-            String TAG_JSON = "webnautes";
-            String TAG_TYPE = "type";
-            String TAG_CORRECTNESS = "correctness";
+    public void InitializeQuestionData() {
+        String TAG_JSON = "webnautes";
+        String TAG_TYPE = "type";
+        String TAG_CORRECTNESS = "correctness";
+        String TAG_UNIV = "university";
+        String TAG_EMAIL = "email";
+        String TAG_NICK = "nickname";
+        String TAG_SCHOOL = "school_type";
+        String TAG_GRD = "grade";
 
-            try {
-                JSONObject jsonObject = new JSONObject(JsonResultString);
-                JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-                JSONObject item = jsonArray.getJSONObject(0);
-                String type = item.getString(TAG_TYPE);
-                String correctness = item.getString(TAG_CORRECTNESS);
-                System.out.println("!!!!!!!!!!!!" + correctness);
-                if(correctness.equals("true")){
-                    //학생인 경우
-                    if (type.equals("student")) {
-                        SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
-                        SharedPreferences.Editor editor =  sf.edit();
-                        editor.putString("id", sId);
-                        editor.putString("usertype","student"); //유저타입(학생)으로 저장
-                        editor.apply();
-                        Intent intent = new Intent(LoginActivity.this, StudentQuestionlist.class);
-                        startActivity(intent);
-                    }
-                    //선생님인 경우
-                    else if (type.equals("teacher")) {
-                        SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
-                        SharedPreferences.Editor editor =  sf.edit();
-                        editor.putString("id", sId);
-                        editor.putString("usertype","teacher"); //유저타입(선생)으로 저장
-                        editor.apply();
+        try {
+            JSONObject jsonObject = new JSONObject(JsonResultString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            JSONObject item = jsonArray.getJSONObject(0);
+            String type = item.getString(TAG_TYPE);
+            String correctness = item.getString(TAG_CORRECTNESS);
 
-                        Intent intent = new Intent(LoginActivity.this, TutorQuestionlist.class);
-                        startActivity(intent);
-                    }
+            if(correctness.equals("true")){
+                //학생인 경우
+                if (type.equals("student")) {
+                    String nickName = item.getString(TAG_NICK);
+                    String email = item.getString(TAG_EMAIL);
+                    String grade = item.getString(TAG_GRD);
+                    String school = item.getString(TAG_SCHOOL);
+                    SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
+                    SharedPreferences.Editor editor =  sf.edit();
+                    editor.putString("id", sId);
+                    editor.putString("usertype","student"); //유저타입(학생)으로 저장
+                    editor.putString("nickName" , nickName);
+                    editor.putString("email " , email);
+                    editor.putString("school", school);
+                    editor.putString("grade",grade);
+                    editor.apply();
+
+                    Toast.makeText(getApplicationContext(),"안녕하세요, " + nickName ,Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, StudentQuestionlist.class);
+                    startActivity(intent);
                 }
-                else if (correctness.equals("false")) {
-                    System.out.print("실패");
-                    message = (TextView)findViewById(R.id.ifFail);
-                    message.setText("ID 혹인 비밀번호를 확인해주세요...");
-                    message.setTextColor(Color.RED);
-                }
-                else if (correctness.equals("none")){
-                    message = (TextView)findViewById(R.id.ifFail);
-                    message.setText("가입된 정보가 없습니다....");
-                    message.setTextColor(Color.RED);
-                }
+                //선생님인 경우
+                else if (type.equals("teacher")) {
+                    String nickName = item.getString(TAG_NICK);
+                    String email = item.getString(TAG_EMAIL);
+                    String univ = item.getString(TAG_UNIV);
+                    SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
+                    SharedPreferences.Editor editor =  sf.edit();
+                    editor.putString("id", sId);
+                    editor.putString("usertype","student"); //유저타입(학생)으로 저장
+                    editor.putString("nickName" , nickName);
+                    editor.putString("email " , email);
+                    editor.putString("university" , univ);
+                    editor.apply();
 
-            } catch (JSONException e) {
-
+                    Toast.makeText(getApplicationContext(),"안녕하세요, " + nickName ,Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, TutorQuestionlist.class);
+                    startActivity(intent);
+                }
+            }
+            else if (correctness.equals("false")) {
+                message = (TextView)findViewById(R.id.ifFail);
+                message.setText("ID 혹인 비밀번호를 확인해주세요...");
+                message.setTextColor(Color.RED);
+            }
+            else if (correctness.equals("none")){
+                message = (TextView)findViewById(R.id.ifFail);
+                message.setText("가입된 정보가 없습니다....");
+                message.setTextColor(Color.RED);
             }
 
+        } catch (JSONException e) {
+
         }
+
+    }
 }
