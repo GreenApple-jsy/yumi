@@ -53,6 +53,10 @@
         <activity android:name=".tutorMngBooking" />
         <activity android:name=".studentcompelete_question" />
         <activity android:name=".TutorQuestionlist" />
+        <activity android:name=".stdMyPage" />
+        <activity android:name=".stdMngBooking" />
+        <activity android:name=".stdManageTT" />
+        <activity android:name=".ReplayVideo" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
