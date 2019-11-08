@@ -53,14 +53,20 @@ public class tutorMyPage extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String ID = "id";
     private static final String TAG_SID = "s_id";
-    private static final String BOOK = "book";
-    private static final String sTime = "start_time";
+    private static final String TAG_BOOK = "book";
+    private static final String TAG_STime = "start_time";
+    private static final String TAG_PAGE = "book";
+    private static final String TAG_QN = "start_time";
+
+
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
     String st_time[];
+    String end_time[];
+    String tid="";
 
 
     @Override
@@ -70,6 +76,7 @@ public class tutorMyPage extends AppCompatActivity {
 
 
         SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        tid = pref.getString("id", "default");
         String nickName = pref.getString("nickName", "default");
         String univ = pref.getString("university", "default");
         nickText = (TextView)findViewById(R.id.tt_nick);
@@ -80,6 +87,9 @@ public class tutorMyPage extends AppCompatActivity {
 
         mlistView = (ListView)findViewById(R.id.listView_today_list) ;
 
+
+        // date 데이터 완성되면 추후 주석 풀 것
+        /*
         task = new tutorMyPage.phpConnect();
         task.execute();
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,7 +98,7 @@ public class tutorMyPage extends AppCompatActivity {
                 getMoreBooking(position);
             }
         });
-
+        */
     }
 
     void getMoreBooking(int position) {
@@ -105,7 +115,7 @@ public class tutorMyPage extends AppCompatActivity {
                         startActivity(intent);
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
@@ -123,7 +133,8 @@ public class tutorMyPage extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/readyForBooking.php";
+                // 날짜 추가
+                String link = "http://1.234.38.211/readyForBooking.php?"+tid;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -232,16 +243,19 @@ public class tutorMyPage extends AppCompatActivity {
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
 
+
+
             for(int i=0;i<jsonArray.length();i++){
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
 
                 int id_num = item.getInt(ID);
-                String bookName = item.getString(BOOK);
-                String startTime = item.getString(sTime);
+                String bookName = item.getString(TAG_BOOK);
+                String startTime = item.getString(TAG_STime);
                 String st_id = item.getString(TAG_SID);
-
+                String page_num = item.getString(TAG_PAGE);
+                String q_num = item.getString(TAG_QN);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
@@ -251,8 +265,9 @@ public class tutorMyPage extends AppCompatActivity {
 
 
                 hashMap.put(TAG_SID, st_id);
-                hashMap.put(BOOK , bookName);
-                hashMap.put(sTime, startTime);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_QN, q_num);
+                hashMap.put(TAG_PAGE, page_num);
 
 
                 mArrayList.add(hashMap);
@@ -261,7 +276,7 @@ public class tutorMyPage extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     tutorMyPage.this, mArrayList, R.layout.tutor_today_list,
-                    new String[]{TAG_SID,BOOK},
+                    new String[]{TAG_SID,TAG_BOOK},
                     new int[]{R.id.tt_list_book,R.id.tt_list_sid}
             );
 
