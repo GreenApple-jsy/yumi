@@ -10,7 +10,6 @@
 
     <string-array name="school_type">
         <item >선택하세요</item>
-        <item >초등학생</item>
         <item >중학생</item>
         <item >고등학생</item>
     </string-array>
@@ -28,4 +27,125 @@
         <item >2학기</item>
     </string-array>
 
+    <string-array name="mid_subject">
+        <item >선택하세요</item>
+        <item >1학년 1학기</item>
+        <item >1학년 2학기</item>
+        <item >2학년 1학기</item>
+        <item >2학년 2학기</item>
+        <item >3학년 1학기</item>
+        <item >3학년 2학기</item>
+    </string-array>
+
+
+
+    <string-array name="mid_position1">
+        <item >선택하세요</item>
+        <item >1. 소인수분해</item>
+        <item >2. 정수와 유리수</item>
+        <item >3. 방정식</item>
+        <item >4. 그래프와 비례</item>
+    </string-array>
+
+
+    <string-array name="mid_position2">
+        <item >선택하세요</item>
+        <item >1. 기본도형</item>
+        <item >2. 평면도형</item>
+        <item >3. 입체도형</item>
+        <item >4. 통계</item>
+    </string-array>
+
+
+    <string-array name="mid_position3">
+        <item >선택하세요</item>
+        <item >1. 수와 식</item>
+        <item >2. 부등식</item>
+        <item >3. 방정식</item>
+        <item >4. 함수</item>
+    </string-array>
+
+    <string-array name="mid_position4">
+        <item >선택하세요</item>
+        <item >1. 도형의 성질</item>
+        <item >2. 도형의 닮음</item>
+        <item >3. 피타고라스 정리</item>
+        <item >4. 확률</item>
+    </string-array>
+
+
+    <string-array name="mid_position5">
+        <item >선택하세요</item>
+        <item >1. 제곱근과 실수</item>
+        <item >2. 다항식의 곱셈과 인수분해</item>
+        <item >3. 이차방정식</item>
+        <item >4. 이차함수</item>
+    </string-array>
+
+    <string-array name="mid_position6">
+        <item >선택하세요</item>
+        <item >1. 삼각비</item>
+        <item >2. 원의 성질</item>
+        <item >3. 통계</item>
+    </string-array>
+
+
+    <string-array name="high_subject">
+        <item >선택하세요</item>
+        <item >고등수학</item>
+        <item >수1</item>
+        <item >수2</item>
+        <item >미적분</item>
+        <item >확률과 통계</item>
+        <item >기하</item>
+    </string-array>
+
+
+
+    <string-array name="high_position1">
+        <item >선택하세요</item>
+        <item >1. 다항식</item>
+        <item >2. 방정식</item>
+        <item >3. 부등식</item>
+        <item >4. 도형의 방정식</item>
+        <item >5. 집합과 명제</item>
+        <item >6. 함수</item>
+        <item >7. 순열과 조합</item>
+    </string-array>
+
+    <string-array name="high_position2">
+        <item >선택하세요</item>
+        <item >1. 지수함수와 로그함수</item>
+        <item >2. 삼각함수</item>
+        <item >3. 수열</item>
+    </string-array>
+
+    <string-array name="high_position3">
+        <item >선택하세요</item>
+        <item >1. 함수의 극한과 연속</item>
+        <item >2. 다항함수과 미분법</item>
+        <item >3. 다항함수의 적분법</item>
+    </string-array>
+
+    <string-array name="high_position4">
+        <item >선택하세요</item>
+        <item >1. 수열의 극한</item>
+        <item >2. 여러 가지 함수의 미분</item>
+        <item >3. 미분법</item>
+        <item >4. 적분법</item>
+    </string-array>
+
+    <string-array name="high_position5">
+        <item >선택하세요</item>
+        <item >1. 순열과 조합</item>
+        <item >2. 확률</item>
+        <item >3. 통계</item>
+    </string-array>
+
+    <string-array name="high_position6">
+        <item >선택하세요</item>
+        <item >1. 이차곡선</item>
+        <item >2. 평면벡터</item>
+        <item >3. 공간도형과 공간좌표</item>
+    </string-array>
 </resources>
