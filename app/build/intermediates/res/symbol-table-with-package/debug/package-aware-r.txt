@@ -1221,7 +1221,10 @@ id blocking
 id book
 id bookEndTime
 id bookStartTime
+id bookSwitch
 id bookcheck
+id booking_end_time
+id booking_start_time
 id bookspinner
 id bottom
 id bt_tab1
@@ -1327,6 +1330,7 @@ id line3
 id linearLayout
 id listMode
 id listView
+id listView_booking_list
 id listView_replay_list
 id listView_std_list
 id listView_today_list
@@ -1397,6 +1401,7 @@ id save_non_transition_alpha
 id save_scale_type
 id school1
 id school2
+id schoolName
 id schoolcheck
 id schoolspinner
 id screen
@@ -1447,6 +1452,8 @@ id start_time
 id starttime
 id status_bar_latest_event_content
 id stdBookSwitch
+id stdGrade
+id stdNick
 id stdSwitch
 id std_booking_list
 id std_lecture_list
@@ -1470,6 +1477,8 @@ id textStart
 id textVD
 id textView
 id textView10
+id textView11
+id textView12
 id textView13
 id textView14
 id textView15
@@ -1506,6 +1515,8 @@ id ttName
 id ttSwitch
 id tt_list_book
 id tt_list_sid
+id tt_nick
+id tt_univ
 id u_check
 id unchecked
 id uniform
@@ -1648,6 +1659,7 @@ layout std_replay_video
 layout student_question_list
 layout support_simple_spinner_dropdown_item
 layout tc_my_page
+layout tutor_booking_list
 layout tutor_mng_booking
 layout tutor_my_video
 layout tutor_prf_setting
