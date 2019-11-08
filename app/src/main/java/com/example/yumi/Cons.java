@@ -16,8 +16,7 @@ public class Cons extends AppCompatActivity {
     }
     
     public void loginToTutor(View view) {
-        Toast.makeText(getApplicationContext(), "안녕하세요", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(Cons.this , boardTutor.class);
+        Intent intent = new Intent(Cons.this , LoginActivity.class);
         startActivity(intent);
     }
 }
