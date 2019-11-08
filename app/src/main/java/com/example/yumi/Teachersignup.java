@@ -26,7 +26,7 @@ import java.net.URL;
 public class Teachersignup extends AppCompatActivity {
 
     EditText et_id, et_pw, et_pw_chk, et_nick;
-    String sId, sPw, sPw_chk, sNickname, sUniversity;
+    String sId, sPw, sPw_chk, sNickname, sUniversity="";
     int univIdx = 0;
     String JsonResultString;
     String JsonResultString1;
@@ -105,7 +105,7 @@ public class Teachersignup extends AppCompatActivity {
 
 
             //null값이 아니어야 함. /비밀번호와 번호 확인이 일치하여야 함./
-            if ((sId.getBytes().length >= 1 && sPw.getBytes().length >= 6 && sPw_chk.getBytes().length >= 6) && (sPw.equals(sPw_chk))) {
+            if ( (sUniversity.length() > 0 ) && (sId.getBytes().length >= 1 && sPw.getBytes().length >= 6 && sPw_chk.getBytes().length >= 6) && (sPw.equals(sPw_chk))) {
                 //계속하기 버튼을 누른 경우
                 Intent intent = new Intent(getApplicationContext(), Mail_verify.class);
                 intent.putExtra("id", sId); /*송신  id와 pw를 다음 개인정보 activity에 넘긴 후 한 번에 db에 insert*/
