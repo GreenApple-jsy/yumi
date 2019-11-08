@@ -2,6 +2,7 @@
 
 <resources>
     <string-array name="grade">
+        <item>학년을 선택해 주세요.</itme>
         <item>"1학년"</item>
         <item>"2학년"</item>
         <item>"3학년"</item>
