@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,18 +45,23 @@ public class stdMngBooking extends AppCompatActivity {
     String mJsonString, uJsonString;
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String ID = "id";
-    private static final String TAG_SID = "s_id";
-    private static final String BOOK = "book";
-    private static final String sTime = "start_time";
-    String table_adr= "readyForBooking";
+    private static final String TAG_TID = "t_id";
+    private static final String TAG_BOOK = "book";
+    private static final String TAG_STime = "start_time";
+    private static final String TAG_PAGE = "book";
+    private static final String TAG_QN = "start_time";
+    private static final String TAG_CHP = "chapter";
+    String table_adr= "stdReadyForBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
     phpConnect task;
     phpUpdate uptTask;
     phpCancel ccTask;
     int arr_id[];
-    String arr_sid[]; // s_id 저장 배열
+    String arr_tid[]; // s_id 저장 배열
     String st_time[];
+    String end_time[];
+    String sid = "";
     int index_num=0;
 
 
@@ -64,9 +70,12 @@ public class stdMngBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.std_mng_booking);
         mlistView = (ListView)findViewById(R.id.std_booking_list) ;
+
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        sid = pref.getString("id", "default");
+
         task = new phpConnect();
         task.execute();
-
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -82,7 +91,7 @@ public class stdMngBooking extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true) {
-                    table_adr = "alreadyDoneBooking";
+                    table_adr = "stdAlreadyDoneBooking";
                     task = new phpConnect();
                     task.execute();
 
@@ -94,7 +103,7 @@ public class stdMngBooking extends AppCompatActivity {
                     });
 
                 } else {
-                    table_adr= "readyForBooking";
+                    table_adr= "stdReadyForBooking";
                     task = new phpConnect();
                     task.execute();
 
@@ -116,12 +125,12 @@ public class stdMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(stdMngBooking.this)
                 .setTitle("예약 정보" )
-                .setMessage("선생님 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ ")
+                .setMessage("\n선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ " + end_time[position])
                 .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(stdMngBooking.this, "대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(stdMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNeutralButton("예약 취소하기", new DialogInterface.OnClickListener() {
@@ -142,15 +151,15 @@ public class stdMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(stdMngBooking.this)
                 .setTitle("예약하기" )
-                .setMessage("선생님 정보 : " + arr_sid[position])
+                .setMessage("\n학생 정보 : " + arr_tid[position])
                 .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(stdMngBooking.this, "대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(stdMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
@@ -169,7 +178,8 @@ public class stdMngBooking extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/"+table_adr+".php";
+                System.out.println("hhh" + table_adr);
+                String link = "http://1.234.38.211/"+table_adr+".php?id="+sid;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -195,19 +205,16 @@ public class stdMngBooking extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-
             Log.d(TAG, "response  - " + result);
-
             if (result == null){
-
-                mTextViewResult.setText("error occurred");
+                Log.d(TAG, "result is null");
+                mTextViewResult.setText("error occurred");showResult();
             }
             else {
                 mJsonString = result;
 
                 showResult();
             }
-            //txtview.setText(result);
         }
     }
 
@@ -227,6 +234,7 @@ public class stdMngBooking extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             String postParameters = "id=" + arr_id[index_num];
+            System.out.println("~~~~~~````" +postParameters);
 
             try {
                 URL url = new URL("http://1.234.38.211/ttUpdateBooking.php");
@@ -335,8 +343,9 @@ public class stdMngBooking extends AppCompatActivity {
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             arr_id = new int[jsonArray.length()];
-            arr_sid = new String[jsonArray.length()];
+            arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
+            end_time = new String[jsonArray.length()];
 
 
             for(int i=0;i<jsonArray.length();i++){
@@ -345,21 +354,24 @@ public class stdMngBooking extends AppCompatActivity {
 
 
                 int id_num = item.getInt(ID);
-                String bookName = item.getString(BOOK);
-                String startTime = item.getString(sTime);
-                String st_id = item.getString(TAG_SID);
-
-
+                String bookName = item.getString(TAG_BOOK);
+                String startTime = item.getString(TAG_STime);
+                String t_id = item.getString(TAG_TID);
+                String page_num = item.getString(TAG_PAGE);
+                String q_num = item.getString(TAG_QN);
+                String chapter = item.getString(TAG_CHP);
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
-                arr_sid[i]=st_id;
+                arr_tid[i]=t_id;
                 st_time[i]=startTime;
 
 
-
-                hashMap.put(BOOK , bookName);
-                hashMap.put(sTime, startTime);
+                hashMap.put(TAG_TID, t_id);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_QN, q_num);
+                hashMap.put(TAG_PAGE, page_num);
+                hashMap.put(TAG_CHP,chapter);
 
 
                 mArrayList.add(hashMap);
@@ -367,15 +379,27 @@ public class stdMngBooking extends AppCompatActivity {
 
 
             ListAdapter adapter = new SimpleAdapter(
-                    stdMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{BOOK, sTime},
-                    new int[]{R.id.ttName, R.id.bookStartTime, R.id.bookEndTime}
+                    stdMngBooking.this, mArrayList, R.layout.tutor_booking_list,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_STime},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_start_time}
             );
 
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
-
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_TID, "");
+            hashMap.put(TAG_BOOK,"");
+            hashMap.put(TAG_QN, "");
+            hashMap.put(TAG_PAGE, "");
+            hashMap.put(TAG_CHP,"");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    stdMngBooking.this, mArrayList, R.layout.std_booking_list,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_STime},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_start_time}
+            );
+            mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
