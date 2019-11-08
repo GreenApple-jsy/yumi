@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,17 +43,20 @@ public class stdManageTT extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String TAG_SID = "s_id";
     private static final String TAG_TID = "t_id";
-    String table_adr  = "getTTUnion";
+    String table_adr  = "stdGetMatching";
     TextView mTextViewResult;
     Switch aSwitch;
     phpConnect task;
     String arr_sid[]; // s_id 저장 배열
-
+    String sid= "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mng_tutor);
+
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        sid = pref.getString("id", "default");
         mlistView = (ListView)findViewById(R.id.listView_tutor_list) ;
         task = new phpConnect();
         task.execute();
@@ -67,14 +71,14 @@ public class stdManageTT extends AppCompatActivity {
                 if (isChecked == true) {
                     TextView titleLine = (TextView) findViewById(R.id.myTutorText);
                     titleLine.setText("익선생님 관리");
-                    table_adr = "getIcMatching";
+                    table_adr = "stdGetMatching";
                     task = new phpConnect();
                     task.execute();
 
                 } else {
                     TextView titleLine = (TextView) findViewById(R.id.myTutorText);
                     titleLine.setText("나의 선생님 관리");
-                    table_adr = "getMatching";
+                    table_adr = "stdGetMatching";
                     task = new phpConnect();
                     task.execute();
                 }
@@ -118,7 +122,7 @@ public class stdManageTT extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/"+table_adr+".php";
+                String link = "http://1.234.38.211/"+table_adr+".php?id="+sid;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -195,7 +199,16 @@ public class stdManageTT extends AppCompatActivity {
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
-
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_TID, "");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    stdManageTT.this, mArrayList, R.layout.mng_std_list,
+                    new String[]{TAG_SID,TAG_TID},
+                    new int[]{R.id.textView_list_std, R.id.textView_list_tutor}
+            );
+            mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
