@@ -9,30 +9,50 @@
 
 
     <TextView
-        android:id="@+id/textView_list_book"
-        android:layout_width="128dp"
-        android:layout_height="55dp"
-        android:layout_margin="5dp"
+        android:id="@+id/bookStdNick"
+        android:layout_width="47dp"
+        android:layout_height="36dp"
         android:layout_weight="1"
-        android:padding="5dp" />
+        android:text="TextView" />
 
     <LinearLayout
         android:layout_width="228dp"
-        android:layout_height="61dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/booking_start_time"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/booking_end_time"
+            <TextView
+                android:id="@+id/booking_book"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/chapter"
+                android:layout_width="147dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/booking_start_time"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 
