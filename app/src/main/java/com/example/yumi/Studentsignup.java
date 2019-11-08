@@ -38,18 +38,8 @@ public class Studentsignup extends AppCompatActivity {
         et_pw = (EditText) findViewById(R.id.password_text);
         et_pw_chk = (EditText) findViewById(R.id.password_check2);
 
-        Button id_check = findViewById(R.id.id_check2);
-        id_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //아이디 중복 체크
-               //0-> ok,1->not ok
-                String id = et_id.getText().toString();
-                task = new Studentsignup.GetData();
-                task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
-            }
-        });
     }
+
 
     public void goBack(View view){
         //취소 버튼을 누른 경우
