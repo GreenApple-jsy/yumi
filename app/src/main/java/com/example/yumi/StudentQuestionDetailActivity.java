@@ -117,12 +117,10 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
         String TAG_PAGE ="page";
         String TAG_QNUM ="q_number";
         String TAG_STIME ="start_time";
-        String TAG_ETIME ="end_time";
         String TAG_IMAGE ="q_image";
         String TAG_TID ="t_id";
         String TAG_SID ="s_id";
         String TAG_COMPLETE ="complete";
-        String TAG_GOOD ="good";
         String TAG_QLINK ="q_link";
         String TAG_AGE ="age";
         String TAG_SEMESTER ="semester";
@@ -133,9 +131,9 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
             JSONObject item = jsonArray.getJSONObject(0);
             q = new QuestionData(parseInt(item.getString(TAG_ID)),item.getString(TAG_BOOK),item.getString(TAG_PAGE),
-                    item.getString(TAG_QNUM),item.getString(TAG_STIME), item.getString(TAG_ETIME),
+                    item.getString(TAG_QNUM),item.getString(TAG_STIME),
                     item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
-                    ,parseInt(item.getString(TAG_COMPLETE)),parseInt(item.getString(TAG_GOOD)),item.getString(TAG_QLINK)
+                    ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
                     ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
             );
             setQInfo();
@@ -162,10 +160,8 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
         TextView tv_page= findViewById(R.id.page);
         TextView tv_qnum= findViewById(R.id.q_number);
         TextView tv_stime= findViewById(R.id.start_time);
-        TextView tv_etime= findViewById(R.id.end_time);
         TextView tv_reserv= findViewById(R.id.reservation);
         TextView tv_complete= findViewById(R.id.complete);
-        TextView tv_good= findViewById(R.id.good);
 
         tv_age.setText(q.getage());
         tv_semester.setText(q.getsemester());
@@ -173,7 +169,6 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
         tv_page.setText(q.getpage() + "pg");
         tv_qnum.setText(q.getqnumber() + "번");
         tv_stime.setText("풀이 가능 시간 : " +q.getstime());
-        tv_etime.setText(" ~ " + q.getetime());
         if(q.getreservation() == 1)
             tv_reserv.setText("풀이 예약 완료");
         else
@@ -183,8 +178,6 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
             tv_complete.setText("풀이 완료");
         else
             tv_complete.setText(" ");
-
-        tv_good.setText(q.getgood() + " 추천");
     }
 
 

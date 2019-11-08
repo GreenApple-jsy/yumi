@@ -47,7 +47,6 @@ public class stdMngBooking extends AppCompatActivity {
     private static final String TAG_SID = "s_id";
     private static final String BOOK = "book";
     private static final String sTime = "start_time";
-    private static final String eTime = "end_time";
     String table_adr= "readyForBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
@@ -57,7 +56,6 @@ public class stdMngBooking extends AppCompatActivity {
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
     String st_time[];
-    String end_time[];
     int index_num=0;
 
 
@@ -118,7 +116,7 @@ public class stdMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(stdMngBooking.this)
                 .setTitle("예약 정보" )
-                .setMessage("선생님 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ " + end_time[position])
+                .setMessage("선생님 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ ")
                 .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -152,7 +150,7 @@ public class stdMngBooking extends AppCompatActivity {
                         Toast.makeText(stdMngBooking.this, "대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 ("+ st_time[position]+")", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
@@ -339,7 +337,6 @@ public class stdMngBooking extends AppCompatActivity {
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
-            end_time = new String[jsonArray.length()];
 
 
             for(int i=0;i<jsonArray.length();i++){
@@ -350,7 +347,6 @@ public class stdMngBooking extends AppCompatActivity {
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(BOOK);
                 String startTime = item.getString(sTime);
-                String endTime = item.getString(eTime);
                 String st_id = item.getString(TAG_SID);
 
 
@@ -359,13 +355,11 @@ public class stdMngBooking extends AppCompatActivity {
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
                 st_time[i]=startTime;
-                end_time[i]=endTime;
 
 
 
                 hashMap.put(BOOK , bookName);
                 hashMap.put(sTime, startTime);
-                hashMap.put(eTime, endTime);
 
 
                 mArrayList.add(hashMap);
@@ -374,7 +368,7 @@ public class stdMngBooking extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     stdMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{BOOK, sTime, eTime},
+                    new String[]{BOOK, sTime},
                     new int[]{R.id.ttName, R.id.bookStartTime, R.id.bookEndTime}
             );
 

@@ -55,14 +55,12 @@ public class tutorMyPage extends AppCompatActivity {
     private static final String TAG_SID = "s_id";
     private static final String BOOK = "book";
     private static final String sTime = "start_time";
-    private static final String eTime = "end_time";
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
     String st_time[];
-    String end_time[];
 
 
     @Override
@@ -107,7 +105,7 @@ public class tutorMyPage extends AppCompatActivity {
                         startActivity(intent);
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 ("+ st_time[position]+")", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
@@ -233,8 +231,6 @@ public class tutorMyPage extends AppCompatActivity {
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
-            end_time = new String[jsonArray.length()];
-
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -244,7 +240,6 @@ public class tutorMyPage extends AppCompatActivity {
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(BOOK);
                 String startTime = item.getString(sTime);
-                String endTime = item.getString(eTime);
                 String st_id = item.getString(TAG_SID);
 
 
@@ -253,13 +248,11 @@ public class tutorMyPage extends AppCompatActivity {
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
                 st_time[i]=startTime;
-                end_time[i]=endTime;
 
 
                 hashMap.put(TAG_SID, st_id);
                 hashMap.put(BOOK , bookName);
                 hashMap.put(sTime, startTime);
-                hashMap.put(eTime, endTime);
 
 
                 mArrayList.add(hashMap);

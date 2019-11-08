@@ -161,9 +161,9 @@ public class StudentQuestionlist extends AppCompatActivity {
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject item = jsonArray.getJSONObject(i);
                 QuestionDataList.add(new QuestionData(parseInt(item.getString(TAG_ID)),item.getString(TAG_BOOK),item.getString(TAG_PAGE),
-                        item.getString(TAG_QNUM),item.getString(TAG_STIME), item.getString(TAG_ETIME),
+                        item.getString(TAG_QNUM),item.getString(TAG_STIME),
                         item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
-                        ,parseInt(item.getString(TAG_COMPLETE)),parseInt(item.getString(TAG_GOOD)),item.getString(TAG_QLINK)
+                        ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
                         ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
                 ));
             }

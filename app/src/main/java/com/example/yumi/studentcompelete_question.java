@@ -121,12 +121,10 @@ public class studentcompelete_question extends AppCompatActivity {
         String TAG_PAGE ="page";
         String TAG_QNUM ="q_number";
         String TAG_STIME ="start_time";
-        String TAG_ETIME ="end_time";
         String TAG_IMAGE ="q_image";
         String TAG_TID ="t_id";
         String TAG_SID ="s_id";
         String TAG_COMPLETE ="complete";
-        String TAG_GOOD ="good";
         String TAG_QLINK ="q_link";
         String TAG_AGE ="age";
         String TAG_SEMESTER ="semester";
@@ -140,9 +138,9 @@ public class studentcompelete_question extends AppCompatActivity {
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject item = jsonArray.getJSONObject(i);
                 QuestionDataList.add(new QuestionData(parseInt(item.getString(TAG_ID)),item.getString(TAG_BOOK),item.getString(TAG_PAGE),
-                        item.getString(TAG_QNUM),item.getString(TAG_STIME), item.getString(TAG_ETIME),
+                        item.getString(TAG_QNUM),item.getString(TAG_STIME),
                         item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
-                        ,parseInt(item.getString(TAG_COMPLETE)),parseInt(item.getString(TAG_GOOD)),item.getString(TAG_QLINK)
+                        ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
                         ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
                 ));
             }

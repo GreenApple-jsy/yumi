@@ -49,7 +49,6 @@ public class stdMyPage extends AppCompatActivity {
     private static final String TAG_SID = "s_id";
     private static final String BOOK = "book";
     private static final String sTime = "start_time";
-    private static final String eTime = "end_time";
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
@@ -244,7 +243,6 @@ public class stdMyPage extends AppCompatActivity {
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(BOOK);
                 String startTime = item.getString(sTime);
-                String endTime = item.getString(eTime);
                 String st_id = item.getString(TAG_SID);
 
 
@@ -253,13 +251,11 @@ public class stdMyPage extends AppCompatActivity {
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
                 st_time[i]=startTime;
-                end_time[i]=endTime;
 
 
                 hashMap.put(TAG_SID, st_id);
                 hashMap.put(BOOK , bookName);
                 hashMap.put(sTime, startTime);
-                hashMap.put(eTime, endTime);
 
 
                 mArrayList.add(hashMap);

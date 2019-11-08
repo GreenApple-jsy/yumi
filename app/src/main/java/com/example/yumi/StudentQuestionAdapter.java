@@ -54,10 +54,8 @@ public class StudentQuestionAdapter extends BaseAdapter {
         TextView tv_page= view.findViewById(R.id.page);
         TextView tv_qnum= view.findViewById(R.id.q_number);
         TextView tv_stime= view.findViewById(R.id.start_time);
-        TextView tv_etime= view.findViewById(R.id.end_time);
         TextView tv_reserv= view.findViewById(R.id.reservation);
         TextView tv_complete= view.findViewById(R.id.complete);
-        TextView tv_good= view.findViewById(R.id.good);
 
         tv_age.setText(Questions.get(position).getage());
         tv_semester.setText(Questions.get(position).getsemester());
@@ -65,7 +63,6 @@ public class StudentQuestionAdapter extends BaseAdapter {
         tv_page.setText(Questions.get(position).getpage() + "pg");
         tv_qnum.setText(Questions.get(position).getqnumber() + "번");
         tv_stime.setText("풀이 가능 시간 : " +Questions.get(position).getstime());
-        tv_etime.setText(" ~ " + Questions.get(position).getetime());
         if(Questions.get(position).getreservation() == 1)
             tv_reserv.setText("풀이 예약 완료");
         else
@@ -75,8 +72,6 @@ public class StudentQuestionAdapter extends BaseAdapter {
             tv_complete.setText("풀이 완료");
         else
             tv_complete.setText(" ");
-
-        tv_good.setText(Integer.toString(Questions.get(position).getgood()) + " 추천");
 
         return view;
     }
