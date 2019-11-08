@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,7 +43,8 @@ public class tutorManageStudent extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String TAG_SID = "s_id";
     private static final String TAG_TID = "t_id";
-    String table_adr  = "getTTUnion";
+    String table_adr  = "getMatching";
+    String tid= "";
     TextView mTextViewResult;
     Switch aSwitch;
     phpConnect task;
@@ -53,21 +55,26 @@ public class tutorManageStudent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mng_student);
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        tid = pref.getString("id", "default");
+
         mlistView = (ListView)findViewById(R.id.listView_std_list) ;
         task = new phpConnect();
         task.execute();
 
 
+
         aSwitch = (Switch) findViewById(R.id.stdSwitch);
 
         //스위치 클릭
+        //2019.11.08 기준 익명 학생 추후 수정 예정
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true) {
                     TextView titleLine = (TextView) findViewById(R.id.mystudentText);
                     titleLine.setText("익명 학생 관리");
-                    table_adr = "getIcMatching";
+                    table_adr = "getMatching";
                     task = new phpConnect();
                     task.execute();
 
@@ -118,7 +125,7 @@ public class tutorManageStudent extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/"+table_adr+".php";
+                String link = "http://1.234.38.211/"+table_adr+".php?id="+tid;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -195,7 +202,16 @@ public class tutorManageStudent extends AppCompatActivity {
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
-
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_TID, "");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    tutorManageStudent.this, mArrayList, R.layout.mng_std_list,
+                    new String[]{TAG_SID,TAG_TID},
+                    new int[]{R.id.textView_list_std, R.id.textView_list_tutor}
+            );
+            mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
