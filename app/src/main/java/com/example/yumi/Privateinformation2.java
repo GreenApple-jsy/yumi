@@ -64,12 +64,12 @@ public class Privateinformation2 extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id)
-            {
-                sGrade = (String) parent.getItemAtPosition(position).toString(); //String 입력받음.
-                Toast.makeText(getApplicationContext(), parent.getItemAtPosition(position).toString()+"을 선택하셨습니다", Toast.LENGTH_SHORT).show();
+                                       int position, long id) {
+                if (position != 0) {
+                    sGrade = (String) parent.getItemAtPosition(position).toString(); //String 입력받음.
+                    Toast.makeText(getApplicationContext(), parent.getItemAtPosition(position).toString() + "을 선택하셨습니다", Toast.LENGTH_SHORT).show();
+                }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0)
             {
