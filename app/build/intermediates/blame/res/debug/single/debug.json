@@ -404,12 +404,12 @@
         "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\279a67a647fd0320bca029bab2e72cb7\\jetified-play-services-base-15.0.1\\res\\drawable\\common_google_signin_btn_icon_light_normal.xml"
     },
     {
-        "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\drawable-xxxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
         "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_tutor_booking_list.xml.flat",
         "source": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\src\\main\\res\\layout\\tutor_booking_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\drawable-xxxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-hdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -520,12 +520,12 @@
         "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
-        "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_box_inner_merged_animation.xml.flat",
-        "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_unchecked_box_inner_merged_animation.xml"
-    },
-    {
         "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow.xml.flat",
         "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\0fce01345bd11c4910f81b8d028990c8\\media-1.0.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_box_inner_merged_animation.xml.flat",
+        "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\anim\\btn_checkbox_to_unchecked_box_inner_merged_animation.xml"
     },
     {
         "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -2206,6 +2206,10 @@
     {
         "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_teachersignup.xml.flat",
         "source": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\src\\main\\res\\layout\\activity_teachersignup.xml"
+    },
+    {
+        "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_std_category.xml.flat",
+        "source": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\src\\main\\res\\layout\\std_category.xml"
     },
     {
         "merged": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",

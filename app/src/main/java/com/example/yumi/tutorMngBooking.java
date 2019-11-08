@@ -368,7 +368,7 @@ public class tutorMngBooking extends AppCompatActivity {
             ListAdapter adapter = new SimpleAdapter(
                     tutorMngBooking.this, mArrayList, R.layout.tutor_booking_list,
                     new String[]{BOOK, sTime},
-                    new int[]{R.id.textView_list_book, R.id.booking_start_time, R.id.booking_end_time}
+                    new int[]{R.id.textView_list_book, R.id.booking_start_time}
             );
 
             mlistView.setAdapter(adapter);

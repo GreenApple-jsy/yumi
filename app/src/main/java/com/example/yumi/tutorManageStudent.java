@@ -2,7 +2,6 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,159 +26,99 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class tutorMngBooking extends AppCompatActivity {
+public class tutorManageStudent extends AppCompatActivity {
 
 
     private static String TAG = "phptest_MainActivity";
     private static final String TAG_JSON="webnautes";
     ListView mlistView;
-    String mJsonString, uJsonString;
+    String mJsonString;
     ArrayList<HashMap<String, String>> mArrayList;
-    private static final String ID = "id";
     private static final String TAG_SID = "s_id";
-    private static final String TAG_BOOK = "book";
-    private static final String TAG_STime = "start_time";
-    private static final String TAG_PAGE = "book";
-    private static final String TAG_QN = "start_time";
-    private static final String TAG_CHP = "chapter";
-    String table_adr= "readyForBooking";
-    TextView mTextViewResult, uTextViewResult;
+    private static final String TAG_TID = "t_id";
+    String table_adr  = "getTTUnion";
+    TextView mTextViewResult;
     Switch aSwitch;
     phpConnect task;
-    phpUpdate uptTask;
-    phpCancel ccTask;
-    int arr_id[];
     String arr_sid[]; // s_id 저장 배열
-    String st_time[];
-    String end_time[];
-    String tid = "";
-    int index_num=0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tutor_mng_booking);
-        mlistView = (ListView)findViewById(R.id.listView_booking_list) ;
-
-        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
-        tid = pref.getString("id", "default");
-
+        setContentView(R.layout.mng_student);
+        mlistView = (ListView)findViewById(R.id.listView_std_list) ;
         task = new phpConnect();
         task.execute();
-        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getMoreBooking(position);
-            }
-        });
 
 
-        aSwitch = (Switch) findViewById(R.id.bookSwitch);
+        aSwitch = (Switch) findViewById(R.id.stdSwitch);
 
         //스위치 클릭
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked == true) {
-                    table_adr = "alreadyDoneBooking";
+                    TextView titleLine = (TextView) findViewById(R.id.mystudentText);
+                    titleLine.setText("익명 학생 관리");
+                    table_adr = "getIcMatching";
                     task = new phpConnect();
                     task.execute();
-
-                    mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            editBooking(position);
-                        }
-                    });
 
                 } else {
-                    table_adr= "readyForBooking";
+                    TextView titleLine = (TextView) findViewById(R.id.mystudentText);
+                    titleLine.setText("내 학생 관리");
+                    table_adr = "getMatching";
                     task = new phpConnect();
                     task.execute();
-
-                    mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            getMoreBooking(position);
-                        }
-                    });
                 }
             }
         });
 
 
+        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                getMoreStd(position);
+            }
+        });
+
     }
 
-    void editBooking(int position) {
-        index_num = position;
+    void getMoreStd(int position) {
 
-        new AlertDialog.Builder(tutorMngBooking.this)
-                .setTitle("예약 정보" )
-                .setMessage("\n학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ " + end_time[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(tutorMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNeutralButton("예약 취소하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        ccTask = new phpCancel();
-                        ccTask.execute();
-                        Toast.makeText(tutorMngBooking.this, "예약을 취소하셨습니다.", Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-                .show();
-    }
-
-    void getMoreBooking(int position) {
-        index_num = position;
-
-        new AlertDialog.Builder(tutorMngBooking.this)
-                .setTitle("예약하기" )
+        new AlertDialog.Builder(tutorManageStudent.this)
+                .setTitle("학생 정보창" )
                 .setMessage("\n학생 정보 : " + arr_sid[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(tutorMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(tutorManageStudent.this, "확인 클릭", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        uptTask = new phpUpdate();
-                        uptTask.execute();
-                        Toast.makeText(tutorMngBooking.this, "예약이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(tutorManageStudent.this, "대화창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .show();
     }
-
 
     class phpConnect extends AsyncTask<String,Void,String> {
 
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                System.out.println("hhh" + table_adr);
-                String link = "http://1.234.38.211/"+table_adr+".php?id="+tid;
+                String link = "http://1.234.38.211/"+table_adr+".php";
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -205,135 +144,21 @@ public class tutorMngBooking extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
+
             Log.d(TAG, "response  - " + result);
+
             if (result == null){
-                Log.d(TAG, "result is null");
-                mTextViewResult.setText("error occurred");showResult();
+
+                mTextViewResult.setText("error occurred");
             }
             else {
-                mJsonString = result;
 
+                mJsonString = result;
                 showResult();
             }
+            //txtview.setText(result);
         }
     }
-
-    class phpUpdate extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String postParameters = "id=" + arr_id[index_num];
-            System.out.println("~~~~~~````" +postParameters);
-
-            try {
-                URL url = new URL("http://1.234.38.211/ttUpdateBooking.php");
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.connect();
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-                bufferedReader.close();
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Error: " + e.getMessage());
-            }
-
-        }
-    }
-
-    class phpCancel extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String postParameters = "id=" + arr_id[index_num];
-
-            try {
-                URL url = new URL("http://1.234.38.211/cancelBooking.php");
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.connect();
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-                bufferedReader.close();
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Error: " + e.getMessage());
-            }
-
-        }
-    }
-
-
 
     private void showResult(){
 
@@ -342,64 +167,35 @@ public class tutorMngBooking extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
-            st_time = new String[jsonArray.length()];
-            end_time = new String[jsonArray.length()];
-
 
             for(int i=0;i<jsonArray.length();i++){
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
-
-                int id_num = item.getInt(ID);
-                String bookName = item.getString(TAG_BOOK);
-                String startTime = item.getString(TAG_STime);
                 String st_id = item.getString(TAG_SID);
-                String page_num = item.getString(TAG_PAGE);
-                String q_num = item.getString(TAG_QN);
-                String chapter = item.getString(TAG_CHP);
+                String tt_id = item.getString(TAG_TID);
+
                 HashMap<String,String> hashMap = new HashMap<>();
-
-                arr_id[i]=id_num;
                 arr_sid[i]=st_id;
-                st_time[i]=startTime;
 
-
-                hashMap.put(TAG_SID, st_id);
-                hashMap.put(TAG_BOOK , bookName);
-                hashMap.put(TAG_QN, q_num);
-                hashMap.put(TAG_PAGE, page_num);
-                hashMap.put(TAG_CHP,chapter);
-
+                hashMap.put(TAG_SID , st_id);
+                hashMap.put(TAG_TID, tt_id);
 
                 mArrayList.add(hashMap);
             }
 
 
             ListAdapter adapter = new SimpleAdapter(
-                    tutorMngBooking.this, mArrayList, R.layout.tutor_booking_list,
-                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_STime},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_start_time}
+                    tutorManageStudent.this, mArrayList, R.layout.mng_std_list,
+                    new String[]{TAG_SID,TAG_TID},
+                    new int[]{R.id.textView_list_std, R.id.textView_list_tutor}
             );
 
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
-            HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put(TAG_SID, "");
-            hashMap.put(TAG_BOOK,"");
-            hashMap.put(TAG_QN, "");
-            hashMap.put(TAG_PAGE, "");
-            hashMap.put(TAG_CHP,"");
-            mArrayList.add(hashMap);
-            ListAdapter adapter = new SimpleAdapter(
-                    tutorMngBooking.this, mArrayList, R.layout.tutor_booking_list,
-                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_STime},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_start_time}
-            );
-            mlistView.setAdapter(adapter);
+
             Log.d(TAG, "showResult : ", e);
         }
 

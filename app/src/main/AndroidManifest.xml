@@ -44,13 +44,12 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".uploadq" />
         <activity android:name=".TutorQuestionDetailActivity" />
-        <activity android:name=".Cons" />
         <activity android:name=".boardTutor" />
         <activity android:name=".getTutorVideo" />
         <activity android:name=".tutorManageStudent" />
         <activity android:name=".tutorMyPage" />
         <activity android:name=".tutorPreferences" />
-        <activity android:name=".tutorMngBooking" />
+        <activity android:name=".Studentsignup$tutorMngBooking" />
         <activity android:name=".studentcompelete_question" />
         <activity android:name=".TutorQuestionlist" />
         <activity android:name=".stdMyPage" />

@@ -166,7 +166,7 @@ public class Privateinformation2 extends AppCompatActivity {
                 System.out.println("!!!!!!!!!!!!!!!!");
                 //Looper.prepare();
                 //Toast.makeText(Privateinformation2.this, "\n" +
-                  //      "성공적으로 처리되었습니다1", Toast.LENGTH_SHORT).show();
+                //      "성공적으로 처리되었습니다1", Toast.LENGTH_SHORT).show();
                 //Looper.loop();
 
                 /* 안드로이드 -> 서버 파라메터값 전달 */

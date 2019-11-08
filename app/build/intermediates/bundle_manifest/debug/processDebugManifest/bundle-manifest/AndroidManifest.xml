@@ -60,13 +60,12 @@
         <activity android:name="com.example.yumi.MenuActivity" />
         <activity android:name="com.example.yumi.uploadq" />
         <activity android:name="com.example.yumi.TutorQuestionDetailActivity" />
-        <activity android:name="com.example.yumi.Cons" />
         <activity android:name="com.example.yumi.boardTutor" />
         <activity android:name="com.example.yumi.getTutorVideo" />
         <activity android:name="com.example.yumi.tutorManageStudent" />
         <activity android:name="com.example.yumi.tutorMyPage" />
         <activity android:name="com.example.yumi.tutorPreferences" />
-        <activity android:name="com.example.yumi.tutorMngBooking" />
+        <activity android:name="com.example.yumi.Studentsignup$tutorMngBooking" />
         <activity android:name="com.example.yumi.studentcompelete_question" />
         <activity android:name="com.example.yumi.TutorQuestionlist" />
         <activity android:name="com.example.yumi.stdMyPage" />

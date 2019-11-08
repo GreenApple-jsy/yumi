@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         et_id = (EditText) findViewById(R.id.username);  //id
         et_pw = (EditText) findViewById(R.id.password);  //password
 
-
     }
 
     public void login_btn(View view) {

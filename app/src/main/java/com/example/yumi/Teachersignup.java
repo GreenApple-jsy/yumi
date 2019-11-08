@@ -7,16 +7,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Cons extends AppCompatActivity {
+public class Teachersignup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.after_login);
     }
-    
+
     public void loginToTutor(View view) {
-        Intent intent = new Intent(Cons.this , LoginActivity.class);
+        Intent intent = new Intent(Teachersignup.this , LoginActivity.class);
         startActivity(intent);
     }
 }

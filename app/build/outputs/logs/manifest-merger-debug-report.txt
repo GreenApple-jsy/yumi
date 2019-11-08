@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
 MERGED from [com.google.firebase:firebase-database:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\7ce2a3ea31d5d3a939bbf528377e0a8a\jetified-firebase-database-16.0.1\AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3cf926b8c0b0bf16437d900b9534174c\material-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -60,22 +60,22 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\puppy\.gradle\ca
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\66e886a7ad0c232aea2267ba2af0dedf\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\324389d3e38f84104745e255701e8204\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\56b540582bb1988712a3451bfcdb03de\play-services-measurement-base-16.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
-INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
+INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
+INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
 	package
 		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:4:5-31
 		INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
 		INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-72:12
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-71:12
 		INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:2:11-69
@@ -138,7 +138,7 @@ ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifes
 	android:name
 		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:16:19-67
 application
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:18:5-70:19
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:18:5-69:19
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\puppy\.gradle\caches\transforms-2\files-2.1\3cf926b8c0b0bf16437d900b9534174c\material-1.0.0\AndroidManifest.xml:22:5-20
@@ -261,74 +261,70 @@ activity#com.example.yumi.TutorQuestionDetailActivity
 ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-65
 	android:name
 		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:46:19-62
-activity#com.example.yumi.Cons
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-42
-	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:19-39
 activity#com.example.yumi.boardTutor
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-48
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-48
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:19-45
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:47:19-45
 activity#com.example.yumi.getTutorVideo
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-51
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-51
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-48
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:48:19-48
 activity#com.example.yumi.tutorManageStudent
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-56
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-56
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-53
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-53
 activity#com.example.yumi.tutorMyPage
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-49
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-49
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-46
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-46
 activity#com.example.yumi.tutorPreferences
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-54
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-54
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-51
-activity#com.example.yumi.tutorMngBooking
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:9-53
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-51
+activity#com.example.yumi.Studentsignup$tutorMngBooking
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-67
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:19-50
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-64
 activity#com.example.yumi.studentcompelete_question
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:9-63
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:9-63
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:19-60
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:53:19-60
 activity#com.example.yumi.TutorQuestionlist
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:9-55
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:9-55
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:19-52
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:54:19-52
 activity#com.example.yumi.stdMyPage
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:56:9-47
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:9-47
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:56:19-44
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:55:19-44
 activity#com.example.yumi.stdMngBooking
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:57:9-51
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:56:9-51
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:57:19-48
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:56:19-48
 activity#com.example.yumi.stdManageTT
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:57:9-49
+	android:name
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:57:19-46
+activity#com.example.yumi.ReplayVideo
 ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:58:9-49
 	android:name
 		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:58:19-46
-activity#com.example.yumi.ReplayVideo
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:59:9-49
-	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:59:19-46
 provider#androidx.core.content.FileProvider
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:61:9-69:20
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:60:9-68:20
 	android:grantUriPermissions
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:65:13-47
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:64:13-47
 	android:authorities
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:63:13-64
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:62:13-64
 	android:exported
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:64:13-37
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:63:13-37
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:62:13-62
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:61:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:66:13-68:54
+ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:65:13-67:54
 	android:resource
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:68:17-51
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:67:17-51
 	android:name
-		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:67:17-67
+		ADDED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml:66:17-67
 uses-sdk
 INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\puppy\AndroidStudioProjects\yumi\app\src\main\AndroidManifest.xml
