@@ -1,6 +1,7 @@
 package com.example.yumi;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,11 +11,15 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class ChattingAdapter extends BaseAdapter {
     Context mContext = null;
     LayoutInflater mLayoutInflater = null;
     ArrayList<ChatData> Chattings;
-    final static String myID = ChattingActivity.s_myID;
+    final String myID = ChattingActivity.s_myID;
+
+
 
     public ChattingAdapter(Context context, ArrayList<ChatData> data) {
         mContext = context;
@@ -38,6 +43,7 @@ public class ChattingAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View converView, ViewGroup parent) {
+        System.out.println("받은값" + myID);
         View view = mLayoutInflater.inflate(R.layout.chatting_item, null);
         TextView message = view.findViewById(R.id.message);
         message.setText(Chattings.get(position).getMessage());

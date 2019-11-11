@@ -176,7 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
                     SharedPreferences.Editor editor =  sf.edit();
                     editor.putString("id", sId);
-                    editor.putString("usertype","student"); //유저타입(학생)으로 저장
+                    editor.putString("usertype","teacher"); //유저타입(학생)으로 저장
                     editor.putString("nickName" , nickName);
                     editor.putString("email " , email);
                     editor.putString("university" , univ);

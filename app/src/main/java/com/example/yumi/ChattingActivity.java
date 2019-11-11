@@ -40,6 +40,7 @@ public class ChattingActivity extends AppCompatActivity {
         final String userType = sf.getString("usertype","null");
 
         s_myID = myID;
+        System.out.println(s_myID);
 
         Intent intent = getIntent(); /*데이터 수신*/
         final String oppositeID = intent.getExtras().getString("oppositeID"); //대화할 상대방 아이디 받기

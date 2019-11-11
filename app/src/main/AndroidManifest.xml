@@ -25,7 +25,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".StudentQuestionDetailActivity"></activity>
+        <activity android:name=".AddTeacherPopup" android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".StudentQuestionDetailActivity" />
         <activity android:name=".StudentQuestionlist" />
         <activity android:name=".MainActivity">
             <intent-filter>

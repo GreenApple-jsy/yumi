@@ -1144,6 +1144,7 @@ drawable searchbar
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
+id AddTeacher
 id CTRL
 id FUNCTION
 id META
@@ -1404,6 +1405,7 @@ id homeAsUp
 id icon
 id icon_group
 id icon_only
+id idField
 id id_check
 id id_check2
 id id_check3
@@ -1702,6 +1704,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add_teacher_popup
 layout activity_codematching__s
 layout activity_login
 layout activity_main

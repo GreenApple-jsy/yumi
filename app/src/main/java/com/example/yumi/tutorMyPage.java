@@ -74,7 +74,6 @@ public class tutorMyPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tc_my_page);
 
-
         SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
         tid = pref.getString("id", "default");
         String nickName = pref.getString("nickName", "default");
@@ -100,33 +99,6 @@ public class tutorMyPage extends AppCompatActivity {
         });
         */
     }
-
-    void getMoreBooking(int position) {
-        index_num = position;
-
-        new AlertDialog.Builder(tutorMyPage.this)
-                .setTitle("예약하기" )
-                .setMessage("\n학생 정보 : " + arr_sid[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() { //각 학생과의 대화(채팅)페이지로 넘어가기
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
-                        startActivity(intent);
-                    }
-                })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        upTask = new phpUpdate();
-                        upTask.execute();
-                        Toast.makeText(tutorMyPage.this, "예약이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .show();
-    }
-
 
     class phpConnect extends AsyncTask<String,Void,String> {
 

@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,8 +35,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class stdManageTT extends AppCompatActivity {
-
-
     private static String TAG = "phptest_MainActivity";
     private static final String TAG_JSON="webnautes";
     ListView mlistView;
@@ -47,7 +46,7 @@ public class stdManageTT extends AppCompatActivity {
     TextView mTextViewResult;
     Switch aSwitch;
     phpConnect task;
-    String arr_sid[]; // s_id 저장 배열
+    String arr_tid[]; // t_id 저장 배열
     String sid= "";
 
     @Override
@@ -96,10 +95,10 @@ public class stdManageTT extends AppCompatActivity {
     }
 
     void getMoreStd(int position) {
-
+        final int index = position;
         new AlertDialog.Builder(stdManageTT.this)
                 .setTitle("선생님 정보창" )
-                .setMessage("\n선생님 정보 : " + arr_sid[position])
+                .setMessage("\n선생님 정보 : " + arr_tid[position])
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -110,15 +109,15 @@ public class stdManageTT extends AppCompatActivity {
                 .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(stdManageTT.this, "대화창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
+                        intent.putExtra("oppositeID",arr_tid[index]); //대화할 상대 학생 아이디 전송
+                        startActivity(intent);
                     }
                 })
                 .show();
     }
 
     class phpConnect extends AsyncTask<String,Void,String> {
-
         @Override
         protected String doInBackground(String... arg0) {
             try {
@@ -171,7 +170,7 @@ public class stdManageTT extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            arr_sid = new String[jsonArray.length()];
+            arr_tid = new String[jsonArray.length()];
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -181,7 +180,7 @@ public class stdManageTT extends AppCompatActivity {
                 String tt_id = item.getString(TAG_TID);
 
                 HashMap<String,String> hashMap = new HashMap<>();
-                arr_sid[i]=st_id;
+                arr_tid[i]=tt_id;
 
                 hashMap.put(TAG_SID , st_id);
                 hashMap.put(TAG_TID, tt_id);
@@ -211,6 +210,10 @@ public class stdManageTT extends AppCompatActivity {
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
+    }
 
+    public void AddTeacher(View v){
+        Intent intent = new Intent(getApplicationContext(), com.example.yumi.AddTeacherPopup.class);
+        startActivity(intent);
     }
 }

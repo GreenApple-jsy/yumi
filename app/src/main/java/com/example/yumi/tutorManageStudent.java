@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +49,6 @@ public class tutorManageStudent extends AppCompatActivity {
     phpConnect task;
     String arr_sid[]; // s_id 저장 배열
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +56,6 @@ public class tutorManageStudent extends AppCompatActivity {
         mlistView = (ListView)findViewById(R.id.listView_std_list) ;
         task = new phpConnect();
         task.execute();
-
 
         aSwitch = (Switch) findViewById(R.id.stdSwitch);
 
@@ -92,7 +91,7 @@ public class tutorManageStudent extends AppCompatActivity {
     }
 
     void getMoreStd(int position) {
-
+        final int index = position;
         new AlertDialog.Builder(tutorManageStudent.this)
                 .setTitle("학생 정보창" )
                 .setMessage("\n학생 정보 : " + arr_sid[position])
@@ -106,8 +105,9 @@ public class tutorManageStudent extends AppCompatActivity {
                 .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(tutorManageStudent.this, "대화창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
+                        intent.putExtra("oppositeID",arr_sid[index]); //대화할 상대 학생 아이디 전송
+                        startActivity(intent);
                     }
                 })
                 .show();
