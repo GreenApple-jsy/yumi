@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,8 +46,12 @@ public class tutorMngBooking extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String ID = "id";
     private static final String TAG_SID = "s_id";
-    private static final String BOOK = "book";
-    private static final String sTime = "start_time";
+    private static final String TAG_BOOK = "book";
+    private static final String TAG_STime = "start_time";
+    private static final String TAG_PAGE = "page";
+    private static final String TAG_QN = "start_time";
+    private static final String TAG_CHP = "chapter";
+    private static final String TAG_DT = "dates";
     String table_adr= "readyForBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
@@ -56,6 +61,8 @@ public class tutorMngBooking extends AppCompatActivity {
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
     String st_time[];
+    String end_time[];
+    String tid = "";
     int index_num=0;
 
 
@@ -64,9 +71,12 @@ public class tutorMngBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutor_mng_booking);
         mlistView = (ListView)findViewById(R.id.listView_booking_list) ;
+
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        tid = pref.getString("id", "default");
+
         task = new phpConnect();
         task.execute();
-
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -116,12 +126,12 @@ public class tutorMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(tutorMngBooking.this)
                 .setTitle("예약 정보" )
-                .setMessage("\n학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ ")
+                .setMessage("\n학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ " + end_time[position])
                 .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(tutorMngBooking.this, "대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(tutorMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNeutralButton("예약 취소하기", new DialogInterface.OnClickListener() {
@@ -147,10 +157,10 @@ public class tutorMngBooking extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(tutorMngBooking.this, "대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(tutorMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position] + ")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
@@ -169,7 +179,8 @@ public class tutorMngBooking extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/"+table_adr+".php";
+                System.out.println("hhh" + table_adr);
+                String link = "http://1.234.38.211/"+table_adr+".php?id="+tid;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -195,19 +206,16 @@ public class tutorMngBooking extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             super.onPostExecute(result);
-
             Log.d(TAG, "response  - " + result);
-
             if (result == null){
-
-                mTextViewResult.setText("error occurred");
+                Log.d(TAG, "result is null");
+                mTextViewResult.setText("error occurred");showResult();
             }
             else {
                 mJsonString = result;
 
                 showResult();
             }
-            //txtview.setText(result);
         }
     }
 
@@ -227,6 +235,7 @@ public class tutorMngBooking extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             String postParameters = "id=" + arr_id[index_num];
+            System.out.println("~~~~~~````" +postParameters);
 
             try {
                 URL url = new URL("http://1.234.38.211/ttUpdateBooking.php");
@@ -337,6 +346,8 @@ public class tutorMngBooking extends AppCompatActivity {
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
+            end_time = new String[jsonArray.length()];
+
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -344,11 +355,13 @@ public class tutorMngBooking extends AppCompatActivity {
 
 
                 int id_num = item.getInt(ID);
-                String bookName = item.getString(BOOK);
-                String startTime = item.getString(sTime);
+                String bookName = item.getString(TAG_BOOK);
+                String startTime = item.getString(TAG_STime);
                 String st_id = item.getString(TAG_SID);
-
-
+                String page_num = item.getString(TAG_PAGE);
+                String q_num = item.getString(TAG_QN);
+                String chapter = item.getString(TAG_CHP);
+                String getDate = item.getString(TAG_DT);
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
@@ -356,25 +369,40 @@ public class tutorMngBooking extends AppCompatActivity {
                 st_time[i]=startTime;
 
 
-
-                hashMap.put(BOOK , bookName);
-                hashMap.put(sTime, startTime);
-
+                hashMap.put(TAG_SID, st_id);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_QN, q_num);
+                hashMap.put(TAG_PAGE, page_num);
+                hashMap.put(TAG_CHP,chapter);
+                hashMap.put(TAG_DT, getDate);
 
                 mArrayList.add(hashMap);
             }
 
-
             ListAdapter adapter = new SimpleAdapter(
-                    tutorMngBooking.this, mArrayList, R.layout.tutor_booking_list,
-                    new String[]{BOOK, sTime},
-                    new int[]{R.id.textView_list_book, R.id.booking_start_time}
+                    tutorMngBooking.this, mArrayList, R.layout.std_booking_list,
+                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
             );
 
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_BOOK,"");
+            hashMap.put(TAG_QN, "");
+            hashMap.put(TAG_PAGE, "");
+            hashMap.put(TAG_CHP,"");
+            hashMap.put(TAG_DT, "");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    tutorMngBooking.this, mArrayList, R.layout.std_booking_list,
+                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
+            );
 
+            mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
