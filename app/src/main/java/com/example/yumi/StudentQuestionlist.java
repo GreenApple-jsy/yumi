@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class StudentQuestionlist2 extends AppCompatActivity {
+public class StudentQuestionlist extends AppCompatActivity {
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
     StudentQuestionAdapter questionAdapter;
@@ -41,7 +41,7 @@ public class StudentQuestionlist2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_questionlist2);
+        setContentView(R.layout.activity_student_questionlist);
         listView = findViewById(R.id.listView);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
