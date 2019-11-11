@@ -48,9 +48,10 @@ public class stdMngBooking extends AppCompatActivity {
     private static final String TAG_TID = "t_id";
     private static final String TAG_BOOK = "book";
     private static final String TAG_STime = "start_time";
-    private static final String TAG_PAGE = "book";
+    private static final String TAG_PAGE = "page";
     private static final String TAG_QN = "start_time";
     private static final String TAG_CHP = "chapter";
+    private static final String TAG_DT = "dates";
     String table_adr= "stdReadyForBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
@@ -60,7 +61,7 @@ public class stdMngBooking extends AppCompatActivity {
     int arr_id[];
     String arr_tid[]; // s_id 저장 배열
     String st_time[];
-    String end_time[];
+
     String sid = "";
     int index_num=0;
 
@@ -125,7 +126,7 @@ public class stdMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(stdMngBooking.this)
                 .setTitle("예약 정보" )
-                .setMessage("\n선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ " + end_time[position])
+                .setMessage("\n선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
                 .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -151,7 +152,7 @@ public class stdMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(stdMngBooking.this)
                 .setTitle("예약하기" )
-                .setMessage("\n학생 정보 : " + arr_tid[position])
+                .setMessage("\n선생님 정보 : " + arr_tid[position])
                 .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -159,7 +160,7 @@ public class stdMngBooking extends AppCompatActivity {
                         Toast.makeText(stdMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 \n) 시작시간 : "+ st_time[position]+"", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
@@ -345,7 +346,6 @@ public class stdMngBooking extends AppCompatActivity {
             arr_id = new int[jsonArray.length()];
             arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
-            end_time = new String[jsonArray.length()];
 
 
             for(int i=0;i<jsonArray.length();i++){
@@ -360,6 +360,7 @@ public class stdMngBooking extends AppCompatActivity {
                 String page_num = item.getString(TAG_PAGE);
                 String q_num = item.getString(TAG_QN);
                 String chapter = item.getString(TAG_CHP);
+                String getDate = item.getString(TAG_DT);
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
@@ -372,16 +373,16 @@ public class stdMngBooking extends AppCompatActivity {
                 hashMap.put(TAG_QN, q_num);
                 hashMap.put(TAG_PAGE, page_num);
                 hashMap.put(TAG_CHP,chapter);
-
+                hashMap.put(TAG_DT, getDate);
 
                 mArrayList.add(hashMap);
             }
 
 
             ListAdapter adapter = new SimpleAdapter(
-                    stdMngBooking.this, mArrayList, R.layout.tutor_booking_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_STime},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_start_time}
+                    stdMngBooking.this, mArrayList, R.layout.std_booking_list,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
             );
 
             mlistView.setAdapter(adapter);
@@ -393,12 +394,14 @@ public class stdMngBooking extends AppCompatActivity {
             hashMap.put(TAG_QN, "");
             hashMap.put(TAG_PAGE, "");
             hashMap.put(TAG_CHP,"");
+            hashMap.put(TAG_DT, "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_STime},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_start_time}
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
             );
+
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
