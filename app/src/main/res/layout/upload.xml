@@ -11,121 +11,75 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/bt_tab1"
+            android:id="@+id/datepick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="문제 업로드" />
+            android:text="날짜,시간선택" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="121dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <LinearLayout
+            android:layout_width="176dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.21"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/midHigh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.21"
+                android:entries="@array/school_type" />
+
+            <Spinner
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.21" />
+
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/subject"
+            android:layout_width="131dp"
+            android:layout_height="62dp"
+            android:layout_weight="0.21" />
 
         <Button
-            android:id="@+id/bt_tab2"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_refresh"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="풀이완료문제" />
-
-        <Button
-            android:id="@+id/bt_tab3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mypage" />
-
+            android:layout_weight="0.21"
+            android:onClick="search"
+            android:text="검   색" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/bookcheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교재 선택"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/bookspinner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/schoolcheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="학교 선택"
-                android:textColor="#130000"
-                android:textSize="22sp" />
-
-            <Spinner
-                android:id="@+id/schoolspinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/school_type" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/agecheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="학년 선택"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Spinner
-                android:id="@+id/agespinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/age" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/semestercheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="학기 선택"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Spinner
-                android:id="@+id/semesterspinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/semester" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/bookcheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="교재 선택"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Spinner
-                android:id="@+id/bookspinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/book" />
-        </LinearLayout>
-
+            android:entries="@array/book" />
     </LinearLayout>
 
     <LinearLayout
@@ -170,50 +124,6 @@
             android:inputType="number" />
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/starttime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="풀이 시작 시간 선택" />
-
-        <EditText
-            android:id="@+id/inputstime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" />
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/endtime"
-            android:layout_width="136dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="풀이 끝 시간 선택" />
-
-        <EditText
-            android:id="@+id/inputetime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" />
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -227,7 +137,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageButton
+            <Button
                 android:id="@+id/camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

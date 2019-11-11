@@ -52,6 +52,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.yumi.ChattingActivity" />
+        <activity android:name="com.example.yumi.Student_timeselect" />
         <activity android:name="com.example.yumi.Codematching_S" />
         <activity android:name="com.example.yumi.LoginActivity" />
         <activity android:name="com.example.yumi.Privateinformation2" />
@@ -66,7 +67,7 @@
         <activity android:name="com.example.yumi.tutorManageStudent" />
         <activity android:name="com.example.yumi.tutorMyPage" />
         <activity android:name="com.example.yumi.tutorPreferences" />
-        <activity android:name="com.example.yumi.Studentsignup$tutorMngBooking" />
+        <activity android:name="com.example.yumi.tutorMngBooking" />
         <activity android:name="com.example.yumi.studentcompelete_question" />
         <activity android:name="com.example.yumi.TutorQuestionlist" />
         <activity android:name="com.example.yumi.stdMyPage" />

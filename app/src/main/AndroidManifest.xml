@@ -35,6 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChattingActivity" />
+        <activity android:name=".Student_timeselect" />
         <activity android:name=".Codematching_S" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Privateinformation2" />
@@ -49,7 +50,7 @@
         <activity android:name=".tutorManageStudent" />
         <activity android:name=".tutorMyPage" />
         <activity android:name=".tutorPreferences" />
-        <activity android:name=".Studentsignup$tutorMngBooking" />
+        <activity android:name=".tutorMngBooking" />
         <activity android:name=".studentcompelete_question" />
         <activity android:name=".TutorQuestionlist" />
         <activity android:name=".stdMyPage" />

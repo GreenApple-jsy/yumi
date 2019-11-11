@@ -40,7 +40,7 @@ public class StudentQuestionlist extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         GetData task = new GetData();
         task.execute( "http://1.234.38.211/getCompleteQdata.php", "");
-        
+
         Button MyPageButton = findViewById(R.id.StudentMyPageButton);
         MyPageButton.setOnClickListener(new View.OnClickListener() {
             @Override

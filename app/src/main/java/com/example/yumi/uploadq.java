@@ -1,10 +1,12 @@
 package com.example.yumi;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -18,6 +20,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -44,6 +47,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class uploadq extends AppCompatActivity implements View.OnClickListener {
     private static String TAG = "phptest";
@@ -56,12 +60,21 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
     String upLoadServerUri = null;
     String uploadFilePath;
     String uploadFileName;
+    ArrayAdapter<CharSequence> midHighAdapter, subAdapter;
+    int mOh = 0;
+    int sub = 0;
+    int cat = 0;
+    String grade= "";
+    String subj = "";
+    String categ = "";
+    String[] array;
+    String[] subArray;
 
     int y=0, m=0, d=0, h=0, mi=0;
     final String TAGS = getClass().getSimpleName();
     ImageView imageView;
     Button complete;
-    ImageButton cameraBtn;
+    Button cameraBtn,datepick;
     final static int TAKE_PICTURE = 1;
     final int DIALOG_TIMES = 1;
     final int DIALOG_TIMEE = 2;
@@ -72,46 +85,43 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
     String mCurrentPhotoPath;
     static final int REQUEST_TAKE_PHOTO = 1;
     final Calendar cal = Calendar.getInstance();
+    String[] timepick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upload);
 
+        datepick = findViewById(R.id.datepick);
         complete =  findViewById(R.id.complete);
-        inputetimes = findViewById(R.id.inputetime);
-        inputstimes = findViewById(R.id.inputstime);
         inputnumber = findViewById(R.id.inputnumber);
         inputpage = findViewById(R.id.inputpage);
-        schoolspinner = findViewById((R.id.schoolspinner));
-        agespinner = findViewById(R.id.agespinner);
-        semesterspinner = findViewById(R.id.semesterspinner);
+        //schoolspinner = findViewById((R.id.schoolspinner));
+        //agespinner = findViewById(R.id.agespinner);
+        //semesterspinner = findViewById(R.id.semesterspinner);
         bookspinner = findViewById(R.id.bookspinner);
         Button complete = findViewById(R.id.complete);
-        Button endtime = findViewById(R.id.endtime);
-        Button starttime = findViewById(R.id.starttime);
-        inputstime = findViewById(R.id.inputstime);
-        inputetime = findViewById(R.id.inputetime);
         final TextView tv = (TextView)findViewById(R.id.bookcheck);
         Spinner s = (Spinner)findViewById(R.id.bookspinner);
         imageView = findViewById(R.id.image);
         cameraBtn = findViewById(R.id.camera);
         cameraBtn.setOnClickListener(this);
+        timepick = new String[100];
 
-        bt_tab2 = (Button)findViewById(R.id.bt_tab2);
+        final Spinner dropdown = (Spinner) findViewById(R.id.midHigh);
+        final Spinner subject = (Spinner)findViewById(R.id.subject);
+        final Spinner category = (Spinner)findViewById(R.id.category);
+
+        Intent intent = getIntent();
+        timepick = intent.getStringArrayExtra("datepick");
+
         bt_tab3 = (Button)findViewById(R.id.bt_tab3);
 
-        bt_tab2.setOnClickListener(new View.OnClickListener() {
+        datepick.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //얘는 영상 기능 완료 후에 할 수 있어서 아직 없어요...
-            }
-        });
-        bt_tab3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(uploadq.this, stdMyPage.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                Intent intent3 = new Intent(getApplicationContext(), Student_timeselect.class);
+                startActivity(intent3);
             }
         });
 
@@ -127,19 +137,6 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        starttime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(DIALOG_TIMES);
-            }
-        });
-        endtime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(DIALOG_TIMEE);
-            }
-        });
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED ) {
                 Log.d(TAGS, "권한 설정 완료");
@@ -151,10 +148,13 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String school, age,semester,book,page,number,starttime,endtime,image;
-                school = schoolspinner.getSelectedItem().toString();
-                age = agespinner.getSelectedItem().toString();
-                semester = semesterspinner.getSelectedItem().toString();
+                String school, age,semester,book,page,number,chapter;
+                chapter = category.getSelectedItem().toString();
+                //임의로 챕터값 설정해 놨어요!!
+
+                school = dropdown.getSelectedItem().toString();
+                age = subject.getSelectedItem().toString().substring(0,3);
+                semester = subject.getSelectedItem().toString().substring(4);
                 book = bookspinner.getSelectedItem().toString();
                 if(school.equals("선택하세요")){
                     Toast.makeText(getApplicationContext(),"학교를 선택하세요.",Toast.LENGTH_SHORT).show();
@@ -182,21 +182,22 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(),"문제 번호를 입력하세요.",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                starttime = inputstimes.getText().toString();
-                if (starttime.getBytes().length <= 0){//빈값이 넘어올때의 처리
-                    Toast.makeText(getApplicationContext(),"시작 시간을 입력하세요.",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                endtime = inputetimes.getText().toString();
-                if (endtime.getBytes().length <= 0){//빈값이 넘어올때의 처리
-                    Toast.makeText(getApplicationContext(),"종료 시간을 입력하세요.",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                String id = "ayoung";
+                SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
+                String id = auto.getString("id",null);
                 filename = id+Long.toString(System.currentTimeMillis());
-                //이미지도 코드 짜기
+
+                String timecheck="0";
+                for(int i=0; i<100; i++){
+                    System.out.println(timepick[i]);
+                    timecheck= timecheck+timepick[i];
+                }
+                System.out.println("출력함");
+                System.out.println(timecheck);
+                Date currentTime = Calendar.getInstance().getTime();
+                String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일", Locale.getDefault()).format(currentTime);
+
                 InsertData task = new InsertData();
-                task.execute("http://1.234.38.211/q_insert.php", school, age, semester, book, page, number,starttime, endtime,id);
+                task.execute("http://1.234.38.211/q_insert.php", school, age, semester, book, page, number,id,timecheck,chapter,date_text);
                 dialog = ProgressDialog.show(uploadq.this, "", "Uploading file...", true);
                 new Thread(new Runnable() {
                     public void run() {
@@ -209,25 +210,307 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
                 }).start();
             }
         });
+
+
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                mOh = position;
+                // 중학교
+                if (position == 1 ) {
+                    grade = "중학생";
+                    midHighAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_subject, android.R.layout.simple_spinner_dropdown_item);
+                    midHighAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    subject.setAdapter( midHighAdapter);
+
+                    subject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            sub = i ;
+                            subArray= getResources().getStringArray(R.array.mid_subject);
+                            subj = subArray[i];
+                            if (sub == 1){
+                                array = getResources().getStringArray(R.array.mid_position1);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_position1, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 2){
+                                array = getResources().getStringArray(R.array.mid_position2);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_position2, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 3){
+                                array = getResources().getStringArray(R.array.mid_position3);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_position3, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 4){
+                                array = getResources().getStringArray(R.array.mid_position4);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_position4, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 5){
+                                array = getResources().getStringArray(R.array.mid_position5);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_position5, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub== 6){
+                                array = getResources().getStringArray(R.array.mid_position6);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.mid_position6, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+
+                }
+                // 고등학교
+                else if (position == 2){
+                    grade= "고등학생";
+                    midHighAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_subject, android.R.layout.simple_spinner_dropdown_item);
+                    midHighAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    subject.setAdapter( midHighAdapter);
+
+                    subject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            sub = i ;
+                            subArray= getResources().getStringArray(R.array.high_subject);
+                            subj = subArray[i];
+                            if (sub == 1){
+                                array = getResources().getStringArray(R.array.high_position1);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_position1, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 2){
+                                array = getResources().getStringArray(R.array.high_position2);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_position2, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 3){
+                                array = getResources().getStringArray(R.array.high_position3);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_position3, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 4){
+                                array = getResources().getStringArray(R.array.high_position4);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_position4, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub == 5){
+                                array = getResources().getStringArray(R.array.high_position5);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_position5, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                            else if (sub== 6){
+                                array = getResources().getStringArray(R.array.high_position6);
+                                subAdapter = ArrayAdapter.createFromResource(uploadq.this, R.array.high_position6, android.R.layout.simple_spinner_dropdown_item);
+                                subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                category.setAdapter(subAdapter);
+                                category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                        categ = array[i];
+                                        cat = i;
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+                }
+                else {
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+        });
+
+
+
+    }
+
+
+    public void search(View view ){
+        if (mOh == 0 || sub == 0 || cat == 0){
+            Toast.makeText(getApplicationContext(), "전체 항목을 선택해 주세요.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), grade + " " + subj + " " + categ, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
     private String getURLForResource(int resId) {
         return Uri.parse("android.resource://" + R.class.getPackage().getName() + "/" + resId).toString();
-    }
-    void showTimestart() {
-        TimePickerDialog tpd =
-                new TimePickerDialog(uploadq.this,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view,
-                                                  int hourOfDay, int minute) {
-                                Toast.makeText(getApplicationContext(),
-                                        hourOfDay +"시 " + minute+"분 을 선택했습니다",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }, // 값설정시 호출될 리스너 등록
-                        4,19, false); // 기본값 시분 등록
-        // true : 24 시간(0~23) 표시
-        // false : 오전/오후 항목이 생김
     }
     // 권한 요청
     @Override
@@ -340,47 +623,6 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
                 matrix, true);
     }
 
-    @Override
-    @Deprecated
-    protected Dialog onCreateDialog(int id) {
-        switch(id){
-            case DIALOG_TIMES :
-                TimePickerDialog tpds =
-                        new TimePickerDialog(uploadq.this,
-                                new TimePickerDialog.OnTimeSetListener() {
-                                    @Override
-                                    public void onTimeSet(TimePicker view,
-                                                          int hourOfDay, int minute) {
-                                        inputstime.setText(hourOfDay +"시 " + minute+"분");
-                                        Toast.makeText(getApplicationContext(),
-                                                hourOfDay +"시 " + minute+"분",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                }, // 값설정시 호출될 리스너 등록
-                                4,19, false); // 기본값 시분 등록
-                // true : 24 시간(0~23) 표시
-                // false : 오전/오후 항목이 생김
-                return tpds;
-            case DIALOG_TIMEE :
-                TimePickerDialog tpde =
-                        new TimePickerDialog(uploadq.this,
-                                new TimePickerDialog.OnTimeSetListener() {
-                                    @Override
-                                    public void onTimeSet(TimePicker view,
-                                                          int hourOfDay, int minute) {
-                                        inputetime.setText(hourOfDay +"시 " + minute+"분");
-                                        Toast.makeText(getApplicationContext(),
-                                                hourOfDay +"시 " + minute+"분",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                }, // 값설정시 호출될 리스너 등록
-                                4,19, false); // 기본값 시분 등록
-                // true : 24 시간(0~23) 표시
-                // false : 오전/오후 항목이 생김
-                return tpde;
-        }
-        return super.onCreateDialog(id);
-    }
     class InsertData extends AsyncTask<String, Void, String>{
         ProgressDialog progressDialog;
 
@@ -408,10 +650,11 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
             String book = (String)params[4];
             String page = (String)params[5];
             String q_number = (String)params[6];
-            String start_time = (String)params[7];
-            String end_time = (String)params[8];
-            String id = (String)params[9];
-            String postParameters = "&q_image=" +q_image + "&school_type=" + school_type + "&age=" + age + "&semester=" + semester + "&book=" + book + "&page=" + page + "&q_number=" + q_number + "&start_time=" + start_time + "&end_time=" + end_time +  "&s_id=" + id;
+            String id = (String)params[7];
+            String timepick = params[8];
+            String chapter = params[9];
+            String dates = params[10];
+            String postParameters = "&q_image=" +q_image + "&school_type=" + school_type + "&age=" + age + "&semester=" + semester + "&book=" + book + "&page=" + page + "&q_number=" + q_number + "&s_id=" + id + "&timetable=" + timepick + "&chapter=" + chapter + "&dates=" + dates;
 
             try {
                 URL url = new URL(serverURL);
