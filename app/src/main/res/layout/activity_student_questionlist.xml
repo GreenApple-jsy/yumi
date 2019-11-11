@@ -1,51 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="right"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_weight="150">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_search" />
 
-        <Button
-            android:id="@+id/StudentMyPageButton"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="마이페이지" />
+            android:layout_height="497dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="50">
+
+        </ListView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/uploadButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
+                android:layout_gravity="right"
+                app:backgroundTint="#B86824"
+                app:layout_anchor="@id/listView"
+                app:layout_anchorGravity="right|bottom"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="90">
 
-    </ListView>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.856"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/uploadButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:clickable="true"
-        app:backgroundTint="#C4EE7CA3"
-        app:layout_anchor="@id/listView"
-        app:layout_anchorGravity="right|bottom"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_weight="20">
+
+                <ImageButton
+                    android:id="@+id/mainpage"
+                    android:layout_width="67dp"
+                    android:layout_height="74dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="30dp"
+                    android:src="@drawable/homeicon"
+                    app:layout_constraintEnd_toStartOf="@+id/search_solution"
+                    app:layout_constraintHorizontal_bias="0.484"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="641dp"
+                    android:layout_marginLeft="30dp">
+
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/mypageicon"
+                    android:layout_width="67dp"
+                    android:layout_height="74dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/my"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="222dp"
+                    tools:layout_editor_absoluteY="641dp"
+                    android:layout_marginLeft="30dp">
+
+                </ImageButton>
+
+                <ImageButton
+                    android:id="@+id/search_solution"
+                    android:layout_width="67dp"
+                    android:layout_height="74dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/search"
+                    app:layout_constraintEnd_toStartOf="@+id/mypageicon"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="641dp"
+                    android:layout_marginLeft="30dp">
+
+                </ImageButton>
+
+
+                <ImageButton
+                    android:id="@+id/setting"
+                    android:layout_width="67dp"
+                    android:layout_height="74dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/set"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.527"
+                    app:layout_constraintStart_toEndOf="@+id/mypageicon"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="641dp"
+                    android:layout_marginLeft="10dp">
+
+                </ImageButton>
+
+
+            </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
