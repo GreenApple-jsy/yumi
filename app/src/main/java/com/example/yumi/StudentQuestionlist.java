@@ -4,12 +4,17 @@ package com.example.yumi;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,7 +32,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class StudentQuestionlist extends AppCompatActivity {
+public class StudentQuestionlist2 extends AppCompatActivity {
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
     StudentQuestionAdapter questionAdapter;
@@ -36,12 +41,20 @@ public class StudentQuestionlist extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_questionlist);
+        setContentView(R.layout.activity_student_questionlist2);
         listView = findViewById(R.id.listView);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(true);
+
         GetData task = new GetData();
         task.execute( "http://1.234.38.211/getCompleteQdata.php", "");
 
-        Button MyPageButton = findViewById(R.id.StudentMyPageButton);
+        ImageButton MyPageButton = findViewById(R.id.mypageicon);
         MyPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +82,11 @@ public class StudentQuestionlist extends AppCompatActivity {
         });
     }
 
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.actionbar_actions,menu);
+        return true;
+    }
     private class GetData extends AsyncTask<String, Void, String> {
 
         @Override
