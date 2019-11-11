@@ -3,6 +3,7 @@ package com.example.yumi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,17 +44,24 @@ public class tutorManageStudent extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String TAG_SID = "s_id";
     private static final String TAG_TID = "t_id";
-    String table_adr  = "getTTUnion";
+    private static final String TAG_NICK = "nickname";
+    private static final String TAG_SCH = "school_type";
+    private static final String TAG_GD = "grade";
+    String table_adr  = "getMatching";
     TextView mTextViewResult;
     Switch aSwitch;
     phpConnect task;
     String arr_sid[]; // s_id 저장 배열
+    String tid ="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mng_student);
         mlistView = (ListView)findViewById(R.id.listView_std_list) ;
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        tid = pref.getString("id", "default");
         task = new phpConnect();
         task.execute();
 
@@ -66,7 +74,7 @@ public class tutorManageStudent extends AppCompatActivity {
                 if (isChecked == true) {
                     TextView titleLine = (TextView) findViewById(R.id.mystudentText);
                     titleLine.setText("익명 학생 관리");
-                    table_adr = "getIcMatching";
+                    table_adr = "getMatching";
                     task = new phpConnect();
                     task.execute();
 
@@ -118,7 +126,7 @@ public class tutorManageStudent extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/"+table_adr+".php";
+                String link = "http://1.234.38.211/"+table_adr+".php?id="+tid;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -175,12 +183,19 @@ public class tutorManageStudent extends AppCompatActivity {
 
                 String st_id = item.getString(TAG_SID);
                 String tt_id = item.getString(TAG_TID);
+                String stdNick = item.getString(TAG_NICK);
+                String schType = item.getString(TAG_SCH);
+                String grade = item.getString(TAG_GD);
 
                 HashMap<String,String> hashMap = new HashMap<>();
                 arr_sid[i]=st_id;
 
                 hashMap.put(TAG_SID , st_id);
                 hashMap.put(TAG_TID, tt_id);
+                hashMap.put(TAG_NICK , stdNick);
+                hashMap.put(TAG_SCH, schType);
+                hashMap.put(TAG_GD , grade);
+
 
                 mArrayList.add(hashMap);
             }
@@ -188,14 +203,25 @@ public class tutorManageStudent extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     tutorManageStudent.this, mArrayList, R.layout.mng_std_list,
-                    new String[]{TAG_SID,TAG_TID},
-                    new int[]{R.id.textView_list_std, R.id.textView_list_tutor}
+                    new String[]{TAG_SID,TAG_SCH, TAG_GD},
+                    new int[]{R.id.listNick, R.id.listSchool, R.id.listGrade}
             );
 
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_SCH, "");
+            hashMap.put(TAG_GD, "");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    tutorManageStudent.this, mArrayList, R.layout.mng_std_list,
+                    new String[]{TAG_SID,TAG_SCH, TAG_GD},
+                    new int[]{R.id.listNick, R.id.listSchool, R.id.listGrade}
+            );
 
+            mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
