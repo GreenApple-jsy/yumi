@@ -11,11 +11,7 @@
 
     <item
         android:id="@+id/menu1"
-        android:title="내 정보"
-        android:checkable="true"/>
-    <item
-        android:id="@+id/menu2"
-        android:title="매칭 코드 등록하기"
+        android:title="로그아웃"
         android:checkable="true"/>
 
 </menu>
