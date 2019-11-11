@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/textView_list_std"
+        android:id="@+id/listTTNick"
         android:layout_width="163dp"
         android:layout_height="54dp"
         android:layout_margin="5dp"
@@ -18,7 +18,7 @@
 
 
     <TextView
-        android:id="@+id/textView_list_tutor"
+        android:id="@+id/listUniv"
         android:layout_width="207dp"
         android:layout_height="52dp"
         android:layout_margin="5dp"
