@@ -10,62 +10,61 @@
 
     <TextView
         android:id="@+id/bookStdNick"
-        android:layout_width="47dp"
-        android:layout_height="36dp"
+        android:layout_width="15dp"
+        android:layout_height="32dp"
         android:layout_weight="1"
         android:text="TextView" />
 
     <LinearLayout
-        android:layout_width="228dp"
+        android:layout_width="38dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/booking_book"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="TextView"
+            android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/booking_book"
-                android:layout_width="95dp"
-                android:layout_height="match_parent"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/chapter"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/booking_page"
-                android:layout_width="121dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/chapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/booking_date"
-                android:layout_width="170dp"
-                android:layout_height="match_parent"
-                android:text="TextView" />
+        <TextView
+            android:id="@+id/booking_page"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="10sp" />
 
-            <TextView
-                android:id="@+id/booking_start_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView" />
+    </LinearLayout>
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="141dp"
+        android:layout_height="55dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/booking_date"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="TextView"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/booking_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="10sp" />
 
     </LinearLayout>
 
