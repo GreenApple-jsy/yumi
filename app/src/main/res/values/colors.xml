@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF8E99</color>
-    <color name="colorPrimaryDark">#FFCFDA</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="dropbox">#FFD9E4</color>>
+    <color name="colorPrimary">#0A6E0A</color>
+    <color name="colorPrimaryDark">#56B37F</color>
+    <color name="colorAccent">#228B22</color>
+    <color name="dropbox">#FFFFFF</color>>
 </resources>
