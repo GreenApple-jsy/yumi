@@ -7,6 +7,16 @@
     tools:context=".Teachersignup">
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
+
     <Button
         android:id="@+id/id_check3"
         android:layout_width="100dp"
@@ -65,22 +75,22 @@
     <Button
         android:id="@+id/complete"
 
-        android:layout_width="90dp"
-        android:layout_height="49dp"
-        android:background="@drawable/draw10"
+        android:layout_width="350dp"
+        android:layout_height="59dp"
+        android:background="@drawable/draw9"
         android:onClick="complete"
-
+        android:gravity="center"
         android:text="완료"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951"
+        app:layout_constraintVertical_bias="0.922"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -215,27 +225,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/angry_btn13"
         app:layout_constraintVertical_bias="0.051" />
-
-    <Button
-        android:id="@+id/cancel"
-
-        android:layout_width="84dp"
-        android:layout_height="56dp"
-
-
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/draw10"
-        android:gravity="center"
-        android:onClick="goBack2"
-        android:text="←"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.958" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
