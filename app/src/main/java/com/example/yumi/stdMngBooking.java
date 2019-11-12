@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -56,8 +57,6 @@ public class stdMngBooking extends AppCompatActivity {
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
     phpConnect task;
-    phpUpdate uptTask;
-    phpCancel ccTask;
     int arr_id[];
     String arr_tid[]; // s_id 저장 배열
     String st_time[];
@@ -99,7 +98,7 @@ public class stdMngBooking extends AppCompatActivity {
                     mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            editBooking(position);
+                            getMoreBooking(position);
                         }
                     });
 
@@ -121,53 +120,25 @@ public class stdMngBooking extends AppCompatActivity {
 
     }
 
-    void editBooking(int position) {
-        index_num = position;
-
-        new AlertDialog.Builder(stdMngBooking.this)
-                .setTitle("예약 정보" )
-                .setMessage("\n선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(stdMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNeutralButton("예약 취소하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        ccTask = new phpCancel();
-                        ccTask.execute();
-                        Toast.makeText(stdMngBooking.this, "예약을 취소하셨습니다.", Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-                .show();
-    }
 
     void getMoreBooking(int position) {
         index_num = position;
 
         new AlertDialog.Builder(stdMngBooking.this)
-                .setTitle("예약하기" )
-                .setMessage("\n선생님 정보 : " + arr_tid[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
+                .setTitle("예약 정보" )
+                .setMessage("선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(stdMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 \n) 시작시간 : "+ st_time[position]+"", new DialogInterface.OnClickListener() {
+                .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        uptTask = new phpUpdate();
-                        uptTask.execute();
-                        Toast.makeText(stdMngBooking.this, "예약이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
+                        intent.putExtra("oppositeID",arr_tid[index_num]); //대화할 상대 선생 아이디 전송
+                        startActivity(intent);
                     }
                 })
                 .show();
@@ -218,123 +189,6 @@ public class stdMngBooking extends AppCompatActivity {
             }
         }
     }
-
-    class phpUpdate extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String postParameters = "id=" + arr_id[index_num];
-            System.out.println("~~~~~~````" +postParameters);
-
-            try {
-                URL url = new URL("http://1.234.38.211/ttUpdateBooking.php");
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.connect();
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-                bufferedReader.close();
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Error: " + e.getMessage());
-            }
-
-        }
-    }
-
-    class phpCancel extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String postParameters = "id=" + arr_id[index_num];
-
-            try {
-                URL url = new URL("http://1.234.38.211/cancelBooking.php");
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.connect();
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-                bufferedReader.close();
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Error: " + e.getMessage());
-            }
-
-        }
-    }
-
-
 
     private void showResult(){
 
