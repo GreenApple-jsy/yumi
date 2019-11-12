@@ -10,7 +10,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import android.view.MenuItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +41,14 @@ public class Teachersignup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("선생님 회원가입");
         setContentView(R.layout.activity_teachersignup);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
 
         //대학교 값 받아오기
         final Spinner dropdown = (Spinner) findViewById(R.id.university);
@@ -87,6 +98,18 @@ public class Teachersignup extends AppCompatActivity {
 
     }
 
+    //앱바 메뉴 클릭 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // User chose the "Settings" item, show the app settings UI...
+                super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void goNext(View view) {
         //텍스트 입력 창에 입력된 스트링 받아오기
         et_id = (EditText) findViewById(R.id.id_text);
@@ -124,13 +147,13 @@ public class Teachersignup extends AppCompatActivity {
         }
     }
 
-    public void goBack(View view) {
+    /*public void goBack(View view) {
         if (view.getId() == R.id.cancel2) {
             //뒤로 가기 버튼을 누른 경우
             Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
             startActivity(intent);
         }
-    }
+    }*/
 
     class GetData extends AsyncTask<String, Void, String> {
 
@@ -206,10 +229,10 @@ public class Teachersignup extends AppCompatActivity {
                 String check = item.getString(TAG_CHECK);
 
                 if (check.equals("1")) {
-                    Toast.makeText(getApplicationContext(), "이 아이디는 안됩니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
                 }
                 if (check.equals("0")) {
-                    Toast.makeText(getApplicationContext(), "이 아이디 가능합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (JSONException e) {
@@ -290,10 +313,10 @@ public class Teachersignup extends AppCompatActivity {
                 String check = item.getString(TAG_CHECK);
 
                 if (check.equals("1")) {
-                    Toast.makeText(getApplicationContext(), "이 닉네임는 안됩니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "중복된 닉네임이 존재합니다.", Toast.LENGTH_SHORT).show();
                 }
                 if (check.equals("0")) {
-                    Toast.makeText(getApplicationContext(), "이 닉네임은 가능합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (JSONException e) {
