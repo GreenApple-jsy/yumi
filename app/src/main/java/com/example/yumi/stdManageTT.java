@@ -112,7 +112,7 @@ public class stdManageTT extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_tid[index]); //대화할 상대 학생 아이디 전송
+                        intent.putExtra("oppositeID",arr_tid[index]); //대화할 상대 선생 아이디 전송
                         startActivity(intent);
                     }
                 })
