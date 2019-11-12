@@ -2,6 +2,7 @@ package com.example.yumi;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -126,12 +127,13 @@ public class tutorMngBooking extends AppCompatActivity {
 
         new AlertDialog.Builder(tutorMngBooking.this)
                 .setTitle("예약 정보" )
-                .setMessage("\n학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+" ~ " + end_time[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
+                .setMessage("학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position])
+                .setPositiveButton("대화하기",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(tutorMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
+                        intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
+                        startActivity(intent);
                     }
                 })
                 .setNeutralButton("예약 취소하기", new DialogInterface.OnClickListener() {
@@ -151,16 +153,17 @@ public class tutorMngBooking extends AppCompatActivity {
         index_num = position;
 
         new AlertDialog.Builder(tutorMngBooking.this)
-                .setTitle("예약하기" )
-                .setMessage("\n학생 정보 : " + arr_sid[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
+                .setTitle("예약 승낙" )
+                .setMessage("학생 정보 : " + arr_sid[position])
+                .setPositiveButton("대화하기",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(tutorMngBooking.this, arr_id[index_num]+"<- id값 대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
+                        intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
+                        startActivity(intent);
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("예약하기 (시작 시간 : "+ st_time[position]+")", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
