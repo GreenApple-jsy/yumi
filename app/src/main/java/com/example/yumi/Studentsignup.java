@@ -3,12 +3,15 @@ package com.example.yumi;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +37,15 @@ public class Studentsignup extends AppCompatActivity {
         setTitle("학생 회원가입");
         setContentView(R.layout.activity_studentsignup);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+
+
         et_id = (EditText) findViewById(R.id.id_text);
         et_pw = (EditText) findViewById(R.id.password_text);
         et_pw_chk = (EditText) findViewById(R.id.password_check2);
@@ -51,10 +63,17 @@ public class Studentsignup extends AppCompatActivity {
         });
     }
 
-    public void goBack(View view){
-        //취소 버튼을 누른 경우
-        Intent intent2 = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(intent2);
+
+    //앱바 메뉴 클릭 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // User chose the "Settings" item, show the app settings UI...
+                super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     //계속하기 버튼을 누른 경우
@@ -167,10 +186,10 @@ public class Studentsignup extends AppCompatActivity {
             String check = item.getString(TAG_CHECK);
 
             if (check.equals("1")) {
-                Toast.makeText(getApplicationContext(),"이 아이디는 안됩니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
             }
             if (check.equals("0")) {
-                Toast.makeText(getApplicationContext(),"이 아이디 가능합니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
             }
 
         } catch (JSONException e) {
