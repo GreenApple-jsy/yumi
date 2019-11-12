@@ -32,8 +32,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 
 public class stdMyPage extends AppCompatActivity {
@@ -47,29 +51,37 @@ public class stdMyPage extends AppCompatActivity {
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String ID = "id";
     private static final String TAG_SID = "s_id";
-    private static final String BOOK = "book";
-    private static final String sTime = "start_time";
+    private static final String TAG_TID = "t_id";
+    private static final String TAG_BOOK = "book";
+    private static final String TAG_sTime = "start_time";
+    private static final String TAG_DT = "dates";
+    private static final String TAG_CHP = "chapter";
+    private static final String TAG_PAGES = "page";
+    private static final String TAG_QN = "q_number";
+
+
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
+    String arr_tid[];
     String st_time[];
     String end_time[];
-
+    String yyyy="", mm="", dd="";
+    String sid = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.std_my_page);
 
-        mlistView = (ListView)findViewById(R.id.std_lecture_list) ;
-
-
+        // 학생 프로필 정보
         SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
         String nickName = pref.getString("nickName", "default");
         String school = pref.getString("school", "default");
         String grade = pref.getString("grade", "default");
+        sid = pref.getString("id", "default");
 
         nickText = (TextView)findViewById(R.id.stdNick);
         nickText.setText(nickName);
@@ -77,9 +89,22 @@ public class stdMyPage extends AppCompatActivity {
         schoolText = (TextView)findViewById(R.id.schoolName);
         schoolText.setText(school);
 
-
         gradeText = (TextView)findViewById(R.id.stdGrade);
         gradeText.setText(grade);
+
+        mlistView = (ListView)findViewById(R.id.std_class_list) ;
+
+
+        Date currentTime = Calendar.getInstance().getTime();
+        //SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+
+        //String weekDay = weekdayFormat.format(currentTime);
+        yyyy = yearFormat.format(currentTime);
+        mm = monthFormat.format(currentTime);
+        dd = dayFormat.format(currentTime);
 
         task = new stdMyPage.phpConnect();
         task.execute();
@@ -96,23 +121,20 @@ public class stdMyPage extends AppCompatActivity {
         index_num = position;
 
         new AlertDialog.Builder(stdMyPage.this)
-                .setTitle("예약하기" )
-                .setMessage("\n선생님 정보 : " + arr_sid[position])
-                .setPositiveButton("대화하기", new DialogInterface.OnClickListener() {
+                .setTitle("예약 정보" )
+                .setMessage("선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(stdMyPage.this, "대화 창으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton("예약하기 ("+ st_time[position]+" ~ "+end_time[position]+")", new DialogInterface.OnClickListener() {
+                .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        upTask = new phpUpdate();
-                        upTask.execute();
-                        Toast.makeText(stdMyPage.this, "예약이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
+                        intent.putExtra("oppositeID",arr_tid[index_num]); //대화할 상대 선생 아이디 전송
+                        startActivity(intent);
                     }
                 })
                 .show();
@@ -120,11 +142,12 @@ public class stdMyPage extends AppCompatActivity {
 
 
     class phpConnect extends AsyncTask<String,Void,String> {
+        String stringParameter = "&yyyy="+yyyy+"&mm="+mm+"&dd="+dd;
 
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/readyForBooking.php";
+                String link = "http://1.234.38.211/todayClass.php?id="+sid+stringParameter;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -231,6 +254,7 @@ public class stdMyPage extends AppCompatActivity {
 
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
+            arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
             end_time = new String[jsonArray.length()];
 
@@ -241,37 +265,60 @@ public class stdMyPage extends AppCompatActivity {
 
 
                 int id_num = item.getInt(ID);
-                String bookName = item.getString(BOOK);
-                String startTime = item.getString(sTime);
+                String bookName = item.getString(TAG_BOOK);
+                String pages = item.getString(TAG_PAGES); pages+=" page"; String q_num = "Q : ";
+                q_num += item.getString(TAG_QN);
+                String startTime = item.getString(TAG_sTime);
+                String dates = item.getString(TAG_DT);
+                String chapter = item.getString(TAG_CHP);
                 String st_id = item.getString(TAG_SID);
-
+                String tt_id = item.getString(TAG_TID);
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
+                arr_tid[i]=tt_id;
                 st_time[i]=startTime;
 
-
                 hashMap.put(TAG_SID, st_id);
-                hashMap.put(BOOK , bookName);
-                hashMap.put(sTime, startTime);
-
-
+                hashMap.put(TAG_TID, tt_id);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_sTime, startTime);
+                hashMap.put(TAG_CHP , chapter);
+                hashMap.put(TAG_DT, dates);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_PAGES , pages);
+                hashMap.put(TAG_QN , q_num);
                 mArrayList.add(hashMap);
             }
 
-
             ListAdapter adapter = new SimpleAdapter(
-                    stdMyPage.this, mArrayList, R.layout.tutor_today_list,
-                    new String[]{TAG_SID,BOOK},
-                    new int[]{R.id.tt_list_book,R.id.tt_list_sid}
+                    stdMyPage.this, mArrayList, R.layout.std_today_list,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
             );
 
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_TID, "");
+            hashMap.put(TAG_BOOK , "");
+            hashMap.put(TAG_sTime, "");
+            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_DT, "");
+            hashMap.put(TAG_BOOK , "");
+            hashMap.put(TAG_PAGES , "");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    stdMyPage.this, mArrayList, R.layout.std_today_list,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_DT, TAG_sTime },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.TodayDate, R.id.startTime}
+            );
 
+            mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
