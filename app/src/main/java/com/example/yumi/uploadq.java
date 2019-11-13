@@ -18,6 +18,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,7 +33,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import java.io.BufferedReader;
@@ -74,7 +79,8 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
     final String TAGS = getClass().getSimpleName();
     ImageView imageView;
     Button complete;
-    Button cameraBtn,datepick;
+    ImageButton cameraBtn;
+    Button  datepick;
     final static int TAKE_PICTURE = 1;
     final int DIALOG_TIMES = 1;
     final int DIALOG_TIMEE = 2;
@@ -91,6 +97,15 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upload);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        //actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
 
         datepick = findViewById(R.id.datepick);
         complete =  findViewById(R.id.complete);
@@ -493,6 +508,23 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
 
 
 
+    }
+
+    public void gohome(View view){
+        Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);
+        startActivity(intent);
+    }
+
+    //앱바 메뉴 클릭 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // User chose the "Settings" item, show the app settings UI...
+                super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
