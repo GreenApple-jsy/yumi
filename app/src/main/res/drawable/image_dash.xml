@@ -7,9 +7,9 @@
     <stroke android:width="2px" android:color="#000000"
         android:dashGap="5dp" android:dashWidth="5dp"/>
 
-    <padding android:left="2px" android:top="2px"
+    <padding android:left="4px" android:top="4px"
 
-        android:right="2px" android:bottom="2px" />
+        android:right="4px" android:bottom="4px" />
 
 
 </shape>
