@@ -22,7 +22,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.menu_ui);
 
         ///////////////////////////////PUSH ALARM///////////////////////////
-        //1. 로그인 기능 완벽히 구현되면 menuActivity가 아닌 선생님 페이지에만 나타나도록 제작
+        //1. 로그인 기능 완벽히 구현되면 m..enuActivity가 아닌 선생님 페이지에만 나타나도록 제작
         //2. 과거 시간 입력시 무조건 나타남 -> 따라서 실행한 시각+1분이 되는 순간 푸시가 뜨도록 설정 -> 나중에 수정
         //3. 디비 연동되면 선생님 question 테이블에서 reservation=1인 행들만 갖고 와서 그 시간에 맞게 알람 구현
         Calendar Time = Calendar.getInstance();
@@ -42,6 +42,7 @@ public class MenuActivity extends Activity {
 
 
     }
+
 
     public void onClick(View view) {
         switch(view.getId()){
