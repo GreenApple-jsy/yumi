@@ -91,7 +91,7 @@
         android:id="@+id/logo"
         android:layout_width="35dp"
         android:layout_height="38dp"
-        android:src="@drawable/cancle"
+        android:src="@drawable/canc"
         android:onClick="cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
