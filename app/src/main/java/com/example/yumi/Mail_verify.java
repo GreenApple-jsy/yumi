@@ -136,23 +136,20 @@ public class Mail_verify extends AppCompatActivity {
 
 
     public void afterValid(View view) {
-        TTRegisterDB rdb = new TTRegisterDB();
-        rdb.execute();
 
-
-        Intent intent = new Intent(Mail_verify.this , Cons.class);
-        startActivity(intent);
-
-        /* 향후 주석 풀 것 - 테스트 기간 동안 본인 인증 로직 jump
         if(valid_num != 0 ){
-            Toast.makeText(getApplicationContext(), "다음페이지로", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Mail_verify.this , Cons.class);
-            startActivity(intent);
+            sEmail = emailAdr;
+            System.out.println("----------> " + sId+ " " +sPw+ " "+sNickname+" " +sUniversity+ " " +sEmail);
+            TTRegisterDB rdb = new TTRegisterDB();
+            rdb.execute();
+            Toast.makeText(getApplicationContext(), "가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            Intent valid = new Intent(Mail_verify.this , Cons.class);
+            startActivity(valid);
         }
         else {
             Toast.makeText(getApplicationContext(), "본인 인증을 먼저 해주세요.", Toast.LENGTH_SHORT).show();
         }
-         */
+
     }
 
 
