@@ -58,6 +58,8 @@
         <activity android:name=".stdMngBooking" />
         <activity android:name=".stdManageTT" />
         <activity android:name=".ReplayVideo" />
+        <activity android:name=".Cons" />
+        <activity android:name=".stdSelect" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
