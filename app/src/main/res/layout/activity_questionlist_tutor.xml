@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<LinearLayout android:orientation="vertical" android:gravity="center" android:layout_height="wrap_content" android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        app:theme="@style/ToolbarColoredBackArrow"
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/bt_tab1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="해설을 기다리는문제" />
+            android:layout_width="361dp"
+            android:layout_height="63dp"
+            android:layout_weight="70"
+            android:layout_gravity="center"
+            android:text="해설을 기다리는 문제" />
 
-        <Button
-            android:id="@+id/bt_tab3"
+        <ListView
+            android:id="@+id/listView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mypage" />
+            android:layout_height="499dp"
+            android:layout_weight="10">
+
+        </ListView>
 
 
     </LinearLayout>
 
-    <ListView android:layout_height="517dp" android:layout_width="wrap_content" android:id="@+id/listView"> </ListView>
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:bb_tabXmlResource="@xml/bottombar_tabs" />
+
 
 </LinearLayout>
