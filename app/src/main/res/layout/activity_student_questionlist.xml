@@ -10,6 +10,7 @@
     android:layout_weight="150">
 
     <androidx.appcompat.widget.Toolbar
+        app:theme="@style/ToolbarColoredBackArrow"
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -25,11 +26,10 @@
         android:gravity="right"
         android:orientation="vertical">
 
-
         <ListView
             android:id="@+id/listView"
             android:layout_width="wrap_content"
-            android:layout_height="497dp"
+            android:layout_height="527dp"
             android:layout_marginTop="10dp"
             android:layout_weight="50">
 
@@ -53,103 +53,15 @@
 
         </FrameLayout>
 
-    </LinearLayout>
-
-        <LinearLayout
+        <com.roughike.bottombar.BottomBar
+            android:id="@+id/bottomBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="90">
+            android:layout_height="86dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-2dp"
+            app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.856"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp">
-
-            </ImageView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_weight="20">
-
-                <ImageButton
-                    android:id="@+id/mainpage"
-                    android:layout_width="67dp"
-                    android:layout_height="74dp"
-                    android:background="@android:color/transparent"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="30dp"
-                    android:src="@drawable/homeicon"
-                    app:layout_constraintEnd_toStartOf="@+id/search_solution"
-                    app:layout_constraintHorizontal_bias="0.484"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteY="641dp"
-                    android:layout_marginLeft="30dp">
-
-                </ImageButton>
-
-                <ImageButton
-                    android:id="@+id/mypageicon"
-                    android:layout_width="67dp"
-                    android:layout_height="74dp"
-                    android:background="@android:color/transparent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/my"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="222dp"
-                    tools:layout_editor_absoluteY="641dp"
-                    android:layout_marginLeft="30dp">
-
-                </ImageButton>
-
-                <ImageButton
-                    android:id="@+id/search_solution"
-                    android:layout_width="67dp"
-                    android:layout_height="74dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@android:color/transparent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/search"
-                    app:layout_constraintEnd_toStartOf="@+id/mypageicon"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteY="641dp"
-                    android:layout_marginLeft="30dp">
-
-                </ImageButton>
-
-
-                <ImageButton
-                    android:id="@+id/setting"
-                    android:layout_width="67dp"
-                    android:layout_height="74dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/set"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.527"
-                    app:layout_constraintStart_toEndOf="@+id/mypageicon"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteY="641dp"
-                    android:layout_marginLeft="10dp">
-
-                </ImageButton>
-
-
-            </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>
