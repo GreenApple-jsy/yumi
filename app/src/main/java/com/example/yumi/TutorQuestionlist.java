@@ -2,14 +2,23 @@ package com.example.yumi;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +34,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class TutorQuestionlist extends AppCompatActivity {
+public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragment.OnFragmentInteractionListener, PersonLogFragment.OnFragmentInteractionListener, SettingLogFragment.OnFragmentInteractionListener,SearchLogFragment.OnFragmentInteractionListener {
 
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
@@ -40,14 +49,13 @@ public class TutorQuestionlist extends AppCompatActivity {
         GetData task = new GetData();
         task.execute( "http://1.234.38.211/getNoReservationQdata.php", "");
 
-        Button btn = findViewById(R.id.bt_tab3);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), tutorMyPage.class);
-                startActivity(intent);
-            }
-        });
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(true);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -57,7 +65,43 @@ public class TutorQuestionlist extends AppCompatActivity {
                 startActivity(intent); //문제 상세 정보 띄어주기 액티비티
             }
         });
+
+        new Thread(new Runnable() {
+            @Override public void run() {
+                BottomBar bottomBar = findViewById(R.id.bottomBar);
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                    @Override
+                    public void onTabSelected(int tabId) {
+                        if (tabId == R.id.tab_person_log){
+                            Intent intent = new Intent(getApplicationContext(),tutorMyPage.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_search_log){
+                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
+                            //startActivity(intent);
+                            Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (tabId == R.id.tab_setting_log){
+                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
+                            //startActivity(intent);
+                            Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } }).start();
     }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.actionbar_actions,menu);
+        return true;
+    }
+
 
     private class GetData extends AsyncTask<String, Void, String> {
 
