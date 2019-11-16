@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <tabs>
+        <tab
+            id="@+id/tab_home_log"
+            icon="@drawable/ic_home_black_24dp"
+            title="Home"/>
+        <tab
+            id="@+id/tab_person_log"
+            icon="@drawable/ic_person_black_24dp"
+            title="My page"/>
+        <tab
+            id="@+id/tab_search_log"
+            icon="@drawable/ic_search_black_24dp"
+            title="Search"/>
+        <tab
+            id="@+id/tab_setting_log"
+            icon="@drawable/ic_settings_black_24dp"
+            title="Setting"/>
+    </tabs>
+
+</androidx.preference.PreferenceScreen>
