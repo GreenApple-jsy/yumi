@@ -76,31 +76,32 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
             }
         });
 
-        
+
 
         new Thread(new Runnable() {
             @Override public void run() {
-            BottomBar bottomBar = findViewById(R.id.bottomBar);
-            bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-                @Override
-                public void onTabSelected(int tabId) {
-                    if (tabId == R.id.tab_person_log){
-                        Intent intent = new Intent(getApplicationContext(),stdMyPage.class);
-                        startActivity(intent);
+                BottomBar bottomBar = findViewById(R.id.bottomBar);
+
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                    @Override
+                    public void onTabSelected(int tabId) {
+                        if (tabId == R.id.tab_person_log){
+                            Intent intent = new Intent(getApplicationContext(),stdMyPage.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_search_log){
+                            Intent intent = new Intent(getApplicationContext(), stdSelect.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_setting_log){
+                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
+                            //startActivity(intent);
+                            Toast.makeText(StudentQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else if (tabId == R.id.tab_search_log){
-                        //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
-                        //startActivity(intent);
-                        Toast.makeText(StudentQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (tabId == R.id.tab_setting_log){
-                        //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
-                        //startActivity(intent);
-                        Toast.makeText(StudentQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        } }).start();
+                });
+
+            } }).start();
 
 
     }
