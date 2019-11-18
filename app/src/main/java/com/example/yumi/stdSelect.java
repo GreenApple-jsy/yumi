@@ -1,25 +1,79 @@
 package com.example.yumi;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import android.content.Context;
+import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static com.example.yumi.R.layout.search_list_detail;
+import android.content.Context;
+import android.content.Context;
 public class stdSelect extends AppCompatActivity {
     ArrayAdapter<CharSequence>midHighAdapter, subAdapter;
     int mOh = 0;
     int sub = 0;
     int cat = 0;
+    phpConnect task;
     String grade= "";
     String subj = "";
     String categ = "";
     String[] array;
     String[] subArray;
+    ArrayList<HashMap<String, String>> mArrayList;
+    String mJsonString;
+    private static String TAG = "phptest_MainActivity";
+    private static final String TAG_JSON="webnautes";
+    private static final String ID = "id";
+    private static final String TAG_SID = "s_id";
+    private static final String TAG_TID = "t_id";
+    private static final String TAG_BOOK = "book";
+    private static final String TAG_sTime = "start_time";
+    private static final String TAG_DT = "dates";
+    private static final String TAG_CHP = "chapter";
+    private static final String TAG_PAGES = "page";
+    private static final String TAG_QN = "q_number";
+    Button more;
+    View header;
+    ListView mlistView ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +84,8 @@ public class stdSelect extends AppCompatActivity {
         final Spinner category = (Spinner)findViewById(R.id.category);
 
 
+
+        mlistView = (ListView)findViewById(R.id.search_list) ;
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -309,18 +365,153 @@ public class stdSelect extends AppCompatActivity {
             }
         });
 
-
-
     }
-
 
     public void search(View view ){
         if (mOh == 0 || sub == 0 || cat == 0){
             Toast.makeText(getApplicationContext(), "전체 항목을 선택해 주세요.", Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(getApplicationContext(), grade + " " + subj + " " + categ, Toast.LENGTH_SHORT).show();
+            // category로만 검색
+            categ = categ.replace(" ", "%20");
+            task = new stdSelect.phpConnect();
+            task.execute();
         }
+    }
+
+
+    class phpConnect extends AsyncTask<String,Void,String> {
+        @Override
+        protected String doInBackground(String... arg0) {
+            try {
+                // 날짜 추가
+                String link = "http://1.234.38.211/searchingQuestion.php?chapter="+categ;
+                URL url = new URL(link);
+                HttpClient client = new DefaultHttpClient();
+                HttpGet request = new HttpGet();
+                request.setURI(new URI(link));
+                HttpResponse response = client.execute(request);
+                BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+                StringBuffer sb = new StringBuffer("");
+                String line = "";
+
+                while ((line = in.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                in.close();
+                return sb.toString();
+
+            } catch (Exception e) {
+                return new String("Exception: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+
+            Log.d(TAG, "response  - " + result);
+
+            if (result == null){
+            }
+            else {
+                mJsonString = result;
+                showResult();
+            }
+        }
+    }
+
+    private void showResult(){
+
+        mArrayList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+            for(int i=0;i<jsonArray.length();i++){
+
+                JSONObject item = jsonArray.getJSONObject(i);
+
+
+                int id_num = item.getInt(ID);
+                String bookName = item.getString(TAG_BOOK);
+                String pages = item.getString(TAG_PAGES); pages+=" page"; String q_num = "Q : ";
+                q_num += item.getString(TAG_QN);
+                String startTime = item.getString(TAG_sTime);
+                String dates = item.getString(TAG_DT);
+                String chapter = item.getString(TAG_CHP);
+                String st_id = item.getString(TAG_SID);
+                String tt_id = item.getString(TAG_TID);
+
+                HashMap<String,String> hashMap = new HashMap<>();
+
+                hashMap.put(TAG_SID, st_id);
+                hashMap.put(TAG_TID, tt_id);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_sTime, startTime);
+                hashMap.put(TAG_CHP , chapter);
+                hashMap.put(TAG_DT, dates);
+                hashMap.put(TAG_BOOK , bookName);
+                hashMap.put(TAG_PAGES , pages);
+                hashMap.put(TAG_QN , q_num);
+                mArrayList.add(hashMap);
+            }
+
+            ListAdapter adapter = new SimpleAdapter(
+                    stdSelect.this, mArrayList, search_list_detail,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.bookPage, R.id.bookNum, R.id.date}
+            ) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+
+                    Button b = (Button) v.findViewById(R.id.moreView);
+                    b.setVisibility(View.VISIBLE);
+                    b.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View arg0) {
+                            // TODO Auto-generated method stub
+                            Toast.makeText(stdSelect.this, "향후 영상 다시보기 페이지로 넘어감", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    return v;
+                }
+            };
+            mlistView.setAdapter(adapter);
+
+        } catch (JSONException e) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_TID, "");
+            hashMap.put(TAG_BOOK , "");
+            hashMap.put(TAG_sTime, "");
+            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_DT, "");
+            hashMap.put(TAG_BOOK , "해당 결과가 없습니다.");
+            hashMap.put(TAG_PAGES , "");
+            mArrayList.add(hashMap);
+            ListAdapter adapter = new SimpleAdapter(
+                    stdSelect.this, mArrayList, search_list_detail,
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.bookPage, R.id.bookNum, R.id.date}
+            ){
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+
+                    Button b = (Button) v.findViewById(R.id.moreView);
+                    b.setVisibility(View.INVISIBLE);
+                    return v;
+                }
+            };
+            mlistView.setAdapter(adapter);
+            Log.d(TAG, "showResult : ", e);
+        }
+
     }
 
 }
