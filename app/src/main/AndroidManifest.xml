@@ -60,6 +60,8 @@
         <activity android:name=".ReplayVideo" />
         <activity android:name=".Cons" />
         <activity android:name=".stdSelect" />
+        <activity android:name=".Tutor_reservation"/>
+        <activity android:name=".Tutor_timetable"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
