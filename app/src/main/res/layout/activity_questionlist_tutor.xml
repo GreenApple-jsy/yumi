@@ -20,7 +20,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -29,26 +28,26 @@
 
         <Button
             android:id="@+id/bt_tab1"
-            android:layout_width="361dp"
-            android:layout_height="51dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="70"
             android:text="해설을 기다리는 문제" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="wrap_content"
-            android:layout_height="543dp"
+            android:layout_height="544dp"
             android:layout_weight="10">
 
         </ListView>
 
+        <com.roughike.bottombar.BottomBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            app:bb_tabXmlResource="@xml/bottombar_tabs" />
+
     </LinearLayout>
 
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
 </LinearLayout>
