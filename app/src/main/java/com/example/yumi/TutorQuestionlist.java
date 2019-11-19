@@ -1,10 +1,12 @@
 package com.example.yumi;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -66,12 +68,16 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
             }
         });
 
+
+
         new Thread(new Runnable() {
             @Override public void run() {
+
                 BottomBar bottomBar = findViewById(R.id.bottomBar);
                 bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(int tabId) {
+
                         if (tabId == R.id.tab_person_log){
                             Intent intent = new Intent(getApplicationContext(),tutorMyPage.class);
                             startActivity(intent);
@@ -82,14 +88,17 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
                             Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
                         else if (tabId == R.id.tab_setting_log){
-                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
-                            //startActivity(intent);
-                            Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
+                            startActivity(intent);
                         }
+
                     }
                 });
+
             } }).start();
     }
+
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -167,7 +176,10 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
         }
     }
 
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) { case KeyEvent.KEYCODE_BACK: return true;
+        } return super.onKeyDown(keyCode, event);
+    }
     public void InitializeQuestionData()
     {
         String TAG_JSON="webnautes";
