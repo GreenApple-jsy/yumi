@@ -62,7 +62,7 @@ public class tutorMyPage extends AppCompatActivity {
     private static final String TAG_CHP = "chapter";
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
-
+    int listNum =0;
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
@@ -103,13 +103,14 @@ public class tutorMyPage extends AppCompatActivity {
         // date 데이터 완성되면 추후 주석 풀 것
         task = new tutorMyPage.phpConnect();
         task.execute();
-        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getMoreBooking(position);
-            }
-        });
-
+        if (listNum > 0) {
+            mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    getMoreBooking(position);
+                }
+            });
+        }
     }
 
     void getMoreBooking(int position) {
@@ -246,7 +247,7 @@ public class tutorMyPage extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-
+            listNum = jsonArray.length();
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
@@ -298,7 +299,7 @@ public class tutorMyPage extends AppCompatActivity {
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
-            hashMap.put(TAG_BOOK , "");
+            hashMap.put(TAG_BOOK , "오늘 강의는 없습니다.");
             hashMap.put(TAG_sTime, "");
             hashMap.put(TAG_CHP , "");
             hashMap.put(TAG_DT, "");
@@ -311,7 +312,7 @@ public class tutorMyPage extends AppCompatActivity {
                     new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_sTime},
                     new int[]{R.id.stdNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum , R.id.TodayDate, R.id.startTime}
             );
-
+            listNum= 0;
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
