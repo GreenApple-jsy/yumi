@@ -1,26 +1,28 @@
 package com.example.yumi;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.view.Menu;
+import android.widget.Toast;
+
+import androidx.preference.ListPreference;
+
 public class tutorPreferences extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getFragmentManager()
-                .beginTransaction()
-                .replace(android.R.id.content,
-                        new MyPreferenceFragment()).commit();
+        addPreferencesFromResource(R.xml.std_prf);
+
+        Intent i = new Intent(tutorPreferences.this, MenuActivity.class);
+        Preference logOut = findPreference("logout");
+        logOut.setIntent(i);
+
     }
 
-    // PreferenceFragment 클래스 사용
-    public static class MyPreferenceFragment extends
-            PreferenceFragment {
-        @Override
-        public void onCreate(final Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.tutor_prf);
-        }
-    }
 }
