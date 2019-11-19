@@ -76,6 +76,10 @@
         <activity android:name="com.example.yumi.stdMngBooking" />
         <activity android:name="com.example.yumi.stdManageTT" />
         <activity android:name="com.example.yumi.ReplayVideo" />
+        <activity android:name="com.example.yumi.Cons" />
+        <activity android:name="com.example.yumi.stdSelect" />
+        <activity android:name="com.example.yumi.Tutor_reservation" />
+        <activity android:name="com.example.yumi.Tutor_timetable" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,10 +41,20 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question_detail_tutor);
 
         Intent intent = getIntent(); /*데이터 수신*/
-        int question_id = intent.getExtras().getInt("question_id"); //상세 정보를 볼 문제 번호 받아옴
+        final int question_id = intent.getExtras().getInt("question_id"); //상세 정보를 볼 문제 번호 받아옴
 
         GetData task = new GetData();
         task.execute( "http://1.234.38.211/getOneQuestionDetail.php?id=" + Integer.toString(question_id), "");
+
+        Button MyPageButton = findViewById(R.id.reserve);
+        MyPageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Tutor_reservation.class);
+                intent.putExtra("question_id",question_id);
+                startActivity(intent);
+            }
+        });
     }
 
     private class GetData extends AsyncTask<String, Void, String> {
@@ -160,7 +172,7 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
         TextView tv_qnum= findViewById(R.id.q_number);
         TextView tv_stime= findViewById(R.id.start_time);
         TextView tv_etime= findViewById(R.id.end_time);
-        TextView tv_reserv= findViewById(R.id.reservation);
+        TextView tv_reserv= findViewById(R.id.r);
         TextView tv_complete= findViewById(R.id.complete);
         TextView tv_good= findViewById(R.id.good);
 
