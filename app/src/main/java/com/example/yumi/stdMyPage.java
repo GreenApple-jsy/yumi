@@ -70,7 +70,7 @@ public class stdMyPage extends AppCompatActivity {
     String end_time[];
     String yyyy="", mm="", dd="";
     String sid = "";
-
+    int listNuM = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,13 +108,15 @@ public class stdMyPage extends AppCompatActivity {
 
         task = new stdMyPage.phpConnect();
         task.execute();
-        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getMoreBooking(position);
-            }
-        });
-
+        // 오늘 강의가 없는 경우 클릭 불가
+        if(listNuM > 0 ) {
+            mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    getMoreBooking(position);
+                    }
+            });
+        }
     }
 
     void getMoreBooking(int position) {
@@ -257,7 +259,7 @@ public class stdMyPage extends AppCompatActivity {
             arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
             end_time = new String[jsonArray.length()];
-
+            listNuM = jsonArray.length();
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -305,7 +307,7 @@ public class stdMyPage extends AppCompatActivity {
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
-            hashMap.put(TAG_BOOK , "");
+            hashMap.put(TAG_BOOK , "오늘 강의가 없습니다.");
             hashMap.put(TAG_sTime, "");
             hashMap.put(TAG_CHP , "");
             hashMap.put(TAG_DT, "");
@@ -314,10 +316,10 @@ public class stdMyPage extends AppCompatActivity {
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_DT, TAG_sTime },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.TodayDate, R.id.startTime}
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
             );
-
+            listNuM = 0;
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
