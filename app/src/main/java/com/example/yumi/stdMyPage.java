@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -70,7 +73,7 @@ public class stdMyPage extends AppCompatActivity {
     String end_time[];
     String yyyy="", mm="", dd="";
     String sid = "";
-    int listNuM = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,16 +111,45 @@ public class stdMyPage extends AppCompatActivity {
 
         task = new stdMyPage.phpConnect();
         task.execute();
-        // 오늘 강의가 없는 경우 클릭 불가
-        if(listNuM > 0 ) {
-            mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    getMoreBooking(position);
+        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                getMoreBooking(position);
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override public void run() {
+                BottomBar bottomBar = findViewById(R.id.bottomBar);
+                bottomBar.setDefaultTab(R.id.tab_person_log);
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                    @Override
+                    public void onTabSelected(int tabId) {
+                        if (tabId == R.id.tab_home_log){
+                            Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_search_log){
+                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
+                            //startActivity(intent);
+                            Toast.makeText(stdMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (tabId == R.id.tab_setting_log){
+                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
+                            //startActivity(intent);
+                            Toast.makeText(stdMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                        }
                     }
-            });
-        }
+                });
+            } }).start();
+
+
     }
+
+    @Override public void onBackPressed() {
+        //super.onBackPressed();
+        }  //뒤로 가기 버튼 막음.
+
 
     void getMoreBooking(int position) {
         index_num = position;
@@ -259,7 +291,7 @@ public class stdMyPage extends AppCompatActivity {
             arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
             end_time = new String[jsonArray.length()];
-            listNuM = jsonArray.length();
+
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -304,23 +336,22 @@ public class stdMyPage extends AppCompatActivity {
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
-
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "오늘 강의가 없습니다.");
+            hashMap.put(TAG_CHP , "");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_DT, TAG_sTime },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.TodayDate, R.id.startTime}
             );
-            listNuM = 0;
+
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
