@@ -17,7 +17,7 @@ public class tutorPreferences extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.std_prf);
+        addPreferencesFromResource(R.xml.tutor_prf);
 
         Intent i = new Intent(tutorPreferences.this, MenuActivity.class);
         Preference logOut = findPreference("logout");
