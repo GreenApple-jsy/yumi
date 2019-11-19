@@ -537,10 +537,6 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
-    }
     private String getURLForResource(int resId) {
         return Uri.parse("android.resource://" + R.class.getPackage().getName() + "/" + resId).toString();
     }
