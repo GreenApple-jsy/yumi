@@ -30,27 +30,25 @@
         <Button
             android:id="@+id/bt_tab1"
             android:layout_width="361dp"
-            android:layout_height="63dp"
-            android:layout_weight="70"
+            android:layout_height="51dp"
             android:layout_gravity="center"
+            android:layout_weight="70"
             android:text="해설을 기다리는 문제" />
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="wrap_content"
-            android:layout_height="499dp"
+            android:layout_height="543dp"
             android:layout_weight="10">
 
         </ListView>
-
 
     </LinearLayout>
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="86dp"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
-
 
 </LinearLayout>
