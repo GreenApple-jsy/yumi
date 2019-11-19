@@ -304,12 +304,13 @@ public class stdMyPage extends AppCompatActivity {
             mlistView.setAdapter(adapter);
 
         } catch (JSONException e) {
+
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
-            hashMap.put(TAG_BOOK , "오늘 강의가 없습니다.");
+            hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_CHP , "오늘 강의가 없습니다.");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
