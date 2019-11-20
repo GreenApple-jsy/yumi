@@ -1,6 +1,7 @@
 package com.example.yumi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -46,6 +47,10 @@ import java.util.HashMap;
 import static com.example.yumi.R.layout.search_list_detail;
 import android.content.Context;
 import android.content.Context;
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+
 public class stdSelect extends AppCompatActivity {
     ArrayAdapter<CharSequence>midHighAdapter, subAdapter;
     int mOh = 0;
@@ -86,6 +91,30 @@ public class stdSelect extends AppCompatActivity {
 
 
         mlistView = (ListView)findViewById(R.id.search_list) ;
+
+        new Thread(new Runnable() {
+            @Override public void run() {
+                BottomBar bottomBar = findViewById(R.id.bottomBar);
+                bottomBar.setDefaultTab(R.id.tab_search_log);
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                    @Override
+                    public void onTabSelected(int tabId) {
+                        if (tabId == R.id.tab_home_log){
+                            Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_person_log){
+                            Intent intent = new Intent(getApplicationContext(), stdMyPage.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_setting_log){
+                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+            } }).start();
+
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -364,6 +393,7 @@ public class stdSelect extends AppCompatActivity {
 
             }
         });
+
 
     }
 
