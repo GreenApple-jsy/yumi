@@ -80,12 +80,12 @@
         android:id="@+id/myStudent"
         android:layout_width="102dp"
         android:layout_height="47dp"
-        android:background="#FF8E99"
+        android:background="#D7AC87"
         android:onClick="mngStudent"
         android:text="학생 관리"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.883"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
@@ -94,7 +94,7 @@
         android:id="@+id/rcdVideo"
         android:layout_width="103dp"
         android:layout_height="47dp"
-        android:background="#FF8E99"
+        android:background="#D7AC87"
         android:onClick="myRcdVideo"
         android:text="풀이 영상"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,7 +107,7 @@
         android:id="@+id/button4"
         android:layout_width="103dp"
         android:layout_height="47dp"
-        android:background="#FF8E99"
+        android:background="#D7AC87"
         android:onClick="mngTutorBooking"
         android:text="예약 관리"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +115,7 @@
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <Button
         android:id="@+id/button"
@@ -140,7 +140,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginBottom="216dp"
         android:layout_weight="6"
-        android:background="#FFC2C2"
+        android:background="@color/colorPrimary"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,5 +161,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4"
         app:layout_constraintVertical_bias="0.063" />
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_alignParentBottom="true"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
