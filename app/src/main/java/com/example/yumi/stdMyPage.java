@@ -62,7 +62,7 @@ public class stdMyPage extends AppCompatActivity {
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
 
-
+    int listNum =0;
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
@@ -111,13 +111,15 @@ public class stdMyPage extends AppCompatActivity {
 
         task = new stdMyPage.phpConnect();
         task.execute();
-        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getMoreBooking(position);
-            }
-        });
 
+        if (listNum > 0) {
+            mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    getMoreBooking(position);
+                }
+            });
+        }
         new Thread(new Runnable() {
             @Override public void run() {
                 BottomBar bottomBar = findViewById(R.id.bottomBar);
@@ -130,14 +132,12 @@ public class stdMyPage extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else if (tabId == R.id.tab_search_log){
-                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
-                            //startActivity(intent);
-                            Toast.makeText(stdMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), stdSelect.class);
+                            startActivity(intent);
                         }
                         else if (tabId == R.id.tab_setting_log){
-                            //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
-                            //startActivity(intent);
-                            Toast.makeText(stdMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
+                            startActivity(intent);
                         }
                     }
                 });
@@ -145,10 +145,6 @@ public class stdMyPage extends AppCompatActivity {
 
 
     }
-
-    @Override public void onBackPressed() {
-        //super.onBackPressed();
-        }  //뒤로 가기 버튼 막음.
 
 
     void getMoreBooking(int position) {
@@ -285,7 +281,7 @@ public class stdMyPage extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-
+            listNum = jsonArray.length();
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             arr_tid = new String[jsonArray.length()];
@@ -341,17 +337,17 @@ public class stdMyPage extends AppCompatActivity {
             hashMap.put(TAG_TID, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_CHP , "오늘 강의는 ");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_DT, TAG_sTime },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.TodayDate, R.id.startTime}
+                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
+                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
             );
-
+            listNum =0;
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
