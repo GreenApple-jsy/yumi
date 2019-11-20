@@ -21,6 +21,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -111,6 +114,31 @@ public class tutorMyPage extends AppCompatActivity {
                 }
             });
         }
+
+        new Thread(new Runnable() {
+            @Override public void run() {
+                BottomBar bottomBar = findViewById(R.id.bottomBar);
+                bottomBar.setDefaultTab(R.id.tab_person_log);
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                    @Override
+                    public void onTabSelected(int tabId) {
+                        if (tabId == R.id.tab_home_log){
+                            Intent intent = new Intent(getApplicationContext(),TutorQuestionlist.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_search_log){
+                            //Intent intent = new Intent(getApplicationContext(), stdSelect.class);
+                            //startActivity(intent);
+                            Toast.makeText(tutorMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                        }
+                        else if (tabId == R.id.tab_setting_log){
+                            Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+            } }).start();
+
     }
 
     void getMoreBooking(int position) {
