@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -160,8 +160,8 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
         TextView tv_page= findViewById(R.id.page);
         TextView tv_qnum= findViewById(R.id.q_number);
         TextView tv_stime= findViewById(R.id.start_time);
-        TextView tv_reserv= findViewById(R.id.reservation);
-        TextView tv_complete= findViewById(R.id.complete);
+        CheckBox tv_reserv= findViewById(R.id.r);
+        CheckBox tv_complete= findViewById(R.id.complete);
 
         tv_age.setText(q.getage());
         tv_semester.setText(q.getsemester());
@@ -170,14 +170,18 @@ public class StudentQuestionDetailActivity extends AppCompatActivity {
         tv_qnum.setText(q.getqnumber() + "번");
         tv_stime.setText("풀이 가능 시간 : " +q.getstime());
         if(q.getreservation() == 1)
-            tv_reserv.setText("풀이 예약 완료");
+            {tv_reserv.setText("예약 완료");
+            tv_reserv.setChecked(true);}
         else
-            tv_reserv.setText("대기 중");
+            {tv_reserv.setText("예약을 기다리는 중");
+            tv_reserv.setChecked(false);}
 
         if(q.getcomplete() == 1)
-            tv_complete.setText("풀이 완료");
+            {tv_complete.setText("풀이 완료");
+            tv_complete.setChecked(true);}
         else
-            tv_complete.setText(" ");
+            {tv_complete.setText("풀이를 기다리는 중");
+            tv_complete.setChecked(false);}
     }
 
 
