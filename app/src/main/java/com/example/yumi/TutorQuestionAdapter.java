@@ -1,20 +1,13 @@
 package com.example.yumi;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class TutorQuestionAdapter extends BaseAdapter {
@@ -54,8 +47,11 @@ public class TutorQuestionAdapter extends BaseAdapter {
         TextView tv_page= view.findViewById(R.id.page);
         TextView tv_qnum= view.findViewById(R.id.q_number);
         TextView tv_stime= view.findViewById(R.id.start_time);
-        TextView tv_reserv= view.findViewById(R.id.reservation);
-        TextView tv_complete= view.findViewById(R.id.complete);
+        CheckBox tv_reserv= view.findViewById(R.id.reservation);
+        CheckBox tv_complete= view.findViewById(R.id.complete);
+
+        tv_reserv.setFocusable(false);
+        tv_complete.setFocusable(false);
 
         tv_age.setText(Questions.get(position).getage());
         tv_semester.setText(Questions.get(position).getsemester());
@@ -63,15 +59,20 @@ public class TutorQuestionAdapter extends BaseAdapter {
         tv_page.setText(Questions.get(position).getpage() + "pg");
         tv_qnum.setText(Questions.get(position).getqnumber() + "번");
         tv_stime.setText("풀이 가능 시간 : " +Questions.get(position).getstime());
+
         if(Questions.get(position).getreservation() == 1)
-            tv_reserv.setText("풀이 예약 완료");
+            {tv_reserv.setText("예약 완료");
+            tv_reserv.setChecked(true);}
         else
-            tv_reserv.setText("대기 중");
+            {tv_reserv.setText("예약을 기다리는 중");
+            tv_reserv.setChecked(false);}
 
         if(Questions.get(position).getcomplete() == 1)
-            tv_complete.setText("풀이 완료");
+            {tv_complete.setText("풀이 완료");
+            tv_complete.setChecked(true);}
         else
-            tv_complete.setText(" ");
+            {tv_complete.setText("풀이를 기다리는 중");
+            tv_complete.setChecked(false);}
 
         return view;
     }
