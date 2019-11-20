@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:layout_weight="20"
@@ -115,25 +115,25 @@
             android:layout_height="46dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/reservation"
-                android:layout_width="121dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="예약여부"
-                android:textColor="#000000"
-                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/complete"
-                android:layout_width="178dp"
-                android:layout_height="match_parent"
+
+            <CheckBox
+                android:id="@+id/reservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="풀이 완료 여부"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:clickable="false"
+                android:layout_marginRight="7dp"
+                android:text="예약여부"/>
+
+            <CheckBox
+                android:id="@+id/complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:layout_marginRight="7dp"
+                android:text="풀이 완료 여부" />
 
             <TextView
                 android:id="@+id/good"
