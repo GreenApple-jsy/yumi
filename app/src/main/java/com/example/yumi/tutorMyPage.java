@@ -1,9 +1,12 @@
 package com.example.yumi;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,9 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnTabSelectListener;
+import androidx.core.app.NotificationCompat;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -27,6 +28,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -43,14 +45,13 @@ import java.util.HashMap;
 import java.util.Locale;
 
 
-public class stdMyPage extends AppCompatActivity {
+public class tutorMyPage extends AppCompatActivity {
     private static String TAG = "phptest_MainActivity";
     private static final String TAG_JSON="webnautes";
     ListView mlistView;
+    TextView nickText, univText ;
     String mJsonString;
     TextView mTextViewResult;
-    TextView nickText, schoolText, gradeText;
-
     ArrayList<HashMap<String, String>> mArrayList;
     private static final String ID = "id";
     private static final String TAG_SID = "s_id";
@@ -61,42 +62,31 @@ public class stdMyPage extends AppCompatActivity {
     private static final String TAG_CHP = "chapter";
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
-
     int listNum =0;
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
-    String arr_tid[];
     String st_time[];
     String end_time[];
+    String tid="";
     String yyyy="", mm="", dd="";
-    String sid = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.std_my_page);
+        setContentView(R.layout.tc_my_page);
 
-        // 학생 프로필 정보
         SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        tid = pref.getString("id", "default");
         String nickName = pref.getString("nickName", "default");
-        String school = pref.getString("school", "default");
-        String grade = pref.getString("grade", "default");
-        sid = pref.getString("id", "default");
-
-        nickText = (TextView)findViewById(R.id.stdNick);
+        String univ = pref.getString("university", "default");
+        nickText = (TextView)findViewById(R.id.tt_nick);
         nickText.setText(nickName);
 
-        schoolText = (TextView)findViewById(R.id.schoolName);
-        schoolText.setText(school);
-
-        gradeText = (TextView)findViewById(R.id.stdGrade);
-        gradeText.setText(grade);
-
-        mlistView = (ListView)findViewById(R.id.std_class_list) ;
-
+        univText = (TextView)findViewById(R.id.tt_univ);
+        univText.setText(univ);
 
         Date currentTime = Calendar.getInstance().getTime();
         //SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());
@@ -109,9 +99,10 @@ public class stdMyPage extends AppCompatActivity {
         mm = monthFormat.format(currentTime);
         dd = dayFormat.format(currentTime);
 
-        task = new stdMyPage.phpConnect();
+        mlistView = (ListView)findViewById(R.id.listView_today_list) ;
+        // date 데이터 완성되면 추후 주석 풀 것
+        task = new tutorMyPage.phpConnect();
         task.execute();
-
         if (listNum > 0) {
             mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -120,39 +111,14 @@ public class stdMyPage extends AppCompatActivity {
                 }
             });
         }
-        new Thread(new Runnable() {
-            @Override public void run() {
-                BottomBar bottomBar = findViewById(R.id.bottomBar);
-                bottomBar.setDefaultTab(R.id.tab_person_log);
-                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-                    @Override
-                    public void onTabSelected(int tabId) {
-                        if (tabId == R.id.tab_home_log){
-                            Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);
-                            startActivity(intent);
-                        }
-                        else if (tabId == R.id.tab_search_log){
-                            Intent intent = new Intent(getApplicationContext(), stdSelect.class);
-                            startActivity(intent);
-                        }
-                        else if (tabId == R.id.tab_setting_log){
-                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
-                            startActivity(intent);
-                        }
-                    }
-                });
-            } }).start();
-
-
     }
-
 
     void getMoreBooking(int position) {
         index_num = position;
 
-        new AlertDialog.Builder(stdMyPage.this)
+        new AlertDialog.Builder(tutorMyPage.this)
                 .setTitle("예약 정보" )
-                .setMessage("선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
+                .setMessage("학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -163,7 +129,7 @@ public class stdMyPage extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_tid[index_num]); //대화할 상대 선생 아이디 전송
+                        intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 선생 아이디 전송
                         startActivity(intent);
                     }
                 })
@@ -173,11 +139,11 @@ public class stdMyPage extends AppCompatActivity {
 
     class phpConnect extends AsyncTask<String,Void,String> {
         String stringParameter = "&yyyy="+yyyy+"&mm="+mm+"&dd="+dd;
-
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/todayClass.php?id="+sid+stringParameter;
+                // 날짜 추가
+                String link = "http://1.234.38.211/todayLecture.php?id="+tid+stringParameter;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
@@ -284,9 +250,8 @@ public class stdMyPage extends AppCompatActivity {
             listNum = jsonArray.length();
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
-            arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
-            end_time = new String[jsonArray.length()];
+
 
 
             for(int i=0;i<jsonArray.length();i++){
@@ -304,13 +269,12 @@ public class stdMyPage extends AppCompatActivity {
                 String st_id = item.getString(TAG_SID);
                 String tt_id = item.getString(TAG_TID);
 
-                HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
-                arr_tid[i]=tt_id;
                 st_time[i]=startTime;
 
+                HashMap<String,String> hashMap = new HashMap<>();
                 hashMap.put(TAG_SID, st_id);
                 hashMap.put(TAG_TID, tt_id);
                 hashMap.put(TAG_BOOK , bookName);
@@ -324,9 +288,9 @@ public class stdMyPage extends AppCompatActivity {
             }
 
             ListAdapter adapter = new SimpleAdapter(
-                    stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
+                    tutorMyPage.this, mArrayList, R.layout.tutor_today_list,
+                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_sTime},
+                    new int[]{R.id.stdNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum , R.id.TodayDate, R.id.startTime}
             );
 
             mlistView.setAdapter(adapter);
@@ -335,41 +299,83 @@ public class stdMyPage extends AppCompatActivity {
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
-            hashMap.put(TAG_BOOK , "");
+            hashMap.put(TAG_BOOK , "오늘 강의는 없습니다.");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "오늘 강의는 ");
+            hashMap.put(TAG_CHP , "");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
-            hashMap.put(TAG_PAGES , "");
+            hashMap.put(TAG_PAGES ,"");
+            hashMap.put(TAG_QN , "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
-                    stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
+                    tutorMyPage.this, mArrayList, R.layout.tutor_today_list,
+                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_sTime},
+                    new int[]{R.id.stdNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum , R.id.TodayDate, R.id.startTime}
             );
-            listNum =0;
+            listNum= 0;
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
 
     }
 
-    public void myTutor(View view){
-        Intent intent = new Intent(getApplicationContext(), com.example.yumi.stdManageTT.class);
+    public void mngStudent(View view){
+        Intent intent = new Intent(getApplicationContext(), com.example.yumi.tutorManageStudent.class);
         startActivity(intent);
 
     }
 
 
-    public void ReplayVideo(View view){
-        Intent intent = new Intent(getApplicationContext(), com.example.yumi.ReplayVideo.class);
+    public void myRcdVideo(View view){
+        Intent intent = new Intent(getApplicationContext(), com.example.yumi.getTutorVideo.class);
         startActivity(intent);
     }
 
 
-    public void StdMyBooking(View view){
-        Intent intent = new Intent(getApplicationContext(), com.example.yumi.stdMngBooking.class);
+    public void mngTutorBooking(View view){
+        Intent intent = new Intent(getApplicationContext(), com.example.yumi.tutorMngBooking.class);
         startActivity(intent);
     }
 
+
+
+    public void tutorPrf(View view) {
+        Intent intent = new Intent(getApplicationContext(), com.example.yumi.tutorPreferences.class);
+        startActivity(intent);
+    }
+
+
+    public void testPUSH(View view){
+
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss aa");
+        String date = mFormat.format(mDate);
+        String year = date.substring(0,4);
+        String month = date.substring(5,7);
+        String day = date.substring(8,10);
+        String hour = date.substring(11,13);
+        String minute = date.substring(14,16);
+        String mn = date.substring(date.length()-2,date.length());
+        if (mn == "오후"){
+            int editHour = Integer.parseInt(hour);
+            editHour += 12;
+            year =  Integer.toString(editHour);
+        }
+
+
+
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(tutorMyPage.this)
+                        .setSmallIcon(R.drawable.icsunsang)
+                        .setContentTitle("제목")
+                        .setContentText("내용")
+                        .setDefaults(Notification.DEFAULT_VIBRATE)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setAutoCancel(true);
+
+
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, mBuilder.build());
+    }
 }
