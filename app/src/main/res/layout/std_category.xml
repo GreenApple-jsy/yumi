@@ -108,7 +108,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="467dp"
+        android:layout_height="393dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -119,8 +119,8 @@
 
         <ListView
             android:id="@+id/search_list"
-            android:layout_width="333dp"
-            android:layout_height="474dp"
+            android:layout_width="342dp"
+            android:layout_height="393dp"
             android:background="#B2DDB4" />
 
         <FrameLayout
@@ -133,9 +133,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="82dp">
+        android:layout_height="78dp">
 
     </FrameLayout>
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_alignParentBottom="true"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </LinearLayout>
