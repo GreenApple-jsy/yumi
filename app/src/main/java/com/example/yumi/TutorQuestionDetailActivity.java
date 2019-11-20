@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,8 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_detail_tutor);
+
+        System.out.print("W");
 
         Intent intent = getIntent(); /*데이터 수신*/
         final int question_id = intent.getExtras().getInt("question_id"); //상세 정보를 볼 문제 번호 받아옴
@@ -172,8 +175,8 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
         TextView tv_qnum= findViewById(R.id.q_number);
         TextView tv_stime= findViewById(R.id.start_time);
         TextView tv_etime= findViewById(R.id.end_time);
-        TextView tv_reserv= findViewById(R.id.r);
-        TextView tv_complete= findViewById(R.id.complete);
+        CheckBox tv_reserv= findViewById(R.id.r);
+        CheckBox tv_complete= findViewById(R.id.complete);
         TextView tv_good= findViewById(R.id.good);
 
         tv_age.setText(q.getage());
@@ -183,14 +186,18 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
         tv_qnum.setText(q.getqnumber() + "번");
         tv_stime.setText("풀이 가능 시간 : " +q.getstime());
         if(q.getreservation() == 1)
-            tv_reserv.setText("풀이 예약 완료");
+            {tv_reserv.setText("예약 완료");
+            tv_reserv.setChecked(true);}
         else
-            tv_reserv.setText("대기 중");
+            {tv_reserv.setText("예약을 기다리는 중");
+            tv_reserv.setChecked(false);}
 
         if(q.getcomplete() == 1)
-            tv_complete.setText("풀이 완료");
+            {tv_complete.setText("풀이 완료");
+            tv_complete.setChecked(true);}
         else
-            tv_complete.setText(" ");
+            {tv_complete.setText("풀이를 기다리는 중");
+            tv_complete.setChecked(false);}
     }
 
 
