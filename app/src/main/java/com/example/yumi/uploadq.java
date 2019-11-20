@@ -498,6 +498,10 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    public void gohome(View view){  //메인 화면으로 돌아가기
+        Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);
+        startActivity(intent);
+    }
 
     public void search(View view ){
         if (mOh == 0 || sub == 0 || cat == 0){
