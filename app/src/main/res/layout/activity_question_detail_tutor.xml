@@ -122,29 +122,30 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
+            <CheckBox
                 android:id="@+id/r"
-                android:layout_width="121dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="예약여부"
-                android:textColor="#36CF3B"
-                android:textSize="25sp" />
+                android:clickable="false"
+                android:layout_marginRight="7dp"
+                android:text="예약여부"/>
 
-            <TextView
+            <CheckBox
                 android:id="@+id/complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="풀이 완료 여부"
-                android:textSize="25sp" />
+                android:clickable="false"
+                android:layout_marginRight="7dp"
+                android:text="풀이 완료 여부" />
 
             <TextView
                 android:id="@+id/good"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right"
+                android:gravity="left"
                 android:text="추천수"
                 android:textColor="#673AB7"
                 android:textSize="25sp" />
