@@ -22,8 +22,11 @@
                 android:id="@+id/textView37"
                 android:layout_width="155dp"
                 android:layout_height="wrap_content"
-                android:text="      개인 정보 수정"
-                android:textSize="18sp" />
+                android:gravity="center_vertical"
+                android:layout_marginLeft="18dp"
+                android:text="개인 정보 수정"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
         </FrameLayout>
 
         <LinearLayout
@@ -110,6 +113,8 @@
                         android:layout_height="wrap_content"
                         android:onClick="chgNick"
                         android:layout_weight="1"
+                        android:background="@drawable/draw9"
+                        android:textColor="#FFFFFF"
                         android:text="변경하기" />
 
                 </LinearLayout>
@@ -146,6 +151,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="chgPWD"
+                        android:background="@drawable/draw9"
+                        android:textColor="#FFFFFF"
                         android:text="비밀번호 변경" />
 
                     <FrameLayout
