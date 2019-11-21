@@ -55,7 +55,7 @@ public class TutorQuestionAdapter extends BaseAdapter {
 
         tv_age.setText(Questions.get(position).getage());
         tv_semester.setText(Questions.get(position).getsemester());
-        tv_book.setText("교재 : " + Questions.get(position).getbook());
+        tv_book.setText(Questions.get(position).getbook());
         tv_page.setText(Questions.get(position).getpage() + "pg");
         tv_qnum.setText(Questions.get(position).getqnumber() + "번");
         tv_stime.setText("풀이 가능 시간 : " +Questions.get(position).getstime());
