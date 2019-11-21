@@ -38,23 +38,28 @@ public class changePassWord extends AppCompatActivity {
     TextView validNew;
     TextView validNew2;
 
-
     String origin = "";
     String current = "";
     String newpw = "";
     String newpw2 = "";
     String JsonResultString;
     String loginId="";
-
+    String usertype = "";
     phpConnect task;
-
+    String address = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
 
         SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
         loginId = auto.getString("id",null);
-
+        usertype = auto.getString("usertype", null);
+        if(usertype.equals("student")){
+            address="stdChangePW";
+        }
+        else if (usertype.equals("teacher")){
+            address="tutorChangePW";
+        }
     }
 
 
@@ -63,7 +68,7 @@ public class changePassWord extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             try {
-                String link = "http://1.234.38.211/stdChangePW.php?id="+loginId+"&pw="+newpw;
+                String link = "http://1.234.38.211/"+address+".php?id="+loginId+"&pw="+newpw;
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
