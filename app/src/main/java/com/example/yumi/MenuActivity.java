@@ -65,4 +65,5 @@ public class MenuActivity extends Activity {
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
     }
+    @Override public void onBackPressed() { }
 }
