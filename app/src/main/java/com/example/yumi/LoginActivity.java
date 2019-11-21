@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             message.setTextColor(Color.RED);
         }
         else {
-            task.execute("http://1.234.38.211/login_edit.php?id=" + sId + "&pw=" + sPw, "");
+            task.execute("http://1.234.38.211/login.php?id=" + sId + "&pw=" + sPw, "");
         }
     }
 
@@ -162,6 +162,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("email " , email);
                     editor.putString("school", school);
                     editor.putString("grade",grade);
+                    editor.putString("pw", sPw);
                     editor.apply();
 
                     Toast.makeText(getApplicationContext(),"안녕하세요, " + nickName ,Toast.LENGTH_SHORT).show();
@@ -180,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("nickName" , nickName);
                     editor.putString("email " , email);
                     editor.putString("university" , univ);
+                    editor.putString("pw", sPw);
                     editor.apply();
 
                     Toast.makeText(getApplicationContext(),"안녕하세요, " + nickName ,Toast.LENGTH_SHORT).show();
