@@ -1,7 +1,6 @@
 package com.example.yumi;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -11,13 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -36,19 +35,21 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragment.OnFragmentInteractionListener, PersonLogFragment.OnFragmentInteractionListener, SettingLogFragment.OnFragmentInteractionListener,SearchLogFragment.OnFragmentInteractionListener {
+public class TutorQuestionlist2 extends AppCompatActivity implements HomeLogFragment.OnFragmentInteractionListener, PersonLogFragment.OnFragmentInteractionListener, SettingLogFragment.OnFragmentInteractionListener,SearchLogFragment.OnFragmentInteractionListener {
 
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
     TutorQuestionAdapter questionAdapter;
     ListView listView;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    GetData task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionlist_tutor);
+        setContentView(R.layout.activity_questionlist_tutor2);
         listView = findViewById(R.id.listView);
-        GetData task = new GetData();
+        task = new GetData();
         task.execute( "http://1.234.38.211/getNoReservationQdata.php", "");
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -57,7 +58,6 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(true);
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -85,7 +85,7 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
                         else if (tabId == R.id.tab_search_log){
                             //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
                             //startActivity(intent);
-                            Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TutorQuestionlist2.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
                         else if (tabId == R.id.tab_setting_log){
                             Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
@@ -96,6 +96,28 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
                 });
 
             } }).start();
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //새로고침 작업 실행...
+                task = new GetData();
+                task.execute("http://1.234.38.211/getNoReservationQdata.php", "");
+
+                mSwipeRefreshLayout.setRefreshing(false);
+
+            }
+        });
+
+        // Scheme colors for animation
+        mSwipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_red_light),
+                getResources().getColor(android.R.color.holo_blue_bright)
+        );
+
+
     }
 
 
