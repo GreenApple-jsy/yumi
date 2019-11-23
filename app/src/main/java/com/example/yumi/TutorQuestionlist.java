@@ -85,7 +85,7 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
                         else if (tabId == R.id.tab_search_log){
                             //Intent intent = new Intent(getApplicationContext(), Studentsignup.class);
                             //startActivity(intent);
-                            Toast.makeText(TutorQuestionlist2.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
                         else if (tabId == R.id.tab_setting_log){
                             Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
