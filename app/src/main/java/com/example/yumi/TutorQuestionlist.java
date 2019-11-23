@@ -35,7 +35,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class TutorQuestionlist2 extends AppCompatActivity implements HomeLogFragment.OnFragmentInteractionListener, PersonLogFragment.OnFragmentInteractionListener, SettingLogFragment.OnFragmentInteractionListener,SearchLogFragment.OnFragmentInteractionListener {
+public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragment.OnFragmentInteractionListener, PersonLogFragment.OnFragmentInteractionListener, SettingLogFragment.OnFragmentInteractionListener,SearchLogFragment.OnFragmentInteractionListener {
 
     ArrayList<QuestionData> QuestionDataList;
     String JsonResultString;
@@ -47,7 +47,7 @@ public class TutorQuestionlist2 extends AppCompatActivity implements HomeLogFrag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionlist_tutor2);
+        setContentView(R.layout.activity_questionlist_tutor);
         listView = findViewById(R.id.listView);
         task = new GetData();
         task.execute( "http://1.234.38.211/getNoReservationQdata.php", "");
