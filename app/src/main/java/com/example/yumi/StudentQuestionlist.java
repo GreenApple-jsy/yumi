@@ -110,6 +110,7 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
             @Override
             public void onRefresh() {
                 //새로고침 작업 실행...
+                task=new GetData();
                 task.execute("http://1.234.38.211/getCompleteQdata.php", "");
 
                 mSwipeRefreshLayout.setRefreshing(false);
