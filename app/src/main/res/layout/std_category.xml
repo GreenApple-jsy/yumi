@@ -98,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.21"
             android:onClick="search"
+            android:background="@drawable/draw2"
             android:text="검   색" />
 
     </LinearLayout>
@@ -133,14 +134,14 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp">
+        android:layout_height="55dp">
 
     </FrameLayout>
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         app:bb_tabXmlResource="@xml/bottombar_tabs"
         app:layout_constraintBottom_toBottomOf="parent" />
