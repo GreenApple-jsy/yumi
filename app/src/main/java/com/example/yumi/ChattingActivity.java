@@ -3,11 +3,16 @@ package com.example.yumi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +40,14 @@ public class ChattingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatting_activity);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
+
         SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
         final String myID = sf.getString("id","null");
         final String userType = sf.getString("usertype","null");
@@ -46,7 +59,7 @@ public class ChattingActivity extends AppCompatActivity {
         final String oppositeID = intent.getExtras().getString("oppositeID"); //대화할 상대방 아이디 받기
 
         message = findViewById((R.id.editText));
-        Button SendMessageButton = findViewById((R.id.button2));
+        ImageButton SendMessageButton = findViewById((R.id.button2));
 
         chat_listview = (ListView)findViewById(R.id.chat_listview);
         chattings = new ArrayList<ChatData>() ;
@@ -69,6 +82,17 @@ public class ChattingActivity extends AppCompatActivity {
                 message.setText((""));
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void showChatList(){
