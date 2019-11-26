@@ -48,12 +48,14 @@ public class ChattingAdapter extends BaseAdapter {
         TextView message = view.findViewById(R.id.message);
         message.setText(Chattings.get(position).getMessage());
 
+        message.setBackground(message.getResources().getDrawable(Chattings.get(position).getUserID().equals(myID)? R.drawable.mybubble:R.drawable.yourbubble));
+
         if (Chattings.get(position).getUserID().equals(myID)){ //내가 쓴 메시지일 경우, 말풍선 색깔바꿔주기 위함 ★★★★★★
-            message.setBackgroundColor(Color.rgb(183,231,255));
+            //message.setBackgroundColor(Color.rgb(183,231,255));
             message.setGravity(Gravity.RIGHT);
         }
         else{ //상대방이 쓴 메시지
-            message.setBackgroundColor(Color.rgb(194,247,196));
+            //message.setBackgroundColor(Color.rgb(194,247,196));
             message.setGravity(Gravity.LEFT);
         }
         return view;
