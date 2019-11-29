@@ -34,14 +34,15 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/schoolName"
         android:layout_width="165dp"
         android:layout_height="32dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="576dp"
+        android:layout_marginBottom="12dp"
         android:text="소속 : 서울영신고등학교 "
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/stdGrade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/logo"
@@ -53,13 +54,12 @@
         android:layout_width="165dp"
         android:layout_height="32dp"
         android:text="닉네임 : OOO님"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/schoolName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
-
+        app:layout_constraintVertical_bias="0.869" />
 
     <TextView
         android:id="@+id/stdGrade"
@@ -84,7 +84,7 @@
         android:text="나의 선생님"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toEndOf="@+id/rePlay"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
@@ -99,7 +99,7 @@
         android:text="다시보기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
@@ -114,7 +114,7 @@
         android:text="나의 예약"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
