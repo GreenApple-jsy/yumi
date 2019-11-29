@@ -467,8 +467,8 @@ public class stdSelect extends AppCompatActivity {
 
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(TAG_BOOK);
-                String pages = item.getString(TAG_PAGES); pages+=" page"; String q_num = "Q : ";
-                q_num += item.getString(TAG_QN);
+                String pages = item.getString(TAG_PAGES);
+                String q_num = item.getString(TAG_QN);
                 String startTime = item.getString(TAG_sTime);
                 String dates = item.getString(TAG_DT);
                 String chapter = item.getString(TAG_CHP);
@@ -483,9 +483,8 @@ public class stdSelect extends AppCompatActivity {
                 hashMap.put(TAG_sTime, startTime);
                 hashMap.put(TAG_CHP , chapter);
                 hashMap.put(TAG_DT, dates);
-                hashMap.put(TAG_BOOK , bookName);
-                hashMap.put(TAG_PAGES , pages);
-                hashMap.put(TAG_QN , q_num);
+                hashMap.put(TAG_PAGES , pages+" 페이지");
+                hashMap.put(TAG_QN , q_num + " 번");
                 mArrayList.add(hashMap);
             }
 
@@ -519,9 +518,9 @@ public class stdSelect extends AppCompatActivity {
             hashMap.put(TAG_TID, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_CHP , "해당 결과가 없습니다.");
             hashMap.put(TAG_DT, "");
-            hashMap.put(TAG_BOOK , "해당 결과가 없습니다.");
+            hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
