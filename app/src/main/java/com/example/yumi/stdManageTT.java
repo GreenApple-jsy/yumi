@@ -48,7 +48,7 @@ public class stdManageTT extends AppCompatActivity {
     TextView mTextViewResult;
     Switch aSwitch;
     phpConnect task;
-    String arr_tid[]; // t_id 저장 배열
+    String arr_nick[]; // t_id 저장 배열
     String sid= "";
 
     @Override
@@ -62,29 +62,6 @@ public class stdManageTT extends AppCompatActivity {
         task = new phpConnect();
         task.execute();
 
-
-        aSwitch = (Switch) findViewById(R.id.ttSwitch);
-
-        //스위치 클릭
-        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true) {
-                    TextView titleLine = (TextView) findViewById(R.id.myTutorText);
-                    titleLine.setText("익선생님 관리");
-                    table_adr = "stdGetMatching";
-                    task = new phpConnect();
-                    task.execute();
-
-                } else {
-                    TextView titleLine = (TextView) findViewById(R.id.myTutorText);
-                    titleLine.setText("나의 선생님 관리");
-                    table_adr = "stdGetMatching";
-                    task = new phpConnect();
-                    task.execute();
-                }
-            }
-        });
 
 
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,7 +77,7 @@ public class stdManageTT extends AppCompatActivity {
         final int index = position;
         new AlertDialog.Builder(stdManageTT.this)
                 .setTitle("선생님 정보창" )
-                .setMessage("\n선생님 정보 : " + arr_tid[position])
+                .setMessage("\n선생님 정보 : " + arr_nick[position])
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -112,7 +89,7 @@ public class stdManageTT extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_tid[index]); //대화할 상대 선생 아이디 전송
+                        intent.putExtra("oppositeID",arr_nick[index]); //대화할 상대 선생 아이디 전송
                         startActivity(intent);
                     }
                 })
@@ -172,7 +149,7 @@ public class stdManageTT extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
-            arr_tid = new String[jsonArray.length()];
+            arr_nick = new String[jsonArray.length()];
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -184,11 +161,11 @@ public class stdManageTT extends AppCompatActivity {
                 String schType = item.getString(TAG_SCH);
 
                 HashMap<String,String> hashMap = new HashMap<>();
-                arr_tid[i]=tt_id;
+                arr_nick[i]=ttNick;
 
                 hashMap.put(TAG_SID , st_id);
                 hashMap.put(TAG_TID, tt_id);
-                hashMap.put(TAG_NICK , ttNick);
+                hashMap.put(TAG_NICK , ttNick+" 선생님");
                 hashMap.put(TAG_SCH, schType);
 
                 mArrayList.add(hashMap);
@@ -197,7 +174,7 @@ public class stdManageTT extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     stdManageTT.this, mArrayList, R.layout.mng_tt_list,
-                    new String[]{TAG_TID,TAG_SCH},
+                    new String[]{TAG_NICK,TAG_SCH},
                     new int[]{R.id.listTTNick, R.id.listUniv}
             );
 
@@ -205,12 +182,12 @@ public class stdManageTT extends AppCompatActivity {
 
         } catch (JSONException e) {
             HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put(TAG_TID, "");
+            hashMap.put(TAG_NICK, "");
             hashMap.put(TAG_SCH, "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdManageTT.this, mArrayList, R.layout.mng_tt_list,
-                    new String[]{TAG_TID,TAG_SCH},
+                    new String[]{TAG_NICK,TAG_SCH},
                     new int[]{R.id.listTTNick, R.id.listUniv}
             );
             mlistView.setAdapter(adapter);
