@@ -7,15 +7,15 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="59dp">
 
         <TextView
             android:id="@+id/textView36"
-            android:layout_width="112dp"
+            android:layout_width="157dp"
             android:layout_height="match_parent"
-            android:text="\n     단원별 검색"
+            android:text="\n        단원별 검색"
             android:textColor="#105713"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </FrameLayout>
 
     <LinearLayout
