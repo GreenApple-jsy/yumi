@@ -289,8 +289,8 @@ public class tutorMyPage extends AppCompatActivity {
 
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(TAG_BOOK);
-                String pages = item.getString(TAG_PAGES); pages+=" page"; String q_num = "Q : ";
-                q_num += item.getString(TAG_QN);
+                String pages = item.getString(TAG_PAGES); pages+=" 페이지";
+                String q_num = item.getString(TAG_QN) +" 번";
                 String startTime = item.getString(TAG_sTime);
                 String dates = item.getString(TAG_DT);
                 String chapter = item.getString(TAG_CHP);
@@ -327,9 +327,9 @@ public class tutorMyPage extends AppCompatActivity {
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
-            hashMap.put(TAG_BOOK , "오늘 강의는 없습니다.");
+            hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_CHP , "오늘 강의는 없습니다.");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES ,"");

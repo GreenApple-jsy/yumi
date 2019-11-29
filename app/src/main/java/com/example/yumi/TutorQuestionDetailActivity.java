@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -139,7 +140,10 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
         String TAG_AGE ="age";
         String TAG_SEMESTER ="semester";
         String TAG_RESERV ="reservation";
-
+        String TAG_SCHOOL="school_type";
+        String TAG_CHP = "chapter";
+        String TAG_DATES = "dates";
+        String TAG_NICK = "nickname";
         try {
             JSONObject jsonObject = new JSONObject(JsonResultString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -148,7 +152,8 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
                     item.getString(TAG_QNUM),item.getString(TAG_STIME),
                     item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
                     ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
-                    ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
+                    ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV)),
+                    item.getString(TAG_SCHOOL),item.getString(TAG_CHP), item.getString(TAG_DATES),item.getString(TAG_NICK)
             );
             setQInfo();
         } catch (JSONException e) {
@@ -168,36 +173,27 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
             task = new GetImage();
             task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,q.getimage());
         }
+
+        TextView tv_nick = findViewById(R.id.nickname);
         TextView tv_age = findViewById(R.id.age);
-        TextView tv_semester = findViewById(R.id.semester);
         TextView tv_book= findViewById(R.id.book);
         TextView tv_page= findViewById(R.id.page);
         TextView tv_qnum= findViewById(R.id.q_number);
-        TextView tv_stime= findViewById(R.id.start_time);
-        TextView tv_etime= findViewById(R.id.end_time);
-        CheckBox tv_reserv= findViewById(R.id.r);
-        CheckBox tv_complete= findViewById(R.id.complete);
-        TextView tv_good= findViewById(R.id.good);
+        TextView tv_chp = findViewById(R.id.chapter);
+        TextView tv_school = findViewById(R.id.school_type);
+        TextView tv_dates = findViewById(R.id.dates);
 
+
+        tv_dates.setText("풀이 요청일 : " + q.getDates());
+        tv_school.setText(q.getSchool());
         tv_age.setText(q.getage());
-        tv_semester.setText(q.getsemester());
+        tv_chp.setText(q.getCHP());
+        tv_nick.setText(q.getNickname()+ " 학생");
         tv_book.setText("교재 : " + q.getbook());
-        tv_page.setText(q.getpage() + "pg");
+        tv_page.setText(q.getpage() + " 페이지");
         tv_qnum.setText(q.getqnumber() + "번");
-        tv_stime.setText("풀이 가능 시간 : " +q.getstime());
-        if(q.getreservation() == 1)
-            {tv_reserv.setText("예약 완료");
-            tv_reserv.setChecked(true);}
-        else
-            {tv_reserv.setText("예약을 기다리는 중");
-            tv_reserv.setChecked(false);}
 
-        if(q.getcomplete() == 1)
-            {tv_complete.setText("풀이 완료");
-            tv_complete.setChecked(true);}
-        else
-            {tv_complete.setText("풀이를 기다리는 중");
-            tv_complete.setChecked(false);}
+
     }
 
 
