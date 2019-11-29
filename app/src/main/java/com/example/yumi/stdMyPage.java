@@ -61,6 +61,8 @@ public class stdMyPage extends AppCompatActivity {
     private static final String TAG_CHP = "chapter";
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
+    private static final String TAG_NICK = "nickname";
+
 
     int listNum =0;
     int index_num=0;
@@ -68,7 +70,7 @@ public class stdMyPage extends AppCompatActivity {
     phpUpdate upTask;
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
-    String arr_tid[];
+    String arr_nick[];
     String st_time[];
     String end_time[];
     String yyyy="", mm="", dd="";
@@ -152,7 +154,7 @@ public class stdMyPage extends AppCompatActivity {
 
         new AlertDialog.Builder(stdMyPage.this)
                 .setTitle("예약 정보" )
-                .setMessage("선생님 정보 : " + arr_tid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
+                .setMessage("선생님 정보 : " + arr_nick[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -163,7 +165,7 @@ public class stdMyPage extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_tid[index_num]); //대화할 상대 선생 아이디 전송
+                        intent.putExtra("oppositeID",arr_nick[index_num]); //대화할 상대 선생 아이디 전송
                         startActivity(intent);
                     }
                 })
@@ -284,7 +286,7 @@ public class stdMyPage extends AppCompatActivity {
             listNum = jsonArray.length();
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
-            arr_tid = new String[jsonArray.length()];
+            arr_nick = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
             end_time = new String[jsonArray.length()];
 
@@ -296,19 +298,19 @@ public class stdMyPage extends AppCompatActivity {
 
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(TAG_BOOK);
-                String pages = item.getString(TAG_PAGES); pages+=" page"; String q_num = "Q : ";
-                q_num += item.getString(TAG_QN);
+                String pages = item.getString(TAG_PAGES); pages+=" 페이지";
+                String q_num  = item.getString(TAG_QN); q_num+=" 번";
                 String startTime = item.getString(TAG_sTime);
                 String dates = item.getString(TAG_DT);
                 String chapter = item.getString(TAG_CHP);
                 String st_id = item.getString(TAG_SID);
                 String tt_id = item.getString(TAG_TID);
-
+                String tt_nick = item.getString(TAG_NICK);
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
-                arr_tid[i]=tt_id;
+                arr_nick[i]=tt_nick;
                 st_time[i]=startTime;
 
                 hashMap.put(TAG_SID, st_id);
@@ -317,7 +319,6 @@ public class stdMyPage extends AppCompatActivity {
                 hashMap.put(TAG_sTime, startTime);
                 hashMap.put(TAG_CHP , chapter);
                 hashMap.put(TAG_DT, dates);
-                hashMap.put(TAG_BOOK , bookName);
                 hashMap.put(TAG_PAGES , pages);
                 hashMap.put(TAG_QN , q_num);
                 mArrayList.add(hashMap);
@@ -325,7 +326,7 @@ public class stdMyPage extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
                     new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
             );
 
@@ -335,9 +336,8 @@ public class stdMyPage extends AppCompatActivity {
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
             hashMap.put(TAG_TID, "");
-            hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "오늘 강의는 ");
+            hashMap.put(TAG_CHP , "오늘 수업은 없습니다.");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
