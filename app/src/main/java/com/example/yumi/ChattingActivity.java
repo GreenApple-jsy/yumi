@@ -45,7 +45,6 @@ public class ChattingActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
-        actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
 
         SharedPreferences sf = getSharedPreferences("yumi",MODE_PRIVATE);
