@@ -76,7 +76,7 @@ public class Mail_verify extends AppCompatActivity {
 
         EditText editText = (EditText)findViewById(R.id.emailTexts); //받는 사람의 이메일
         emailAdr = editText.getText().toString()+"@"+univMail[univIndex];
-        GMailSender sender = new GMailSender("noonsong96@gmail.com", "smu247!@"); // SUBSTITUTE
+        GMailSender sender = new GMailSender("", ""); // SUBSTITUTE
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
