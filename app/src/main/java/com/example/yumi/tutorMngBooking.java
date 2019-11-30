@@ -412,7 +412,7 @@ public class tutorMngBooking extends AppCompatActivity {
             hashMap.put(TAG_STime,"");
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_PLY, "");
-
+            hashMap.put(TAG_NICK, "수업이 없습니다");
 
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(

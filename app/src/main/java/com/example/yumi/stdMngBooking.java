@@ -270,7 +270,7 @@ public class stdMngBooking extends AppCompatActivity {
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_STime, "");
             hashMap.put(TAG_PLY, "");
-            hashMap.put(TAG_NICK, "");
+            hashMap.put(TAG_NICK, "등록된 수업이 없습니다");
 
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(

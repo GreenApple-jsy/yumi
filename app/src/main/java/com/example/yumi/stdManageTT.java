@@ -182,7 +182,7 @@ public class stdManageTT extends AppCompatActivity {
 
         } catch (JSONException e) {
             HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put(TAG_NICK, "");
+            hashMap.put(TAG_NICK, "등록된 선생님이 없습니다.");
             hashMap.put(TAG_SCH, "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(

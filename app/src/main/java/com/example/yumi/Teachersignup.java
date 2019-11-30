@@ -80,8 +80,13 @@ public class Teachersignup extends AppCompatActivity {
                 //0-> ok,1->not ok
                 EditText id_text = (EditText) findViewById(R.id.id_text);
                 String id = id_text.getText().toString();
-                task = new Teachersignup.GetData();
-                task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
+                if(id.length()<=0){
+                    Toast.makeText(Teachersignup.this, String.format("아이디를 입력해 주세요."), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    task = new Teachersignup.GetData();
+                    task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
+                }
             }
         });
 
