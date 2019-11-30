@@ -172,7 +172,7 @@ public class Mail_verify extends AppCompatActivity {
         protected String doInBackground(Void... unused) {
 
             String param = "id=" + sId + "&pw=" + sPw +"&email="+sEmail + "&nickname=" + sNickname+"&university=" + sUniversity;
-            System.out.println("!!!!! _>" + param);
+            System.out.println("!!!!! >" + param);
             /* 인풋 파라메터값 생성 */
             try {
                 /* 서버연결 */
