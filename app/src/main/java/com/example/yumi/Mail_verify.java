@@ -176,7 +176,7 @@ public class Mail_verify extends AppCompatActivity {
             /* 인풋 파라메터값 생성 */
             try {
                 /* 서버연결 */
-                URL url = new URL("http://1.234.38.211/dummy.php");
+                URL url = new URL("http://1.234.38.211/teacher_signup.php");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 //conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setReadTimeout(5000);
