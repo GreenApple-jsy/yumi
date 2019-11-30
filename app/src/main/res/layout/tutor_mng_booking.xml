@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.048"
         tools:ignore="RtlCompat" />
+
     <ListView
         android:id="@+id/listView_booking_list"
         android:layout_width="337dp"
@@ -43,7 +44,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginBottom="120dp"
         android:layout_weight="6"
-        android:background="#48733BA0"
+        android:background="@color/color_ffffffff"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

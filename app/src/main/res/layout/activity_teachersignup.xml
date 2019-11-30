@@ -7,15 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Teachersignup">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    />
-
     <Spinner
         android:id="@+id/university"
         android:layout_width="197dp"
@@ -27,19 +18,19 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/u_check"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/s_continues2"
 
-        android:layout_width="351dp"
-        android:layout_height="59dp"
-        android:gravity="center"
+        android:layout_width="147dp"
+        android:layout_height="46dp"
         android:background="@drawable/draw9"
         android:clickable="true"
+        android:gravity="center"
         android:onClick="goNext"
         android:text="다음"
         android:textColor="#FFFFFF"
@@ -56,75 +47,89 @@
         android:id="@+id/nickname"
         android:layout_width="203dp"
         android:layout_height="43dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:ems="14"
         android:hint="사용하고 싶은 닉네임을 적어주세요"
         android:inputType="textPersonName"
         android:textColorHint="#b4b4b4"
         android:textSize="14sp"
-        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
-
-    <Button
-        android:id="@+id/id_check2"
-
-        android:layout_width="100dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="92dp"
-        android:layout_marginRight="92dp"
-        android:background="@drawable/draw10"
-
-        android:text="중복확인"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145" />
-
-    <Button
-        android:id="@+id/angry_btn12"
-
-        android:layout_width="110dp"
-        android:layout_height="35dp"
-
-
-        android:background="@drawable/draw10"
-        android:text="닉네임"
-        android:layout_marginTop="5dp"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.169" />
 
     <Button
         android:id="@+id/angry_btn4"
 
         android:layout_width="121dp"
         android:layout_height="35dp"
+        android:layout_marginStart="48dp"
+        android:enabled="false"
+        android:layout_marginLeft="48dp"
         android:background="@drawable/draw10"
-
-
         android:text="아이디"
         android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loading"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/angry_btn5"
+        android:enabled="false"
+        android:layout_width="151dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:background="@drawable/draw10"
+        android:text="비밀번호"
+        android:textColor="#000000	"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/loading"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loading"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255"
+        app:layout_constraintVertical_bias="0.439"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <Button
+        android:id="@+id/angry_btn12"
+        android:enabled="false"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/draw10"
+        android:text="닉네임"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.117"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -134,8 +139,8 @@
         android:layout_height="43dp"
 
 
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/draw10"
 
         android:text="중복확인"
@@ -144,13 +149,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.334" />
+
+    <EditText
+        android:id="@+id/password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="14"
+        android:hint="비밀번호는 최소 6자를 적어주세요"
+        android:inputType="textPassword"
+        android:textColorHint="#b4b4b4"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.494" />
 
     <EditText
         android:id="@+id/id_text"
         android:layout_width="210dp"
         android:layout_height="45dp"
 
+        android:layout_marginLeft="48dp"
         android:layout_weight="1"
         android:ems="14"
         android:hint="영어와 숫자를 조합해 ID를 만들어주세요"
@@ -160,27 +183,47 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintVertical_bias="0.335" />
+
+    <Button
+        android:id="@+id/id_check2"
+
+        android:layout_width="100dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:background="@drawable/draw10"
+
+        android:text="중복확인"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
 
     <Button
         android:id="@+id/angry_btn6"
-
+        android:enabled="false"
         android:layout_width="174dp"
         android:layout_height="33dp"
+        android:layout_marginStart="48dp"
+
+
+        android:layout_marginLeft="48dp"
         android:background="@drawable/draw10"
-
-
         android:text="비밀번호 확인"
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/loading"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loading"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588"
+        app:layout_constraintVertical_bias="0.597"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -190,73 +233,37 @@
         android:layout_weight="1"
         android:ems="14"
         android:hint="동일한 비밀번호를 정확하게 적어주세요"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColorHint="#b4b4b4"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintVertical_bias="0.656" />
 
     <Button
         android:id="@+id/u_check"
-
+        android:enabled="false"
         android:layout_width="174dp"
         android:layout_height="33dp"
+        android:layout_marginStart="48dp"
+
+
+        android:layout_marginLeft="48dp"
         android:background="@drawable/draw10"
-
-
         android:text="학교 선택"
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/loading"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.248"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loading"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746"
+        app:layout_constraintVertical_bias="0.769"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/angry_btn5"
-
-        android:layout_width="151dp"
-        android:layout_height="35dp"
-        android:background="@drawable/draw10"
-
-
-        android:text="비밀번호"
-        android:textColor="#000000	"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/loading"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/loading"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/password_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="14"
-        android:hint="비밀번호는 최소 6자를 적어주세요"
-        android:inputType="textPersonName"
-        android:textColorHint="#b4b4b4"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

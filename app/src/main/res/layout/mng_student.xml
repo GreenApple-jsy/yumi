@@ -22,56 +22,6 @@
         app:layout_constraintVertical_bias="0.049"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/mystudentText"
-        android:layout_width="188dp"
-        android:layout_height="40dp"
-        android:text="내 학생 관리"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="52dp"
-        android:layout_height="22dp"
-        android:text="내 학생"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintHorizontal_bias="0.282"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
-
-    <Switch
-        android:id="@+id/stdSwitch"
-        android:layout_width="61dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.748"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="84dp"
-        android:layout_height="29dp"
-        android:text="익명 학생"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toEndOf="@+id/stdSwitch"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
-        tools:ignore="MissingConstraints" />
-
 
     <ListView
         android:id="@+id/listView_std_list"
@@ -80,13 +30,13 @@
         android:layout_margin="5dp"
         android:layout_marginStart="44dp"
         android:layout_weight="6"
-        android:background="#48733BA0"
+        android:background="@color/color_ffffffff"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mystudentText"
-        app:layout_constraintVertical_bias="0.237" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.168" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
