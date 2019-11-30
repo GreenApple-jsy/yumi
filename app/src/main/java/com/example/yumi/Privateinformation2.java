@@ -70,7 +70,6 @@ public class Privateinformation2 extends AppCompatActivity {
 
         //체크박스 학년 구분
         final Spinner dropdown = (Spinner) findViewById(R.id.spinner2);
-
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 

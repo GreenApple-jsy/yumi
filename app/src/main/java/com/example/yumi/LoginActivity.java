@@ -184,19 +184,19 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("pw", sPw);
                     editor.apply();
 
-                    Toast.makeText(getApplicationContext(),"안녕하세요, " + nickName ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"안녕하세요, " + nickName + " 님" ,Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, TutorQuestionlist.class);
                     startActivity(intent);
                 }
             }
             else if (correctness.equals("false")) {
                 message = (TextView)findViewById(R.id.ifFail);
-                message.setText("ID 또는 비밀번호를 확인해주세요.");
+                message.setText("ID 혹인 비밀번호를 확인해주세요...");
                 message.setTextColor(Color.RED);
             }
             else if (correctness.equals("none")){
                 message = (TextView)findViewById(R.id.ifFail);
-                message.setText("가입된 정보가 없습니다. 입력 정보를 다시 확인해주세요.");
+                message.setText("가입된 정보가 없습니다....");
                 message.setTextColor(Color.RED);
             }
 

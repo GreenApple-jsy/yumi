@@ -62,7 +62,7 @@ public class stdMyPage extends AppCompatActivity {
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
     private static final String TAG_NICK = "nickname";
-
+    private static final String TAG_PLY = "playtime";
 
     int listNum =0;
     int index_num=0;
@@ -298,14 +298,16 @@ public class stdMyPage extends AppCompatActivity {
 
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(TAG_BOOK);
-                String pages = item.getString(TAG_PAGES); pages+=" 페이지";
-                String q_num  = item.getString(TAG_QN); q_num+=" 번";
+                String pages = item.getString(TAG_PAGES);
+                String q_num  = item.getString(TAG_QN);
                 String startTime = item.getString(TAG_sTime);
                 String dates = item.getString(TAG_DT);
                 String chapter = item.getString(TAG_CHP);
                 String st_id = item.getString(TAG_SID);
                 String tt_id = item.getString(TAG_TID);
                 String tt_nick = item.getString(TAG_NICK);
+                String playtime = item.getString(TAG_PLY);
+
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
@@ -319,14 +321,17 @@ public class stdMyPage extends AppCompatActivity {
                 hashMap.put(TAG_sTime, startTime);
                 hashMap.put(TAG_CHP , chapter);
                 hashMap.put(TAG_DT, dates);
-                hashMap.put(TAG_PAGES , pages);
-                hashMap.put(TAG_QN , q_num);
+                hashMap.put(TAG_PAGES , pages +  " 페이지");
+                hashMap.put(TAG_QN , q_num+ " 번");
+                hashMap.put(TAG_NICK, tt_nick + " 선생님");
+                hashMap.put(TAG_PLY, playtime);
+
                 mArrayList.add(hashMap);
             }
 
             ListAdapter adapter = new SimpleAdapter(
                     stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_PLY },
                     new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
             );
 
@@ -341,10 +346,12 @@ public class stdMyPage extends AppCompatActivity {
             hashMap.put(TAG_DT, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
+            hashMap.put(TAG_NICK, "");
+            hashMap.put(TAG_PLY,"");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdMyPage.this, mArrayList, R.layout.std_today_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_sTime },
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT, TAG_PLY },
                     new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum, R.id.TodayDate, R.id.startTime}
             );
             listNum =0;

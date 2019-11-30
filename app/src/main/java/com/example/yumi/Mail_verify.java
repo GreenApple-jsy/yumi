@@ -13,11 +13,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 import javax.mail.MessagingException;
@@ -70,7 +76,7 @@ public class Mail_verify extends AppCompatActivity {
 
         EditText editText = (EditText)findViewById(R.id.emailTexts); //받는 사람의 이메일
         emailAdr = editText.getText().toString()+"@"+univMail[univIndex];
-        GMailSender sender = new GMailSender("", ""); // SUBSTITUTE
+        GMailSender sender = new GMailSender("noonsong96@gmail.com", "smu247!@"); // SUBSTITUTE
 
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
@@ -84,6 +90,8 @@ public class Mail_verify extends AppCompatActivity {
         // HERE
         try
         {
+
+            System.out.println("!!!!! email "  + emailAdr );
             sender.sendMail("익선생 인증 코드를 확인해주세요.", // subject.getText().toString(),
                     "인증코드를 입력해주세요 : " + createEmailCode(), // body.getText().toString(),
                     emailAdr, // from.getText().toString(),
@@ -139,6 +147,7 @@ public class Mail_verify extends AppCompatActivity {
 
         if(valid_num != 0 ){
             sEmail = emailAdr;
+            System.out.println("!!!! after valid " + sEmail +  " " + emailAdr);
             System.out.println("----------> " + sId+ " " +sPw+ " "+sNickname+" " +sUniversity+ " " +sEmail);
             TTRegisterDB rdb = new TTRegisterDB();
             rdb.execute();
@@ -162,11 +171,12 @@ public class Mail_verify extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... unused) {
 
+            String param = "id=" + sId + "&pw=" + sPw +"&email="+sEmail + "&nickname=" + sNickname+"&university=" + sUniversity;
+            System.out.println("!!!!! _>" + param);
             /* 인풋 파라메터값 생성 */
-            String param = "id=" + sId + "&pw=" + sPw +"&email="+sEmail + "&nickname=" + sNickname+"&university=" + sUniversity+ "";
             try {
                 /* 서버연결 */
-                URL url = new URL("http://1.234.38.211/teacher_signup.php");
+                URL url = new URL("http://1.234.38.211/dummy.php");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 //conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 conn.setReadTimeout(5000);

@@ -50,8 +50,8 @@ public class TutorQuestionAdapter extends BaseAdapter {
         TextView tv_school = view.findViewById(R.id.school_type);
         TextView tv_sid = view.findViewById(R.id.sid);
 
-        tv_sid.setText(Questions.get(position).getNickname());
-        tv_dates.setText(Questions.get(position).getDates());
+        tv_sid.setText(Questions.get(position).getNickname()+ " 학생");
+        tv_dates.setText("질문한 날짜 : " + Questions.get(position).getDates());
         tv_school.setText(Questions.get(position).getSchool());
         tv_chp.setText(Questions.get(position).getCHP());
         tv_age.setText(Questions.get(position).getage());

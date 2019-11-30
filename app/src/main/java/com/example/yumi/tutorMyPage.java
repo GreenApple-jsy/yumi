@@ -65,11 +65,14 @@ public class tutorMyPage extends AppCompatActivity {
     private static final String TAG_CHP = "chapter";
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
+    private static final String TAG_NICK = "nickname";
+    private static final String TAG_PLY = "playtime";
     int listNum =0;
     int index_num=0;
     phpConnect task;
     phpUpdate upTask;
     int arr_id[];
+    String arr_nick[];
     String arr_sid[]; // s_id 저장 배열
     String st_time[];
     String end_time[];
@@ -146,7 +149,7 @@ public class tutorMyPage extends AppCompatActivity {
 
         new AlertDialog.Builder(tutorMyPage.this)
                 .setTitle("예약 정보" )
-                .setMessage("학생 정보 : " + arr_sid[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
+                .setMessage("학생 정보 : " + arr_nick[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -279,7 +282,7 @@ public class tutorMyPage extends AppCompatActivity {
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
-
+            arr_nick = new String[jsonArray.length()];
 
 
             for(int i=0;i<jsonArray.length();i++){
@@ -296,11 +299,16 @@ public class tutorMyPage extends AppCompatActivity {
                 String chapter = item.getString(TAG_CHP);
                 String st_id = item.getString(TAG_SID);
                 String tt_id = item.getString(TAG_TID);
+                String s_nick = item.getString(TAG_NICK);
+                String playtime = item.getString(TAG_PLY);
+
 
 
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
                 st_time[i]=startTime;
+                arr_nick[i]=s_nick;
+
 
                 HashMap<String,String> hashMap = new HashMap<>();
                 hashMap.put(TAG_SID, st_id);
@@ -312,12 +320,14 @@ public class tutorMyPage extends AppCompatActivity {
                 hashMap.put(TAG_BOOK , bookName);
                 hashMap.put(TAG_PAGES , pages);
                 hashMap.put(TAG_QN , q_num);
+                hashMap.put(TAG_PLY, playtime);
+                hashMap.put(TAG_NICK, s_nick+" 학생" );
                 mArrayList.add(hashMap);
             }
 
             ListAdapter adapter = new SimpleAdapter(
                     tutorMyPage.this, mArrayList, R.layout.tutor_today_list,
-                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_sTime},
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_PLY},
                     new int[]{R.id.stdNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum , R.id.TodayDate, R.id.startTime}
             );
 
@@ -334,10 +344,12 @@ public class tutorMyPage extends AppCompatActivity {
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES ,"");
             hashMap.put(TAG_QN , "");
+            hashMap.put(TAG_NICK , "");
+            hashMap.put(TAG_PLY, "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     tutorMyPage.this, mArrayList, R.layout.tutor_today_list,
-                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_sTime},
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_PLY},
                     new int[]{R.id.stdNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum , R.id.TodayDate, R.id.startTime}
             );
             listNum= 0;

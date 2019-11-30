@@ -50,9 +50,13 @@ public class tutorMngBooking extends AppCompatActivity {
     private static final String TAG_BOOK = "book";
     private static final String TAG_STime = "start_time";
     private static final String TAG_PAGE = "page";
-    private static final String TAG_QN = "start_time";
+    private static final String TAG_QN = "q_number";
     private static final String TAG_CHP = "chapter";
     private static final String TAG_DT = "dates";
+    private static final String TAG_NICK  = "nickname";
+    private static final String TAG_PLY = "playtime";
+
+
     String table_adr= "readyForBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
@@ -108,6 +112,8 @@ public class tutorMngBooking extends AppCompatActivity {
                     table_adr= "readyForBooking";
                     task = new phpConnect();
                     task.execute();
+                    System.out.println("readyfor booking ");
+
 
                     mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -355,37 +361,43 @@ public class tutorMngBooking extends AppCompatActivity {
             for(int i=0;i<jsonArray.length();i++){
 
                 JSONObject item = jsonArray.getJSONObject(i);
-
-
                 int id_num = item.getInt(ID);
+
                 String bookName = item.getString(TAG_BOOK);
                 String startTime = item.getString(TAG_STime);
-                String st_id = item.getString(TAG_SID);
+                String s_id = item.getString(TAG_SID);
                 String page_num = item.getString(TAG_PAGE);
                 String q_num = item.getString(TAG_QN);
                 String chapter = item.getString(TAG_CHP);
                 String getDate = item.getString(TAG_DT);
+                String s_nickname = item.getString(TAG_NICK);
+                String playtime = item.getString(TAG_PLY);
+
+
                 HashMap<String,String> hashMap = new HashMap<>();
 
                 arr_id[i]=id_num;
-                arr_sid[i]=st_id;
+                arr_sid[i]=s_id;
                 st_time[i]=startTime;
 
 
-                hashMap.put(TAG_SID, st_id);
-                hashMap.put(TAG_BOOK , bookName);
-                hashMap.put(TAG_QN, q_num);
-                hashMap.put(TAG_PAGE, page_num);
-                hashMap.put(TAG_CHP,chapter);
+                hashMap.put(TAG_SID, s_id);
+                hashMap.put(TAG_BOOK , "교재 : " +bookName);
+                hashMap.put(TAG_QN, q_num+" 번");
+                hashMap.put(TAG_PAGE, page_num+" 페이지");
+                hashMap.put(TAG_CHP,"단원 : " +chapter);
+                hashMap.put(TAG_STime, startTime);
                 hashMap.put(TAG_DT, getDate);
+                hashMap.put(TAG_NICK, s_nickname + " 학생");
+                hashMap.put(TAG_PLY, playtime);
 
                 mArrayList.add(hashMap);
             }
 
             ListAdapter adapter = new SimpleAdapter(
                     tutorMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGE, TAG_QN, TAG_PLY, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_qn, R.id.booking_start_time, R.id.booking_date}
             );
 
             mlistView.setAdapter(adapter);
@@ -393,16 +405,20 @@ public class tutorMngBooking extends AppCompatActivity {
         } catch (JSONException e) {
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put(TAG_SID, "");
-            hashMap.put(TAG_BOOK,"");
+            hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_QN, "");
             hashMap.put(TAG_PAGE, "");
             hashMap.put(TAG_CHP,"");
+            hashMap.put(TAG_STime,"");
             hashMap.put(TAG_DT, "");
+            hashMap.put(TAG_PLY, "");
+
+
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     tutorMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{TAG_SID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGE, TAG_QN, TAG_PLY, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_qn, R.id.booking_start_time, R.id.booking_date}
             );
 
             mlistView.setAdapter(adapter);
