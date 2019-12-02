@@ -96,7 +96,7 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
                 });
 
             } }).start();
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layouts);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

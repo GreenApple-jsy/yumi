@@ -186,7 +186,8 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
                 SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
                 String id = auto.getString("id",null);
                 filename = id+Long.toString(System.currentTimeMillis());
-
+                System.out.println("파일 이름" + filename);
+                //Toast.makeText(getApplicationContext(),filename ,Toast.LENGTH_SHORT).show();
                 String timecheck="0";
                 for(int i=0; i<100; i++){
                     System.out.println(timepick[i]);

@@ -146,6 +146,21 @@ public class Tutor_timetable extends AppCompatActivity{
                 else if(realday > daynumber){
                     days = Integer.toString(Integer.parseInt(days) + 7-(realday-daynumber));
                 }
+                if( (Integer.parseInt(month) == 1 ||Integer.parseInt(month) == 3 || Integer.parseInt(month) == 5 || Integer.parseInt(month) == 7 || Integer.parseInt(month) == 8 || Integer.parseInt(month) == 10|| Integer.parseInt(month) == 12 ) && Integer.parseInt(days) > 31){
+                    int num = Integer.parseInt(days) - 31;
+                    days = Integer.toString(num);
+                    month = Integer.toString(Integer.parseInt(month) +1);
+                }
+                if( (Integer.parseInt(month) == 4 ||Integer.parseInt(month) == 6 || Integer.parseInt(month) == 9 || Integer.parseInt(month) == 11 ) && Integer.parseInt(days) > 30){
+                    int num = Integer.parseInt(days) - 30;
+                    days = Integer.toString(num);
+                    month = Integer.toString(Integer.parseInt(month) +1);
+                }
+                if( (Integer.parseInt(month) == 2 ) && Integer.parseInt(days) > 28){
+                    int num = Integer.parseInt(days) - 28;
+                    days = Integer.toString(num);
+                    month = Integer.toString(Integer.parseInt(month) +1);
+                }
                 String date = year + "년" + month + "월" + days + "일" + day + "요일" + time;
                 Toast.makeText(getApplicationContext(),date,Toast.LENGTH_SHORT).show();
                 Intent intent3 = new Intent(getApplicationContext(), Tutor_reservation.class);

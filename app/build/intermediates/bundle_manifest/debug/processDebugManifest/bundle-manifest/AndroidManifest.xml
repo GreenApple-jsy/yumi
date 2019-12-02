@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -78,8 +79,9 @@
         <activity android:name="com.example.yumi.ReplayVideo" />
         <activity android:name="com.example.yumi.Cons" />
         <activity android:name="com.example.yumi.stdSelect" />
-        <activity android:name="com.example.yumi.Tutor_reservation" />
-        <activity android:name="com.example.yumi.Tutor_timetable" />
+        <activity android:name="com.example.yumi.stdPreferences" />
+        <activity android:name="com.example.yumi.stdPrfInform" />
+        <activity android:name="com.example.yumi.changePassWord" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -90,6 +92,19 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <receiver
+            android:name="com.example.yumi.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
         <service android:name="com.google.firebase.components.ComponentDiscoveryService" >
             <meta-data

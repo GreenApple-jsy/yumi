@@ -1732,8 +1732,16 @@
         "source": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_home_black_24dp.png"
     },
     {
+        "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_yourbubble.9.png.flat",
+        "source": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\src\\main\\res\\drawable-v24\\yourbubble.9.png"
+    },
+    {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_tab_indicator_material.xml.flat",
         "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_mybubble.9.png.flat",
+        "source": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\src\\main\\res\\drawable-v24\\mybubble.9.png"
     },
     {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_chip_background_color.xml.flat",
@@ -2174,6 +2182,10 @@
     {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_action.xml.flat",
         "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\0fce01345bd11c4910f81b8d028990c8\\media-1.0.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_change_password.xml.flat",
+        "source": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\src\\main\\res\\layout\\change_password.xml"
     },
     {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -2624,6 +2636,10 @@
         "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
+        "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_edit_tutor_information.xml.flat",
+        "source": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\src\\main\\res\\layout\\edit_tutor_information.xml"
+    },
+    {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
         "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\anim\\abc_tooltip_exit.xml"
     },
@@ -2718,6 +2734,10 @@
     {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_radio_on_to_off_mtrl_animation.xml.flat",
         "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\drawable\\btn_radio_on_to_off_mtrl_animation.xml"
+    },
+    {
+        "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\layout_edit_student_information.xml.flat",
+        "source": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\src\\main\\res\\layout\\edit_student_information.xml"
     },
     {
         "merged": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",

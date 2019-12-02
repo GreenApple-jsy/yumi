@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
         String loginId = auto.getString("id",null);
-        String nickname = auto.getString("nickname",null);
+        String nickname = auto.getString("nickName",null);
         String position = auto.getString("usertype",null);
 
         if(loginId !=null && position != null && nickname != null) {
