@@ -30,6 +30,8 @@ public class Teachersignup extends AppCompatActivity {
 
     EditText et_id, et_pw, et_pw_chk, et_nick;
     String sId, sPw, sPw_chk, sNickname, sUniversity="";
+    String nickCheck="1";
+    String idCheck = "1";
     int univIdx = 0;
     String JsonResultString;
     String JsonResultString1;
@@ -78,8 +80,13 @@ public class Teachersignup extends AppCompatActivity {
                 //0-> ok,1->not ok
                 EditText id_text = (EditText) findViewById(R.id.id_text);
                 String id = id_text.getText().toString();
-                task = new Teachersignup.GetData();
-                task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
+                if(id.length()<=0){
+                    Toast.makeText(Teachersignup.this, String.format("아이디를 입력해 주세요."), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    task = new Teachersignup.GetData();
+                    task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
+                }
             }
         });
 
@@ -91,8 +98,13 @@ public class Teachersignup extends AppCompatActivity {
                 //0-> ok,1->not ok
                 EditText et_nicknames = (EditText) findViewById(R.id.nickname);
                 String nickname = et_nicknames.getText().toString();
-                task2 = new Teachersignup.GetData1();
-                task2.execute("http://1.234.38.211/nickname_check.php?nickname=" + nickname, "");
+                if(nickname.length()> 6){
+                    Toast.makeText(getApplicationContext(), "6자리 이하로 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    task2 = new Teachersignup.GetData1();
+                    task2.execute("http://1.234.38.211/nickname_check.php?nickname=" + nickname, "");
+                }
             }
         });
 
@@ -128,7 +140,7 @@ public class Teachersignup extends AppCompatActivity {
 
 
             //null값이 아니어야 함. /비밀번호와 번호 확인이 일치하여야 함./
-            if ( (sUniversity.length() > 0 ) && (sId.getBytes().length >= 1 && sPw.getBytes().length >= 6 && sPw_chk.getBytes().length >= 6) && (sPw.equals(sPw_chk))) {
+            if ( (nickCheck.equals("0"))&&(idCheck.equals("0"))&&(sUniversity.length() > 0 ) && (sId.getBytes().length >= 1 && sPw.getBytes().length >= 6 && sPw_chk.getBytes().length >= 6) && (sPw.equals(sPw_chk))) {
                 //계속하기 버튼을 누른 경우
                 Intent intent = new Intent(getApplicationContext(), Mail_verify.class);
                 intent.putExtra("id", sId); /*송신  id와 pw를 다음 개인정보 activity에 넘긴 후 한 번에 db에 insert*/
@@ -136,12 +148,20 @@ public class Teachersignup extends AppCompatActivity {
                 intent.putExtra("nickname", sNickname);
                 intent.putExtra("university", sUniversity);
                 intent.putExtra("univ", univIdx);
-
-
                 startActivity(intent);
             } else {
-                Toast.makeText(Teachersignup.this, "\n" +
+                if(idCheck.equals("1")){
+                    Toast.makeText(Teachersignup.this, "" +
+                            "아이디 중복 확인을 해주세요.", Toast.LENGTH_SHORT).show();
+                }
+                else if(nickCheck.equals("1")){
+                    Toast.makeText(Teachersignup.this, "" +
+                            "닉네임 중복 확인을 해주세요.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                Toast.makeText(Teachersignup.this, "" +
                         "입력 정보를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
 
         }
@@ -226,12 +246,12 @@ public class Teachersignup extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(JsonResultString);
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
                 JSONObject item = jsonArray.getJSONObject(0);
-                String check = item.getString(TAG_CHECK);
+                idCheck = item.getString(TAG_CHECK);
 
-                if (check.equals("1")) {
+                if (idCheck.equals("1")) {
                     Toast.makeText(getApplicationContext(), "중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
                 }
-                if (check.equals("0")) {
+                if (idCheck.equals("0")) {
                     Toast.makeText(getApplicationContext(), "가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                 }
 
@@ -310,12 +330,12 @@ public class Teachersignup extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(JsonResultString1);
                 JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
                 JSONObject item = jsonArray.getJSONObject(0);
-                String check = item.getString(TAG_CHECK);
+                nickCheck = item.getString(TAG_CHECK);
 
-                if (check.equals("1")) {
+                if (nickCheck.equals("1")) {
                     Toast.makeText(getApplicationContext(), "중복된 닉네임이 존재합니다.", Toast.LENGTH_SHORT).show();
                 }
-                if (check.equals("0")) {
+                if (nickCheck.equals("0")) {
                     Toast.makeText(getApplicationContext(), "가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
                 }
 

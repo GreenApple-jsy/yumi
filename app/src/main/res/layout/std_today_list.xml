@@ -10,23 +10,18 @@
 
     <TextView
         android:id="@+id/ttNick"
-        android:layout_width="15dp"
+        android:layout_width="128dp"
         android:layout_height="32dp"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/color_ffffffff"
+        android:textSize="12sp" />
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="134dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/bookName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/chapter"
@@ -34,6 +29,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@color/color_ffffffff"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/bookName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/color_ffffffff"
             android:textSize="10sp" />
 
         <LinearLayout
@@ -44,8 +48,9 @@
             <TextView
                 android:id="@+id/pages"
                 android:layout_width="66dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/color_ffffffff"
                 android:text="TextView"
                 android:textSize="10sp" />
 
@@ -54,6 +59,7 @@
                 android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@color/color_ffffffff"
                 android:text="TextView"
                 android:textSize="10sp" />
 
@@ -62,22 +68,24 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="141dp"
+        android:layout_width="119dp"
         android:layout_height="55dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/TodayDate"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="24dp"
             android:text="TextView"
+            android:textColor="@color/color_ffffffff"
             android:textSize="10sp" />
 
         <TextView
             android:id="@+id/startTime"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
             android:layout_weight="1"
+            android:textColor="@color/YEOLLOW"
             android:text="TextView"
             android:textSize="10sp" />
 

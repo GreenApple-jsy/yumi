@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -60,8 +60,9 @@
         <activity android:name=".ReplayVideo" />
         <activity android:name=".Cons" />
         <activity android:name=".stdSelect" />
-        <activity android:name=".Tutor_reservation"/>
-        <activity android:name=".Tutor_timetable"/>
+        <activity android:name=".stdPreferences" />
+        <activity android:name=".stdPrfInform" />
+        <activity android:name=".changePassWord" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -72,6 +73,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <receiver    android:name=".AlarmReceiver"    android:enabled="true"    android:exported="false" >
+            <intent-filter>        <action android:name="android.intent.action.BOOT_COMPLETED" />    </intent-filter></receiver>
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
 
 </manifest>

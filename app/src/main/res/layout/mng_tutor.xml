@@ -10,25 +10,28 @@
 
     <Button
         android:id="@+id/AddTeacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
+        android:layout_width="111dp"
+        android:layout_height="53dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="39dp"
         android:layout_marginRight="39dp"
+        android:background="@drawable/draw9"
         android:onClick="AddTeacher"
         android:text="선생님 등록하기"
+        android:textColor="@color/color_ffffffff"
+        app:layout_constraintBottom_toTopOf="@+id/listView_tutor_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/myTutorText"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.774" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="147dp"
         android:layout_height="39dp"
         android:text="선생님 관리"
+        android:textStyle="bold"
         android:textSize="18sp"
         android:onClick="AddTeacher"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,57 +42,6 @@
         app:layout_constraintVertical_bias="0.049"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/myTutorText"
-        android:layout_width="188dp"
-        android:layout_height="40dp"
-        android:text="내 선생님 관리"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="52dp"
-        android:layout_height="22dp"
-        android:text="내 선생님"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintHorizontal_bias="0.282"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
-
-    <Switch
-        android:id="@+id/ttSwitch"
-        android:layout_width="61dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.748"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
-        tools:ignore="RtlCompat" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="84dp"
-        android:layout_height="29dp"
-        android:text="익선생"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toEndOf="@+id/stdSwitch"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048"
-        tools:ignore="MissingConstraints" />
-
 
     <ListView
         android:id="@+id/listView_tutor_list"
@@ -98,14 +50,14 @@
         android:layout_margin="5dp"
         android:layout_marginStart="44dp"
         android:layout_weight="6"
-        android:background="#48733BA0"
+        android:background="@color/color_ffffffff"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myTutorText"
-        app:layout_constraintVertical_bias="0.237"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.453"
         tools:ignore="RtlCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,11 @@ public class tutorPreferences extends PreferenceActivity {
         Preference logOut = findPreference("logout");
         logOut.setIntent(i);
 
+        Intent intent = new Intent(tutorPreferences.this, tutorPrfInform.class);
+        Preference myi = findPreference("myinform");
+        myi.setIntent(intent);
+
+
     }
 
 }

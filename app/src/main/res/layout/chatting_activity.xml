@@ -1,36 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/chat_listview"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:transcriptMode="alwaysScroll"
-        android:layout_height="487dp" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ToolbarColoredBackArrow"
+        tools:ignore="MissingConstraints" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="339dp"
-            android:layout_height="59dp"
-            android:ems="10"
-            android:hint="보낼 말 입력"
-            android:inputType="textPersonName" />
+        <ListView
+            android:id="@+id/chat_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:divider="#00000000"
+            android:transcriptMode="alwaysScroll" />
 
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
+            style="@android:style/ButtonBar"
+            android:background="@drawable/draw1"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:text="전송"
-            android:textColor="#128EF1"
-            android:textSize="30sp" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="339dp"
+                android:layout_height="59dp"
+                android:ems="10"
+                android:hint="보낼 말 입력"
+                android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="59dp"
+                android:background="#00000000"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="end"
+                android:src="@drawable/send"
+                android:textSize="30sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

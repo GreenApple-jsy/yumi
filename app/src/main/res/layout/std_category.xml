@@ -7,15 +7,15 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="59dp">
 
         <TextView
             android:id="@+id/textView36"
-            android:layout_width="112dp"
+            android:layout_width="157dp"
             android:layout_height="match_parent"
-            android:text="\n     단원별 검색"
+            android:text="\n        단원별 검색"
             android:textColor="#105713"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
     </FrameLayout>
 
     <LinearLayout
@@ -27,7 +27,7 @@
 
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="22dp"
             android:layout_height="match_parent"
             android:layout_weight="0.21">
 
@@ -72,14 +72,14 @@
 
         <LinearLayout
             android:layout_width="123dp"
-            android:layout_height="45dp"
+            android:layout_height="62dp"
             android:layout_weight="0.21"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView34"
                 android:layout_width="62dp"
-                android:layout_height="29dp"
+                android:layout_height="22dp"
                 android:layout_weight="0.21"
                 android:text="과목"
                 android:textSize="8sp" />
@@ -98,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.21"
             android:onClick="search"
+            android:background="@drawable/draw2"
             android:text="검   색" />
 
     </LinearLayout>
@@ -108,7 +109,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="467dp"
+        android:layout_height="393dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -119,8 +120,8 @@
 
         <ListView
             android:id="@+id/search_list"
-            android:layout_width="333dp"
-            android:layout_height="474dp"
+            android:layout_width="342dp"
+            android:layout_height="393dp"
             android:background="#B2DDB4" />
 
         <FrameLayout
@@ -133,9 +134,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="82dp">
+        android:layout_height="55dp">
 
     </FrameLayout>
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </LinearLayout>

@@ -19,6 +19,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="11dp">
+
+            </FrameLayout>
+
             <TextView
                 android:id="@+id/bookName"
                 android:layout_width="match_parent"
@@ -67,6 +73,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="11dp">
+
+            </FrameLayout>
+
             <TextView
                 android:id="@+id/date"
                 android:layout_width="match_parent"
@@ -85,20 +97,21 @@
                 android:layout_height="36dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/moreView"
-                    android:layout_width="43dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="더보기"
-                    android:textSize="10sp" />
-
                 <FrameLayout
                     android:layout_width="81dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
                 </FrameLayout>
+
+                <Button
+                    android:id="@+id/moreView"
+                    android:layout_width="43dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/draw2"
+                    android:text="더보기"
+                    android:textSize="10sp" />
 
             </LinearLayout>
 

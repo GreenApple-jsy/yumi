@@ -50,9 +50,12 @@ public class stdMngBooking extends AppCompatActivity {
     private static final String TAG_BOOK = "book";
     private static final String TAG_STime = "start_time";
     private static final String TAG_PAGE = "page";
-    private static final String TAG_QN = "start_time";
+    private static final String TAG_QN = "q_number";
     private static final String TAG_CHP = "chapter";
     private static final String TAG_DT = "dates";
+    private static final String TAG_NICK = "nickname";
+    private static final String TAG_PLY = "playtime";
+
     String table_adr= "stdReadyForBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
@@ -215,18 +218,34 @@ public class stdMngBooking extends AppCompatActivity {
                 String q_num = item.getString(TAG_QN);
                 String chapter = item.getString(TAG_CHP);
                 String getDate = item.getString(TAG_DT);
+                String playtime = item.getString(TAG_PLY);
+                String t_nickname = "";
+
+                // 2019.11.29 null인 값 빈 값으로 대체
+                if(table_adr.equals("stdAlreadyDoneBooking")){
+                    t_nickname = item.getString(TAG_NICK);
+                }
+                else{
+                    t_nickname = "익선생님께 요청중!";
+                    playtime = "";
+                }
+
                 HashMap<String,String> hashMap = new HashMap<>();
 
+                System.out.println("!!!!! " + t_id + " "  + bookName);
                 arr_id[i]=id_num;
                 arr_tid[i]=t_id;
                 st_time[i]=startTime;
 
 
                 hashMap.put(TAG_TID, t_id);
-                hashMap.put(TAG_BOOK , bookName);
-                hashMap.put(TAG_QN, q_num);
-                hashMap.put(TAG_PAGE, page_num);
-                hashMap.put(TAG_CHP,chapter);
+                hashMap.put(TAG_NICK, t_nickname + " 선생님");
+                hashMap.put(TAG_BOOK , "교재 : " +bookName);
+                hashMap.put(TAG_QN, q_num+"번");
+                hashMap.put(TAG_PAGE, page_num+" 페이지");
+                hashMap.put(TAG_CHP,"단원 : " +chapter);
+                hashMap.put(TAG_STime, startTime);
+                hashMap.put(TAG_PLY, playtime);
                 hashMap.put(TAG_DT, getDate);
 
                 mArrayList.add(hashMap);
@@ -235,8 +254,8 @@ public class stdMngBooking extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     stdMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGE, TAG_QN, TAG_PLY, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_qn, R.id.booking_start_time, R.id.booking_date}
             );
 
             mlistView.setAdapter(adapter);
@@ -249,11 +268,15 @@ public class stdMngBooking extends AppCompatActivity {
             hashMap.put(TAG_PAGE, "");
             hashMap.put(TAG_CHP,"");
             hashMap.put(TAG_DT, "");
+            hashMap.put(TAG_STime, "");
+            hashMap.put(TAG_PLY, "");
+            hashMap.put(TAG_NICK, "등록된 수업이 없습니다");
+
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdMngBooking.this, mArrayList, R.layout.std_booking_list,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGE,TAG_STime, TAG_DT},
-                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_start_time, R.id.booking_date}
+                    new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGE, TAG_QN, TAG_PLY, TAG_DT},
+                    new int[]{R.id.bookStdNick, R.id.booking_book, R.id.chapter,R.id.booking_page, R.id.booking_qn, R.id.booking_start_time, R.id.booking_date}
             );
 
             mlistView.setAdapter(adapter);

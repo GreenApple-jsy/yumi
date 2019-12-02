@@ -30,6 +30,7 @@ public class Studentsignup extends AppCompatActivity {
     String sId, sPw, sPw_chk;
     String JsonResultString;
     Studentsignup.GetData task;
+    String idCheck = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,14 @@ public class Studentsignup extends AppCompatActivity {
                 //아이디 중복 체크
                 //0-> ok,1->not ok
                 String id = et_id.getText().toString();
-                task = new Studentsignup.GetData();
-                task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
+
+                if(id.length()<=0){
+                    Toast.makeText(Studentsignup.this, String.format("아이디를 입력해 주세요."), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    task = new Studentsignup.GetData();
+                    task.execute("http://1.234.38.211/id_check.php?id=" + id, "");
+                }
             }
         });
     }
@@ -87,9 +94,9 @@ public class Studentsignup extends AppCompatActivity {
         /*아이디>=1 비밀번호>=6 비밀번호와 비밀번호 확인이 일치하여야 함*/
         if((sId.getBytes().length>=1 && sPw.getBytes().length>=6 && sPw_chk.getBytes().length>=6)){
 
-            if(sPw.equals(sPw_chk))
+            if(sPw.equals(sPw_chk)&&idCheck.equals("0"))
             {
-                Toast.makeText(Studentsignup.this, String.format("\n비밀번호가 일치합니다"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Studentsignup.this, String.format("비밀번호가 일치합니다"), Toast.LENGTH_SHORT).show();
                 /* 패스워드 확인이 정상적으로 됨 */
                 //다음 학생 정보 입력하는 화면으로 넘어감.
                 Intent intent = new Intent(getApplicationContext(), Privateinformation2.class);
@@ -99,13 +106,17 @@ public class Studentsignup extends AppCompatActivity {
                 startActivity(intent);
 
             }
+            else if(idCheck.equals("1")){
+                Toast.makeText(Studentsignup.this, "" +
+                        "아이디 중복 확인을 해주세요.", Toast.LENGTH_SHORT).show();
+            }
             else {
                 /* 패스워드 확인이 불일치 함 */
-                Toast.makeText(Studentsignup.this, "\n" +
+                Toast.makeText(Studentsignup.this, "" +
                         "비밀번호가 불일치합니다", Toast.LENGTH_SHORT).show();
             }
         }
-        else{  Toast.makeText(Studentsignup.this, "\n" +
+        else{  Toast.makeText(Studentsignup.this, "" +
                 "입력 정보를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
             //Toast.makeText(Studentsignup.this, String.format("\n%d %d", sPw.getBytes().length, sId.getBytes().length), Toast.LENGTH_SHORT).show();
         }
@@ -183,12 +194,12 @@ public class Studentsignup extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(JsonResultString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
             JSONObject item = jsonArray.getJSONObject(0);
-            String check = item.getString(TAG_CHECK);
+            idCheck = item.getString(TAG_CHECK);
 
-            if (check.equals("1")) {
+            if (idCheck.equals("1")) {
                 Toast.makeText(getApplicationContext(),"중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
             }
-            if (check.equals("0")) {
+            if (idCheck.equals("0")) {
                 Toast.makeText(getApplicationContext(),"가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
             }
 

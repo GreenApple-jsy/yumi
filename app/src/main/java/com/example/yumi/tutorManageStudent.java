@@ -65,30 +65,6 @@ public class tutorManageStudent extends AppCompatActivity {
         task = new phpConnect();
         task.execute();
 
-        aSwitch = (Switch) findViewById(R.id.stdSwitch);
-
-        //스위치 클릭
-        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true) {
-                    TextView titleLine = (TextView) findViewById(R.id.mystudentText);
-                    titleLine.setText("익명 학생 관리");
-                    table_adr = "getMatching";
-                    task = new phpConnect();
-                    task.execute();
-
-                } else {
-                    TextView titleLine = (TextView) findViewById(R.id.mystudentText);
-                    titleLine.setText("내 학생 관리");
-                    table_adr = "getMatching";
-                    task = new phpConnect();
-                    task.execute();
-                }
-            }
-        });
-
-
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -190,9 +166,7 @@ public class tutorManageStudent extends AppCompatActivity {
                 HashMap<String,String> hashMap = new HashMap<>();
                 arr_sid[i]=st_id;
 
-                hashMap.put(TAG_SID , st_id);
-                hashMap.put(TAG_TID, tt_id);
-                hashMap.put(TAG_NICK , stdNick);
+                hashMap.put(TAG_NICK , stdNick+" 학생");
                 hashMap.put(TAG_SCH, schType);
                 hashMap.put(TAG_GD , grade);
 
@@ -203,7 +177,7 @@ public class tutorManageStudent extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     tutorManageStudent.this, mArrayList, R.layout.mng_std_list,
-                    new String[]{TAG_SID,TAG_SCH, TAG_GD},
+                    new String[]{TAG_NICK,TAG_SCH, TAG_GD},
                     new int[]{R.id.listNick, R.id.listSchool, R.id.listGrade}
             );
 
@@ -211,15 +185,16 @@ public class tutorManageStudent extends AppCompatActivity {
 
         } catch (JSONException e) {
             HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put(TAG_SID, "");
+            hashMap.put(TAG_NICK , "아직 매칭된 학생이 없습니다.");
             hashMap.put(TAG_SCH, "");
-            hashMap.put(TAG_GD, "");
+            hashMap.put(TAG_GD , "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     tutorManageStudent.this, mArrayList, R.layout.mng_std_list,
-                    new String[]{TAG_SID,TAG_SCH, TAG_GD},
+                    new String[]{TAG_NICK,TAG_SCH, TAG_GD},
                     new int[]{R.id.listNick, R.id.listSchool, R.id.listGrade}
             );
+
 
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);

@@ -11,11 +11,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/reserve"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="풀이 예약하기" />
+            android:layout_height="23dp">
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/textView"
@@ -28,7 +28,7 @@
         <ImageView
             android:id="@+id/q_image"
             android:layout_width="match_parent"
-            android:layout_height="426dp"
+            android:layout_height="397dp"
             android:layout_gravity="fill"
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/avatars[2]" />
@@ -38,23 +38,47 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/age"
-                android:layout_width="157dp"
-                android:layout_height="wrap_content"
-                android:text="학년"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="#008DFF"
-                android:textSize="25sp" />
+            <FrameLayout
+                android:layout_width="13dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
 
             <TextView
-                android:id="@+id/semester"
-                android:layout_width="match_parent"
+                android:id="@+id/nickname"
+                android:layout_width="93dp"
                 android:layout_height="wrap_content"
-                android:text="학기"
+                android:text="닉네임"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#008DFF"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/school_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중고등학생"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="87dp"
+                android:layout_height="wrap_content"
+                android:text="과목"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/chapter"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:text="단원"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -63,9 +87,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <FrameLayout
+                android:layout_width="14dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
             <TextView
                 android:id="@+id/book"
-                android:layout_width="154dp"
+                android:layout_width="123dp"
                 android:layout_height="wrap_content"
                 android:text="문제집"
                 android:textColor="#2E46CC"
@@ -73,7 +103,7 @@
 
             <TextView
                 android:id="@+id/page"
-                android:layout_width="103dp"
+                android:layout_width="92dp"
                 android:layout_height="wrap_content"
                 android:text="페이지"
                 android:textColor="#2E46CC"
@@ -81,7 +111,7 @@
 
             <TextView
                 android:id="@+id/q_number"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="문제 번호"
@@ -95,59 +125,46 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/start_time"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="풀이 가능 시간(시작)"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+            <FrameLayout
+                android:layout_width="15dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
 
             <TextView
-                android:id="@+id/end_time"
-                android:layout_width="wrap_content"
+                android:id="@+id/dates"
+                android:layout_width="265dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="풀이 가능 시간(끝)"
-                android:textColor="#000000"
+                android:text="날짜 : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
                 android:textSize="20sp" />
-
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="22dp">
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/r"
-                android:layout_width="121dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="예약여부"
-                android:textColor="#36CF3B"
-                android:textSize="25sp" />
+            <FrameLayout
+                android:layout_width="128dp"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/complete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="풀이 완료 여부"
-                android:textSize="25sp" />
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/good"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/reserve"
+                android:layout_width="166dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="추천수"
-                android:textColor="#673AB7"
-                android:textSize="25sp" />
+                android:background="@drawable/draw10"
+                android:text="풀이 예약하기"
+                android:textSize="25sp"/>
 
         </LinearLayout>
 

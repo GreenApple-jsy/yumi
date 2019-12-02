@@ -37,6 +37,7 @@ public class Privateinformation2 extends AppCompatActivity {
     String JsonResultString;
     Privateinformation2.GetData task;
     EditText et_nicknames;
+    String nickCheck="1";
     Privateinformation2.GetData1 task1;
     int flag = 0;
 
@@ -63,14 +64,18 @@ public class Privateinformation2 extends AppCompatActivity {
                 //0-> ok,1->not ok
                 et_nicknames = (EditText) findViewById(R.id.nick_text);
                 String nickname = et_nicknames.getText().toString();
-                task = new Privateinformation2.GetData();
-                task.execute("http://1.234.38.211/nickname_check.php?nickname=" + nickname, "");
+                if(nickname.length()> 6){
+                    Toast.makeText(getApplicationContext(), "6자리 이하로 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    task = new Privateinformation2.GetData();
+                    task.execute("http://1.234.38.211/nickname_check.php?nickname=" + nickname, "");
+                }
             }
         });
 
         //체크박스 학년 구분
         final Spinner dropdown = (Spinner) findViewById(R.id.spinner2);
-
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
@@ -113,30 +118,17 @@ public class Privateinformation2 extends AppCompatActivity {
             sSchool = rd.getText().toString();  //선택된 학교 값(스트링 : 고등학교 / 중학교)을 받음.
             sEmail = et_email.getText().toString(); //이메일 주소 받음.
 
-            task1 = new Privateinformation2.GetData1();
-            task1.execute("http://1.234.38.211/student_signup.php?id=" + sId + "&nickname=" + sNick, "");
-            if(flag == 1){
-                Toast.makeText(Privateinformation2.this, "\n" +
-                        "아이디 중복 확인 해주세요.", Toast.LENGTH_SHORT).show();
-            }
-            else if(flag == 2){
-                Toast.makeText(Privateinformation2.this, "\n" +
-                        "닉네임 중복 확인 해주세요.", Toast.LENGTH_SHORT).show();
-            }
-            else if (flag == 0) {
-                //null값이 아니어야 함.
-                if (sNick.length() >= 1 && sEmail.length() >= 1) {
-                    //받은 정보를 DB에 넣음
-                    RegisterDB rdb = new RegisterDB();
-                    rdb.execute();
+            if((nickCheck.equals("0"))&&(sNick.length()>0) && (sSchool.length()>0) && (sEmail.length()>0)){
+                RegisterDB rdb = new RegisterDB();
+                rdb.execute();
 
-                    //다음 액티비티로 넘어감.
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(Privateinformation2.this, "\n" +
-                            "입력 정보를 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
-                }
+                //다음 액티비티로 넘어감.
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+            else if(nickCheck.equals("1")){
+                Toast.makeText(Privateinformation2.this, "" +
+                        "닉네임 중복 확인 해주세요.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -180,18 +172,11 @@ public class Privateinformation2 extends AppCompatActivity {
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
                 conn.connect();
-                System.out.println("!!!!!!!!!!!!!!!!");
-                //Looper.prepare();
-                //Toast.makeText(Privateinformation2.this, "\n" +
-                //      "성공적으로 처리되었습니다1", Toast.LENGTH_SHORT).show();
-                //Looper.loop();
 
-                /* 안드로이드 -> 서버 파라메터값 전달 */
                 OutputStream outs = conn.getOutputStream();
                 outs.write(param.getBytes("UTF-8"));
                 outs.flush();
                 outs.close();
-                System.out.println("#################");
 
                 int responseStatusCode = conn.getResponseCode();
                 InputStream inputStream;
@@ -218,6 +203,7 @@ public class Privateinformation2 extends AppCompatActivity {
         }
 
     }
+
     private class GetData extends AsyncTask<String, Void, String> {
 
         @Override
@@ -289,12 +275,12 @@ public class Privateinformation2 extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(JsonResultString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
             JSONObject item = jsonArray.getJSONObject(0);
-            String check = item.getString(TAG_CHECK);
+            nickCheck = item.getString(TAG_CHECK);
 
-            if (check.equals("1")) {
+            if (nickCheck.equals("1")) {
                 Toast.makeText(getApplicationContext(),"중복된 닉네임이 존재합니다.", Toast.LENGTH_SHORT).show();
             }
-            if (check.equals("0")) {
+            if (nickCheck.equals("0")) {
                 Toast.makeText(getApplicationContext(),"가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
             }
 

@@ -11,24 +11,26 @@
         android:id="@+id/textView5"
         android:layout_width="158dp"
         android:layout_height="40dp"
+        android:layout_marginTop="40dp"
         android:text="학생방"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.457" />
+
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="143dp"
         android:layout_height="122dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/icsunsang"
         app:layout_constraintBottom_toTopOf="@+id/myStudent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.0"
@@ -39,9 +41,8 @@
         android:layout_width="165dp"
         android:layout_height="32dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="576dp"
         android:text="소속 : 서울영신고등학교 "
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/stdGrade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/logo"
@@ -53,38 +54,37 @@
         android:layout_width="165dp"
         android:layout_height="32dp"
         android:text="닉네임 : OOO님"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/schoolName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
-
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/stdGrade"
         android:layout_width="165dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="16dp"
         android:text="학년 : 2학년"
-        app:layout_constraintBottom_toTopOf="@+id/rePlay"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toEndOf="@+id/logo"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241" />
 
     <Button
         android:id="@+id/myTutor"
         android:layout_width="102dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="452dp"
-        android:background="#FF8E99"
+        android:layout_marginBottom="436dp"
+        android:background="#D7AC87
+"
         android:onClick="myTutor"
         android:text="나의 선생님"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toEndOf="@+id/rePlay"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
@@ -93,13 +93,13 @@
         android:id="@+id/rePlay"
         android:layout_width="103dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="452dp"
-        android:background="#FF8E99"
+        android:layout_marginBottom="436dp"
+        android:background="#D7AC87"
         android:onClick="ReplayVideo"
         android:text="다시보기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toEndOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
@@ -108,13 +108,13 @@
         android:id="@+id/button4"
         android:layout_width="103dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="452dp"
-        android:background="#FF8E99"
+        android:layout_marginBottom="436dp"
+        android:background="#D7AC87"
         android:onClick="StdMyBooking"
         android:text="나의 예약"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         app:layout_constraintVertical_bias="0.095" />
@@ -127,7 +127,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginBottom="216dp"
         android:layout_weight="6"
-        android:background="#FFC2C2"
+        android:background="@color/colorPrimary"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,5 +148,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4"
         app:layout_constraintVertical_bias="0.082" />
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_alignParentBottom="true"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

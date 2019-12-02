@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049"
+        app:layout_constraintVertical_bias="0.055"
         tools:ignore="MissingConstraints" />
 
     <Switch
@@ -43,13 +43,16 @@
         android:layout_marginStart="44dp"
         android:layout_marginBottom="216dp"
         android:layout_weight="6"
-        android:background="#48733BA0"
+
         android:padding="5dp"
+        android:dividerHeight="0dp"
+        android:divider="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textVD"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.12"
+        android:layout_marginLeft="44dp" />
 
     <TextView
         android:id="@+id/textView13"

@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:background="#DD8DA6"
+            android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="선생님 등록"
             android:textColor="#fff"

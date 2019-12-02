@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/timepick"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="풀이 시간 선택하기" />
+        android:layout_height="269dp">
 
-    <Button
-        android:id="@+id/reserve"
+    </FrameLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="예약하기" />
+        android:layout_height="107dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="19dp"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/timepick"
+            android:layout_width="173dp"
+            android:layout_height="81dp"
+            android:background="@drawable/draw10"
+            android:text="풀이 시간 선택하기"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <FrameLayout
+            android:layout_width="21dp"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/reserve"
+            android:layout_width="180dp"
+            android:layout_height="82dp"
+            android:background="@drawable/draw2"
+            android:text="예약하기"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -129,7 +129,10 @@ public class studentcompelete_question extends AppCompatActivity {
         String TAG_AGE ="age";
         String TAG_SEMESTER ="semester";
         String TAG_RESERV ="reservation";
-
+        String TAG_SCHOOL="school_type";
+        String TAG_CHP = "chapter";
+        String TAG_DATES = "dates";
+        String TAG_NICK = "nickname";
         try {
             JSONObject jsonObject = new JSONObject(JsonResultString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -141,7 +144,8 @@ public class studentcompelete_question extends AppCompatActivity {
                         item.getString(TAG_QNUM),item.getString(TAG_STIME),
                         item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
                         ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
-                        ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
+                        ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV)),
+                        item.getString(TAG_SCHOOL),item.getString(TAG_CHP), item.getString(TAG_DATES), item.getString(TAG_NICK)
                 ));
             }
             questionAdapter = new TutorQuestionAdapter(this,QuestionDataList);

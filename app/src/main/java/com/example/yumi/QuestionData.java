@@ -14,8 +14,15 @@ public class QuestionData {
     private String age;
     private String semester;
     private int reservation;
+    private String school_type;
+    private String dates;
+    private String chapter;
+    private String nickname;
 
-    public QuestionData(int id, String book, String page, String q_number, String start_time, String q_image, String t_id, String s_id, int complete, String q_link, String age, String semester, int reservation){
+    public QuestionData(int id, String book, String page, String q_number, String start_time,
+                        String q_image, String t_id, String s_id, int complete, String q_link,
+                        String age, String semester, int reservation , String school_type,
+                        String chapter, String dates, String nickname){
         this.id = id;
         this.book = book;
         this.page = page;
@@ -29,6 +36,10 @@ public class QuestionData {
         this.age = age;
         this.semester = semester;
         this.reservation = reservation;
+        this.school_type=school_type;
+        this.chapter=chapter;
+        this.dates=dates;
+        this.nickname=nickname;
     }
 
     public int getid()
@@ -84,4 +95,18 @@ public class QuestionData {
     {
         return this.reservation;
     }
+
+    public String getSchool()
+    {
+        return this.school_type;
+    }
+    public String getCHP()
+    {
+        return this.chapter;
+    }
+    public String getDates()
+    {
+        return this.dates;
+    }
+    public String getNickname(){return this.nickname;}
 }

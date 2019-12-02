@@ -1,6 +1,7 @@
 package com.example.yumi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -46,6 +47,10 @@ import java.util.HashMap;
 import static com.example.yumi.R.layout.search_list_detail;
 import android.content.Context;
 import android.content.Context;
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+
 public class stdSelect extends AppCompatActivity {
     ArrayAdapter<CharSequence>midHighAdapter, subAdapter;
     int mOh = 0;
@@ -86,6 +91,30 @@ public class stdSelect extends AppCompatActivity {
 
 
         mlistView = (ListView)findViewById(R.id.search_list) ;
+
+        new Thread(new Runnable() {
+            @Override public void run() {
+                BottomBar bottomBar = findViewById(R.id.bottomBar);
+                bottomBar.setDefaultTab(R.id.tab_search_log);
+                bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+                    @Override
+                    public void onTabSelected(int tabId) {
+                        if (tabId == R.id.tab_home_log){
+                            Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_person_log){
+                            Intent intent = new Intent(getApplicationContext(), stdMyPage.class);
+                            startActivity(intent);
+                        }
+                        else if (tabId == R.id.tab_setting_log){
+                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+            } }).start();
+
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -365,6 +394,7 @@ public class stdSelect extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void search(View view ){
@@ -437,8 +467,8 @@ public class stdSelect extends AppCompatActivity {
 
                 int id_num = item.getInt(ID);
                 String bookName = item.getString(TAG_BOOK);
-                String pages = item.getString(TAG_PAGES); pages+=" page"; String q_num = "Q : ";
-                q_num += item.getString(TAG_QN);
+                String pages = item.getString(TAG_PAGES);
+                String q_num = item.getString(TAG_QN);
                 String startTime = item.getString(TAG_sTime);
                 String dates = item.getString(TAG_DT);
                 String chapter = item.getString(TAG_CHP);
@@ -453,9 +483,8 @@ public class stdSelect extends AppCompatActivity {
                 hashMap.put(TAG_sTime, startTime);
                 hashMap.put(TAG_CHP , chapter);
                 hashMap.put(TAG_DT, dates);
-                hashMap.put(TAG_BOOK , bookName);
-                hashMap.put(TAG_PAGES , pages);
-                hashMap.put(TAG_QN , q_num);
+                hashMap.put(TAG_PAGES , pages+" 페이지");
+                hashMap.put(TAG_QN , q_num + " 번");
                 mArrayList.add(hashMap);
             }
 
@@ -489,9 +518,9 @@ public class stdSelect extends AppCompatActivity {
             hashMap.put(TAG_TID, "");
             hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_sTime, "");
-            hashMap.put(TAG_CHP , "");
+            hashMap.put(TAG_CHP , "해당 결과가 없습니다.");
             hashMap.put(TAG_DT, "");
-            hashMap.put(TAG_BOOK , "해당 결과가 없습니다.");
+            hashMap.put(TAG_BOOK , "");
             hashMap.put(TAG_PAGES , "");
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(

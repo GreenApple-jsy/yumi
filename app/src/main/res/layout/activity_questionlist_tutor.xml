@@ -20,37 +20,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="50">
 
-        <Button
-            android:id="@+id/bt_tab1"
-            android:layout_width="361dp"
-            android:layout_height="63dp"
-            android:layout_weight="70"
-            android:layout_gravity="center"
-            android:text="해설을 기다리는 문제" />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50">
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50">
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="wrap_content"
-            android:layout_height="499dp"
-            android:layout_weight="10">
+            </ListView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        </ListView>
-
+        <com.roughike.bottombar.BottomBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
     </LinearLayout>
-
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="78dp"
-        app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
 
 </LinearLayout>

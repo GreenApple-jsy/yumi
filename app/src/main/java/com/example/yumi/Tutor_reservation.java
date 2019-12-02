@@ -55,6 +55,7 @@ public class Tutor_reservation extends AppCompatActivity {
             }
         });
         SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
+        final String t_id = auto.getString("id", null);
         final String nickname = auto.getString("nickName",null);
         //예약하기
         Button reserve = findViewById(R.id.reserve);
@@ -62,7 +63,7 @@ public class Tutor_reservation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 task = new GetData();
-                task.execute("http://1.234.38.211/Tutor_reservation.php?id=" + question_id + "&playtime=" + dates + "&t_id=" + nickname, "");
+                task.execute("http://1.234.38.211/Tutor_reservation.php?id=" + question_id + "&playtime=" + dates + "&t_id=" + t_id, "");
                 Intent intent3 = new Intent(getApplicationContext(), TutorQuestionlist.class);
                 startActivity(intent3);
             }

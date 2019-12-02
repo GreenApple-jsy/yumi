@@ -1,7 +1,6 @@
 package com.example.yumi;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -12,11 +11,11 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.roughike.bottombar.BottomBar;
@@ -41,6 +40,8 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
     String JsonResultString;
     StudentQuestionAdapter questionAdapter;
     ListView listView;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+    GetData task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(true);
 
-        GetData task = new GetData();
+        task = new GetData();
         task.execute( "http://1.234.38.211/getCompleteQdata.php", "");
 
 
@@ -104,7 +105,26 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
 
             } }).start();
 
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //새로고침 작업 실행...
+                task=new GetData();
+                task.execute("http://1.234.38.211/getCompleteQdata.php", "");
 
+                mSwipeRefreshLayout.setRefreshing(false);
+
+            }
+        });
+
+        // Scheme colors for animation
+        mSwipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_red_light),
+                getResources().getColor(android.R.color.holo_blue_bright)
+        );
     }
 
     @Override
@@ -206,7 +226,10 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
         String TAG_AGE ="age";
         String TAG_SEMESTER ="semester";
         String TAG_RESERV ="reservation";
-
+        String TAG_SCHOOL="school_type";
+        String TAG_CHP = "chapter";
+        String TAG_DATES = "dates";
+        String TAG_NICK  = "nickname";
         try {
             JSONObject jsonObject = new JSONObject(JsonResultString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -218,7 +241,8 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
                         item.getString(TAG_QNUM),item.getString(TAG_STIME),
                         item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
                         ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
-                        ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV))
+                        ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV)),
+                        item.getString(TAG_SCHOOL),item.getString(TAG_CHP), item.getString(TAG_DATES), item.getString(TAG_NICK)
                 ));
             }
             questionAdapter = new StudentQuestionAdapter(this,QuestionDataList);
