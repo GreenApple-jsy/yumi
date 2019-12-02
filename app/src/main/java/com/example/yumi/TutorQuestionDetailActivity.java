@@ -172,7 +172,7 @@ public class TutorQuestionDetailActivity extends AppCompatActivity {
         TextView tv_qnum= findViewById(R.id.q_number);
         TextView tv_stime= findViewById(R.id.start_time);
         TextView tv_etime= findViewById(R.id.end_time);
-        TextView tv_reserv= findViewById(R.id.r);
+        TextView tv_reserv= findViewById(R.id.reserve);
         TextView tv_complete= findViewById(R.id.complete);
         TextView tv_good= findViewById(R.id.good);
 
