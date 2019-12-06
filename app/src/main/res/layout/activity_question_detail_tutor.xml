@@ -33,6 +33,12 @@
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/avatars[2]" />
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="23dp">
+
+        </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,12 +52,18 @@
 
             <TextView
                 android:id="@+id/nickname"
-                android:layout_width="93dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="닉네임"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#008DFF"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
+
+            <FrameLayout
+                android:layout_width="23dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/school_type"
@@ -60,16 +72,22 @@
                 android:text="중고등학생"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#008DFF"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
+
+            <FrameLayout
+                android:layout_width="11dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/age"
-                android:layout_width="87dp"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:text="과목"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#008DFF"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/chapter"
@@ -78,9 +96,17 @@
                 android:text="단원"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#008DFF"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:text="문제집"
                 android:textColor="#2E46CC"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/page"
@@ -107,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:text="페이지"
                 android:textColor="#2E46CC"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/q_number"
@@ -116,9 +142,15 @@
                 android:layout_weight="1"
                 android:text="문제 번호"
                 android:textColor="#2E46CC"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="18dp">
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,7 +170,7 @@
                 android:text="날짜 : "
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#008DFF"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <FrameLayout
@@ -163,6 +195,7 @@
                 android:layout_width="166dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/draw10"
+                android:textStyle="bold"
                 android:text="풀이 예약하기"
                 android:textSize="25sp"/>
 
