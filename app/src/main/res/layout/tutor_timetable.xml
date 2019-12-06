@@ -666,7 +666,6 @@
                     android:id="@+id/button58"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     
                     android:background="@drawable/image_dash2" android:layout_marginRight="1dp" android:layout_marginEnd="1dp"
                     android:onClick="onClick58"
                     android:layout_weight="3"/>
@@ -675,7 +674,6 @@
                     android:id="@+id/button59"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     
                     android:background="@drawable/image_dash2" android:layout_marginRight="1dp" android:layout_marginEnd="1dp"
                     android:onClick="onClick59"
                     android:layout_weight="3"/>
@@ -693,7 +691,6 @@
                     android:id="@+id/button61"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     
                     android:background="@drawable/image_dash2" android:layout_marginRight="1dp" android:layout_marginEnd="1dp"
                     android:onClick="onClick61"
                     android:layout_weight="3"/>
