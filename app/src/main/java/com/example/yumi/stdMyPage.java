@@ -13,6 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -98,6 +99,7 @@ public class stdMyPage extends AppCompatActivity {
 
         mlistView = (ListView)findViewById(R.id.std_class_list) ;
 
+
         Date currentTime = Calendar.getInstance().getTime();
         //SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
@@ -135,8 +137,8 @@ public class stdMyPage extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), stdSelect.class);
                             startActivity(intent);
                         }
-                        else if (tabId == R.id.tab_setting_log){
-                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
+                        else if (tabId == R.id.tab_chatting_log){
+                            Intent intent = new Intent(getApplicationContext(), stdManageTT.class);
                             startActivity(intent);
                         }
                     }
