@@ -26,7 +26,7 @@
             android:layout_width="173dp"
             android:layout_height="81dp"
             android:background="@drawable/draw10"
-            android:text="풀이 시간 선택하기"
+            android:text="학생 시간 확인하기"
             android:textStyle="bold"
             android:textSize="18sp" />
 
