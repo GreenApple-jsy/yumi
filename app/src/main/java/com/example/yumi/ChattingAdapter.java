@@ -1,4 +1,3 @@
-package com.example.yumi;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +17,8 @@ public class ChattingAdapter extends BaseAdapter {
     LayoutInflater mLayoutInflater = null;
     ArrayList<ChatData> Chattings;
     final String myID = ChattingActivity.s_myID;
+
+
 
     public ChattingAdapter(Context context, ArrayList<ChatData> data) {
         mContext = context;
