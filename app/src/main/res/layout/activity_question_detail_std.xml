@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TutorQuestionDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="23dp">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="문제 상세 정보"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:id="@+id/q_image"
+            android:layout_width="match_parent"
+            android:layout_height="397dp"
+            android:layout_gravity="fill"
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/avatars[2]" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="23dp">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="13dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="닉네임"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="18sp" />
+
+            <FrameLayout
+                android:layout_width="23dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/school_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중고등학생"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="18sp" />
+
+            <FrameLayout
+                android:layout_width="11dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="과목"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/chapter"
+                android:layout_width="154dp"
+                android:layout_height="wrap_content"
+                android:text="단원"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="14dp">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="14dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/book"
+                android:layout_width="123dp"
+                android:layout_height="wrap_content"
+                android:text="문제집"
+                android:textColor="#2E46CC"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/page"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:text="페이지"
+                android:textColor="#2E46CC"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/q_number"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="문제 번호"
+                android:textColor="#2E46CC"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="19dp">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="15dp"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/dates"
+                android:layout_width="265dp"
+                android:layout_height="match_parent"
+                android:text="날짜 : "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#008DFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="22dp">
+
+        </FrameLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
