@@ -1,3 +1,4 @@
+package com.example.yumi;
 
 import android.content.Context;
 import android.content.SharedPreferences;
