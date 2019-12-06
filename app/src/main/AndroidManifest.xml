@@ -63,6 +63,8 @@
         <activity android:name=".stdPreferences" />
         <activity android:name=".stdPrfInform" />
         <activity android:name=".changePassWord" />
+        <activity android:name=".Tutor_reservation"/>
+        <activity android:name=".Tutor_timetable"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
