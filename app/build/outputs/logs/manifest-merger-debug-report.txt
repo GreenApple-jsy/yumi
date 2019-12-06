@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
+INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
+INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
+INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
+MERGED from [org.webrtc:google-webrtc:1.0.28513] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\c52299bd3c4c776fbe00702fb9bfdbec\jetified-google-webrtc-1.0.28513\AndroidManifest.xml:11:1-14:12
 MERGED from [com.google.firebase:firebase-database:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\45b0e88b67024bfec35ada4f0e8408cb\jetified-firebase-database-16.0.1\AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.roughike:bottom-bar:2.3.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\460aa3cd11f639bad868d5cc6b98fe19\jetified-bottom-bar-2.3.1\AndroidManifest.xml:2:1-12:12
@@ -62,89 +63,121 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ayoung\.gradle\c
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\66e886a7ad0c232aea2267ba2af0dedf\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\324389d3e38f84104745e255701e8204\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\56b540582bb1988712a3451bfcdb03de\play-services-measurement-base-16.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
+INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
+INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
+INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
 	package
 		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:4:5-31
 		INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
 		INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-81:12
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:1-129:12
 		INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:2:11-69
-uses-permission#android.permission.INTERNET
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:5-67
-MERGED from [com.google.firebase:firebase-database-connection:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ed1ab64a7a3df0e82d30e2b9bb44bf47\jetified-firebase-database-connection-16.0.1\AndroidManifest.xml:8:5-67
-MERGED from [com.google.firebase:firebase-database-connection:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ed1ab64a7a3df0e82d30e2b9bb44bf47\jetified-firebase-database-connection-16.0.1\AndroidManifest.xml:8:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:23:5-67
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:5-80
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:22-64
-uses-permission#android.permission.READ_PHONE_STATE
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:5-75
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:22-72
-uses-permission#android.permission.GET_ACCOUNTS
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:5-71
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:22-77
+uses-permission#android.permission.WRITE_INTERNAL_STORAGE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:5-70
 	android:name
 		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:22-68
-uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:5-76
-	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:22-73
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:22:5-79
-	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:22-76
-uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:11:5-80
-	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:11:22-77
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:12:5-81
-	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:12:22-78
-uses-permission#android.permission.CAMERA
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:13:5-65
-	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:13:22-62
-uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:14:5-81
-	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:14:22-78
 uses-feature#android.hardware.camera
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:5-60
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:5-60
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:19-57
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:19-57
 uses-feature#android.hardware.camera.autofocus
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:5-70
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:5-70
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:19-67
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:19-67
+uses-feature#0x00020000
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:11:5-13:35
+	android:glEsVersion
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:12:9-41
+	android:required
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:13:9-32
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:5-65
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:22-62
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:5-79
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:22-76
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:17:5-80
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:17:22-77
+uses-permission#android.permission.BLUETOOTH
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:19:5-68
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:19:22-65
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:5-67
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ed1ab64a7a3df0e82d30e2b9bb44bf47\jetified-firebase-database-connection-16.0.1\AndroidManifest.xml:8:5-67
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ed1ab64a7a3df0e82d30e2b9bb44bf47\jetified-firebase-database-connection-16.0.1\AndroidManifest.xml:8:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3960cd00d574e90adcc7ca93bf8694ab\jetified-firebase-analytics-impl-16.1.1\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:22-76
+uses-permission#android.permission.CAPTURE_VIDEO_OUTPUT
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:23:5-25:47
+	tools:ignore
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:25:9-44
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:24:9-63
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:5-75
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:22-72
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:5-71
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:22-68
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:5-76
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:22-73
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:5-81
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:22-78
 application
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:18:5-79:19
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:39:5-127:19
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\3cf926b8c0b0bf16437d900b9534174c\material-1.0.0\AndroidManifest.xml:22:5-20
@@ -188,203 +221,251 @@ MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] C:\Us
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\106ffcbeb3e0ff18edc19202aa82f694\core-1.1.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:24:9-35
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:45:9-35
 	android:label
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:21:9-41
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:42:9-41
 	tools:ignore
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:27:9-48
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-48
 	android:roundIcon
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:23:9-54
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:44:9-54
 	android:icon
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:9-43
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:41:9-43
 	android:allowBackup
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:19:9-35
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:40:9-35
 	android:theme
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:25:9-40
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-40
 	android:networkSecurityConfig
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:9-69
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:43:9-69
 	android:usesCleartextTraffic
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:26:9-44
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-44
 activity#com.example.yumi.AddTeacherPopup
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:9-97
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-97
 	android:theme
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:51-94
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:51-94
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:19-50
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-50
 activity#com.example.yumi.StudentQuestionDetailActivity
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:9-67
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-67
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:19-64
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-64
 activity#com.example.yumi.StudentQuestionlist
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:9-57
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-57
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:19-54
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-54
 activity#com.example.yumi.MainActivity
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:31:9-37:20
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-57:20
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:31:19-47
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:32:13-36:29
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:53:13-56:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:33:17-69
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:17-69
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:33:25-66
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:17-77
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:17-77
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:27-74
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:27-74
 activity#com.example.yumi.ChattingActivity
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:38:9-54
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:9-54
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:38:19-51
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:19-51
 activity#com.example.yumi.Student_timeselect
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:39:9-56
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:9-56
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:39:19-53
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:19-53
 activity#com.example.yumi.Codematching_S
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:40:9-52
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:9-52
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:40:19-49
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:19-49
 activity#com.example.yumi.LoginActivity
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:41:9-51
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:9-51
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:41:19-48
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:19-48
 activity#com.example.yumi.Privateinformation2
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:42:9-57
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:9-57
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:42:19-54
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:19-54
 activity#com.example.yumi.Mail_verify
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:43:9-49
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:9-49
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:43:19-46
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:19-46
 activity#com.example.yumi.Teachersignup
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:44:9-51
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:9-51
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:44:19-48
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:19-48
 activity#com.example.yumi.Studentsignup
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:45:9-51
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:9-51
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:45:19-48
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:19-48
 activity#com.example.yumi.MenuActivity
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-50
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:66:9-50
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:46:19-47
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:66:19-47
 activity#com.example.yumi.uploadq
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-45
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:67:9-45
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:47:19-42
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:67:19-42
 activity#com.example.yumi.TutorQuestionDetailActivity
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-65
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:68:9-65
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:48:19-62
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:68:19-62
 activity#com.example.yumi.boardTutor
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-48
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:69:9-48
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-45
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:69:19-45
 activity#com.example.yumi.getTutorVideo
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-51
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:70:9-51
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-48
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:70:19-48
 activity#com.example.yumi.tutorManageStudent
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-56
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:71:9-56
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-53
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:71:19-53
 activity#com.example.yumi.tutorMyPage
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-49
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:72:9-49
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-46
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:72:19-46
 activity#com.example.yumi.tutorPreferences
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:53:9-54
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:73:9-54
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:53:19-51
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:73:19-51
 activity#com.example.yumi.tutorMngBooking
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:9-53
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:74:9-53
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:19-50
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:74:19-50
 activity#com.example.yumi.studentcompelete_question
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:9-63
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:75:9-63
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:19-60
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:75:19-60
 activity#com.example.yumi.TutorQuestionlist
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:56:9-55
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:9-55
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:56:19-52
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:19-52
 activity#com.example.yumi.stdMyPage
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:57:9-47
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:9-47
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:57:19-44
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:19-44
 activity#com.example.yumi.stdMngBooking
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:9-51
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:9-51
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:19-48
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:19-48
 activity#com.example.yumi.stdManageTT
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:9-49
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:79:9-49
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:19-46
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:79:19-46
 activity#com.example.yumi.ReplayVideo
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:9-49
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:80:9-49
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:19-46
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:80:19-46
 activity#com.example.yumi.Cons
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:9-42
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:81:9-42
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:19-39
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:81:19-39
 activity#com.example.yumi.stdSelect
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:9-47
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:82:9-47
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:19-44
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:82:19-44
 activity#com.example.yumi.stdPreferences
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:9-52
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:83:9-52
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:19-49
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:83:19-49
 activity#com.example.yumi.stdPrfInform
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:9-50
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:84:9-50
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:19-47
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:84:19-47
 activity#com.example.yumi.changePassWord
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:9-52
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:85:9-52
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:19-49
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:85:19-49
+activity#com.example.yumi.ConnectActivity
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:87:9-104:20
+	android:label
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:89:13-45
+	android:windowSoftInputMode
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:90:13-52
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:88:13-43
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:appr.tc+data:host:appr.tc+data:scheme:http+data:scheme:https
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:91:13-103:29
+action#android.intent.action.VIEW
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:92:17-69
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:92:25-66
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:94:17-76
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:94:27-73
+category#android.intent.category.BROWSABLE
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:95:17-78
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:95:27-75
+data
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:97:17-99:46
+	android:host
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:98:21-43
+	android:scheme
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:99:21-43
+activity#com.example.yumi.SettingsActivity
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:105:9-107:62
+	android:label
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:107:13-50
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:106:13-44
+activity#com.example.yumi.CallActivity
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:108:9-113:65
+	android:screenOrientation
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:112:13-49
+	android:label
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:111:13-45
+	android:configChanges
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:110:13-91
+	android:theme
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:113:13-53
+	android:name
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:109:13-40
 provider#androidx.core.content.FileProvider
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:67:9-75:20
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:115:9-123:20
 	android:grantUriPermissions
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:71:13-47
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:119:13-47
 	android:authorities
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:69:13-64
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:117:13-64
 	android:exported
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:70:13-37
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:118:13-37
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:68:13-62
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:116:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:72:13-74:54
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:120:13-122:54
 	android:resource
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:74:17-51
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:122:17-51
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:73:17-67
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:121:17-67
 receiver#com.example.yumi.AlarmReceiver
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:9-77:129
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:9-125:129
 	android:enabled
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:55-77
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:55-77
 	android:exported
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:81-105
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:81-105
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:22-51
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:22-51
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:13-118
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:125:13-118
 action#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:36-98
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:125:36-98
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:44-95
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:125:44-95
 uses-library#org.apache.http.legacy
-ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:9-88
+ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:126:9-88
 	android:required
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:61-85
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:126:61-85
 	android:name
-		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:23-60
+		ADDED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:126:23-60
 uses-sdk
 INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
+MERGED from [org.webrtc:google-webrtc:1.0.28513] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\c52299bd3c4c776fbe00702fb9bfdbec\jetified-google-webrtc-1.0.28513\AndroidManifest.xml:13:3-72
+MERGED from [org.webrtc:google-webrtc:1.0.28513] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\c52299bd3c4c776fbe00702fb9bfdbec\jetified-google-webrtc-1.0.28513\AndroidManifest.xml:13:3-72
 MERGED from [com.google.firebase:firebase-database:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\45b0e88b67024bfec35ada4f0e8408cb\jetified-firebase-database-16.0.1\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-database:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\45b0e88b67024bfec35ada4f0e8408cb\jetified-firebase-database-16.0.1\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-core:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\1abe15d74c4be018df0d0f8ea7455056\firebase-core-16.0.1\AndroidManifest.xml:5:5-44

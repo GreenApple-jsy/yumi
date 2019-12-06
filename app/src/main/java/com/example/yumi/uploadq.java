@@ -2,9 +2,7 @@ package com.example.yumi;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -50,6 +48,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class uploadq extends AppCompatActivity implements View.OnClickListener {
+
     private static String TAG = "phptest";
     String filename;
 
@@ -200,16 +199,7 @@ public class uploadq extends AppCompatActivity implements View.OnClickListener {
 
                 InsertData task = new InsertData();
                 task.execute("http://1.234.38.211/q_insert.php", school, age, semester, book, page, number,id,timecheck,chapter,date_text);
-                dialog = ProgressDialog.show(uploadq.this, "", "Uploading file...", true);
-                new Thread(new Runnable() {
-                    public void run() {
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                            }
-                        });
-                        uploadFile(uploadFilePath);
-                    }
-                }).start();
+
                 Intent intent3 = new Intent(getApplicationContext(), StudentQuestionlist.class);
                 startActivity(intent3);
             }

@@ -67,6 +67,7 @@ public class tutorMngBooking extends AppCompatActivity {
     String arr_sid[]; // s_id 저장 배열
     String st_time[];
     String end_time[];
+    String arr_qid[];
     String tid = "";
     int index_num=0;
 
@@ -139,6 +140,14 @@ public class tutorMngBooking extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
                         intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("실시간 문제 풀이", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getApplicationContext(),ConnectActivity.class);
+                        intent.putExtra("roomid",arr_qid[index_num]); //화상채팅 입장 위해 문제 번호 저장
                         startActivity(intent);
                     }
                 })
@@ -356,7 +365,7 @@ public class tutorMngBooking extends AppCompatActivity {
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
             end_time = new String[jsonArray.length()];
-
+            arr_qid = new String[jsonArray.length()];
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -379,7 +388,7 @@ public class tutorMngBooking extends AppCompatActivity {
                 arr_id[i]=id_num;
                 arr_sid[i]=s_id;
                 st_time[i]=startTime;
-
+                arr_qid[i] = q_num;
 
                 hashMap.put(TAG_SID, s_id);
                 hashMap.put(TAG_BOOK , "교재 : " +bookName);

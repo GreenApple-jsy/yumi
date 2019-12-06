@@ -15,7 +15,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,10 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -63,6 +59,7 @@ public class stdMngBooking extends AppCompatActivity {
     int arr_id[];
     String arr_tid[]; // s_id 저장 배열
     String st_time[];
+    String arr_qid[];
 
     String sid = "";
     int index_num=0;
@@ -123,7 +120,6 @@ public class stdMngBooking extends AppCompatActivity {
 
     }
 
-
     void getMoreBooking(int position) {
         index_num = position;
 
@@ -134,6 +130,14 @@ public class stdMngBooking extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
+                    }
+                })
+                .setNegativeButton("실시간 문제 풀이", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getApplicationContext(),ConnectActivity.class);
+                        intent.putExtra("roomid",arr_qid[index_num]); //화상채팅 입장 위해 문제 번호 저장
+                        startActivity(intent);
                     }
                 })
                 .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
@@ -203,7 +207,7 @@ public class stdMngBooking extends AppCompatActivity {
             arr_id = new int[jsonArray.length()];
             arr_tid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
-
+            arr_qid = new String[jsonArray.length()];
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -236,7 +240,7 @@ public class stdMngBooking extends AppCompatActivity {
                 arr_id[i]=id_num;
                 arr_tid[i]=t_id;
                 st_time[i]=startTime;
-
+                arr_qid[i] = q_num;
 
                 hashMap.put(TAG_TID, t_id);
                 hashMap.put(TAG_NICK, t_nickname + " 선생님");

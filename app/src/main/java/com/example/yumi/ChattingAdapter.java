@@ -19,8 +19,6 @@ public class ChattingAdapter extends BaseAdapter {
     ArrayList<ChatData> Chattings;
     final String myID = ChattingActivity.s_myID;
 
-
-
     public ChattingAdapter(Context context, ArrayList<ChatData> data) {
         mContext = context;
         Chattings = data;

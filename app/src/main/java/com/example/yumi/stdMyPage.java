@@ -13,7 +13,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -98,7 +97,6 @@ public class stdMyPage extends AppCompatActivity {
         gradeText.setText(grade);
 
         mlistView = (ListView)findViewById(R.id.std_class_list) ;
-
 
         Date currentTime = Calendar.getInstance().getTime();
         //SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());

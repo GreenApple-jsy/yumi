@@ -10,373 +10,479 @@
 9        android:targetSdkVersion="29" />
 9-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml
 10
-11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:5-67
-11-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:22-64
-12    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-12-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:5-75
-12-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:22-72
-13    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-13-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:5-71
-13-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:22-68
-14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-14-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:5-76
-14-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:22-73
-15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:5-79
-15-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:22-76
-16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-16-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:11:5-80
-16-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:11:22-77
-17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-17-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:12:5-81
-17-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:12:22-78
-18    <uses-permission android:name="android.permission.CAMERA" />
-18-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:13:5-65
-18-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:13:22-62
-19    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-19-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:14:5-81
-19-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:14:22-78
-20
-21    <uses-feature android:name="android.hardware.camera" />
-21-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:5-60
-21-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:19-57
-22    <uses-feature android:name="android.hardware.camera.autofocus" />
-22-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:5-70
-22-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:19-67
-23
-24    <uses-permission android:name="android.permission.WAKE_LOCK" />
-24-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:24:5-68
-24-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:24:22-65
-25    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-25-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:26:5-110
-25-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:26:22-107
-26    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-26-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:26:5-82
-26-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:26:22-79
-27
-28    <permission
-28-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:28:5-30:47
-29        android:name="com.example.yumi.permission.C2D_MESSAGE"
-29-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:29:9-63
-30        android:protectionLevel="signature" />
-30-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:30:9-44
-31
-32    <uses-permission android:name="com.example.yumi.permission.C2D_MESSAGE" />
-32-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:32:5-79
-32-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:32:22-76
-33
-34    <application
-34-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:18:5-79:19
-35        android:allowBackup="true"
-35-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:19:9-35
-36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-36-->[androidx.core:core:1.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\106ffcbeb3e0ff18edc19202aa82f694\core-1.1.0\AndroidManifest.xml:24:18-86
-37        android:icon="@mipmap/ic_launcher"
-37-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:9-43
-38        android:label="@string/app_name"
-38-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:21:9-41
-39        android:networkSecurityConfig="@xml/network_security_config"
-39-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:9-69
-40        android:roundIcon="@mipmap/ic_launcher_round"
-40-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:23:9-54
-41        android:supportsRtl="true"
-41-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:24:9-35
-42        android:testOnly="true"
-43        android:theme="@style/AppTheme"
-43-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:25:9-40
-44        android:usesCleartextTraffic="true" >
-44-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:26:9-44
-45        <activity
-45-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:9-97
-46            android:name="com.example.yumi.AddTeacherPopup"
-46-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:19-50
-47            android:theme="@android:style/Theme.Dialog" />
-47-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:51-94
-48        <activity android:name="com.example.yumi.StudentQuestionDetailActivity" />
-48-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:9-67
-48-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:19-64
-49        <activity android:name="com.example.yumi.StudentQuestionlist" />
-49-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:9-57
-49-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:19-54
-50        <activity android:name="com.example.yumi.MainActivity" >
-50-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:31:9-37:20
-50-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:31:19-47
-51            <intent-filter>
-51-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:32:13-36:29
-52                <action android:name="android.intent.action.MAIN" />
-52-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:33:17-69
-52-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:33:25-66
+11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+11-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:5-80
+11-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:22-78
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:5-79
+12-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:22-77
+13    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+13-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:5-80
+13-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:7:22-78
+14    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+14-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:5-70
+14-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:22-68
+15
+16    <uses-feature android:name="android.hardware.camera" />
+16-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:5-60
+16-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:19-57
+17    <uses-feature android:name="android.hardware.camera.autofocus" />
+17-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:5-70
+17-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:19-67
+18    <uses-feature
+18-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:11:5-13:35
+19        android:glEsVersion="0x00020000"
+19-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:12:9-41
+20        android:required="true" />
+20-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:13:9-32
+21
+22    <uses-permission android:name="android.permission.CAMERA" />
+22-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:5-65
+22-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:22-62
+23    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+23-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:5-79
+23-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:16:22-76
+24    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+24-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:17:5-80
+24-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:17:22-77
+25    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+25-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:5-70
+25-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:8:22-68
+26    <uses-permission android:name="android.permission.BLUETOOTH" />
+26-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:19:5-68
+26-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:19:22-65
+27    <uses-permission android:name="android.permission.INTERNET" />
+27-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:5-67
+27-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:22-64
+28    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+28-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:5-80
+28-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:22-78
+29    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+29-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:5-79
+29-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:22-76
+30    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+30-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:23:5-25:47
+30-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:24:9-63
+31    <uses-permission android:name="android.permission.INTERNET" />
+31-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:5-67
+31-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:20:22-64
+32    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+32-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:5-75
+32-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:28:22-72
+33    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+33-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:5-71
+33-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:29:22-68
+34    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+34-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:5-76
+34-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:30:22-73
+35    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+35-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:5-79
+35-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:22:22-76
+36    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+36-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:5-79
+36-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:6:22-77
+37    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+37-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:5-80
+37-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:5:22-78
+38    <uses-permission android:name="android.permission.CAMERA" />
+38-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:5-65
+38-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:15:22-62
+39    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+39-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:5-81
+39-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:22-78
+40
+41    <uses-feature android:name="android.hardware.camera" />
+41-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:5-60
+41-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:9:19-57
+42    <uses-feature android:name="android.hardware.camera.autofocus" />
+42-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:5-70
+42-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:10:19-67
+43
+44    <uses-permission android:name="android.permission.WAKE_LOCK" />
+44-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:24:5-68
+44-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:24:22-65
+45    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+45-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:26:5-110
+45-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:26:22-107
+46    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+46-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:26:5-82
+46-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:26:22-79
+47
+48    <permission
+48-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:28:5-30:47
+49        android:name="com.example.yumi.permission.C2D_MESSAGE"
+49-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:29:9-63
+50        android:protectionLevel="signature" />
+50-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:30:9-44
+51
+52    <uses-permission android:name="com.example.yumi.permission.C2D_MESSAGE" />
+52-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:32:5-79
+52-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:32:22-76
 53
-54                <category android:name="android.intent.category.LAUNCHER" />
-54-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:17-77
-54-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:35:27-74
-55            </intent-filter>
-56        </activity>
-57        <activity android:name="com.example.yumi.ChattingActivity" />
-57-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:38:9-54
-57-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:38:19-51
-58        <activity android:name="com.example.yumi.Student_timeselect" />
-58-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:39:9-56
-58-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:39:19-53
-59        <activity android:name="com.example.yumi.Codematching_S" />
-59-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:40:9-52
-59-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:40:19-49
-60        <activity android:name="com.example.yumi.LoginActivity" />
-60-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:41:9-51
-60-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:41:19-48
-61        <activity android:name="com.example.yumi.Privateinformation2" />
-61-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:42:9-57
-61-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:42:19-54
-62        <activity android:name="com.example.yumi.Mail_verify" />
-62-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:43:9-49
-62-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:43:19-46
-63        <activity android:name="com.example.yumi.Teachersignup" />
-63-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:44:9-51
-63-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:44:19-48
-64        <activity android:name="com.example.yumi.Studentsignup" />
-64-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:45:9-51
-64-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:45:19-48
-65        <activity android:name="com.example.yumi.MenuActivity" />
-65-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-50
-65-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:46:19-47
-66        <activity android:name="com.example.yumi.uploadq" />
-66-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-45
-66-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:47:19-42
-67        <activity android:name="com.example.yumi.TutorQuestionDetailActivity" />
-67-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:48:9-65
-67-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:48:19-62
-68        <activity android:name="com.example.yumi.boardTutor" />
-68-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-48
-68-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-45
-69        <activity android:name="com.example.yumi.getTutorVideo" />
-69-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-51
-69-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-48
-70        <activity android:name="com.example.yumi.tutorManageStudent" />
-70-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-56
-70-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-53
-71        <activity android:name="com.example.yumi.tutorMyPage" />
-71-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-49
-71-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-46
-72        <activity android:name="com.example.yumi.tutorPreferences" />
-72-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:53:9-54
-72-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:53:19-51
-73        <activity android:name="com.example.yumi.tutorMngBooking" />
-73-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:9-53
-73-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:19-50
-74        <activity android:name="com.example.yumi.studentcompelete_question" />
-74-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:9-63
-74-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:19-60
-75        <activity android:name="com.example.yumi.TutorQuestionlist" />
-75-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:56:9-55
-75-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:56:19-52
-76        <activity android:name="com.example.yumi.stdMyPage" />
-76-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:57:9-47
-76-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:57:19-44
-77        <activity android:name="com.example.yumi.stdMngBooking" />
-77-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:9-51
-77-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:19-48
-78        <activity android:name="com.example.yumi.stdManageTT" />
-78-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:9-49
-78-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:19-46
-79        <activity android:name="com.example.yumi.ReplayVideo" />
-79-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:9-49
-79-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:19-46
-80        <activity android:name="com.example.yumi.Cons" />
-80-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:9-42
-80-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:19-39
-81        <activity android:name="com.example.yumi.stdSelect" />
-81-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:9-47
-81-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:19-44
-82        <activity android:name="com.example.yumi.stdPreferences" />
-82-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:9-52
-82-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:19-49
-83        <activity android:name="com.example.yumi.stdPrfInform" />
-83-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:9-50
-83-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:19-47
-84        <activity android:name="com.example.yumi.changePassWord" />
-84-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:9-52
-84-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:19-49
-85
-86        <provider
-86-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:67:9-75:20
-87            android:name="androidx.core.content.FileProvider"
-87-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:68:13-62
-88            android:authorities="com.example.yumi.fileprovider"
-88-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:69:13-64
-89            android:exported="false"
-89-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:70:13-37
-90            android:grantUriPermissions="true" >
-90-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:71:13-47
-91            <meta-data
-91-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:72:13-74:54
-92                android:name="android.support.FILE_PROVIDER_PATHS"
-92-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:73:17-67
-93                android:resource="@xml/file_paths" />
-93-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:74:17-51
-94        </provider>
-95
-96        <receiver
-96-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:9-77:129
-97            android:name="com.example.yumi.AlarmReceiver"
-97-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:22-51
-98            android:enabled="true"
-98-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:55-77
-99            android:exported="false" >
-99-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:81-105
-100            <intent-filter>
-100-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:13-118
-101                <action android:name="android.intent.action.BOOT_COMPLETED" />
-101-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:36-98
-101-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:44-95
-102            </intent-filter>
-103        </receiver>
-104
-105        <uses-library
-105-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:9-88
-106            android:name="org.apache.http.legacy"
-106-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:23-60
-107            android:required="false" />
-107-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:61-85
-108
-109        <service android:name="com.google.firebase.components.ComponentDiscoveryService" >
-109-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:9-31:19
-109-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:18-89
-110            <meta-data
-110-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:28:13-30:85
-111                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-111-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:29:17-139
-112                android:value="com.google.firebase.components.ComponentRegistrar" />
-112-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:30:17-82
-113            <meta-data
-113-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:36:13-38:85
-114                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-114-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:37:17-96
-115                android:value="com.google.firebase.components.ComponentRegistrar" />
-115-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:38:17-82
-116        </service>
-117
-118        <receiver
-118-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:29:9-33:20
-119            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-119-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:30:13-85
-120            android:enabled="true"
-120-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:31:13-35
-121            android:exported="false" >
-121-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:32:13-37
-122        </receiver>
-123        <receiver
-123-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:34:9-42:20
-124            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-124-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:35:13-100
-125            android:enabled="true"
-125-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:36:13-35
-126            android:exported="true"
-126-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:37:13-36
-127            android:permission="android.permission.INSTALL_PACKAGES" >
-127-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:38:13-69
-128            <intent-filter>
-128-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:39:13-41:29
-129                <action android:name="com.android.vending.INSTALL_REFERRER" />
-129-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:17-79
-129-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:25-76
-130            </intent-filter>
-131        </receiver>
+54    <application
+54-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:39:5-127:19
+55        android:allowBackup="true"
+55-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:40:9-35
+56        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+56-->[androidx.core:core:1.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\106ffcbeb3e0ff18edc19202aa82f694\core-1.1.0\AndroidManifest.xml:24:18-86
+57        android:icon="@mipmap/ic_launcher"
+57-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:41:9-43
+58        android:label="@string/app_name"
+58-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:42:9-41
+59        android:networkSecurityConfig="@xml/network_security_config"
+59-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:43:9-69
+60        android:roundIcon="@mipmap/ic_launcher_round"
+60-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:44:9-54
+61        android:supportsRtl="true"
+61-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:45:9-35
+62        android:testOnly="true"
+63        android:theme="@style/AppTheme"
+63-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:46:9-40
+64        android:usesCleartextTraffic="true" >
+64-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:47:9-44
+65        <activity
+65-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:9-97
+66            android:name="com.example.yumi.AddTeacherPopup"
+66-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:19-50
+67            android:theme="@android:style/Theme.Dialog" />
+67-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:49:51-94
+68        <activity android:name="com.example.yumi.StudentQuestionDetailActivity" />
+68-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:9-67
+68-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:50:19-64
+69        <activity android:name="com.example.yumi.StudentQuestionlist" />
+69-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:9-57
+69-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:51:19-54
+70        <activity android:name="com.example.yumi.MainActivity" >
+70-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:9-57:20
+70-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:52:19-47
+71            <intent-filter>
+71-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:53:13-56:29
+72                <action android:name="android.intent.action.MAIN" />
+72-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:17-69
+72-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:54:25-66
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+74-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:17-77
+74-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:55:27-74
+75            </intent-filter>
+76        </activity>
+77        <activity android:name="com.example.yumi.ChattingActivity" />
+77-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:9-54
+77-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:58:19-51
+78        <activity android:name="com.example.yumi.Student_timeselect" />
+78-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:9-56
+78-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:59:19-53
+79        <activity android:name="com.example.yumi.Codematching_S" />
+79-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:9-52
+79-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:60:19-49
+80        <activity android:name="com.example.yumi.LoginActivity" />
+80-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:9-51
+80-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:61:19-48
+81        <activity android:name="com.example.yumi.Privateinformation2" />
+81-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:9-57
+81-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:62:19-54
+82        <activity android:name="com.example.yumi.Mail_verify" />
+82-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:9-49
+82-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:63:19-46
+83        <activity android:name="com.example.yumi.Teachersignup" />
+83-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:9-51
+83-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:64:19-48
+84        <activity android:name="com.example.yumi.Studentsignup" />
+84-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:9-51
+84-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:65:19-48
+85        <activity android:name="com.example.yumi.MenuActivity" />
+85-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:66:9-50
+85-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:66:19-47
+86        <activity android:name="com.example.yumi.uploadq" />
+86-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:67:9-45
+86-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:67:19-42
+87        <activity android:name="com.example.yumi.TutorQuestionDetailActivity" />
+87-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:68:9-65
+87-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:68:19-62
+88        <activity android:name="com.example.yumi.boardTutor" />
+88-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:69:9-48
+88-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:69:19-45
+89        <activity android:name="com.example.yumi.getTutorVideo" />
+89-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:70:9-51
+89-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:70:19-48
+90        <activity android:name="com.example.yumi.tutorManageStudent" />
+90-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:71:9-56
+90-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:71:19-53
+91        <activity android:name="com.example.yumi.tutorMyPage" />
+91-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:72:9-49
+91-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:72:19-46
+92        <activity android:name="com.example.yumi.tutorPreferences" />
+92-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:73:9-54
+92-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:73:19-51
+93        <activity android:name="com.example.yumi.tutorMngBooking" />
+93-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:74:9-53
+93-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:74:19-50
+94        <activity android:name="com.example.yumi.studentcompelete_question" />
+94-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:75:9-63
+94-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:75:19-60
+95        <activity android:name="com.example.yumi.TutorQuestionlist" />
+95-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:9-55
+95-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:76:19-52
+96        <activity android:name="com.example.yumi.stdMyPage" />
+96-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:9-47
+96-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:77:19-44
+97        <activity android:name="com.example.yumi.stdMngBooking" />
+97-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:9-51
+97-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:78:19-48
+98        <activity android:name="com.example.yumi.stdManageTT" />
+98-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:79:9-49
+98-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:79:19-46
+99        <activity android:name="com.example.yumi.ReplayVideo" />
+99-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:80:9-49
+99-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:80:19-46
+100        <activity android:name="com.example.yumi.Cons" />
+100-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:81:9-42
+100-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:81:19-39
+101        <activity android:name="com.example.yumi.stdSelect" />
+101-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:82:9-47
+101-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:82:19-44
+102        <activity android:name="com.example.yumi.stdPreferences" />
+102-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:83:9-52
+102-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:83:19-49
+103        <activity android:name="com.example.yumi.stdPrfInform" />
+103-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:84:9-50
+103-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:84:19-47
+104        <activity android:name="com.example.yumi.changePassWord" />
+104-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:85:9-52
+104-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:85:19-49
+105        <activity
+105-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:87:9-104:20
+106            android:name="com.example.yumi.ConnectActivity"
+106-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:88:13-43
+107            android:label="@string/app_name"
+107-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:89:13-45
+108            android:windowSoftInputMode="adjustPan" >
+108-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:90:13-52
+109            <intent-filter>
+109-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:91:13-103:29
+110                <action android:name="android.intent.action.VIEW" />
+110-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:92:17-69
+110-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:92:25-66
+111
+112                <category android:name="android.intent.category.DEFAULT" />
+112-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:94:17-76
+112-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:94:27-73
+113                <category android:name="android.intent.category.BROWSABLE" />
+113-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:95:17-78
+113-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:95:27-75
+114
+115                <data
+115-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:97:17-99:46
+116                    android:host="appr.tc"
+116-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:98:21-43
+117                    android:scheme="https" />
+117-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:99:21-43
+118                <data
+118-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:97:17-99:46
+119                    android:host="appr.tc"
+119-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:98:21-43
+120                    android:scheme="http" />
+120-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:99:21-43
+121            </intent-filter>
+122        </activity>
+123        <activity
+123-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:105:9-107:62
+124            android:name="com.example.yumi.SettingsActivity"
+124-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:106:13-44
+125            android:label="@string/settings_name" />
+125-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:107:13-50
+126        <activity
+126-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:108:9-113:65
+127            android:name="com.example.yumi.CallActivity"
+127-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:109:13-40
+128            android:configChanges="orientation|smallestScreenSize|screenSize|screenLayout"
+128-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:110:13-91
+129            android:label="@string/app_name"
+129-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:111:13-45
+130            android:screenOrientation="fullUser"
+130-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:112:13-49
+131            android:theme="@style/CallActivityTheme" />
+131-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:113:13-53
 132
-133        <service
-133-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:44:9-47:40
-134            android:name="com.google.android.gms.measurement.AppMeasurementService"
-134-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:45:13-84
-135            android:enabled="true"
-135-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:46:13-35
-136            android:exported="false" />
-136-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:47:13-37
-137        <service
-137-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:48:9-52:72
-138            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-138-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:49:13-87
-139            android:enabled="true"
-139-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:50:13-35
-140            android:exported="false"
-140-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:51:13-37
-141            android:permission="android.permission.BIND_JOB_SERVICE" />
-141-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:52:13-69
+133        <provider
+133-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:115:9-123:20
+134            android:name="androidx.core.content.FileProvider"
+134-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:116:13-62
+135            android:authorities="com.example.yumi.fileprovider"
+135-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:117:13-64
+136            android:exported="false"
+136-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:118:13-37
+137            android:grantUriPermissions="true" >
+137-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:119:13-47
+138            <meta-data
+138-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:120:13-122:54
+139                android:name="android.support.FILE_PROVIDER_PATHS"
+139-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:121:17-67
+140                android:resource="@xml/file_paths" />
+140-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:122:17-51
+141        </provider>
 142
 143        <receiver
-143-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:41:9-50:20
-144            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-144-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:42:13-78
-145            android:exported="true"
-145-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:43:13-36
-146            android:permission="com.google.android.c2dm.permission.SEND" >
-146-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:44:13-73
+143-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:9-125:129
+144            android:name="com.example.yumi.AlarmReceiver"
+144-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:22-51
+145            android:enabled="true"
+145-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:55-77
+146            android:exported="false" >
+146-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:124:81-105
 147            <intent-filter>
-147-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:45:13-49:29
-148                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-148-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:17-81
-148-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:25-78
-149
-150                <category android:name="com.example.yumi" />
-150-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:17-61
-150-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:27-58
-151            </intent-filter>
-152        </receiver>
-153        <!--
-154             FirebaseInstanceIdService performs security checks at runtime,
-155             no need for explicit permissions despite exported="true"
-156        -->
-157        <service
-157-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:56:9-62:19
-158            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-158-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:57:13-77
-159            android:exported="true" >
-159-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:58:13-36
-160            <intent-filter android:priority="-500" >
-160-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:13-61:29
-160-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:28-51
-161                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-161-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:17-80
-161-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:25-77
-162            </intent-filter>
+147-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:125:13-118
+148                <action android:name="android.intent.action.BOOT_COMPLETED" />
+148-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:125:36-98
+148-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:125:44-95
+149            </intent-filter>
+150        </receiver>
+151
+152        <uses-library
+152-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:126:9-88
+153            android:name="org.apache.http.legacy"
+153-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:126:23-60
+154            android:required="false" />
+154-->C:\Users\ayoung\StudioProjects\yumi\app\src\main\AndroidManifest.xml:126:61-85
+155
+156        <service android:name="com.google.firebase.components.ComponentDiscoveryService" >
+156-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:9-31:19
+156-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:27:18-89
+157            <meta-data
+157-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:28:13-30:85
+158                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+158-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:29:17-139
+159                android:value="com.google.firebase.components.ComponentRegistrar" />
+159-->[com.google.firebase:firebase-measurement-connector-impl:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\924cda809fb758188375b2a996fe1ed2\jetified-firebase-measurement-connector-impl-16.0.1\AndroidManifest.xml:30:17-82
+160            <meta-data
+160-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:36:13-38:85
+161                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+161-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:37:17-96
+162                android:value="com.google.firebase.components.ComponentRegistrar" />
+162-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:38:17-82
 163        </service>
 164
-165        <provider
-165-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:9:9-13:39
-166            android:name="com.google.firebase.provider.FirebaseInitProvider"
-166-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:10:13-77
-167            android:authorities="com.example.yumi.firebaseinitprovider"
-167-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:11:13-72
-168            android:exported="false"
-168-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:12:13-37
-169            android:initOrder="100" />
-169-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:13:13-36
-170
-171        <activity
-171-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:23:9-26:75
-172            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-172-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:24:13-79
-173            android:exported="false"
-173-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:25:13-37
-174            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-174-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:26:13-72
-175
-176        <meta-data
-176-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ef4c6e8393bf25eb6a101c2c5390c4fd\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
-177            android:name="com.google.android.gms.version"
-177-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ef4c6e8393bf25eb6a101c2c5390c4fd\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
-178            android:value="@integer/google_play_services_version" />
-178-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ef4c6e8393bf25eb6a101c2c5390c4fd\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
+165        <receiver
+165-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:29:9-33:20
+166            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+166-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:30:13-85
+167            android:enabled="true"
+167-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:31:13-35
+168            android:exported="false" >
+168-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:32:13-37
+169        </receiver>
+170        <receiver
+170-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:34:9-42:20
+171            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+171-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:35:13-100
+172            android:enabled="true"
+172-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:36:13-35
+173            android:exported="true"
+173-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:37:13-36
+174            android:permission="android.permission.INSTALL_PACKAGES" >
+174-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:38:13-69
+175            <intent-filter>
+175-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:39:13-41:29
+176                <action android:name="com.android.vending.INSTALL_REFERRER" />
+176-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:17-79
+176-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:40:25-76
+177            </intent-filter>
+178        </receiver>
 179
-180        <provider
-180-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
-181            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-181-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
-182            android:authorities="com.example.yumi.lifecycle-process"
-182-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
-183            android:exported="false"
-183-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
-184            android:multiprocess="true" />
-184-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
-185    </application>
-186
-187</manifest>
+180        <service
+180-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:44:9-47:40
+181            android:name="com.google.android.gms.measurement.AppMeasurementService"
+181-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:45:13-84
+182            android:enabled="true"
+182-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:46:13-35
+183            android:exported="false" />
+183-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:47:13-37
+184        <service
+184-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:48:9-52:72
+185            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+185-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:49:13-87
+186            android:enabled="true"
+186-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:50:13-35
+187            android:exported="false"
+187-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:51:13-37
+188            android:permission="android.permission.BIND_JOB_SERVICE" />
+188-->[com.google.firebase:firebase-analytics:16.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ae30d19cde1aceb03cfa8f9065af91a0\jetified-firebase-analytics-16.0.1\AndroidManifest.xml:52:13-69
+189
+190        <receiver
+190-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:41:9-50:20
+191            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+191-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:42:13-78
+192            android:exported="true"
+192-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:43:13-36
+193            android:permission="com.google.android.c2dm.permission.SEND" >
+193-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:44:13-73
+194            <intent-filter>
+194-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:45:13-49:29
+195                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+195-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:17-81
+195-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:46:25-78
+196
+197                <category android:name="com.example.yumi" />
+197-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:17-61
+197-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:48:27-58
+198            </intent-filter>
+199        </receiver>
+200        <!--
+201             FirebaseInstanceIdService performs security checks at runtime,
+202             no need for explicit permissions despite exported="true"
+203        -->
+204        <service
+204-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:56:9-62:19
+205            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+205-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:57:13-77
+206            android:exported="true" >
+206-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:58:13-36
+207            <intent-filter android:priority="-500" >
+207-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:13-61:29
+207-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:59:28-51
+208                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+208-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:17-80
+208-->[com.google.firebase:firebase-iid:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ccb05cbc407adae95cced01809ff8b9d\jetified-firebase-iid-16.0.0\AndroidManifest.xml:60:25-77
+209            </intent-filter>
+210        </service>
+211
+212        <provider
+212-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:9:9-13:39
+213            android:name="com.google.firebase.provider.FirebaseInitProvider"
+213-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:10:13-77
+214            android:authorities="com.example.yumi.firebaseinitprovider"
+214-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:11:13-72
+215            android:exported="false"
+215-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:12:13-37
+216            android:initOrder="100" />
+216-->[com.google.firebase:firebase-common:16.0.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\58e473fc1d43932ad55e50ffb7150b3a\jetified-firebase-common-16.0.0\AndroidManifest.xml:13:13-36
+217
+218        <activity
+218-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:23:9-26:75
+219            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+219-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:24:13-79
+220            android:exported="false"
+220-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:25:13-37
+221            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+221-->[com.google.android.gms:play-services-base:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\69303e401ab650d492382dd008cb1a4f\jetified-play-services-base-15.0.1\AndroidManifest.xml:26:13-72
+222
+223        <meta-data
+223-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ef4c6e8393bf25eb6a101c2c5390c4fd\jetified-play-services-basement-15.0.1\AndroidManifest.xml:23:9-25:69
+224            android:name="com.google.android.gms.version"
+224-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ef4c6e8393bf25eb6a101c2c5390c4fd\jetified-play-services-basement-15.0.1\AndroidManifest.xml:24:13-58
+225            android:value="@integer/google_play_services_version" />
+225-->[com.google.android.gms:play-services-basement:15.0.1] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\ef4c6e8393bf25eb6a101c2c5390c4fd\jetified-play-services-basement-15.0.1\AndroidManifest.xml:25:13-66
+226
+227        <provider
+227-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+228            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+228-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+229            android:authorities="com.example.yumi.lifecycle-process"
+229-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+230            android:exported="false"
+230-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+231            android:multiprocess="true" />
+231-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\ayoung\.gradle\caches\transforms-2\files-2.1\64fdece5a4fb015d0773f1e3101e233e\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+232    </application>
+233
+234</manifest>

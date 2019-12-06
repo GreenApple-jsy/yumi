@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-import com.android.build.OutputFile
 
 android {
     compileSdkVersion 29
@@ -31,6 +30,10 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+    compileOptions { //추가**************************
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -55,6 +58,9 @@ dependencies {
 
     //noinspection GradleCompatible
     implementation 'com.android.support:support-v13:28.0.2'*/
+    implementation 'org.webrtc:google-webrtc:1.0.+' //추가**************************
+    implementation files('libs/autobanh.jar') //추가**************************
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
