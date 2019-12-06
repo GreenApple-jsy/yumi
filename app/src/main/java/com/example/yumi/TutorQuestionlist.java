@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -57,7 +58,7 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
-        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -87,8 +88,8 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
                             //startActivity(intent);
                             Toast.makeText(TutorQuestionlist.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
-                        else if (tabId == R.id.tab_setting_log){
-                            Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
+                        else if (tabId == R.id.tab_chatting_log){
+                            Intent intent = new Intent(getApplicationContext(), tutorManageStudent.class);
                             startActivity(intent);
                         }
 
@@ -120,6 +121,22 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
 
     }
 
+    //앱바 메뉴 클릭 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            //설정화면으로 이동
+            case R.id.menu1:
+                Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
+                startActivity(intent);
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 
     @Override
