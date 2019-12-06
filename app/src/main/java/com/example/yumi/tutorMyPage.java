@@ -134,8 +134,8 @@ public class tutorMyPage extends AppCompatActivity {
                             //startActivity(intent);
                             Toast.makeText(tutorMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
-                        else if (tabId == R.id.tab_setting_log){
-                            Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
+                        else if (tabId == R.id.tab_chatting_log){
+                            Intent intent = new Intent(getApplicationContext(), tutorManageStudent.class);
                             startActivity(intent);
                         }
                     }
