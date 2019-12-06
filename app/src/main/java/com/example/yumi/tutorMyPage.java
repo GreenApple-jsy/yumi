@@ -67,10 +67,8 @@ public class tutorMyPage extends AppCompatActivity {
     private static final String TAG_QN = "q_number";
     private static final String TAG_NICK = "nickname";
     private static final String TAG_PLY = "playtime";
-    int listNum =0;
     int index_num=0;
     phpConnect task;
-    phpUpdate upTask;
     int arr_id[];
     String arr_nick[];
     String arr_sid[]; // s_id 저장 배열
@@ -105,18 +103,30 @@ public class tutorMyPage extends AppCompatActivity {
         mm = monthFormat.format(currentTime);
         dd = dayFormat.format(currentTime);
 
+        if (dd.substring(0,1).equals("0")){
+            dd = dd.substring(1,2);
+        }
         mlistView = (ListView)findViewById(R.id.listView_today_list) ;
         // date 데이터 완성되면 추후 주석 풀 것
         task = new tutorMyPage.phpConnect();
         task.execute();
-        if (listNum > 0) {
-            mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        System.out.println("sid " + tid + " yyyy " + yyyy + " " + mm + " " +dd);
+        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    getMoreBooking(position);
+                    try{
+                    Intent intent = new Intent(getApplicationContext(),TutorQuestionDetailActivity.class);
+                    intent.putExtra("question_id", arr_id[position]);
+                    startActivity(intent); //문제 상세 정보 띄어주기 액티비티
+                    //getMoreBooking(position);
+                    }
+                    catch (Exception e){
+
+                    }
                 }
-            });
-        }
+        });
+
 
         new Thread(new Runnable() {
             @Override public void run() {
@@ -130,9 +140,9 @@ public class tutorMyPage extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else if (tabId == R.id.tab_search_log){
-                            //Intent intent = new Intent(getApplicationContext(), stdSelect.class);
-                            //startActivity(intent);
-                            Toast.makeText(tutorMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), tutorSelect.class);
+                            startActivity(intent);
+                            //Toast.makeText(tutorMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
                         else if (tabId == R.id.tab_chatting_log){
                             Intent intent = new Intent(getApplicationContext(), tutorManageStudent.class);
@@ -169,7 +179,7 @@ public class tutorMyPage extends AppCompatActivity {
 
 
     class phpConnect extends AsyncTask<String,Void,String> {
-        String stringParameter = "&yyyy="+yyyy+"&mm="+mm+"&dd="+dd;
+        String stringParameter = "&yyyy="+yyyy+"년&mm="+mm+"월&dd="+dd;
         @Override
         protected String doInBackground(String... arg0) {
             try {
@@ -214,71 +224,13 @@ public class tutorMyPage extends AppCompatActivity {
         }
     }
 
-    class phpUpdate extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String postParameters = "id=" + arr_id[index_num];
-
-            try {
-                URL url = new URL("http://1.234.38.211/ttUpdateBooking.php");
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.connect();
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-                bufferedReader.close();
-                return sb.toString();
-            } catch (Exception e) {
-                return new String("Error: " + e.getMessage());
-            }
-
-        }
-    }
-
-
     private void showResult(){
 
         mArrayList = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-            listNum = jsonArray.length();
+
             arr_id = new int[jsonArray.length()];
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
@@ -352,7 +304,6 @@ public class tutorMyPage extends AppCompatActivity {
                     new String[]{TAG_NICK, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN , TAG_DT, TAG_PLY},
                     new int[]{R.id.stdNick,R.id.bookName, R.id.chapter, R.id.pages, R.id.qNum , R.id.TodayDate, R.id.startTime}
             );
-            listNum= 0;
             mlistView.setAdapter(adapter);
             Log.d(TAG, "showResult : ", e);
         }
@@ -379,43 +330,4 @@ public class tutorMyPage extends AppCompatActivity {
 
 
 
-    public void tutorPrf(View view) {
-        Intent intent = new Intent(getApplicationContext(), com.example.yumi.tutorPreferences.class);
-        startActivity(intent);
-    }
-
-
-    public void testPUSH(View view){
-
-        long mNow = System.currentTimeMillis();
-        Date mDate = new Date(mNow);
-        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss aa");
-        String date = mFormat.format(mDate);
-        String year = date.substring(0,4);
-        String month = date.substring(5,7);
-        String day = date.substring(8,10);
-        String hour = date.substring(11,13);
-        String minute = date.substring(14,16);
-        String mn = date.substring(date.length()-2,date.length());
-        if (mn == "오후"){
-            int editHour = Integer.parseInt(hour);
-            editHour += 12;
-            year =  Integer.toString(editHour);
-        }
-
-
-
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(tutorMyPage.this)
-                        .setSmallIcon(R.drawable.icsunsang)
-                        .setContentTitle("제목")
-                        .setContentText("내용")
-                        .setDefaults(Notification.DEFAULT_VIBRATE)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setAutoCancel(true);
-
-
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotificationManager.notify(0, mBuilder.build());
-    }
 }
