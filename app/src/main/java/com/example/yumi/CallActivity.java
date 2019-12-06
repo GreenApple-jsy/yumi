@@ -18,6 +18,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
@@ -237,8 +238,6 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
             | LayoutParams.FLAG_SHOW_WHEN_LOCKED | LayoutParams.FLAG_TURN_SCREEN_ON);
     getWindow().getDecorView().setSystemUiVisibility(getSystemUiVisibility());
     setContentView(R.layout.activity_call);
-
-
 
     //스크린레코딩
     String[] PERMISSIONS = {
@@ -494,20 +493,26 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
 
   private void initRecorder() {
     try {
-      mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-      mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
-      mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //THREE_GPP
-      mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory() + "/video.mp4");
-      mMediaRecorder.setVideoSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-      mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
-      mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-      mMediaRecorder.setVideoEncodingBitRate(512 * 1000);
-      mMediaRecorder.setVideoFrameRate(16); // 30
-      mMediaRecorder.setVideoEncodingBitRate(3000000);
-      int rotation = getWindowManager().getDefaultDisplay().getRotation();
-      int orientation = ORIENTATIONS.get(rotation + 90);
-      mMediaRecorder.setOrientationHint(orientation);
-      mMediaRecorder.prepare();
+      SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
+      String position = auto.getString("usertype",null);
+      if(position.equals("teacher")) {
+        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
+        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //THREE_GPP
+        //일단은 문제랑 같은 형식으로 이름 지정.. 근데, 지금 question table에 동영상 이름 컬럼이 읎다...
+        String id = auto.getString("id", null);
+        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory() + "/" + id + Long.toString(System.currentTimeMillis()) + ".mp4");
+        mMediaRecorder.setVideoSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mMediaRecorder.setVideoEncodingBitRate(512 * 1000);
+        mMediaRecorder.setVideoFrameRate(16); // 30
+        mMediaRecorder.setVideoEncodingBitRate(3000000);
+        int rotation = getWindowManager().getDefaultDisplay().getRotation();
+        int orientation = ORIENTATIONS.get(rotation + 90);
+        mMediaRecorder.setOrientationHint(orientation);
+        mMediaRecorder.prepare();
+      }
     } catch (IOException e) {
       e.printStackTrace();
     }
