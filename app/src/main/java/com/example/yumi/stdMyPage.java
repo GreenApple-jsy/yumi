@@ -110,18 +110,28 @@ public class stdMyPage extends AppCompatActivity {
         yyyy = yearFormat.format(currentTime);
         mm = monthFormat.format(currentTime);
         dd = dayFormat.format(currentTime);
+        if (dd.substring(0,1).equals("0")){
+            dd = dd.substring(1,2);
+        }
 
         task = new stdMyPage.phpConnect();
         task.execute();
 
-        if (listNum > 0) {
-            mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    getMoreBooking(position);
+                    try {
+                        Intent intent = new Intent(getApplicationContext(), StudentQuestionDetailActivity.class);
+                        intent.putExtra("question_id", arr_id[position]);
+                        startActivity(intent); //문제 상세 정보 띄어주기 액티비티
+                        //getMoreBooking(position);
+                    }
+                    catch (Exception e){
+
+                    }
                 }
-            });
-        }
+        });
+
         new Thread(new Runnable() {
             @Override public void run() {
                 BottomBar bottomBar = findViewById(R.id.bottomBar);
@@ -174,12 +184,13 @@ public class stdMyPage extends AppCompatActivity {
 
 
     class phpConnect extends AsyncTask<String,Void,String> {
-        String stringParameter = "&yyyy="+yyyy+"&mm="+mm+"&dd="+dd;
+        String stringParameter = "&yyyy="+yyyy+"년&mm="+mm+"월&dd="+dd;
 
         @Override
         protected String doInBackground(String... arg0) {
             try {
                 String link = "http://1.234.38.211/todayClass.php?id="+sid+stringParameter;
+
                 URL url = new URL(link);
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
