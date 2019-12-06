@@ -7,10 +7,14 @@
     <item
         android:checkable="true"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/logout"
         tools:ignore="MenuTitle" />
-    ... />
 
+    <item
+        android:id="@+id/menu1"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:checkable="true"
+        app:showAsAction="ifRoom"
+        android:title="set" />
 
 
 </menu>
