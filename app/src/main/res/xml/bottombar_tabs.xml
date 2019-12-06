@@ -16,9 +16,9 @@
             icon="@drawable/ic_search_black_24dp"
             title="Search"/>
         <tab
-            id="@+id/tab_setting_log"
-            icon="@drawable/ic_settings_black_24dp"
-            title="Setting"/>
+            id="@+id/tab_chatting_log"
+            icon="@drawable/ic_mode_comment_black_24dp"
+            title="Chatting"/>
     </tabs>
 
 </androidx.preference.PreferenceScreen>
