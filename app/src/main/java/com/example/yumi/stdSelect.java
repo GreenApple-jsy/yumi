@@ -107,8 +107,8 @@ public class stdSelect extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), stdMyPage.class);
                             startActivity(intent);
                         }
-                        else if (tabId == R.id.tab_setting_log){
-                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
+                        else if (tabId == R.id.tab_chatting_log){
+                            Intent intent = new Intent(getApplicationContext(), stdManageTT.class);
                             startActivity(intent);
                         }
                     }
