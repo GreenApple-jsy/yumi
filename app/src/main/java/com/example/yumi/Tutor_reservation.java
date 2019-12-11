@@ -9,12 +9,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +47,14 @@ public class Tutor_reservation extends AppCompatActivity {
         final String dates = intent.getExtras().getString("datepick");
         System.out.println(dates);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
+
         //풀이 시간 선택하기
         Button timepick = findViewById(R.id.timepick);
         timepick.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +81,21 @@ public class Tutor_reservation extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작 : 메인 화면
+                Intent intent = new Intent(getApplicationContext(),TutorQuestionlist.class);
+                startActivity(intent);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
 
     private class GetData extends AsyncTask<String, Void, String> {
 
