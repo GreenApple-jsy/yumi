@@ -73,8 +73,9 @@ public class TutorQuestionlist extends AppCompatActivity implements HomeLogFragm
 
         new Thread(new Runnable() {
             @Override public void run() {
-
                 BottomBar bottomBar = findViewById(R.id.bottomBar);
+                
+                bottomBar.setDefaultTab(R.id.tab_home_log);
                 bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(int tabId) {
