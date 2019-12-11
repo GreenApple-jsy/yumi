@@ -88,13 +88,14 @@ public class stdManageTT extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
-                finish();
+                Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);  //메인 화면으로 돌아오기
+                startActivity(intent);
                 return true;
             }
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     void getMoreStd(int position) {
         final int index = position;
         new AlertDialog.Builder(stdManageTT.this)
