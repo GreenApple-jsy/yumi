@@ -397,6 +397,10 @@ public class stdSelect extends AppCompatActivity {
 
     }
 
+    
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
+
     public void search(View view ){
         if (mOh == 0 || sub == 0 || cat == 0){
             Toast.makeText(getApplicationContext(), "전체 항목을 선택해 주세요.", Toast.LENGTH_SHORT).show();
