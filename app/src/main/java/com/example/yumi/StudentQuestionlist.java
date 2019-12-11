@@ -57,6 +57,7 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(false);
 
+
         task = new GetData();
         task.execute( "http://1.234.38.211/getCompleteQdata.php", "");
 
@@ -86,6 +87,7 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
             @Override public void run() {
                 BottomBar bottomBar = findViewById(R.id.bottomBar);
 
+                bottomBar.setDefaultTab(R.id.tab_home_log);
                 bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(int tabId) {
