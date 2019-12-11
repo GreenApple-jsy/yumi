@@ -153,6 +153,9 @@ public class tutorMyPage extends AppCompatActivity {
             } }).start();
 
     }
+    
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
 
     void getMoreBooking(int position) {
         index_num = position;
