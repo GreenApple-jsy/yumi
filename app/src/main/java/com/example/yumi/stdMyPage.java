@@ -148,7 +148,7 @@ public class stdMyPage extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else if (tabId == R.id.tab_chatting_log){
-                            Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
+                            Intent intent = new Intent(getApplicationContext(), stdManageTT.class);
                             startActivity(intent);
                         }
                     }
