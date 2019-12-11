@@ -96,6 +96,9 @@ public class tutorManageStudent extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
 
     void getMoreStd(int position) {
         final int index = position;
