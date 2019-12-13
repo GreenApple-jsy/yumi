@@ -118,18 +118,10 @@ public class stdMyPage extends AppCompatActivity {
         task.execute();
 
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    Intent intent = new Intent(getApplicationContext(), StudentQuestionDetailActivity.class);
-                    intent.putExtra("question_id", arr_id[position]);
-                    startActivity(intent); //문제 상세 정보 띄어주기 액티비티
-                    //getMoreBooking(position);
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    getMoreBooking(position);
                 }
-                catch (Exception e){
-
-                }
-            }
         });
 
         new Thread(new Runnable() {
@@ -158,30 +150,35 @@ public class stdMyPage extends AppCompatActivity {
 
     }
 
-    @Override public void onBackPressed() { //super.onBackPressed();
-    }// 뒤로 가기 막기
 
     void getMoreBooking(int position) {
         index_num = position;
 
-        new AlertDialog.Builder(stdMyPage.this)
-                .setTitle("예약 정보" )
-                .setMessage("선생님 정보 : " + arr_nick[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
-                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                    }
-                })
-                .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_nick[index_num]); //대화할 상대 선생 아이디 전송
-                        startActivity(intent);
-                    }
-                })
-                .show();
+        try {
+            new AlertDialog.Builder(stdMyPage.this)
+                    .setTitle("예약 정보")
+                    .setMessage("선생님 정보 : " + arr_nick[position] + "\n" + "예약시간 : " + st_time[position] + "입니다.")
+                    .setPositiveButton("문제 상세 보기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), StudentQuestionDetailActivity.class);
+                            intent.putExtra("question_id", arr_id[index_num]);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), ChattingActivity.class);
+                            intent.putExtra("oppositeID", arr_nick[index_num]); //대화할 상대 선생 아이디 전송
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
+        }
+        catch (Exception e){
+
+        }
     }
 
 
