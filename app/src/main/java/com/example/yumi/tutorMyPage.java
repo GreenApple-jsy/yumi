@@ -115,15 +115,7 @@ public class tutorMyPage extends AppCompatActivity {
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    try{
-                    Intent intent = new Intent(getApplicationContext(),TutorQuestionDetailActivity.class);
-                    intent.putExtra("question_id", arr_id[position]);
-                    startActivity(intent); //문제 상세 정보 띄어주기 액티비티
-                    //getMoreBooking(position);
-                    }
-                    catch (Exception e){
-
-                    }
+                    getMoreBooking(position);
                 }
         });
 
@@ -153,20 +145,19 @@ public class tutorMyPage extends AppCompatActivity {
             } }).start();
 
     }
-    
-    @Override public void onBackPressed() { //super.onBackPressed();
-    }// 뒤로 가기 막기
 
     void getMoreBooking(int position) {
         index_num = position;
 
         new AlertDialog.Builder(tutorMyPage.this)
                 .setTitle("예약 정보" )
-                .setMessage("학생 정보 : " + arr_nick[position] +"\n"+"예약시간 : " + st_time[position]+"입니다.")
-                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                .setMessage("학생 정보 : " + arr_nick[position] +"\n"+"강의시간은 " + st_time[position]+"입니다.")
+                .setPositiveButton("문제 상세 보기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
+                        Intent intent = new Intent(getApplicationContext(),TutorQuestionDetailActivity.class);
+                        intent.putExtra("question_id", arr_id[index_num]);
+                        startActivity(intent);
                     }
                 })
                 .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
@@ -261,7 +252,7 @@ public class tutorMyPage extends AppCompatActivity {
 
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
-                st_time[i]=startTime;
+                st_time[i]=playtime;
                 arr_nick[i]=s_nick;
 
 
