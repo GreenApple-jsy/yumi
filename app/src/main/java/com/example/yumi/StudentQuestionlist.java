@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -55,8 +54,7 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
-        actionBar.setDisplayShowTitleEnabled(false);
-
+        actionBar.setDisplayShowTitleEnabled(true);
 
         task = new GetData();
         task.execute( "http://1.234.38.211/getCompleteQdata.php", "");
@@ -87,7 +85,6 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
             @Override public void run() {
                 BottomBar bottomBar = findViewById(R.id.bottomBar);
 
-                bottomBar.setDefaultTab(R.id.tab_home_log);
                 bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
                     @Override
                     public void onTabSelected(int tabId) {
@@ -141,22 +138,6 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
         return true;
     }
 
-    //앱바 메뉴 클릭 이벤트
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            //설정화면으로 이동
-            case R.id.menu1:
-                Intent intent = new Intent(getApplicationContext(), stdPreferences.class);
-                startActivity(intent);
-                return true;
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private class GetData extends AsyncTask<String, Void, String> {
 
