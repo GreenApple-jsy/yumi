@@ -401,6 +401,9 @@ public class stdSelect extends AppCompatActivity {
 
 
     }
+    
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
 
     public void search(View view ){
         if (mOh == 0 || sub == 0 || cat == 0){
