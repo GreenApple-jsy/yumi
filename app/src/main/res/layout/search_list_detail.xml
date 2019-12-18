@@ -85,12 +85,6 @@
                 android:layout_height="wrap_content"
                 android:text="TextView" />
 
-            <TextView
-                android:id="@+id/ttNick"
-                android:layout_width="99dp"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
             <LinearLayout
                 android:id="@+id/moreLayout"
                 android:layout_width="match_parent"

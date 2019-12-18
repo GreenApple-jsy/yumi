@@ -20,13 +20,10 @@
 
             <TextView
                 android:id="@+id/textView37"
-                android:layout_width="216dp"
+                android:layout_width="155dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="18dp"
-                android:text="개인 정보 수정"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:text="      개인 정보 수정"
+                android:textSize="18sp" />
         </FrameLayout>
 
         <LinearLayout
@@ -111,10 +108,9 @@
                         android:id="@+id/changeNick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="chgNick"
                         android:layout_weight="1"
-                        android:background="@drawable/draw9"
-                        android:textColor="#FFFFFF"
+                        android:background="@drawable/draw10"
+                        android:onClick="chgNick"
                         android:text="변경하기" />
 
                 </LinearLayout>
@@ -150,9 +146,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/draw10"
                         android:onClick="chgPWD"
-                        android:background="@drawable/draw9"
-                        android:textColor="#FFFFFF"
                         android:text="비밀번호 변경" />
 
                     <FrameLayout
@@ -251,9 +246,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="chgInform"
                         android:background="@drawable/draw9"
-                        android:textColor="#FFFFFF"
+                        android:onClick="chgInform"
                         android:text="수정하기" />
 
                     <FrameLayout
