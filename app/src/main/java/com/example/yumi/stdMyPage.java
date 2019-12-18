@@ -149,6 +149,9 @@ public class stdMyPage extends AppCompatActivity {
 
 
     }
+    
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
 
 
     void getMoreBooking(int position) {
