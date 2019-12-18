@@ -126,6 +126,23 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
                 getResources().getColor(android.R.color.holo_blue_bright)
         );
     }
+    
+    //앱바 메뉴 클릭 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            //설정화면으로 이동
+            case R.id.menu1:
+                Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
+                startActivity(intent);
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
