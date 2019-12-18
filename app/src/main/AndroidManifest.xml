@@ -63,6 +63,8 @@
         <activity android:name=".stdPreferences" />
         <activity android:name=".stdPrfInform" />
         <activity android:name=".changePassWord" />
+        <activity android:name=".ConnectActivity"/>
+        <activity android:name=".CallActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
