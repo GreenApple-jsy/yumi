@@ -1,6 +1,8 @@
 package com.example.yumi;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -56,6 +58,7 @@ public class stdSelect extends AppCompatActivity {
     int mOh = 0;
     int sub = 0;
     int cat = 0;
+    int index_num =0;
     phpConnect task;
     String grade= "";
     String subj = "";
@@ -64,6 +67,7 @@ public class stdSelect extends AppCompatActivity {
     String[] subArray;
     ArrayList<HashMap<String, String>> mArrayList;
     String mJsonString;
+    int arr_id[];
     private static String TAG = "phptest_MainActivity";
     private static final String TAG_JSON="webnautes";
     private static final String ID = "id";
@@ -75,6 +79,7 @@ public class stdSelect extends AppCompatActivity {
     private static final String TAG_CHP = "chapter";
     private static final String TAG_PAGES = "page";
     private static final String TAG_QN = "q_number";
+    private static final String TAG_PLY = "playtime";
     Button more;
     View header;
     ListView mlistView ;
@@ -397,10 +402,6 @@ public class stdSelect extends AppCompatActivity {
 
     }
 
-    
-    @Override public void onBackPressed() { //super.onBackPressed();
-    }// 뒤로 가기 막기
-
     public void search(View view ){
         if (mOh == 0 || sub == 0 || cat == 0){
             Toast.makeText(getApplicationContext(), "전체 항목을 선택해 주세요.", Toast.LENGTH_SHORT).show();
@@ -463,6 +464,7 @@ public class stdSelect extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            arr_id = new int[jsonArray.length()];
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -478,6 +480,9 @@ public class stdSelect extends AppCompatActivity {
                 String chapter = item.getString(TAG_CHP);
                 String st_id = item.getString(TAG_SID);
                 String tt_id = item.getString(TAG_TID);
+                String playtime = item.getString(TAG_PLY);
+
+                arr_id[i]=id_num;
 
                 HashMap<String,String> hashMap = new HashMap<>();
 
@@ -487,6 +492,7 @@ public class stdSelect extends AppCompatActivity {
                 hashMap.put(TAG_sTime, startTime);
                 hashMap.put(TAG_CHP , chapter);
                 hashMap.put(TAG_DT, dates);
+                hashMap.put(TAG_PLY, "해설일자 : " + playtime);
                 hashMap.put(TAG_PAGES , pages+" 페이지");
                 hashMap.put(TAG_QN , q_num + " 번");
                 mArrayList.add(hashMap);
@@ -494,8 +500,8 @@ public class stdSelect extends AppCompatActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     stdSelect.this, mArrayList, search_list_detail,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.bookPage, R.id.bookNum, R.id.date}
+                    new String[]{TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_PLY },
+                    new int[]{R.id.bookName, R.id.chapter, R.id.bookPage, R.id.bookNum, R.id.date}
             ) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -508,6 +514,7 @@ public class stdSelect extends AppCompatActivity {
                         @Override
                         public void onClick(View arg0) {
                             // TODO Auto-generated method stub
+                            getMoreVideo(position);
                             Toast.makeText(stdSelect.this, "향후 영상 다시보기 페이지로 넘어감", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -529,8 +536,8 @@ public class stdSelect extends AppCompatActivity {
             mArrayList.add(hashMap);
             ListAdapter adapter = new SimpleAdapter(
                     stdSelect.this, mArrayList, search_list_detail,
-                    new String[]{TAG_TID, TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT },
-                    new int[]{R.id.ttNick,R.id.bookName, R.id.chapter, R.id.bookPage, R.id.bookNum, R.id.date}
+                    new String[]{TAG_BOOK, TAG_CHP, TAG_PAGES, TAG_QN, TAG_DT },
+                    new int[]{R.id.bookName, R.id.chapter, R.id.bookPage, R.id.bookNum, R.id.date}
             ){
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -546,5 +553,34 @@ public class stdSelect extends AppCompatActivity {
         }
 
     }
+
+    void getMoreVideo(int position) {
+        index_num = position;
+
+        try {
+            new AlertDialog.Builder(stdSelect.this)
+                    .setTitle("문제 보기 | 해설 보기")
+                    .setPositiveButton("문제 상세 보기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), StudentQuestionDetailActivity.class);
+                            intent.putExtra("question_id", arr_id[index_num]);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNeutralButton("해설 영상 보기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //해설 영상방으로 넘어감
+                        }
+                    })
+                    .show();
+        }
+        catch (Exception e){
+
+        }
+    }
+
+
 
 }

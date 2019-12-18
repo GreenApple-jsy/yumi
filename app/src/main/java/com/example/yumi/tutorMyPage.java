@@ -72,8 +72,7 @@ public class tutorMyPage extends AppCompatActivity {
     int arr_id[];
     String arr_nick[];
     String arr_sid[]; // s_id 저장 배열
-    String st_time[];
-    String end_time[];
+    String st_time[]; // 강의 시작 시작 배열
     String tid="";
     String yyyy="", mm="", dd="";
 
@@ -137,7 +136,7 @@ public class tutorMyPage extends AppCompatActivity {
                             //Toast.makeText(tutorMyPage.this, "화면 연결 전입니다", Toast.LENGTH_SHORT).show();
                         }
                         else if (tabId == R.id.tab_chatting_log){
-                            Intent intent = new Intent(getApplicationContext(), tutorManageStudent.class);
+                            Intent intent = new Intent(getApplicationContext(), tutorPreferences.class);
                             startActivity(intent);
                         }
                     }
@@ -148,27 +147,31 @@ public class tutorMyPage extends AppCompatActivity {
 
     void getMoreBooking(int position) {
         index_num = position;
+        try {
+            new AlertDialog.Builder(tutorMyPage.this)
+                    .setTitle("예약 정보")
+                    .setMessage("학생 정보 : " + arr_nick[position] + "\n" + "강의시간은 " + st_time[position] + "입니다.")
+                    .setPositiveButton("문제 상세 보기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), TutorQuestionDetailActivity.class);
+                            intent.putExtra("question_id", arr_id[index_num]);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), ChattingActivity.class);
+                            intent.putExtra("oppositeID", arr_sid[index_num]); //대화할 상대 선생 아이디 전송
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
+        }
+        catch (Exception e){
 
-        new AlertDialog.Builder(tutorMyPage.this)
-                .setTitle("예약 정보" )
-                .setMessage("학생 정보 : " + arr_nick[position] +"\n"+"강의시간은 " + st_time[position]+"입니다.")
-                .setPositiveButton("문제 상세 보기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),TutorQuestionDetailActivity.class);
-                        intent.putExtra("question_id", arr_id[index_num]);
-                        startActivity(intent);
-                    }
-                })
-                .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 선생 아이디 전송
-                        startActivity(intent);
-                    }
-                })
-                .show();
+        }
     }
 
 

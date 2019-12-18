@@ -57,7 +57,7 @@ public class tutorMngBooking extends AppCompatActivity {
     private static final String TAG_PLY = "playtime";
 
 
-    String table_adr= "readyForBooking";
+    String table_adr= "alreadyDoneBooking";
     TextView mTextViewResult, uTextViewResult;
     Switch aSwitch;
     phpConnect task;
@@ -65,9 +65,9 @@ public class tutorMngBooking extends AppCompatActivity {
     phpCancel ccTask;
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
+    String arr_nick[];
     String st_time[];
     String end_time[];
-    String arr_qid[];
     String tid = "";
     int index_num=0;
 
@@ -91,41 +91,6 @@ public class tutorMngBooking extends AppCompatActivity {
         });
 
 
-        aSwitch = (Switch) findViewById(R.id.bookSwitch);
-
-        //스위치 클릭
-        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked == true) {
-                    table_adr = "alreadyDoneBooking";
-                    task = new phpConnect();
-                    task.execute();
-
-                    mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            editBooking(position);
-                        }
-                    });
-
-                } else {
-                    table_adr= "readyForBooking";
-                    task = new phpConnect();
-                    task.execute();
-                    System.out.println("readyfor booking ");
-
-
-                    mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            getMoreBooking(position);
-                        }
-                    });
-                }
-            }
-        });
-
 
     }
 
@@ -140,14 +105,6 @@ public class tutorMngBooking extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
                         intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
-                        startActivity(intent);
-                    }
-                })
-                .setNegativeButton("실시간 문제 풀이", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),ConnectActivity.class);
-                        intent.putExtra("roomid",arr_qid[index_num]); //화상채팅 입장 위해 문제 번호 저장
                         startActivity(intent);
                     }
                 })
@@ -166,29 +123,31 @@ public class tutorMngBooking extends AppCompatActivity {
 
     void getMoreBooking(int position) {
         index_num = position;
+        try {
+            new AlertDialog.Builder(tutorMngBooking.this)
+                    .setTitle("예약 정보")
+                    .setMessage("학생 정보 : " + arr_nick[position] + "\n" + "강의시간은 " + st_time[position] + "입니다.")
+                    .setPositiveButton("문제 상세 보기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), TutorQuestionDetailActivity.class);
+                            intent.putExtra("question_id", arr_id[index_num]);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getApplicationContext(), ChattingActivity.class);
+                            intent.putExtra("oppositeID", arr_sid[index_num]); //대화할 상대 선생 아이디 전송
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
+        }
+        catch (Exception e){
 
-        new AlertDialog.Builder(tutorMngBooking.this)
-                .setTitle("예약 승낙" )
-                .setMessage("학생 정보 : " + arr_sid[position])
-                .setPositiveButton("대화하기",new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(),ChattingActivity.class);
-                        intent.putExtra("oppositeID",arr_sid[index_num]); //대화할 상대 학생 아이디 전송
-                        startActivity(intent);
-                    }
-                })
-                .setNeutralButton("예약하기 (시작 시간 : "+ st_time[position]+")", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        uptTask = new phpUpdate();
-                        uptTask.execute();
-                        Toast.makeText(tutorMngBooking.this, "예약이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
-                    }
-                })
-                .show();
+        }
     }
 
 
@@ -365,7 +324,7 @@ public class tutorMngBooking extends AppCompatActivity {
             arr_sid = new String[jsonArray.length()];
             st_time = new String[jsonArray.length()];
             end_time = new String[jsonArray.length()];
-            arr_qid = new String[jsonArray.length()];
+            arr_nick = new String[jsonArray.length()];
 
             for(int i=0;i<jsonArray.length();i++){
 
@@ -387,8 +346,8 @@ public class tutorMngBooking extends AppCompatActivity {
 
                 arr_id[i]=id_num;
                 arr_sid[i]=s_id;
-                st_time[i]=startTime;
-                arr_qid[i] = q_num;
+                st_time[i]=playtime;
+                arr_nick[i]=s_nickname;
 
                 hashMap.put(TAG_SID, s_id);
                 hashMap.put(TAG_BOOK , "교재 : " +bookName);

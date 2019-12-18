@@ -71,7 +71,7 @@ public class stdMyPage extends AppCompatActivity {
     int arr_id[];
     String arr_sid[]; // s_id 저장 배열
     String arr_nick[];
-    String st_time[];
+    String st_time[]; // 강의 시작 시간 배열
     String end_time[];
     String yyyy="", mm="", dd="";
     String sid = "";
@@ -323,7 +323,7 @@ public class stdMyPage extends AppCompatActivity {
                 arr_id[i]=id_num;
                 arr_sid[i]=st_id;
                 arr_nick[i]=tt_nick;
-                st_time[i]=startTime;
+                st_time[i]=playtime;
 
                 hashMap.put(TAG_SID, st_id);
                 hashMap.put(TAG_TID, tt_id);

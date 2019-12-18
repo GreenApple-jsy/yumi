@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -18,9 +17,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -74,30 +71,7 @@ public class stdManageTT extends AppCompatActivity {
             }
         });
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
-
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
-                Intent intent = new Intent(getApplicationContext(),StudentQuestionlist.class);  //메인 화면으로 돌아오기
-                startActivity(intent);
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    
-    @Override public void onBackPressed() { //super.onBackPressed();
-    }// 뒤로 가기 막기
 
     void getMoreStd(int position) {
         final int index = position;
@@ -108,7 +82,6 @@ public class stdManageTT extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Toast.makeText(stdManageTT.this, "확인 클릭", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNeutralButton("대화하기", new DialogInterface.OnClickListener() {
