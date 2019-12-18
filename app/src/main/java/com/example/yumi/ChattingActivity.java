@@ -100,6 +100,11 @@ public class ChattingActivity extends AppCompatActivity {
                 finish();
                 return true;
             }
+            case R.id.action_loopback:{
+                Intent intent = new Intent(getApplicationContext(), ConnectActivity.class);
+                startActivity(intent);
+                return  true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
