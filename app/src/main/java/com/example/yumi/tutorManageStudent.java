@@ -71,8 +71,30 @@ public class tutorManageStudent extends AppCompatActivity {
                 getMoreStd(position);
             }
         });
+        
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true); //뒤로가기버튼
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                Intent intent = new Intent(getApplicationContext(),TutorQuestionlist.class);  //메인 화면으로 돌아오기
+                startActivity(intent);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override public void onBackPressed() { //super.onBackPressed();
+    }// 뒤로 가기 막기
 
     void getMoreStd(int position) {
         final int index = position;
