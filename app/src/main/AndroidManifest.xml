@@ -12,6 +12,18 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SPEAKER" />
+    <uses-permission android:name="android.permission.MICROPHONE" />
+    <uses-permission android:name="android.permission.NETWORK_ALLADRESSES" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -25,7 +37,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddTeacherPopup" android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".watchVideo"></activity>
+        <activity
+            android:name=".AddTeacherPopup"
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".StudentQuestionDetailActivity" />
         <activity android:name=".StudentQuestionlist" />
         <activity android:name=".MainActivity">
@@ -50,6 +65,7 @@
         <activity android:name=".getTutorVideo" />
         <activity android:name=".tutorManageStudent" />
         <activity android:name=".tutorMyPage" />
+        <activity android:name=".tutorSelect" />
         <activity android:name=".tutorPreferences" />
         <activity android:name=".tutorMngBooking" />
         <activity android:name=".studentcompelete_question" />
@@ -57,14 +73,14 @@
         <activity android:name=".stdMyPage" />
         <activity android:name=".stdMngBooking" />
         <activity android:name=".stdManageTT" />
-        <activity android:name=".ReplayVideo" />
+        <activity android:name=".MyVideoList" />
         <activity android:name=".Cons" />
         <activity android:name=".stdSelect" />
         <activity android:name=".stdPreferences" />
         <activity android:name=".stdPrfInform" />
         <activity android:name=".changePassWord" />
-        <activity android:name=".ConnectActivity"/>
-        <activity android:name=".CallActivity"/>
+        <activity android:name=".ConnectActivity" />
+        <activity android:name=".CallActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -75,9 +91,19 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        <receiver    android:name=".AlarmReceiver"    android:enabled="true"    android:exported="false" >
-            <intent-filter>        <action android:name="android.intent.action.BOOT_COMPLETED" />    </intent-filter></receiver>
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

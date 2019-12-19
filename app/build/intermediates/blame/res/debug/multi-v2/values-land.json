@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,125,196",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "120,191,259"
-                    },
-                    "to": {
-                        "startLines": "3,4,5",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "116,186,257",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "181,252,320"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\3cf926b8c0b0bf16437d900b9534174c\\material-1.0.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\3cf926b8c0b0bf16437d900b9534174c\\material-1.0.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -40,13 +23,30 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\460aa3cd11f639bad868d5cc6b98fe19\\jetified-bottom-bar-2.3.1\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\da1b394bdd247ab78a74292364879e5f\\jetified-bottom-bar-2.3.1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
                         "endColumns": "60",
                         "endOffsets": "111"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    },
+                    "to": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "116,186,257",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "181,252,320"
                     }
                 }
             ]

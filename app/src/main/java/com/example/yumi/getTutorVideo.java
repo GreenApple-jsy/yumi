@@ -1,151 +1,160 @@
 package com.example.yumi;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import static java.lang.Integer.parseInt;
 
 public class getTutorVideo extends AppCompatActivity {
-
-
-    private static String TAG = "phptest_MainActivity";
-    private static final String TAG_JSON="webnautes";
-    ArrayList<HashMap<String, String>> mArrayList;
-    ListView mlistView;
-    String mJsonString;
-    private static final String TAG_book = "book";
-    private static final String TAG_QN = "q_number";
-
-    TextView mTextViewResult;
-    phpVDConnect task;
-
-
+    ArrayList<QuestionData> QuestionDataList;
+    String JsonResultString;
+    StudentQuestionAdapter questionAdapter;
+    ListView listView;
+    getTutorVideo.GetData task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutor_my_video);
-        mlistView = (ListView)findViewById(R.id.listView_vd_list) ;
-        task = new phpVDConnect();
-        task.execute();
+        SharedPreferences pref = getSharedPreferences("yumi", MODE_PRIVATE);
+        listView = findViewById(R.id.listView);
+        task = new getTutorVideo.GetData();
+        task.execute( "http://1.234.38.211/getTutorVideo.php?id=" + pref.getString("id", "default"), "");
 
-
-        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getMoreView(position);
+            public void onItemClick(AdapterView parent, View v, int position, long id){
+                Intent intent = new Intent(getApplicationContext(), watchVideo.class);
+                intent.putExtra("question_id",QuestionDataList.get(position).getid());
+                startActivity(intent); //문제 풀이 다시보기 액티비티 실행
             }
         });
     }
 
-    void getMoreView(int position){
+    private class GetData extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
 
-        // 리스트 클릭시 비디오 자세히 보기 구현(?) 자리
-        Toast toast = Toast.makeText(getApplicationContext(), "position " + position, Toast.LENGTH_LONG); toast.show();
-
-    }
-
-    class phpVDConnect extends AsyncTask<String,Void,String> {
+            if (result != null) {
+                JsonResultString = result;
+                InitializeQuestionData();
+            }
+        }
 
         @Override
-        protected String doInBackground(String... arg0) {
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+            String postParameters = params[1];
+
             try {
-                String link = "http://1.234.38.211/getTutorVideo.php";
-                URL url = new URL(link);
-                HttpClient client = new DefaultHttpClient();
-                HttpGet request = new HttpGet();
-                request.setURI(new URI(link));
-                HttpResponse response = client.execute(request);
-                BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-                StringBuffer sb = new StringBuffer("");
-                String line = "";
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
 
-                while ((line = in.readLine()) != null) {
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
                     sb.append(line);
                 }
 
-                in.close();
-                return sb.toString();
+                bufferedReader.close();
+
+                return sb.toString().trim();
 
             } catch (Exception e) {
-                return new String("Exception: " + e.getMessage());
-            }
-        }
 
-        @Override
-        protected void onPostExecute(String result){
-            super.onPostExecute(result);
-
-            Log.d(TAG, "response  - " + result);
-
-            if (result == null){
-                mTextViewResult.setText("error occurred");
-            }
-            else {
-                mJsonString = result;
-                showResult();
+                return null;
             }
         }
     }
 
-    private void showResult(){
-
-        mArrayList = new ArrayList<>();
+    public void InitializeQuestionData()
+    {
+        String TAG_JSON="webnautes";
+        String TAG_ID = "id";
+        String TAG_BOOK = "book";
+        String TAG_PAGE ="page";
+        String TAG_QNUM ="q_number";
+        String TAG_STIME ="start_time";
+        String TAG_ETIME ="end_time";
+        String TAG_IMAGE ="q_image";
+        String TAG_TID ="t_id";
+        String TAG_SID ="s_id";
+        String TAG_COMPLETE ="complete";
+        String TAG_QLINK ="q_link";
+        String TAG_AGE ="age";
+        String TAG_SEMESTER ="semester";
+        String TAG_RESERV ="reservation";
+        String TAG_SCHOOL="school_type";
+        String TAG_CHP = "chapter";
+        String TAG_DATES = "dates";
+        String TAG_NICK  = "nickname";
         try {
-            JSONObject jsonObject = new JSONObject(mJsonString);
+            JSONObject jsonObject = new JSONObject(JsonResultString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            QuestionDataList = new ArrayList<QuestionData>();
 
             for(int i=0;i<jsonArray.length();i++){
-
                 JSONObject item = jsonArray.getJSONObject(i);
-
-                String bookName = item.getString(TAG_book);
-                String qn = item.getString(TAG_QN);
-
-                HashMap<String,String> hashMap = new HashMap<>();
-
-                hashMap.put(TAG_book, bookName);
-                hashMap.put(TAG_QN,qn);
-
-
-                mArrayList.add(hashMap);
+                QuestionDataList.add(new QuestionData(parseInt(item.getString(TAG_ID)),item.getString(TAG_BOOK),item.getString(TAG_PAGE),
+                        item.getString(TAG_QNUM),item.getString(TAG_STIME),
+                        item.getString(TAG_IMAGE) ,item.getString(TAG_TID),item.getString(TAG_SID)
+                        ,parseInt(item.getString(TAG_COMPLETE)),item.getString(TAG_QLINK)
+                        ,item.getString(TAG_AGE),item.getString(TAG_SEMESTER), parseInt(item.getString(TAG_RESERV)),
+                        item.getString(TAG_SCHOOL),item.getString(TAG_CHP), item.getString(TAG_DATES), item.getString(TAG_NICK)
+                ));
             }
-
-            ListAdapter adapter = new SimpleAdapter(
-                    getTutorVideo.this, mArrayList, R.layout.tutor_video_list,
-                    new String[]{TAG_book,TAG_QN},
-                    new int[]{R.id.textView_list_book, R.id.textView_list_page}
-            );
-
-            mlistView.setAdapter(adapter);
+            questionAdapter = new StudentQuestionAdapter(this,QuestionDataList);
+            listView.setAdapter(questionAdapter);
 
         } catch (JSONException e) {
 
-            Log.d(TAG, "showResult : ", e);
         }
 
     }
+
 }

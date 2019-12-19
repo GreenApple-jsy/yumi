@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\0fce01345bd11c4910f81b8d028990c8\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\1ab2149af9d79629588f4a16a93ba995\\media-1.0.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

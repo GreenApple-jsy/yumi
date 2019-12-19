@@ -5,29 +5,9 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="21"
         android:targetSdkVersion="29" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -37,11 +17,21 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SPEAKER" />
+    <uses-permission android:name="android.permission.MICROPHONE" />
+    <uses-permission android:name="android.permission.NETWORK_ALLADRESSES" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
@@ -62,6 +52,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.example.yumi.watchVideo" />
         <activity
             android:name="com.example.yumi.AddTeacherPopup"
             android:theme="@android:style/Theme.Dialog" />
@@ -89,6 +80,7 @@
         <activity android:name="com.example.yumi.getTutorVideo" />
         <activity android:name="com.example.yumi.tutorManageStudent" />
         <activity android:name="com.example.yumi.tutorMyPage" />
+        <activity android:name="com.example.yumi.tutorSelect" />
         <activity android:name="com.example.yumi.tutorPreferences" />
         <activity android:name="com.example.yumi.tutorMngBooking" />
         <activity android:name="com.example.yumi.studentcompelete_question" />
@@ -96,39 +88,14 @@
         <activity android:name="com.example.yumi.stdMyPage" />
         <activity android:name="com.example.yumi.stdMngBooking" />
         <activity android:name="com.example.yumi.stdManageTT" />
-        <activity android:name="com.example.yumi.ReplayVideo" />
+        <activity android:name="com.example.yumi.MyVideoList" />
         <activity android:name="com.example.yumi.Cons" />
         <activity android:name="com.example.yumi.stdSelect" />
         <activity android:name="com.example.yumi.stdPreferences" />
         <activity android:name="com.example.yumi.stdPrfInform" />
         <activity android:name="com.example.yumi.changePassWord" />
-        <activity
-            android:name="com.example.yumi.ConnectActivity"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="appr.tc"
-                    android:scheme="https" />
-                <data
-                    android:host="appr.tc"
-                    android:scheme="http" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.yumi.SettingsActivity"
-            android:label="@string/settings_name" />
-        <activity
-            android:name="com.example.yumi.CallActivity"
-            android:configChanges="orientation|smallestScreenSize|screenSize|screenLayout"
-            android:label="@string/app_name"
-            android:screenOrientation="fullUser"
-            android:theme="@style/CallActivityTheme" />
+        <activity android:name="com.example.yumi.ConnectActivity" />
+        <activity android:name="com.example.yumi.CallActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

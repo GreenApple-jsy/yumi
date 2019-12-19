@@ -10,19 +10,15 @@
 
 package com.example.yumi;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.hardware.display.DisplayManager;
-import android.hardware.display.VirtualDisplay;
-import android.media.MediaRecorder;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
@@ -30,24 +26,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.SparseIntArray;
-import android.view.Surface;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import org.webrtc.Camera1Enumerator;
 import org.webrtc.Camera2Enumerator;
@@ -67,41 +55,25 @@ import org.webrtc.VideoFileRenderer;
 import org.webrtc.VideoFrame;
 import org.webrtc.VideoSink;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Activity for peer connection call setup, call waiting
- * and call view.
- */
-public class CallActivity extends Activity implements AppRTCClient.SignalingEvents,
-        PeerConnectionClient.PeerConnectionEvents,
-        CallFragment.OnCallEvents {
+public class CallActivity extends Activity implements AppRTCClient.SignalingEvents, PeerConnectionClient.PeerConnectionEvents, CallFragment.OnCallEvents {
+    int serverResponseCode = 0;
+    ProgressDialog dialog = null;
+    String upLoadServerUri = "http://1.234.38.211/uploadVideo.php"; //서버컴퓨터의 ip주소
 
-  private static final String TAG2 = "CallActivity";
-  private static final int REQUEST_CODE = 1000;
-  private int mScreenDensity;
-  Button btn_action;
-  private MediaProjectionManager mProjectionManager;
-  private static final int DISPLAY_WIDTH = 720;
-  private static final int DISPLAY_HEIGHT = 1280;
-  private MediaProjection mMediaProjection;
-  private VirtualDisplay mVirtualDisplay;
-  private MediaProjectionCallback mMediaProjectionCallback;
-  private MediaRecorder mMediaRecorder;
-  private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
-  private static final int REQUEST_PERMISSION_KEY = 1;
-  boolean isRecording = false;
+    final String uploadFilePath = Environment.getExternalStorageDirectory() + "/";
 
-  static {
-    ORIENTATIONS.append(Surface.ROTATION_0, 90);
-    ORIENTATIONS.append(Surface.ROTATION_90, 0);
-    ORIENTATIONS.append(Surface.ROTATION_180, 270);
-    ORIENTATIONS.append(Surface.ROTATION_270, 180);
-  }
-
+    final String uploadFileName = ConnectActivity.qnum + ".mp4"; //전송하고자하는 파일 이름
 
   private static final String TAG = "CallRTCClient";
 
@@ -191,8 +163,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
   private AppRTCClient appRtcClient;
   @Nullable
   private AppRTCClient.SignalingParameters signalingParameters;
-  @Nullable
-  private AppRTCAudioManager audioManager;
+  @Nullable private AppRTCAudioManager audioManager;
   @Nullable
   private SurfaceViewRenderer pipRenderer;
   @Nullable
@@ -222,7 +193,6 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
   private HudFragment hudFragment;
   private CpuMonitor cpuMonitor;
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   @Override
   // TODO(bugs.webrtc.org/8580): LayoutParams.FLAG_TURN_SCREEN_ON and
   // LayoutParams.FLAG_SHOW_WHEN_LOCKED are deprecated.
@@ -238,35 +208,6 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
             | LayoutParams.FLAG_SHOW_WHEN_LOCKED | LayoutParams.FLAG_TURN_SCREEN_ON);
     getWindow().getDecorView().setSystemUiVisibility(getSystemUiVisibility());
     setContentView(R.layout.activity_call);
-
-    //스크린레코딩
-    String[] PERMISSIONS = {
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-    };
-    if (!Function.hasPermissions(this, PERMISSIONS)) {
-      ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_PERMISSION_KEY);
-    }
-
-
-    DisplayMetrics metrics = new DisplayMetrics();
-    getWindowManager().getDefaultDisplay().getMetrics(metrics);
-    mScreenDensity = metrics.densityDpi;
-
-    mMediaRecorder = new MediaRecorder();
-
-    mProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
-
-
-    btn_action = (Button) findViewById(R.id.btn_action);
-    btn_action.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onToggleScreenShare();
-      }
-    });
-
-
 
     connected = false;
     signalingParameters = null;
@@ -331,6 +272,8 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
       if (checkCallingOrSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
         logAndToast("Permission " + permission + " is not granted");
         setResult(RESULT_CANCELED);
+        if (dialog != null)
+          dialog.dismiss();
         finish();
         return;
       }
@@ -341,6 +284,8 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
       logAndToast(getString(R.string.missing_url));
       Log.e(TAG, "Didn't get any URL in intent!");
       setResult(RESULT_CANCELED);
+      if (dialog != null)
+        dialog.dismiss();
       finish();
       return;
     }
@@ -352,6 +297,8 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
       logAndToast(getString(R.string.missing_url));
       Log.e(TAG, "Incorrect room ID in intent!");
       setResult(RESULT_CANCELED);
+      if (dialog != null)
+        dialog.dismiss();
       finish();
       return;
     }
@@ -451,200 +398,6 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     }
   }
 
-  //시작
-  public void actionBtnReload() {
-    if (isRecording) {
-      btn_action.setText("Stop Recording");
-    } else {
-      btn_action.setText("Start Recording");
-    }
-  }
-
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  public void onToggleScreenShare() {
-    if (!isRecording) {
-      initRecorder();
-      shareScreen();
-    } else {
-      mMediaRecorder.stop();
-      mMediaRecorder.reset();
-      stopScreenSharing();
-    }
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  private void shareScreen() {
-    if (mMediaProjection == null) {
-      startActivityForResult(mProjectionManager.createScreenCaptureIntent(), REQUEST_CODE);
-      return;
-    }
-    mVirtualDisplay = createVirtualDisplay();
-    mMediaRecorder.start();
-    isRecording = true;
-    actionBtnReload();
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  private VirtualDisplay createVirtualDisplay() {
-    return mMediaProjection.createVirtualDisplay("CallActivity", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
-            DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR, mMediaRecorder.getSurface(), null, null);
-  }
-
-  private void initRecorder() {
-    try {
-      SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
-      String position = auto.getString("usertype",null);
-      if(position.equals("teacher")) {
-        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
-        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //THREE_GPP
-        //일단은 문제랑 같은 형식으로 이름 지정.. 근데, 지금 question table에 동영상 이름 컬럼이 읎다...
-        String id = auto.getString("id", null);
-        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory() + "/" + id + Long.toString(System.currentTimeMillis()) + ".mp4");
-        mMediaRecorder.setVideoSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
-        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-        mMediaRecorder.setVideoEncodingBitRate(512 * 1000);
-        mMediaRecorder.setVideoFrameRate(16); // 30
-        mMediaRecorder.setVideoEncodingBitRate(3000000);
-        int rotation = getWindowManager().getDefaultDisplay().getRotation();
-        int orientation = ORIENTATIONS.get(rotation + 90);
-        mMediaRecorder.setOrientationHint(orientation);
-        mMediaRecorder.prepare();
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-  private void stopScreenSharing() {
-    if (mVirtualDisplay == null) {
-      return;
-    }
-    mVirtualDisplay.release();
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      destroyMediaProjection();
-    }
-    isRecording = false;
-    actionBtnReload();
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  private void destroyMediaProjection() {
-    if (mMediaProjection != null) {
-      mMediaProjection.unregisterCallback(mMediaProjectionCallback);
-      mMediaProjection.stop();
-      mMediaProjection = null;
-    }
-    Log.i(TAG2, "MediaProjection Stopped");
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == CAPTURE_PERMISSION_REQUEST_CODE) {
-      mediaProjectionPermissionResultCode = resultCode;
-      mediaProjectionPermissionResultData = data;
-      startCall();
-    }
-
-    if (requestCode != REQUEST_CODE) {
-      Log.e(TAG2, "Unknown request code: " + requestCode);
-      return;
-    }
-    if (resultCode != RESULT_OK) {
-      Toast.makeText(this, "Screen Cast Permission Denied", Toast.LENGTH_SHORT).show();
-      isRecording = false;
-      actionBtnReload();
-      return;
-    }
-    mMediaProjectionCallback = new MediaProjectionCallback();
-    mMediaProjection = mProjectionManager.getMediaProjection(resultCode, data);
-    mMediaProjection.registerCallback(mMediaProjectionCallback, null);
-    mVirtualDisplay = createVirtualDisplay();
-    mMediaRecorder.start();
-    isRecording = true;
-    actionBtnReload();
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-    switch (requestCode) {
-      case REQUEST_PERMISSION_KEY:
-      {
-        if ((grantResults.length > 0) && (grantResults[0] + grantResults[1]) == PackageManager.PERMISSION_GRANTED) {
-          onToggleScreenShare();
-        } else {
-          isRecording = false;
-          actionBtnReload();
-          Snackbar.make(findViewById(android.R.id.content), "Please enable Microphone and Storage permissions.",
-                  Snackbar.LENGTH_INDEFINITE).setAction("ENABLE",
-                  new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                      Intent intent = new Intent();
-                      intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                      intent.addCategory(Intent.CATEGORY_DEFAULT);
-                      intent.setData(Uri.parse("package:" + getPackageName()));
-                      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                      intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                      intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                      startActivity(intent);
-                    }
-                  }).show();
-        }
-        return;
-      }
-    }
-  }
-
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-  private class MediaProjectionCallback extends MediaProjection.Callback {
-    @Override
-    public void onStop() {
-      if (isRecording) {
-        isRecording = false;
-        actionBtnReload();
-        mMediaRecorder.stop();
-        mMediaRecorder.reset();
-      }
-      mMediaProjection = null;
-      stopScreenSharing();
-    }
-  }
-/*
-  @Override
-  public void onDestroy() {
-    super.onDestroy();
-    destroyMediaProjection();
-  }*/
-
-  @Override
-  public void onBackPressed() {
-    if (isRecording) {
-      Snackbar.make(findViewById(android.R.id.content), "Wanna Stop recording and exit?",
-              Snackbar.LENGTH_INDEFINITE).setAction("Stop",
-              new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                @Override
-                public void onClick(View v) {
-                  mMediaRecorder.stop();
-                  mMediaRecorder.reset();
-                  Log.v(TAG2, "Stopping Recording");
-                  stopScreenSharing();
-                  finish();
-                }
-              }).show();
-    } else {
-      finish();
-    }
-  }
-
-  //끝
-
   @TargetApi(17)
   private DisplayMetrics getDisplayMetrics() {
     DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -671,7 +424,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     startActivityForResult(
             mediaProjectionManager.createScreenCaptureIntent(), CAPTURE_PERMISSION_REQUEST_CODE);
   }
-/*
+
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     if (requestCode != CAPTURE_PERMISSION_REQUEST_CODE)
@@ -679,7 +432,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     mediaProjectionPermissionResultCode = resultCode;
     mediaProjectionPermissionResultData = data;
     startCall();
-  }*/
+  }
 
   private boolean useCamera2() {
     return Camera2Enumerator.isSupported(this) && getIntent().getBooleanExtra(EXTRA_CAMERA2, true);
@@ -689,8 +442,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     return getIntent().getBooleanExtra(EXTRA_CAPTURETOTEXTURE_ENABLED, false);
   }
 
-  private @Nullable
-  VideoCapturer createCameraCapturer(CameraEnumerator enumerator) {
+  private @Nullable VideoCapturer createCameraCapturer(CameraEnumerator enumerator) {
     final String[] deviceNames = enumerator.getDeviceNames();
 
     // First, try to find front facing camera
@@ -723,8 +475,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
   }
 
   @TargetApi(21)
-  private @Nullable
-  VideoCapturer createScreenCapturer() {
+  private @Nullable VideoCapturer createScreenCapturer() {
     if (mediaProjectionPermissionResultCode != Activity.RESULT_OK) {
       reportError("User didn't give permission to capture the screen.");
       return null;
@@ -751,7 +502,44 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     if (cpuMonitor != null) {
       cpuMonitor.pause();
     }
+      if (ConnectActivity.isRecording) { //스크린 녹화 자동 종료
+        ConnectActivity.mMediaRecorder.stop();
+        ConnectActivity.mMediaRecorder.reset();
+        stopScreenSharing();
+        if (dialog != null)
+          dialog.dismiss();
+        dialog = ProgressDialog.show(this, "", "풀이 영상 업로드 중...", true);
+        new Thread(new Runnable() {
+          public void run() {
+            runOnUiThread(new Runnable() {
+              public void run() {
+              }
+            });
+            uploadFile(uploadFilePath + "" + uploadFileName);
+          }
+        }).start();
+      }
+      else{
+        if (dialog != null)
+          dialog.dismiss();
+          finish();
+      }
   }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void stopScreenSharing() { //스크린 레코딩 종료
+        if (ConnectActivity.mVirtualDisplay == null) {
+            return;
+        }
+        ConnectActivity.mVirtualDisplay.release();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (ConnectActivity.mMediaProjection != null) {
+                ConnectActivity.mMediaProjection.stop();
+                ConnectActivity.mMediaProjection = null;
+            }
+        }
+        ConnectActivity.isRecording = false;
+    }
 
   @Override
   public void onStart() {
@@ -766,11 +554,8 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     }
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   @Override
   protected void onDestroy() {
-    super.onDestroy();
-    destroyMediaProjection();
     Thread.setDefaultUncaughtExceptionHandler(null);
     disconnect();
     if (logToast != null) {
@@ -917,6 +702,8 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     } else {
       setResult(RESULT_CANCELED);
     }
+    if (dialog != null)
+      dialog.dismiss();
     finish();
   }
 
@@ -964,8 +751,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
     });
   }
 
-  private @Nullable
-  VideoCapturer createVideoCapturer() {
+  private @Nullable VideoCapturer createVideoCapturer() {
     final VideoCapturer videoCapturer;
     String videoFileAsCamera = getIntent().getStringExtra(EXTRA_VIDEO_FILE_AS_CAMERA);
     if (videoFileAsCamera != null) {
@@ -1242,4 +1028,136 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
   public void onPeerConnectionError(final String description) {
     reportError(description);
   }
+
+    public int uploadFile(String sourceFileUri) { //풀이 영상 파일 업로드 메소드
+    System.out.println("들어옴");
+        String fileName = sourceFileUri;
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        File sourceFile = new File(sourceFileUri);
+        if (!sourceFile.isFile()) {
+          if (dialog != null)
+            dialog.dismiss();
+            Log.e("uploadFile", "Source File not exist :" +uploadFilePath + "" + uploadFileName);
+            runOnUiThread(new Runnable() {
+                public void run() {}
+            });
+            return 0;
+        }
+        else
+        {
+            try {
+                // open a URL connection to the Servlet
+                FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                URL url = new URL(upLoadServerUri);
+                // Open a HTTP  connection to  the URL
+                conn = (HttpURLConnection) url.openConnection();
+
+                conn.setDoInput(true); // Allow Inputs
+
+                conn.setDoOutput(true); // Allow Outputs
+
+                conn.setUseCaches(false); // Don't use a Cached Copy
+
+                conn.setRequestMethod("POST");
+
+                conn.setRequestProperty("Connection", "Keep-Alive");
+
+                conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+
+                conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+
+                conn.setRequestProperty("uploaded_file", fileName);
+
+                dos = new DataOutputStream(conn.getOutputStream());
+
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+
+                dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + fileName + "\"" + lineEnd);
+
+                dos.writeBytes(lineEnd);
+
+                // create a buffer of  maximum size
+
+                bytesAvailable = fileInputStream.available();
+
+
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+
+                buffer = new byte[bufferSize];
+
+                // read file and write it into form...
+
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                while (bytesRead > 0) {
+
+                    dos.write(buffer, 0, bufferSize);
+
+                    bytesAvailable = fileInputStream.available();
+
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                }
+
+
+
+                // send multipart form data necesssary after file data...
+
+                dos.writeBytes(lineEnd);
+
+                dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+
+
+                // Responses from the server (code and message)
+
+                serverResponseCode = conn.getResponseCode();
+
+                String serverResponseMessage = conn.getResponseMessage();
+
+                Log.i("uploadFile", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
+
+                if(serverResponseCode == 200){
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                        }
+                    });
+                }
+                //close the streams //
+                fileInputStream.close();
+                dos.flush();
+                dos.close();
+            } catch (MalformedURLException ex) {
+              if (dialog != null)
+                dialog.dismiss();
+                ex.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    public void run() {}
+                });
+            } catch (Exception e) {
+              if (dialog != null)
+                dialog.dismiss();
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    public void run() {}
+                });
+                Log.e("Upload server Exception", "Exception : "+ e.getMessage(), e);
+            }
+          if (dialog != null)
+            dialog.dismiss();
+            return serverResponseCode;
+        } // End else block
+    }
+
+
 }

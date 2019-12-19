@@ -5,26 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".getTutorVideo">
+    tools:context=".MyVideoList">
 
 
     <TextView
         android:id="@+id/textVD"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
+        android:layout_width="305dp"
+        android:layout_height="28dp"
         android:text="풀이 영상 관리"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049"
+        app:layout_constraintVertical_bias="0.042"
         tools:ignore="MissingConstraints" />
 
-
     <ListView
-        android:id="@+id/listView_vd_list"
+        android:id="@+id/listView"
         android:layout_width="360dp"
         android:layout_height="546dp"
         android:layout_margin="5dp"

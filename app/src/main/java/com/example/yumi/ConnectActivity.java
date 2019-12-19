@@ -13,16 +13,26 @@ package com.example.yumi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.hardware.display.DisplayManager;
+import android.hardware.display.VirtualDisplay;
+import android.media.MediaRecorder;
+import android.media.projection.MediaProjection;
+import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -32,31 +42,33 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.webkit.URLUtil;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Set;
 
-/**
- * Handles the initial setup where the user selects which room to join.
- */
 public class ConnectActivity extends Activity {
   private static final String TAG = "ConnectActivity";
   private static final int CONNECTION_REQUEST = 1;
   private static final int PERMISSION_REQUEST = 2;
   private static final int REMOVE_FAVORITE_INDEX = 0;
   private static boolean commandLineRun;
-
-  private ImageButton addFavoriteButton;
+  public static boolean isRecording = false;
   private EditText roomEditText;
-  private ListView roomListView;
   private SharedPreferences sharedPref;
   private String keyprefResolution;
   private String keyprefFps;
@@ -68,7 +80,31 @@ public class ConnectActivity extends Activity {
   private String keyprefRoom;
   private String keyprefRoomList;
   private ArrayList<String> roomList;
-  private ArrayAdapter<String> adapter;
+
+  public static MediaRecorder mMediaRecorder;
+  private MediaProjectionCallback mMediaProjectionCallback;
+  public static MediaProjection mMediaProjection;
+  private MediaProjectionManager mProjectionManager;
+
+  private static final String TAG2 = "CallActivity";
+  private static final int REQUEST_CODE = 1000;
+  private int mScreenDensity;
+  private static final int DISPLAY_WIDTH = 720;
+  private static final int DISPLAY_HEIGHT = 1280;
+  public static VirtualDisplay mVirtualDisplay;
+  private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
+  private static final int REQUEST_PERMISSION_KEY = 1;
+  private static final int CAPTURE_PERMISSION_REQUEST_CODE = 1;
+  private AppRTCClient.RoomConnectionParameters roomConnectionParameters;
+
+  @Nullable
+  private AppRTCClient appRtcClient;
+
+  public EditText q;
+  public static String qnum;
+
+  @Nullable
+  private AppRTCAudioManager audioManager;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -89,27 +125,28 @@ public class ConnectActivity extends Activity {
 
     setContentView(R.layout.activity_connect);
 
+    q = findViewById(R.id.room_edittext);
+    DisplayMetrics metrics = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    mScreenDensity = metrics.densityDpi;
+
+    mMediaRecorder = new MediaRecorder();
+
+    mProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+
     roomEditText = findViewById(R.id.room_edittext);
     roomEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
       public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
         if (i == EditorInfo.IME_ACTION_DONE) {
-          addFavoriteButton.performClick();
           return true;
         }
         return false;
       }
     });
     roomEditText.requestFocus();
-
-    roomListView = findViewById(R.id.room_listview);
-    roomListView.setEmptyView(findViewById(android.R.id.empty));
-    roomListView.setOnItemClickListener(roomListClickListener);
-    registerForContextMenu(roomListView);
     ImageButton connectButton = findViewById(R.id.connect_button);
     connectButton.setOnClickListener(connectListener);
-    addFavoriteButton = findViewById(R.id.add_favorite_button);
-    addFavoriteButton.setOnClickListener(addFavoriteListener);
 
     requestPermissions();
   }
@@ -122,16 +159,7 @@ public class ConnectActivity extends Activity {
 
   @Override
   public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-    if (v.getId() == R.id.room_listview) {
-      AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-      menu.setHeaderTitle(roomList.get(info.position));
-      String[] menuItems = getResources().getStringArray(R.array.roomListContextMenu);
-      for (int i = 0; i < menuItems.length; i++) {
-        menu.add(Menu.NONE, i, i, menuItems[i]);
-      }
-    } else {
-      super.onCreateContextMenu(menu, v, menuInfo);
-    }
+    super.onCreateContextMenu(menu, v, menuInfo);
   }
 
   @Override
@@ -140,7 +168,6 @@ public class ConnectActivity extends Activity {
       AdapterView.AdapterContextMenuInfo info =
           (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
       roomList.remove(info.position);
-      adapter.notifyDataSetChanged();
       return true;
     }
 
@@ -188,52 +215,6 @@ public class ConnectActivity extends Activity {
         }
       } catch (JSONException e) {
         Log.e(TAG, "Failed to load room list: " + e.toString());
-      }
-    }
-    adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, roomList);
-    roomListView.setAdapter(adapter);
-    if (adapter.getCount() > 0) {
-      roomListView.requestFocus();
-      roomListView.setItemChecked(0, true);
-    }
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == CONNECTION_REQUEST && commandLineRun) {
-      Log.d(TAG, "Return: " + resultCode);
-      setResult(resultCode);
-      commandLineRun = false;
-      finish();
-    }
-  }
-
-  @Override
-  public void onRequestPermissionsResult(
-      int requestCode, String[] permissions, int[] grantResults) {
-    if (requestCode == PERMISSION_REQUEST) {
-      String[] missingPermissions = getMissingPermissions();
-      if (missingPermissions.length != 0) {
-        // User didn't grant all the permissions. Warn that the application might not work
-        // correctly.
-        new AlertDialog.Builder(this)
-            .setMessage(R.string.missing_permissions_try_again)
-            .setPositiveButton(R.string.yes,
-                (dialog, id) -> {
-                  // User wants to try giving the permissions again.
-                  dialog.cancel();
-                  requestPermissions();
-                })
-            .setNegativeButton(R.string.no,
-                (dialog, id) -> {
-                  // User doesn't want to give the permissions.
-                  dialog.cancel();
-                  onPermissionsGranted();
-                })
-            .show();
-      } else {
-        // All permissions granted.
-        onPermissionsGranted();
       }
     }
   }
@@ -354,9 +335,15 @@ public class ConnectActivity extends Activity {
   }
 
   @SuppressWarnings("StringSplitter")
-  private void connectToRoom(String roomId, boolean commandLineRun, boolean loopback,
-      boolean useValuesFromIntent, int runTimeMs) {
+  private void connectToRoom(String roomId, boolean commandLineRun, boolean loopback, boolean useValuesFromIntent, int runTimeMs) {
     ConnectActivity.commandLineRun = commandLineRun;
+
+    SharedPreferences auto = getSharedPreferences("yumi", Activity.MODE_PRIVATE);
+    String position = auto.getString("usertype",null);
+
+    if(position.equals("teacher")) { //선생님만 스크린 녹화 시도
+      onToggleScreenShare();
+    }
 
     // roomId is random for loopback.
     if (loopback) {
@@ -650,10 +637,6 @@ public class ConnectActivity extends Activity {
     @Override
     public void onClick(View view) {
       String newRoom = roomEditText.getText().toString();
-      if (newRoom.length() > 0 && !roomList.contains(newRoom)) {
-        adapter.add(newRoom);
-        adapter.notifyDataSetChanged();
-      }
     }
   };
 
@@ -663,4 +646,241 @@ public class ConnectActivity extends Activity {
       connectToRoom(roomEditText.getText().toString(), false, false, false, 0);
     }
   };
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  public void onToggleScreenShare() {
+    /*if (!isRecording) {
+      initRecorder();
+      shareScreen();
+    } else {
+      mMediaRecorder.stop();
+      mMediaRecorder.reset();
+      stopScreenSharing();
+    }*/
+    initRecorder();
+    shareScreen();
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  private void shareScreen() {
+    if (mMediaProjection == null) {
+      startActivityForResult(mProjectionManager.createScreenCaptureIntent(), REQUEST_CODE);
+      return;
+    }
+    mVirtualDisplay = createVirtualDisplay();
+    mMediaRecorder.start();
+    isRecording = true;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  private VirtualDisplay createVirtualDisplay() {
+    return mMediaProjection.createVirtualDisplay("CallActivity", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
+            DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR, mMediaRecorder.getSurface(), null, null);
+  }
+
+  private void initRecorder() {
+    try {
+        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
+        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); //THREE_GPP
+
+        //"문제번호.mp4" 이름 형식
+        qnum = q.getText().toString();
+        mMediaRecorder.setOutputFile(Environment.getExternalStorageDirectory() + "/" + qnum + ".mp4");
+        mMediaRecorder.setVideoSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+        mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mMediaRecorder.setVideoEncodingBitRate(512 * 1000);
+        mMediaRecorder.setVideoFrameRate(16); // 30
+        mMediaRecorder.setVideoEncodingBitRate(3000000);
+        int rotation = getWindowManager().getDefaultDisplay().getRotation();
+        int orientation = ORIENTATIONS.get(rotation + 90);
+        mMediaRecorder.setOrientationHint(orientation);
+        mMediaRecorder.prepare();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+  private void stopScreenSharing() { //스크린 레코딩 종료
+    if (mVirtualDisplay == null) {
+      return;
+    }
+    mVirtualDisplay.release();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      destroyMediaProjection();
+    }
+    isRecording = false;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  private void destroyMediaProjection() {
+    if (mMediaProjection != null) {
+      mMediaProjection.unregisterCallback(mMediaProjectionCallback);
+      mMediaProjection.stop();
+      mMediaProjection = null;
+    }
+    Log.i(TAG2, "MediaProjection Stopped");
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == CONNECTION_REQUEST && commandLineRun) {
+      Log.d(TAG, "Return: " + resultCode);
+      setResult(resultCode);
+      commandLineRun = false;
+      finish();
+    }
+
+    if (requestCode == CAPTURE_PERMISSION_REQUEST_CODE) {
+      startCall();
+    }
+
+    if (requestCode != REQUEST_CODE) {
+      Log.e(TAG2, "Unknown request code: " + requestCode);
+      return;
+    }
+    if (resultCode != RESULT_OK) {
+      Toast.makeText(this, "Screen Cast Permission Denied", Toast.LENGTH_SHORT).show();
+      isRecording = false;
+      return;
+    }
+    mMediaProjectionCallback = new ConnectActivity.MediaProjectionCallback();
+    mMediaProjection = mProjectionManager.getMediaProjection(resultCode, data);
+    mMediaProjection.registerCallback(mMediaProjectionCallback, null);
+    mVirtualDisplay = createVirtualDisplay();
+    mMediaRecorder.start();
+    isRecording = true;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+    if (requestCode == PERMISSION_REQUEST) {
+      String[] missingPermissions = getMissingPermissions();
+      if (missingPermissions.length != 0) {
+        // User didn't grant all the permissions. Warn that the application might not work
+        // correctly.
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.missing_permissions_try_again)
+                .setPositiveButton(R.string.yes,
+                        (dialog, id) -> {
+                          // User wants to try giving the permissions again.
+                          dialog.cancel();
+                          requestPermissions();
+                        })
+                .setNegativeButton(R.string.no,
+                        (dialog, id) -> {
+                          // User doesn't want to give the permissions.
+                          dialog.cancel();
+                          onPermissionsGranted();
+                        })
+                .show();
+      } else {
+        // All permissions granted.
+        onPermissionsGranted();
+      }
+    }
+
+    switch (requestCode) {
+      case REQUEST_PERMISSION_KEY:
+      {
+        if ((grantResults.length > 0) && (grantResults[0] + grantResults[1]) == PackageManager.PERMISSION_GRANTED) {
+          onToggleScreenShare();
+        } else {
+          isRecording = false;
+          Snackbar.make(findViewById(android.R.id.content), "Please enable Microphone and Storage permissions.",
+                  Snackbar.LENGTH_INDEFINITE).setAction("ENABLE",
+                  new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                      Intent intent = new Intent();
+                      intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                      intent.addCategory(Intent.CATEGORY_DEFAULT);
+                      intent.setData(Uri.parse("package:" + getPackageName()));
+                      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                      intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                      intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                      startActivity(intent);
+                    }
+                  }).show();
+        }
+        return;
+      }
+    }
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  private class MediaProjectionCallback extends MediaProjection.Callback {
+    @Override
+    public void onStop() {
+      if (isRecording) {
+        isRecording = false;
+        mMediaRecorder.stop();
+        mMediaRecorder.reset();
+      }
+      mMediaProjection = null;
+      stopScreenSharing();
+    }
+  }
+
+  @Override
+  public void onBackPressed() {
+    if (isRecording) {
+      Snackbar.make(findViewById(android.R.id.content), "Wanna Stop recording and exit?",
+              Snackbar.LENGTH_INDEFINITE).setAction("Stop",
+              new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                @Override
+                public void onClick(View v) {
+                  mMediaRecorder.stop();
+                  mMediaRecorder.reset();
+                  Log.v(TAG2, "Stopping Recording");
+                  stopScreenSharing();
+                  finish();
+                }
+              }).show();
+    } else {
+      finish();
+    }
+  }
+
+
+  private void startCall() {
+    if (appRtcClient == null) {
+      Log.e(TAG, "AppRTC client is not allocated for a call.");
+      return;
+    }
+
+    // Start room connection.
+    appRtcClient.connectToRoom(roomConnectionParameters);
+
+    // Create and audio manager that will take care of audio routing,
+    // audio modes, audio device enumeration etc.
+    audioManager = AppRTCAudioManager.create(getApplicationContext());
+    // Store existing audio settings and change audio mode to
+    // MODE_IN_COMMUNICATION for best possible VoIP performance.
+    Log.d(TAG, "Starting the audio manager...");
+    audioManager.start(new AppRTCAudioManager.AudioManagerEvents() {
+      // This method will be called each time the number of available audio
+      // devices has changed.
+      @Override
+      public void onAudioDeviceChanged(
+              AppRTCAudioManager.AudioDevice audioDevice, Set<AppRTCAudioManager.AudioDevice> availableAudioDevices) {
+        onAudioManagerDevicesChanged(audioDevice, availableAudioDevices);
+      }
+    });
+  }
+
+  private void onAudioManagerDevicesChanged(
+          final AppRTCAudioManager.AudioDevice device, final Set<AppRTCAudioManager.AudioDevice> availableDevices) {
+    Log.d(TAG, "onAudioManagerDevicesChanged: " + availableDevices + ", "
+            + "selected: " + device);
+    // TODO(henrika): add callback handler.
+  }
+
 }

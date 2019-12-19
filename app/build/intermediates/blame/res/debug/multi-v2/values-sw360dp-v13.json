@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+            "outputFile": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw360dp-v13\\values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\7c2af8fe1e827b0f2494150ab34630c5\\preference-1.1.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\7c2af8fe1e827b0f2494150ab34630c5\\preference-1.1.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ayoung\\StudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "C:\\Users\\puppy\\AndroidStudioProjects\\yumi\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ayoung\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\puppy\\.gradle\\caches\\transforms-2\\files-2.1\\a4d5c09c73476ff618fa90405d74f231\\appcompat-1.1.0\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

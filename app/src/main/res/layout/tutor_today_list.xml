@@ -84,7 +84,7 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:text="TextView"
-            android:textColor="@color/YEOLLOW"
+            android:textColor="#FFEB3B"
             android:textSize="10sp" />
 
     </LinearLayout>

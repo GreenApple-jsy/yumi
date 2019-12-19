@@ -95,7 +95,7 @@
         android:layout_height="47dp"
         android:layout_marginBottom="436dp"
         android:background="#D7AC87"
-        android:onClick="ReplayVideo"
+        android:onClick="MyVideoList"
         android:text="다시보기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

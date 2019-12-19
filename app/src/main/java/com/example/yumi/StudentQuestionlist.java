@@ -74,9 +74,9 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id){
-                Intent intent = new Intent(getApplicationContext(), StudentQuestionDetailActivity.class);
+                Intent intent = new Intent(getApplicationContext(), watchVideo.class);
                 intent.putExtra("question_id",QuestionDataList.get(position).getid());
-                startActivity(intent); //문제 상세 정보 띄어주기 액티비티
+                startActivity(intent); //문제 풀이 다시보기 액티비티 실행
             }
         });
 
@@ -127,7 +127,7 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
                 getResources().getColor(android.R.color.holo_blue_bright)
         );
     }
-    
+
     //앱바 메뉴 클릭 이벤트
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -239,7 +239,6 @@ public class StudentQuestionlist extends AppCompatActivity implements HomeLogFra
         String TAG_TID ="t_id";
         String TAG_SID ="s_id";
         String TAG_COMPLETE ="complete";
-        String TAG_GOOD ="good";
         String TAG_QLINK ="q_link";
         String TAG_AGE ="age";
         String TAG_SEMESTER ="semester";

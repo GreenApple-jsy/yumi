@@ -13,7 +13,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -381,8 +380,8 @@ public class stdMyPage extends AppCompatActivity {
     }
 
 
-    public void ReplayVideo(View view){
-        Intent intent = new Intent(getApplicationContext(), com.example.yumi.ReplayVideo.class);
+    public void MyVideoList(View view){
+        Intent intent = new Intent(getApplicationContext(), MyVideoList.class);
         startActivity(intent);
     }
 
